@@ -72,9 +72,9 @@
     sass.js "0.10.6"
     svg-inline-loader "^0.8.0"
 
-"@boldgrid/wordpress-tag-sync@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@boldgrid/wordpress-tag-sync/-/wordpress-tag-sync-1.0.2.tgz#7910c9cffeb485ee922d2b787f0169b78bb655f9"
+"@boldgrid/wordpress-tag-sync@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@boldgrid/wordpress-tag-sync/-/wordpress-tag-sync-1.1.0.tgz#150e8743d245b4549efcc367e903553d5eb313d3"
 
 "@material/animation@^0.4.1":
   version "0.4.1"
