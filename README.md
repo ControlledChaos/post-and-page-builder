@@ -3,6 +3,12 @@
 [![PHP Version](https://img.shields.io/badge/PHP-5.3%2B-blue.svg)](https://php.net)
 [![Code Climate](https://codeclimate.com/github/BoldGrid/boldgrid-editor/badges/gpa.svg)](https://codeclimate.com/github/BoldGrid/boldgrid-editor)
 
+Plugin Page:
+[https://wordpress.org/plugins/post-and-page-builder/](https://wordpress.org/plugins/post-and-page-builder/)
+
+Official Download Link:
+[https://downloads.wordpress.org/plugin/post-and-page-builder.zip](https://downloads.wordpress.org/plugin/post-and-page-builder.zip)
+
 # Post and Page Builder
 
 **Contributors:** boldgrid, rramo012, imh_brad, timph, joemoto
@@ -21,12 +27,6 @@
 
 Post and Page Builder is a standalone plugin which adds functionality to the existing TinyMCE Editor
 used in the WordPress page and post editor.
-
-Plugin Page:
-[https://wordpress.org/plugins/post-and-page-builder/](https://wordpress.org/plugins/post-and-page-builder/)
-
-Official Download Link:
-[https://downloads.wordpress.org/plugin/post-and-page-builder.zip](https://downloads.wordpress.org/plugin/post-and-page-builder.zip)
 
 ## Requirements
 
