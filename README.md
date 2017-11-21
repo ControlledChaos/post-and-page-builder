@@ -22,6 +22,12 @@
 Post and Page Builder is a standalone plugin which adds functionality to the existing TinyMCE Editor
 used in the WordPress page and post editor.
 
+Plugin Page:
+[https://wordpress.org/plugins/post-and-page-builder/](https://wordpress.org/plugins/post-and-page-builder/)
+
+Official Download Link:
+[https://downloads.wordpress.org/plugin/post-and-page-builder.zip](https://downloads.wordpress.org/plugin/post-and-page-builder.zip)
+
 ## Requirements
 
 * PHP 5.3 or higher.
