@@ -637,6 +637,7 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 			this.$element.show();
 			this.initScroll( control );
 			this.preselect();
+
 			this.scrollToSelected();
 			this.collapseSelection();
 			this.showOverlay();
