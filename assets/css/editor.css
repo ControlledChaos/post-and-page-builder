@@ -334,7 +334,7 @@
 
 .color-panel .panel-title .close-icon:hover,
 .editor-panel .panel-title .close-icon:hover {
-  box-shadow: 0px 0px 3px 1px #969696 inset;
+  box-shadow: 0 0 3px 1px #969696 inset;
   color: #f95b26; }
 
 .color-panel .panel-title,
@@ -377,7 +377,7 @@
   transition: background-color 0.3s;
   white-space: nowrap;
   text-overflow: ellipsis;
-  padding: 0px 9px;
+  padding: 0 9px;
   overflow: hidden; }
 
 .color-panel .panel-selection:hover,
@@ -418,7 +418,7 @@
 
 .color-panel .panel-button:active,
 .editor-panel .panel-button:active {
-  box-shadow: 0px 0px 49px -12px black inset; }
+  box-shadow: 0 0 49px -12px black inset; }
 
 .color-panel .panel-button:hover,
 .editor-panel .panel-button:hover {
@@ -489,7 +489,7 @@
   border: 3px;
   height: 1em;
   width: 1em;
-  border-radius: 0px;
+  border-radius: 0;
   background: #f95b26;
   top: 50%;
   cursor: pointer;
@@ -729,7 +729,7 @@
   max-width: 100%; }
 
 .editor-panel[data-type="background"] .panel-title {
-  margin-bottom: 0px; }
+  margin-bottom: 0; }
 
 .editor-panel[data-type="background"] .panel-body {
   padding: 0;
@@ -806,7 +806,7 @@
   color: white; }
 
 .editor-panel[data-type="background"] .filter:active {
-  box-shadow: 0px 0px 49px -12px black inset; }
+  box-shadow: 0 0 49px -12px black inset; }
 
 .editor-panel[data-type="background"] .filter:hover {
   background-color: #495158; }
@@ -926,8 +926,8 @@
   display: none; }
 
 .editor-panel[data-type="background"] .background-design .customize .back {
-  margin-bottom: 0px;
-  margin-bottom: 0px;
+  margin-bottom: 0;
+  margin-bottom: 0;
   padding: 8px 0 14px; }
 
 .editor-panel[data-type="background"] .background-design .customize .overlay-color {
@@ -942,7 +942,7 @@
   width: calc(50% - 2px);
   height: auto;
   background-color: white;
-  padding: 9px 0px;
+  padding: 9px 0;
   margin: 0; }
 
 .editor-panel[data-type='image'] .presets {
@@ -1013,7 +1013,7 @@
   font-size: 20px; }
 
 .editor-panel[data-type="hr"] .presets .selected:after {
-  top: 0px;
+  top: 0;
   right: 5px; }
 
 /*************** Button Panel ********************/
@@ -1060,7 +1060,7 @@
 
 .editor-panel[data-type='button'] .presets .selected:after {
   top: 2px;
-  right: 0px; }
+  right: 0; }
 
 .editor-panel[data-type='button'] .boldgrid-button {
   text-transform: uppercase; }
@@ -1078,7 +1078,7 @@
 
 /*************** Text Settings Panel ********************/
 .editor-panel[data-type='font'] .panel-title {
-  margin-bottom: 0px; }
+  margin-bottom: 0; }
 
 .editor-panel[data-type='font'] select.google-fonts {
   width: 185px; }
@@ -1231,7 +1231,7 @@
   border-radius: 5px;
   padding-bottom: 11px;
   background-color: #f1f1f1;
-  box-shadow: 0px 0px 4px 0px #b5b5b5;
+  box-shadow: 0 0 4px 0 #b5b5b5;
   margin-bottom: 8px;
   margin-top: 3px; }
 
@@ -1458,7 +1458,7 @@
   -ms-flex-item-align: end;
   align-self: flex-end;
   width: 50%;
-  padding: 10px 0px;
+  padding: 10px 0;
   border-radius: 5px; }
 
 .template-control .label {
@@ -1532,7 +1532,7 @@
 #boldgrid-instance-menu {
   padding: 0;
   display: none;
-  height: 0px;
+  height: 0;
   position: absolute;
   left: 0;
   bottom: -1px;
@@ -1544,8 +1544,8 @@
   display: inline-block;
   padding: 4px 15px 5px;
   background-color: #32373c;
-  border-radius: 0px 0px 5px 5px;
-  box-shadow: 0px 5px 16px -4px;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 5px 16px -4px;
   cursor: move;
   width: auto !important; }
 
@@ -1571,7 +1571,7 @@
 
 #boldgrid-instance-menu li.active,
 #boldgrid-instance-menu li:hover {
-  box-shadow: 0px 0px 3px 1px #969696 inset; }
+  box-shadow: 0 0 3px 1px #969696 inset; }
 
 #boldgrid-instance-menu li.active span,
 #boldgrid-instance-menu li:hover span {
@@ -1611,7 +1611,7 @@
   z-index: 1;
   margin-left: -15px;
   top: 48px;
-  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.175);
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 5px;
   cursor: default;
@@ -1660,9 +1660,9 @@
 #boldgrid-instance-menu .bg-editor-menu-dropdown li:before {
   display: block;
   position: absolute;
-  left: 0px;
-  top: 0px;
-  bottom: 0px;
+  left: 0;
+  top: 0;
+  bottom: 0;
   width: 28px;
   color: grey;
   background-color: #32373c;
@@ -1805,7 +1805,7 @@ body.boldgrid-editor-fullscreen {
   position: fixed;
   z-index: 9999;
   top: 101px;
-  left: 0px;
+  left: 0;
   bottom: 0;
   right: 0;
   overflow: scroll;
@@ -1939,7 +1939,7 @@ body.boldgrid-editor-fullscreen {
   background-color: #32373c;
   border-radius: 3px;
   color: white;
-  box-shadow: 0px 0px 4px -1px #32373c;
+  box-shadow: 0 0 4px -1px #32373c;
   font: normal normal normal 14px/1 FontAwesome;
   font-size: 14px;
   text-align: center;
@@ -1992,7 +1992,7 @@ body.boldgrid-editor-fullscreen {
 
 .editor-panel .colors,
 .color-panel .colors {
-  margin-bottom: 0px;
+  margin-bottom: 0;
   margin: 0 auto; }
 
 .editor-panel .colors li,
@@ -2004,7 +2004,7 @@ body.boldgrid-editor-fullscreen {
   border-radius: 50%;
   margin: 3px;
   cursor: pointer;
-  padding: 0px; }
+  padding: 0; }
 
 .editor-panel .colors li:hover,
 .color-panel .colors li:hover {
@@ -2231,7 +2231,7 @@ body.boldgrid-editor-fullscreen {
   background-color: white;
   background-repeat: no-repeat;
   height: 25px;
-  margin: 4px 0px;
+  margin: 4px 0;
   border: none;
   padding: 3px;
   background-color: transparent;
@@ -2322,7 +2322,7 @@ html:not(.dragging-section) .delete-icon-wrap {
   -webkit-transform: translateY(-50%) translateX(-50%);
   transform: translateY(-50%) translateX(-50%);
   cursor: pointer;
-  box-shadow: 0px 2px 5px 0px #313131;
+  box-shadow: 0 2px 5px 0 #313131;
   transition: color .5s;
   position: fixed;
   display: none; }
@@ -2389,7 +2389,7 @@ html:not(.dragging-section) .delete-icon-wrap {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  border-bottom: 1px solid #cccccc; }
+  border-bottom: 1px solid #ccc; }
 
 .boldgrid-zoomout #boldgrid-hide-post-title,
 .boldgrid-zoomout #local-storage-notice,
@@ -2463,7 +2463,7 @@ html:not(.dragging-section) .delete-icon-wrap {
   border: 3px;
   height: 1em;
   width: 1em;
-  border-radius: 0px;
+  border-radius: 0;
   background: #f95b26;
   top: 50%;
   cursor: pointer;
@@ -2504,7 +2504,7 @@ html:not(.dragging-section) .delete-icon-wrap {
   color: white; }
 
 .boldgrid-zoomout .exit-row-dragging:active {
-  box-shadow: 0px 0px 49px -12px black inset; }
+  box-shadow: 0 0 49px -12px black inset; }
 
 .boldgrid-zoomout .exit-row-dragging:hover {
   color: #23282d;
@@ -2528,7 +2528,7 @@ html:not(.dragging-section) .delete-icon-wrap {
   text-decoration: none; }
 
 .boldgrid-zoomout .bg-close-zoom-view:hover {
-  background: #FFF; }
+  background: #fff; }
 
 .boldgrid-zoomout .bg-close-zoom-view:hover:after {
   color: #0073aa; }
@@ -2729,7 +2729,7 @@ html:not(.dragging-section) .delete-icon-wrap {
   height: 300px;
   background: white;
   margin: 50px 0 0;
-  border: 3px solid #cccccc;
+  border: 3px solid #ccc;
   border-radius: 1px;
   transition: border-color .5s;
   left: 7px;
@@ -2761,7 +2761,7 @@ html:not(.dragging-section) .delete-icon-wrap {
   height: 60px;
   -webkit-transform: translateY(-50%) translateX(-100%);
   transform: translateY(-50%) translateX(-100%);
-  background-color: #cccccc;
+  background-color: #ccc;
   border-radius: 4px 0 0 4px;
   transition: background-color .5s;
   cursor: move; }
@@ -2889,7 +2889,7 @@ html:not(.dragging-section) .delete-icon-wrap {
   width: 35px;
   display: inline-block;
   text-align: center;
-  box-shadow: 0px 2px 5px 0px #313131;
+  box-shadow: 0 2px 5px 0 #313131;
   cursor: pointer;
   transition: background-color .5s; }
 
@@ -2952,7 +2952,7 @@ html:not(.dragging-section) .delete-icon-wrap {
   padding: 50px;
   padding-bottom: 30px;
   margin: 75px 20% 0 20%;
-  box-shadow: 1px 2px 8px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 1px 2px 8px 0 rgba(0, 0, 0, 0.25);
   background: white; }
 
 .wp-admin .editing-blocker .gridblock-lead .desc {
