@@ -18,7 +18,6 @@ var gulp = require( 'gulp' ),
 	del = require( 'del' ),
 	fs = require( 'fs' ),
 	autoprefixer = require( 'gulp-autoprefixer' ),
-	server = require( 'karma' ).Server,
 	gutil = require( 'gutil' ),
 	pump = require( 'pump' );
 
@@ -58,16 +57,6 @@ var config = {
 
 gulp.task( 'clean', function() {
 	return del( config.buildDest, { force: true } );
-} );
-
-gulp.task( 'js-unit-tests', function( done ) {
-	return new server(
-		{
-			configFile: __dirname + '/karma.conf.js',
-			singleRun: true
-		},
-		done
-	).start();
 } );
 
 gulp.task( 'pre-deploy', function() {
@@ -164,13 +153,4 @@ gulp.task( 'deploy', function( cb ) {
 
 gulp.task( 'watch', function() {
 	gulp.watch( config.src + 'assets/scss/**/*', [ 'sass' ] );
-} );
-
-gulp.task( 'test-watch', function( done ) {
-	new server(
-		{
-			configFile: __dirname + '/karma.conf.js'
-		},
-		done
-	).start();
 } );
