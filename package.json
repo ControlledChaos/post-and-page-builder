@@ -4,14 +4,15 @@
 	"description": "Post and Page Builder is a standalone plugin which adds functionality to the existing TinyMCE Editor.",
 	"main": "gulpfile.js",
 	"scripts": {
-		"start": "npm-run-all -p start-js start-css",
+		"start": "npm-run-all -p start-js start-css karmadev",
 		"start-js": "webpack-dev-server --colors",
+		"karmadev": "karma start karma.config.js",
 		"start-css": "gulp watch",
 		"precommit": "lint-staged && npm test",
 		"build-webpack": "NODE_ENV=production webpack --colors",
 		"format-js": "prettier-eslint \"assets/js/builder/**/*.js\" --write",
 		"format-sass": "stylelint \"assets/scss/**/*.scss\" --fix --syntax scss",
-		"build": "npm run build-webpack & gulp build & gulp merge-webpack",
+		"build": "npm run build-webpack & gulp build & gulp merge-webpack & npm test",
 		"test": "cross-env NODE_ENV=test karma start karma.config.js --single-run"
 	},
 	"lint-staged": {
