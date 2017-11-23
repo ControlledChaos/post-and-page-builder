@@ -7,10 +7,12 @@
 	.panel-footer {
 		z-index: 2;
 	}
+
 	&.editor-panel,
 	.panel-body {
 		background-color: #ececec;
 	}
+
 	.bg-box {
 		width: 45px;
 		height: 45px;
@@ -35,9 +37,11 @@
 	.bg-box.box-long {
 		height: 114px;
 	}
+
 	.bg-box.box-wide {
 		width: 106px;
 	}
+
 	.panel-body,
 	.box-design {
 		height: 100%;

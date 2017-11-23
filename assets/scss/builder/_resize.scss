@@ -7,12 +7,12 @@
 	position: fixed;
 	cursor: ns-resize;
 	background-color: $menu-color;
-    border-radius: 3px;
-    color: white;
-    box-shadow: 0px 0px 4px -1px $menu-color;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: 14px;
-    text-align: center;
+	border-radius: 3px;
+	color: white;
+	box-shadow: 0 0 4px -1px $menu-color;
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: 14px;
+	text-align: center;
 	line-height: 20px;
 
 	&:hover {
@@ -32,6 +32,7 @@
 .changing-padding-top .draghandle.bottom {
 	display: none !important;
 }
+
 .changing-padding-bottom .draghandle.top {
 	display: none !important;
 }

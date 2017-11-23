@@ -25,12 +25,13 @@
 		position:relative;
 
 		@include selected-preset();
+
 		background: #eee;
 		color: currentColor;
 
 		&:after {
-       		top: 0px;
-    		right: 5px;
-       }
-    }
+			top: 0;
+			right: 5px;
+		}
+	}
 }

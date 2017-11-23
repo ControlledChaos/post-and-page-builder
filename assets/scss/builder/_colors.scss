@@ -27,7 +27,7 @@
 
 .editor-panel .colors,
 .color-panel .colors {
-	margin-bottom: 0px;
+	margin-bottom: 0;
 	margin: 0 auto;
 
 	li {
@@ -38,12 +38,13 @@
 		border-radius: 50%;
 		margin: 3px;
 		cursor: pointer;
-		padding: 0px;
+		padding: 0;
 
 		&:hover {
 			border-color: $hover-color;
 		}
 	}
+
 	li.selected {
 		border-color: $hover-color;
 	}
@@ -117,9 +118,11 @@
 			position: relative;
 			top: 10px;
 		}
+
 		.wp-picker-input-wrap .button {
 			margin: 2px;
 		}
+
 		.wp-picker-input-wrap .button,
 		.boldgrid-color-picker {
 			display: inline-block !important;
@@ -128,6 +131,7 @@
 		.iris-picker {
 			margin: 15px auto 0;
 		}
+
 		.links {
 			width: 200px;
 			margin: 3px auto 20px;
@@ -135,10 +139,12 @@
 
 			a {
 				text-decoration: none;
+
 				&.cancel {
 					color: #a00;
 					float: right;
 				}
+
 				&:hover {
 					text-decoration: underline;
 				}

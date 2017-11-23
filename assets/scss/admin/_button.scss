@@ -2,7 +2,6 @@
 	font-family: 'Josefin Sans';
 	text-transform: uppercase;
 	font-weight: 300;
-
 	font-size: 13px;
 	font-weight: 600;
 	padding: 10px 35px;
@@ -20,6 +19,7 @@
 			background-color: lighten($boldgrid-color, 30%);
 		}
 	}
+
 	&.bg-secondary-color {
 		background-color: #ececec;
 		color: #000;

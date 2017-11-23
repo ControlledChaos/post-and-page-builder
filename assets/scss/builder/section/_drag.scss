@@ -27,6 +27,7 @@
 	body {
 		box-shadow: 0 0 0 5px $boldgrid-color;
 	}
+
 	#boldgrid-drag-pointer {
 		@include pointerOffset();
 	}
@@ -73,9 +74,11 @@
 	.boldgrid-section:after  {
 		display: block;
 	}
+
 	.boldgrid-section:hover:after {
 		background-color: rgba(249, 91, 38, 0.75);
 	}
+
 	.boldgrid-section.delete-overlay:before,
 	.boldgrid-section:hover:before {
 		background-color: transparent;
@@ -97,6 +100,7 @@
 	.boldgrid-section.delete-overlay:before {
 		content: 'Delete Section';
 	}
+
 	.boldgrid-section.delete-overlay:after {
 		background-color: rgba(255, 0, 0, 0.75);
 	}
@@ -108,7 +112,7 @@
 		}
 	}
 
-	 #boldgrid-draggable-resizing-overlay {
+	#boldgrid-draggable-resizing-overlay {
 		cursor: move !important;
 	}
 }

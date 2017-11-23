@@ -6,6 +6,7 @@
 	.bg-control-element {
 		outline: 2px dashed #f95b26 !important;
 	}
+
 	a, hr, i {
 		&.bg-control-element {
 			outline-offset: 15px;
@@ -18,11 +19,11 @@
 
 	img,
 	.fa {
-	    cursor: pointer;
+		cursor: pointer;
 	}
 
 	.background-fixed {
-	    background-attachment: scroll !important;
+		background-attachment: scroll !important;
 	}
 }
 
@@ -32,11 +33,11 @@
 	#boldgrid-instance-menu,
 	.bg-drag-popover,
 	.draghandle {
-	   display: none !important;
+		display: none !important;
 	}
 
 	.boldgrid-section:hover {
-	   outline: none !important;
+		outline: none !important;
 	}
 }
 

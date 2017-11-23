@@ -11,13 +11,12 @@
 		"precommit": "lint-staged",
 		"build-webpack": "NODE_ENV=production webpack --colors",
 		"format-js": "prettier-eslint \"assets/js/builder/**/*.js\" --write",
-		"format-sass": "stylelint \"assets/scss/**/*.scss\" --fix",
+		"format-sass": "stylelint \"assets/scss/**/*.scss\" --fix --syntax scss",
 		"build": "npm run build-webpack & gulp build & gulp merge-webpack"
 	},
 	"lint-staged": {
 		"assets/js/builder/**/*.{js,json,scss}": [
 			"npm run format-js",
-			"npm run format-sass",
 			"git add"
 		]
 	},
@@ -100,6 +99,7 @@
 		"postcss-loader": "^2.0.6",
 		"resolve-url-loader": "^2.1.0",
 		"sass-loader": "^6.0.6",
+		"stylelint-config-standard": "^17.0.0",
 		"textselect": "^1.0.0",
 		"url-loader": "^0.5.9",
 		"webpack": "^3.8.1",

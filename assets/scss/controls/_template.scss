@@ -10,7 +10,7 @@ $size: 75px;
 		flex-direction: column;
 		align-self: flex-end;
 		width: 50%;
-		padding: 10px 0px;
+		padding: 10px 0;
 		border-radius: 5px;
 	}
 
@@ -63,10 +63,12 @@ $size: 75px;
 		background-repeat: no-repeat;
 		background-size: cover;
 	}
+
 	.sidebar.left:after {
 		transform: rotate(180deg);
 		transform-origin: 50% 50%;
 	}
+
 	.sidebar.none:after {
 		background-image: url(../../assets/image/page-templates/fullwidth.svg);
 	}

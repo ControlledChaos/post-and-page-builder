@@ -1,12 +1,11 @@
 /*************** Background Panel ********************/
 .editor-panel[data-type="background"] {
-
 	img {
 		max-width: 100%;
 	}
 
 	.panel-title {
-		margin-bottom: 0px;
+		margin-bottom: 0;
 	}
 
 	.panel-body {
@@ -20,60 +19,61 @@
 	}
 
 	.panel-footer {
-    	bottom: -59px;
+		bottom: -59px;
 	}
 
 	.current-selection {
 		position: relative;
 		height: 180px;
 		background-size: cover;
-        background-position: 50%;
+		background-position: 50%;
 
-        &[data-type="pattern"] {
-            background-size: initial;
-            background-repeat: repeat;
-        }
+		&[data-type="pattern"] {
+			background-size: initial;
+			background-repeat: repeat;
+		}
 
-        &[data-type="color"] .settings{
-        	display: none !important;
-        }
+		&[data-type="color"] .settings{
+			display: none !important;
+		}
 
-        &[data-type] .settings {
-            display: block;
-        }
+		&[data-type] .settings {
+			display: block;
+		}
 
-        .settings {
-            display: none;
-            text-align: center;
-            position: relative;
-            top: 59px;
+		.settings {
+			display: none;
+			text-align: center;
+			position: relative;
+			top: 59px;
 
-            .panel-button {
-                background-color: rgba(0, 0, 0, 0.6);
-                border: 2px solid white;
-                color: white;
-                padding: 5px 11px 6px;
+			.panel-button {
+				background-color: rgba(0, 0, 0, 0.6);
+				border: 2px solid white;
+				color: white;
+				padding: 5px 11px 6px;
 
-                &:hover {
-                    color: $hover-color;
-                    border-color: $hover-color;
-                }
-            }
-        }
+				&:hover {
+					color: $hover-color;
+					border-color: $hover-color;
+				}
+			}
+		}
 	}
 
 	.filters {
-	    background-color: rgba(0, 0, 0, 0.4);
-	    padding: 12px;
+		background-color: rgba(0, 0, 0, 0.4);
+		padding: 12px;
 		text-align: center;
-	    position: absolute;
-	    bottom: 0;
-	    right: 0;
-	    left: 0;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		left: 0;
 	}
 
 	.filter {
 		@include panel-button();
+
 		color: #222;
 		margin: 3px;
 		float: none;
@@ -81,6 +81,7 @@
 		&:hover {
 			background-color: lighten( $panel-color, 10% );
 		}
+
 		&.selected {
 			background-color: $panel-color;
 		}
@@ -89,34 +90,36 @@
 
 	.current-selection img,
 	.presets img {
-        position: relative;
+		position: relative;
 	}
 
 	.customize .section:not(.back) {
-	   display: none;
+		display: none;
 	}
 
 	.preset-wrapper[data-type="color"] ~ * .customize .background-color {
-	   display: block;
+		display: block;
 	}
+
 	.preset-wrapper[data-type="gradients"] ~ * .customize .direction,
 	.preset-wrapper[data-type="gradients"] ~ * .customize .gradient-color-2,
 	.preset-wrapper[data-type="gradients"] ~ * .customize .gradient-color-1 {
-	   display: block;
+		display: block;
 	}
 
 	.preset-wrapper[data-type="pattern"] ~ * .customize {
 		.scroll-effects,
 		.background-color {
-		   display: block;
+			display: block;
 		}
 	}
+
 	.preset-wrapper[data-type="image"] ~ * .customize {
 		.overlay-color,
 		.scroll-effects,
 		.vertical-position,
 		.size {
-		   display: block;
+			display: block;
 		}
 	}
 
@@ -130,11 +133,11 @@
 		}
 
 		a {
-		    text-decoration: none;
-		    position: relative;
-		    top: 17px;
-		    color: #fff;
-		    font-size: 15px;
+			text-decoration: none;
+			position: relative;
+			top: 17px;
+			color: #fff;
+			font-size: 15px;
 		}
 	}
 
@@ -142,25 +145,25 @@
 		padding: 0 20px;
 
 		ul > li {
-    		margin: 15px 0;
-    		height: 53px;
-    		border: 1px solid #bdbcbc;
-    		cursor: pointer;
+			margin: 15px 0;
+			height: 53px;
+			border: 1px solid #bdbcbc;
+			cursor: pointer;
 		}
 
 		[data-type="image"] {
-		    background-size: cover;
-            background-position: 50%;
+			background-size: cover;
+			background-position: 50%;
 		}
 
 		[data-type="pattern"] {
-		    background-color: #d6d6d6;
+			background-color: #d6d6d6;
 		}
 
 		.title {
 			margin-bottom: 17px;
-    		margin-left: 0;
-    		margin-right: 0;
+			margin-left: 0;
+			margin-right: 0;
 		}
 
 		.add-image-controls {
@@ -201,31 +204,31 @@
 	}
 
 	.selection {
-	   position: relative;
+		position: relative;
 	}
 
 	.presets .selected {
-	   @include selected-preset();
+		@include selected-preset();
 	}
 
 	.background-design .customize {
 		display: none;
 
 		.back {
-			margin-bottom: 0px;
-			margin-bottom: 0px;
+			margin-bottom: 0;
+			margin-bottom: 0;
 			padding: 8px 0 14px;
 		}
 
 		.overlay-color {
-		    padding-top: 8px;
-            padding-bottom: 8px;
+			padding-top: 8px;
+			padding-bottom: 8px;
 		}
 	}
 
 	.panel-footer {
-	   .customize-design {
-	       display: none;
-	   }
+		.customize-design {
+			display: none;
+		}
 	}
 }
