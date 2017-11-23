@@ -14,7 +14,7 @@
 		"build": "npm run build-webpack & gulp build & gulp merge-webpack"
 	},
 	"lint-staged": {
-		"assets/js/builder/*.{js,json,scss}": [
+		"assets/js/builder/**/*.{js,json,scss}": [
 			"npm run format-js",
 			"git add"
 		]
