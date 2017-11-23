@@ -11,11 +11,13 @@
 		"precommit": "lint-staged",
 		"build-webpack": "NODE_ENV=production webpack --colors",
 		"format-js": "prettier-eslint \"assets/js/builder/**/*.js\" --write",
+		"format-sass": "stylelint \"assets/scss/**/*.scss\" --fix",
 		"build": "npm run build-webpack & gulp build & gulp merge-webpack"
 	},
 	"lint-staged": {
 		"assets/js/builder/**/*.{js,json,scss}": [
 			"npm run format-js",
+			"npm run format-sass",
 			"git add"
 		]
 	},
@@ -62,7 +64,8 @@
 		"prettier-eslint-cli": "^4.4.0",
 		"pump": "^1.0.1",
 		"run-sequence": "^1.2.2",
-		"style-loader": "^0.18.2"
+		"style-loader": "^0.18.2",
+		"stylelint": "^8.2.0"
 	},
 	"dependencies": {
 		"@boldgrid/components": "^2.10.0",
