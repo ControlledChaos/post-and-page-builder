@@ -641,7 +641,6 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 			this.collapseSelection();
 			this.showOverlay();
 			this._setIcon();
-
 			BOLDGRID.EDITOR.CONTROLS.Generic.initControls();
 			self.removeClasses();
 			$target = BG.Menu.$element.targetData[control.name] || $();

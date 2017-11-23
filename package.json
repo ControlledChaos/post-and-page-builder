@@ -9,6 +9,7 @@
 		"start": "npm-run-all -p start-js start-css",
 		"start-js": "webpack-dev-server --colors",
 		"start-css": "gulp watch",
+		"precommit": "lint-staged",
 		"build-webpack": "NODE_ENV=production webpack --colors",
 		"format-js": "prettier-eslint \"assets/js/builder/**/*.js\" --write",
 		"build": "npm run build-webpack & gulp build & gulp merge-webpack"
