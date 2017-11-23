@@ -10,7 +10,6 @@ BOLDGRID.EDITOR.CONTROLS.IMAGE = BOLDGRID.EDITOR.CONTROLS.IMAGE || {};
 		BG = BOLDGRID.EDITOR;
 
 	BOLDGRID.EDITOR.CONTROLS.IMAGE.Filter = {
-
 		name: 'image-filter',
 
 		priority: 90,
@@ -88,18 +87,18 @@ BOLDGRID.EDITOR.CONTROLS.IMAGE = BOLDGRID.EDITOR.CONTROLS.IMAGE || {};
 		 * @since 1.2.7
 		 */
 		customizeSettings: {
-			'brightness': { title: 'Brightness', range: { min: -50, max: 50 } },
-			'vibrance': { title: 'Vibrance', range: { min: -50, max: 50 } },
-			'contrast': { title: 'Contrast', range: { min: -10, max: 10 } },
-			'saturation': { title: 'Saturation', range: { min: -50, max: 50 } },
-			'exposure': { title: 'Exposure', range: { min: -50, max: 50 } },
-			'hue': { title: 'Hue', range: { min: 0, max: 100 } },
-			'gamma': { title: 'Gamma', range: { min: 1, max: 4, val: 1 } },
-			'clip': { title: 'Clip', range: { min: 0, max: 50 } },
-			'stackBlur': { title: 'Blur', range: { min: 0, max: 30 } },
-			'sepia': { title: 'Sepia', range: { min: 0, max: 100 } },
-			'noise': { title: 'Noise', range: { min: 0, max: 50 } },
-			'sharpen': { title: 'Sharpen', range: { min: 0, max: 50 } }
+			brightness: { title: 'Brightness', range: { min: -50, max: 50 } },
+			vibrance: { title: 'Vibrance', range: { min: -50, max: 50 } },
+			contrast: { title: 'Contrast', range: { min: -10, max: 10 } },
+			saturation: { title: 'Saturation', range: { min: -50, max: 50 } },
+			exposure: { title: 'Exposure', range: { min: -50, max: 50 } },
+			hue: { title: 'Hue', range: { min: 0, max: 100 } },
+			gamma: { title: 'Gamma', range: { min: 1, max: 4, val: 1 } },
+			clip: { title: 'Clip', range: { min: 0, max: 50 } },
+			stackBlur: { title: 'Blur', range: { min: 0, max: 30 } },
+			sepia: { title: 'Sepia', range: { min: 0, max: 100 } },
+			noise: { title: 'Noise', range: { min: 0, max: 50 } },
+			sharpen: { title: 'Sharpen', range: { min: 0, max: 50 } }
 		},
 
 		/**
@@ -161,7 +160,7 @@ BOLDGRID.EDITOR.CONTROLS.IMAGE = BOLDGRID.EDITOR.CONTROLS.IMAGE || {};
 
 			panel.$element.addClass( 'rendering' );
 			self.preview.revert( false );
-			self.preview[ preset ]( self.presetIntensity ).render( function() {
+			self.preview[preset]( self.presetIntensity ).render( function() {
 				panel.$element.removeClass( 'rendering' );
 			} );
 		},
@@ -215,14 +214,14 @@ BOLDGRID.EDITOR.CONTROLS.IMAGE = BOLDGRID.EDITOR.CONTROLS.IMAGE || {};
 			BOLDGRID.EDITOR.Panel.$element.find( '.slider' ).each( function() {
 				var $this = $( this ),
 					control = $this.data( 'control' ),
-					range = self.customizeSettings[ control ].range;
+					range = self.customizeSettings[control].range;
 
 				$this.slider( {
-					'min': range.min,
-					'max': range.max,
-					'value': range.val || 0,
-					'change': function( e, ui ) {
-						self.sliderHistory[ control ] = ui.value;
+					min: range.min,
+					max: range.max,
+					value: range.val || 0,
+					change: function( e, ui ) {
+						self.sliderHistory[control] = ui.value;
 						self.applySliderSettings();
 					}
 				} );
@@ -237,7 +236,7 @@ BOLDGRID.EDITOR.CONTROLS.IMAGE = BOLDGRID.EDITOR.CONTROLS.IMAGE || {};
 		applySliderSettings: function() {
 			self.preview.revert( false );
 			$.each( self.sliderHistory, function( control ) {
-				self.preview[ control ]( this );
+				self.preview[control]( this );
 			} );
 			self.preview.render();
 		},
@@ -308,15 +307,15 @@ BOLDGRID.EDITOR.CONTROLS.IMAGE = BOLDGRID.EDITOR.CONTROLS.IMAGE || {};
 				count = 1;
 
 			process = function() {
-				var selectionString = '[data-preset="' + self.presets[ count ].name + '"] img';
+				var selectionString = '[data-preset="' + self.presets[count].name + '"] img';
 				if ( ! BG.Panel.$element.find( selectionString ).length ) {
 					return;
 				}
 
 				Caman( selectionString, function() {
-					this[ self.presets[ count ].name ]( '50%' ).render( function() {
+					this[self.presets[count].name]( '50%' ).render( function() {
 						count++;
-						if ( self.presets[ count ] ) {
+						if ( self.presets[count] ) {
 							process();
 						}
 					} );
@@ -371,12 +370,14 @@ BOLDGRID.EDITOR.CONTROLS.IMAGE = BOLDGRID.EDITOR.CONTROLS.IMAGE || {};
 
 			// Set markup for panel.
 			panel.$element.removeClass( 'rendering' );
-			panel.$element.find( '.panel-body' ).html( template( {
-				'fullSrc': srcSet.fullSrc,
-				'src': srcSet.src,
-				'presets': self.presets,
-				'customizeSettings': self.customizeSettings
-			} ) );
+			panel.$element.find( '.panel-body' ).html(
+				template( {
+					fullSrc: srcSet.fullSrc,
+					src: srcSet.src,
+					presets: self.presets,
+					customizeSettings: self.customizeSettings
+				} )
+			);
 
 			// If this is a remote URL, Fail.
 			if ( ! srcSet.fullSrc || Caman.IO.isURLRemote( srcSet.fullSrc ) ) {
@@ -407,10 +408,8 @@ BOLDGRID.EDITOR.CONTROLS.IMAGE = BOLDGRID.EDITOR.CONTROLS.IMAGE || {};
 		onMenuClick: function() {
 			self.openPanel();
 		}
-
 	};
 
 	BOLDGRID.EDITOR.CONTROLS.IMAGE.Filter.init();
 	self = BOLDGRID.EDITOR.CONTROLS.IMAGE.Filter;
-
 } )( jQuery );

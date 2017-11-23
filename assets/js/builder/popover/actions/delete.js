@@ -1,7 +1,6 @@
 var BG = BOLDGRID.EDITOR;
 
 export class Delete {
-
 	constructor( popover ) {
 		this.popover = popover;
 	}
@@ -12,7 +11,7 @@ export class Delete {
 	 * @since 1.6
 	 */
 	init() {
-		this.popover.$element.find( '[data-action="delete"]' ).on( 'click', ( event ) => {
+		this.popover.$element.find( '[data-action="delete"]' ).on( 'click', event => {
 			event.preventDefault();
 			this.delete();
 		} );
@@ -29,7 +28,6 @@ export class Delete {
 		this.popover.updatePosition();
 		BG.Controls.$container.trigger( 'delete_dwpb' );
 	}
-
 }
 
 export { Delete as default };

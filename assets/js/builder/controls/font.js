@@ -9,7 +9,6 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		BG = BOLDGRID.EDITOR;
 
 	BOLDGRID.EDITOR.CONTROLS.Font = {
-
 		name: 'font',
 
 		tooltip: 'Font',
@@ -68,10 +67,10 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 			BG.CONTROLS.GENERIC.Fontcolor.bind();
 
 			self.templateMarkup = wp.template( 'boldgrid-editor-font' )( {
-				'textEffectClasses': BoldgridEditor.builder_config.textEffectClasses,
-				'fonts': BoldgridEditor.builder_config.fonts,
-				'themeFonts': self.getThemeFonts(),
-				'myFonts': BoldgridEditor.builder_config.components_used.font
+				textEffectClasses: BoldgridEditor.builder_config.textEffectClasses,
+				fonts: BoldgridEditor.builder_config.fonts,
+				themeFonts: self.getThemeFonts(),
+				myFonts: BoldgridEditor.builder_config.components_used.font
 			} );
 
 			self.bindFontCollpase();
@@ -103,7 +102,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		getThemeFonts: function() {
 			var themeFonts = [];
 
-			if ( -1 !== BoldgridEditor.builder_config.theme_features.indexOf( 'theme-fonts-classes' )  ) {
+			if ( -1 !== BoldgridEditor.builder_config.theme_features.indexOf( 'theme-fonts-classes' ) ) {
 				themeFonts = BoldgridEditor.builder_config.theme_fonts;
 			}
 
@@ -120,7 +119,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 
 			panel.$element.on( 'click', '.section.effects .panel-selection', function() {
 				var $this = $( this ),
-					$target = BG.Menu.$element.targetData[ self.name ];
+					$target = BG.Menu.$element.targetData[self.name];
 
 				$.each( BoldgridEditor.builder_config.textEffectClasses, function() {
 					$target.removeClass( this.name );
@@ -148,7 +147,6 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		 * @param jQuery $el
 		 */
 		charSpacingSlider: function( $el ) {
-
 			var elementSize = $el.css( 'letter-spacing' ),
 				defaultSize = elementSize ? parseInt( elementSize ) : 0;
 
@@ -172,7 +170,6 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		 * @param jQuery $el
 		 */
 		lineSpacingSlider: function( $el ) {
-
 			var elementSize = $el.css( 'line-height' ),
 				defaultSize = BG.Util.convertPxToEm( elementSize, $el.css( 'line-height' ) );
 
@@ -184,7 +181,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 				value: defaultSize,
 				range: 'max',
 				slide: function( event, ui ) {
-					BG.Controls.addStyle( $el, 'line-height', ui.value + 'em'  );
+					BG.Controls.addStyle( $el, 'line-height', ui.value + 'em' );
 				}
 			} );
 		},
@@ -213,7 +210,8 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		 */
 		_initTextColor: function() {
 			var textColor = '#333';
-			BG.Panel.$element.find( '[name="font-color"]' )
+			BG.Panel.$element
+				.find( '[name="font-color"]' )
 				.data( 'type', 'color' )
 				.val( textColor );
 
@@ -287,8 +285,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 					$select.attr( 'data-value', data.item.label );
 
 					// Reset.
-					$target.removeAttr( 'data-font-family' )
-						.removeAttr( 'data-font-class' );
+					$target.removeAttr( 'data-font-family' ).removeAttr( 'data-font-class' );
 
 					$target.removeClass( self.fontClasses.join( ' ' ) );
 
@@ -340,7 +337,6 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 				defaultFamily = BG.Panel.$element
 					.find( '.section.family [data-index="' + fontClass + '"]' )
 					.data( 'value' );
-
 			} else if ( $target.attr( 'data-font-family' ) ) {
 				defaultFamily = $target.attr( 'data-font-family' );
 			}
@@ -359,9 +355,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 
 			color = BG.CONTROLS.Color.findAncestorColor( $target, 'color' );
 
-			BG.Panel.$element
-				.find( 'input[name="font-color"]' )
-				.attr( 'value', color );
+			BG.Panel.$element.find( 'input[name="font-color"]' ).attr( 'value', color );
 		},
 
 		/**
@@ -377,10 +371,11 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 			$section.find( '.panel-selection.selected' ).removeClass( 'selected' );
 
 			if ( classes.length ) {
-				$section.find( '.panel-selection' )
-				.find( '.'  + classes.join( '.' ) )
-				.closest( '.panel-selection' )
-				.addClass( 'selected' );
+				$section
+					.find( '.panel-selection' )
+					.find( '.' + classes.join( '.' ) )
+					.closest( '.panel-selection' )
+					.addClass( 'selected' );
 			} else {
 				$section.find( '.none-selected' ).addClass( 'selected' );
 			}
@@ -426,5 +421,4 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 
 	BOLDGRID.EDITOR.CONTROLS.Font.init();
 	self = BOLDGRID.EDITOR.CONTROLS.Font;
-
 } )( jQuery );

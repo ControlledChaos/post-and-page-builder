@@ -9,7 +9,6 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		BG = BOLDGRID.EDITOR;
 
 	BOLDGRID.EDITOR.CONTROLS.Icon = {
-
 		name: 'icon',
 
 		priority: 80,
@@ -114,10 +113,12 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		insertNew: function() {
 			var $insertedIcon;
 
-			send_to_editor( '<i class="fa fa-cog bg-inserted-icon" aria-hidden="true"><span style="display:none;">&nbsp;</span></i>' );
+			send_to_editor(
+				'<i class="fa fa-cog bg-inserted-icon" aria-hidden="true"><span style="display:none;">&nbsp;</span></i>'
+			);
 			$insertedIcon = BG.Controls.$container.find( '.bg-inserted-icon' ).last();
 			BG.Controls.$container.find( '.bg-inserted-icon' ).removeClass( 'bg-inserted-icon' );
-			BG.Controls.$menu.targetData[ self.name ] = $insertedIcon;
+			BG.Controls.$menu.targetData[self.name] = $insertedIcon;
 			$insertedIcon.click();
 		},
 
@@ -132,7 +133,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 
 			panel.$element.on( 'click', '.icon-controls .panel-selection', function() {
 				var $menu = controls.$menu,
-					$target = $menu.targetData[ self.name ],
+					$target = $menu.targetData[self.name],
 					$this = $( this ),
 					staticClasses = $target.hasClass( 'fa-li' ) ? 'fa-li' : '';
 
@@ -173,7 +174,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		openPanel: function() {
 			var $panel = BG.Panel.$element,
 				$menu = BG.Controls.$menu,
-				$target = $menu.targetData[ self.name ],
+				$target = $menu.targetData[self.name],
 				$selected;
 
 			self.highlightElement();
@@ -182,24 +183,25 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 			self.setupPanelClick();
 
 			// Create Markup.
-			$panel.find( '.panel-body' ).html( self.template( {
-				presets: BoldgridEditor.icons
-			} ) );
+			$panel.find( '.panel-body' ).html(
+				self.template( {
+					presets: BoldgridEditor.icons
+				} )
+			);
 
 			// Remove Selections.
 			$panel.find( '.selected' ).removeClass( 'selected' );
 
 			// Add Selections.
-			$selected = $panel.find( 'i[class="' + $target.attr( 'class' ) + '"]' )
+			$selected = $panel
+				.find( 'i[class="' + $target.attr( 'class' ) + '"]' )
 				.closest( '.panel-selection' )
 				.addClass( 'selected' );
 
 			BOLDGRID.EDITOR.Panel.open( self );
 		}
-
 	};
 
 	BOLDGRID.EDITOR.CONTROLS.Icon.init();
 	self = BOLDGRID.EDITOR.CONTROLS.Icon;
-
 } )( jQuery );

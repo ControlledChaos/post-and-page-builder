@@ -5,7 +5,6 @@ import { Base } from './base.js';
 import template from '../../../../includes/template/popover/column.html';
 
 export class Column extends Base {
-
 	constructor() {
 		super();
 
@@ -26,8 +25,8 @@ export class Column extends Base {
 	 */
 	getPositionCss( clientRect ) {
 		return {
-			'top': clientRect.top,
-			'left': clientRect.left
+			top: clientRect.top,
+			left: clientRect.left
 		};
 	}
 

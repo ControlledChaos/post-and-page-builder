@@ -15,7 +15,10 @@ BOLDGRID.EDITOR.CONTROLS.GENERIC = BOLDGRID.EDITOR.CONTROLS.GENERIC || {};
 		render: function() {
 			var $control = $( this.template() );
 
-			BG.Panel.$element.find( '.panel-body .customize' ).find( '.section.margin-control' ).remove();
+			BG.Panel.$element
+				.find( '.panel-body .customize' )
+				.find( '.section.margin-control' )
+				.remove();
 			BG.Panel.$element.find( '.panel-body .customize' ).append( $control );
 
 			return $control;
@@ -42,37 +45,46 @@ BOLDGRID.EDITOR.CONTROLS.GENERIC = BOLDGRID.EDITOR.CONTROLS.GENERIC || {};
 				BG.Panel.$element.find( '.margin-top' ).hide();
 			}
 
-			defaultMarginVert = defaultMarginVert && 'auto' !== defaultMarginVert ? parseInt( defaultMarginVert ) : 0;
-			defaultMarginHor = defaultMarginHor && 'auto' !== defaultMarginHor ? parseInt( defaultMarginHor ) : 0;
+			defaultMarginVert =
+				defaultMarginVert && 'auto' !== defaultMarginVert ? parseInt( defaultMarginVert ) : 0;
+			defaultMarginHor =
+				defaultMarginHor && 'auto' !== defaultMarginHor ? parseInt( defaultMarginHor ) : 0;
 
-			BG.Panel.$element.find( '.panel-body .customize .margin-horizontal .slider' ).slider( {
-				min: minHor,
-				max: maxHor,
-				value: defaultMarginHor,
-				range: 'max',
-				slide: function( event, ui ) {
-					$target = BG.Menu.getCurrentTarget();
+			BG.Panel.$element
+				.find( '.panel-body .customize .margin-horizontal .slider' )
+				.slider( {
+					min: minHor,
+					max: maxHor,
+					value: defaultMarginHor,
+					range: 'max',
+					slide: function( event, ui ) {
+						$target = BG.Menu.getCurrentTarget();
 
-					BG.Controls.addStyle( $target, 'margin-left', ui.value );
-					BG.Controls.addStyle( $target, 'margin-right', ui.value );
-				}
-			} ).siblings( '.value' ).html( defaultMarginHor );
+						BG.Controls.addStyle( $target, 'margin-left', ui.value );
+						BG.Controls.addStyle( $target, 'margin-right', ui.value );
+					}
+				} )
+				.siblings( '.value' )
+				.html( defaultMarginHor );
 
-			BG.Panel.$element.find( '.panel-body .customize .margin-top .slider' ).slider( {
-				min: minVert,
-				max: maxVert,
-				value: defaultMarginVert,
-				range: 'max',
-				slide: function( event, ui ) {
-					$target = BG.Menu.getCurrentTarget();
+			BG.Panel.$element
+				.find( '.panel-body .customize .margin-top .slider' )
+				.slider( {
+					min: minVert,
+					max: maxVert,
+					value: defaultMarginVert,
+					range: 'max',
+					slide: function( event, ui ) {
+						$target = BG.Menu.getCurrentTarget();
 
-					BG.Controls.addStyle( $target, 'margin-top', ui.value );
-					BG.Controls.addStyle( $target, 'margin-bottom', ui.value );
-				}
-			} ).siblings( '.value' ).html( defaultMarginVert );
+						BG.Controls.addStyle( $target, 'margin-top', ui.value );
+						BG.Controls.addStyle( $target, 'margin-bottom', ui.value );
+					}
+				} )
+				.siblings( '.value' )
+				.html( defaultMarginVert );
 		}
 	};
 
 	self = BOLDGRID.EDITOR.CONTROLS.GENERIC.Margin;
-
 } )( jQuery );

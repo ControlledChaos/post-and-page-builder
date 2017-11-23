@@ -99,13 +99,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 			includeFooter: true,
 			customizeLeaveCallback: true,
 			customizeCallback: true,
-			customizeSupport: [
-				'margin',
-				'padding',
-				'border',
-				'box-shadow',
-				'customClasses'
-			]
+			customizeSupport: [ 'margin', 'padding', 'border', 'box-shadow', 'customClasses' ]
 		},
 
 		/**
@@ -188,15 +182,19 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		 * @since 1.2.7
 		 */
 		_setupColorClick: function() {
-			BG.Panel.$element.on( 'click', '.customize .button-color-controls .panel-selection', function() {
-				var $this = $( this ),
-					$target = BG.Menu.getTarget( self );
+			BG.Panel.$element.on(
+				'click',
+				'.customize .button-color-controls .panel-selection',
+				function() {
+					var $this = $( this ),
+						$target = BG.Menu.getTarget( self );
 
-				self.removeColorClasses();
-				$this.siblings().removeClass( 'selected' );
-				$this.addClass( 'selected' );
-				$target.addClass( 'btn-color-' + $this.attr( 'data-preset' ) );
-			} );
+					self.removeColorClasses();
+					$this.siblings().removeClass( 'selected' );
+					$this.addClass( 'selected' );
+					$target.addClass( 'btn-color-' + $this.attr( 'data-preset' ) );
+				}
+			);
 		},
 
 		/**
@@ -343,7 +341,10 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		getColorsMarkup: function() {
 			var colors = self.defaultColorClasses;
 
-			if ( ( BoldgridEditor.features.button_colors && ! BoldgridEditor.is_boldgrid_theme ) || BG.Controls.hasThemeFeature( 'button-lib' ) ) {
+			if (
+				( BoldgridEditor.features.button_colors && ! BoldgridEditor.is_boldgrid_theme ) ||
+				BG.Controls.hasThemeFeature( 'button-lib' )
+			) {
 				colors = BG.CONTROLS.Color.getColorsFormatted();
 			}
 
@@ -457,4 +458,4 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 
 	BOLDGRID.EDITOR.CONTROLS.Button.init();
 	self = BOLDGRID.EDITOR.CONTROLS.Button;
-} ( jQuery ) );
+} )( jQuery );

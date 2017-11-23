@@ -15,7 +15,8 @@ export class Palette {
 			width: '325px'
 		};
 
-		this.workerUrl = BoldgridEditor.plugin_url + '/assets/js/sass-js/sass.worker.js?' + BoldgridEditor.version;
+		this.workerUrl =
+			BoldgridEditor.plugin_url + '/assets/js/sass-js/sass.worker.js?' + BoldgridEditor.version;
 
 		this.colorPalette = new ColorPalette( {
 			sass: {
@@ -75,7 +76,6 @@ export class Palette {
 	 * @return {Object} Palette settings.
 	 */
 	getPaletteSettings() {
-
 		let settings = this.getSavedSettings();
 
 		if ( ! settings ) {
@@ -109,7 +109,7 @@ export class Palette {
 			config = BoldgridEditor.control_styles.configuration;
 
 		if ( config && config.length ) {
-			colorControls = _.find( config, ( value ) => {
+			colorControls = _.find( config, value => {
 				return 'bg-controls-colors' === value.id;
 			} );
 
@@ -138,7 +138,6 @@ export class Palette {
 
 		// Once sass is compiled from the control, update the stylesheets.
 		$control.on( 'sass_compiled', ( e, data ) => {
-
 			BG.Service.styleUpdater.update( {
 				id: 'bg-controls-colors',
 				css: data.result.text,
@@ -166,8 +165,11 @@ export class Palette {
 	_savePaletteSettings() {
 		let paletteSettings;
 
-		paletteSettings = this.paletteConfig.createSavableState( BOLDGRID.COLOR_PALETTE.Modify.format_current_palette_state() );
-		BG.Service.styleUpdater.stylesState[0].options = BG.Service.styleUpdater.stylesState[0].options || {};
+		paletteSettings = this.paletteConfig.createSavableState(
+			BOLDGRID.COLOR_PALETTE.Modify.format_current_palette_state()
+		);
+		BG.Service.styleUpdater.stylesState[0].options =
+			BG.Service.styleUpdater.stylesState[0].options || {};
 		BG.Service.styleUpdater.stylesState[0].options.paletteSettings = paletteSettings;
 		BG.CONTROLS.Color.updatePaletteSettings( paletteSettings );
 
@@ -191,7 +193,7 @@ export class Palette {
 	 */
 	_setupParentLoader() {
 		let configs = BoldgridEditor.control_styles.configuration || [],
-			state = _.find( configs, ( config ) => {
+			state = _.find( configs, config => {
 				return 'bg-controls-colors' === config.id;
 			} );
 
@@ -200,7 +202,6 @@ export class Palette {
 		this.styleUpdaterParent.loadSavedConfig( state );
 		this.styleUpdaterParent.setup();
 	}
-
 }
 
 export { Palette as default };

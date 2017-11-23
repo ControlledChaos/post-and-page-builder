@@ -36,24 +36,32 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 				self.fetching = true;
 				self.gridblockLoadingUI.start();
 
-				return self.requestGridblocks().done( function( gridblocks, text, xhr ) {
-					self.licenseTypes = xhr.getResponseHeader( 'License-Types' ) || '[]';
-					self.licenseTypes = JSON.parse( self.licenseTypes );
+				return self
+					.requestGridblocks()
+					.done( function( gridblocks, text, xhr ) {
+						self.licenseTypes = xhr.getResponseHeader( 'License-Types' ) || '[]';
+						self.licenseTypes = JSON.parse( self.licenseTypes );
 
-					self.addToConfig( gridblocks );
-					BG.GRIDBLOCK.View.createGridblocks();
-				} ).always( function() {
-					self.fetching = false;
-					self.gridblockLoadingUI.finish();
-				} ).fail( function() {
-					self.failure = true;
-					BG.GRIDBLOCK.View.$gridblockSection.append( wp.template( 'boldgrid-editor-gridblock-error' )() );
-				} );
+						self.addToConfig( gridblocks );
+						BG.GRIDBLOCK.View.createGridblocks();
+					} )
+					.always( function() {
+						self.fetching = false;
+						self.gridblockLoadingUI.finish();
+					} )
+					.fail( function() {
+						self.failure = true;
+						BG.GRIDBLOCK.View.$gridblockSection.append(
+							wp.template( 'boldgrid-editor-gridblock-error' )()
+						);
+					} );
 			},
 
 			needsUpgrade( $gridblock ) {
-				return parseInt( $gridblock.attr( 'data-is-premium' ) ) &&
-					parseInt( $gridblock.attr( 'data-requires-premium' ) );
+				return (
+					parseInt( $gridblock.attr( 'data-is-premium' ) ) &&
+					parseInt( $gridblock.attr( 'data-requires-premium' ) )
+				);
 			},
 
 			requestGridblocks: function( options ) {
@@ -61,22 +69,23 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 				options = options || {};
 
 				return $.ajax( {
-					url: BoldgridEditor.plugin_configs.asset_server +
+					url:
+						BoldgridEditor.plugin_configs.asset_server +
 						BoldgridEditor.plugin_configs.ajax_calls.gridblock_generate,
 					dataType: 'json',
 					timeout: 10000,
 					data: _.defaults( options, {
 
 						// If filtered to a type, load 30 otherwise 50.
-						'quantity': type ? 30 : 50,
-						'color_palettes': 1,
-						'include_temporary_resources': 1,
-						'release_channel': BoldgridEditor.boldgrid_settings.theme_release_channel,
-						'key': BoldgridEditor.boldgrid_settings.api_key,
-						'transparent_backgrounds': 'post' === BoldgridEditor.post_type ? 1 : 0,
-						'type': type,
-						'color': JSON.stringify( { 'colors': BG.CONTROLS.Color.getGridblockColors() } ),
-						'category': self.getCategory()
+						quantity: type ? 30 : 50,
+						color_palettes: 1,
+						include_temporary_resources: 1,
+						release_channel: BoldgridEditor.boldgrid_settings.theme_release_channel,
+						key: BoldgridEditor.boldgrid_settings.api_key,
+						transparent_backgrounds: 'post' === BoldgridEditor.post_type ? 1 : 0,
+						type: type,
+						color: JSON.stringify( { colors: BG.CONTROLS.Color.getGridblockColors() } ),
+						category: self.getCategory()
 					} )
 				} );
 			},
@@ -106,7 +115,11 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			 */
 			getCategory: function() {
 				var category;
-				if ( BoldgridEditor && BoldgridEditor.inspiration && BoldgridEditor.inspiration.subcategory_key ) {
+				if (
+					BoldgridEditor &&
+					BoldgridEditor.inspiration &&
+					BoldgridEditor.inspiration.subcategory_key
+				) {
 					category = BoldgridEditor.inspiration.subcategory_key;
 				}
 
@@ -123,8 +136,11 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			addToConfig: function( gridblocks ) {
 				_.each( gridblocks, function( gridblockData, index ) {
 					if ( self.canDisplayGridblock( gridblockData ) ) {
-						gridblocks[ index ] = self.addRequiredProperties( gridblockData );
-						BG.GRIDBLOCK.Filter.addGridblockConfig( gridblocks[ index ], 'generated-' + self.gridblockCount );
+						gridblocks[index] = self.addRequiredProperties( gridblockData );
+						BG.GRIDBLOCK.Filter.addGridblockConfig(
+							gridblocks[index],
+							'generated-' + self.gridblockCount
+						);
 
 						self.gridblockCount++;
 					}
@@ -158,9 +174,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 				var backgroundImageOverride = $html.attr( 'gb-background-image' );
 
 				if ( backgroundImageOverride ) {
-					$html
-						.removeAttr( 'gb-background-image' )
-						.css( 'background-image', backgroundImageOverride );
+					$html.removeAttr( 'gb-background-image' ).css( 'background-image', backgroundImageOverride );
 				}
 			},
 
@@ -175,13 +189,11 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 				var $html = $( gridblockData.html );
 
 				self.updateBackgroundImages( $html );
-				gridblockData[ 'html-jquery' ] = $html;
+				gridblockData['html-jquery'] = $html;
 
 				return gridblockData;
 			}
-
 		};
 
 	BG.GRIDBLOCK.Generate = self;
-
 } )( jQuery );

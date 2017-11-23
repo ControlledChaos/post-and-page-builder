@@ -9,7 +9,6 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		BG = BOLDGRID.EDITOR;
 
 	BG.CONTROLS.Information = {
-
 		name: 'information',
 
 		panel: {
@@ -54,10 +53,8 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 			panel.open( self );
 			panel.centerPanel();
 		}
-
 	};
 
 	BOLDGRID.EDITOR.CONTROLS.Information.init();
 	self = BOLDGRID.EDITOR.CONTROLS.Information;
-
 } )( jQuery );

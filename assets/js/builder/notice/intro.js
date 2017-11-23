@@ -75,9 +75,14 @@ export class Intro extends Notice {
 		this.settings.template.choice = this.$templateInputs.filter( ':checked' ).val();
 
 		// If the user enters the first time setup on a page, update the meta box.
-		if ( 'auto-draft' === BoldgridEditor.post.post_status && 'default' !== this.settings.template.choice ) {
+		if (
+			'auto-draft' === BoldgridEditor.post.post_status &&
+			'default' !== this.settings.template.choice
+		) {
 			let val = 'template/page/' + this.settings.template.choice + '.php';
-			$( '#page_template' ).val( val ).change();
+			$( '#page_template' )
+				.val( val )
+				.change();
 		}
 
 		// Make ajax call to save the given settings.

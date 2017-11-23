@@ -10,7 +10,6 @@ BOLDGRID.EDITOR.CONTROLS.IMAGE = BOLDGRID.EDITOR.CONTROLS.IMAGE || {};
 		BG = BOLDGRID.EDITOR;
 
 	BOLDGRID.EDITOR.CONTROLS.IMAGE.Change = {
-
 		name: 'image-change',
 
 		tooltip: 'Change Image',
@@ -37,7 +36,12 @@ BOLDGRID.EDITOR.CONTROLS.IMAGE = BOLDGRID.EDITOR.CONTROLS.IMAGE || {};
 			 * Ensure the selected element is an image.
 			 * @todo: This is a temporary fix.
 			 */
-			if ( node && 'IMG' !== node.nodeName && 1 === node.childElementCount && 'IMG' === node.firstChild.nodeName ) {
+			if (
+				node &&
+				'IMG' !== node.nodeName &&
+				1 === node.childElementCount &&
+				'IMG' === node.firstChild.nodeName
+			) {
 				tinymce.activeEditor.selection.select( node.firstChild );
 			}
 
@@ -60,5 +64,4 @@ BOLDGRID.EDITOR.CONTROLS.IMAGE = BOLDGRID.EDITOR.CONTROLS.IMAGE || {};
 
 	BOLDGRID.EDITOR.CONTROLS.IMAGE.Change.init();
 	self = BOLDGRID.EDITOR.CONTROLS.IMAGE.Change;
-
 } )( jQuery );

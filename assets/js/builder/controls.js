@@ -132,7 +132,7 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 		 */
 		registerControl: function( control ) {
 			this.controls.push( control );
-			this.indexedControls[ control.name ] = control;
+			this.indexedControls[control.name] = control;
 		},
 
 		/**
@@ -144,7 +144,7 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 		 * @return {object}      Control instance.
 		 */
 		get: function( name ) {
-			return this.indexedControls[ name ] || this.indexedControls[ name.toLowerCase() ];
+			return this.indexedControls[name] || this.indexedControls[name.toLowerCase()];
 		},
 
 		/**
@@ -222,7 +222,10 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 		 * @since 1.2.7
 		 */
 		_closeOpenControl: function() {
-			if ( BG.Panel.currentControl && -1 === this.$menu.items.indexOf( BG.Panel.currentControl.name ) ) {
+			if (
+				BG.Panel.currentControl &&
+				-1 === this.$menu.items.indexOf( BG.Panel.currentControl.name )
+			) {
 				BG.Panel.closePanel();
 			}
 		},
@@ -270,7 +273,6 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 		 * @since 1.2.7
 		 */
 		bindControlHandler: function( control ) {
-
 			if ( control.selectors ) {
 				this.setupElementClick( control );
 			}
@@ -330,7 +332,7 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 				}
 
 				self.$menu.targetData = self.$menu.targetData || {};
-				self.$menu.targetData[ control.name ] = $this;
+				self.$menu.targetData[control.name] = $this;
 
 				if ( control.elementClick ) {
 					control.elementClick( e );
@@ -340,5 +342,4 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 			} );
 		}
 	};
-
 } )( jQuery );

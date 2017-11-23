@@ -18,7 +18,6 @@ import fontSizeSvg from 'svg-inline-loader?classPrefix!../../../../assets/image/
 import designSvg from 'svg-inline-loader?classPrefix!../../../../assets/image/icons/customize-nav/design.svg';
 
 export class Navigation {
-
 	constructor() {
 		this.template = _.template( template );
 
@@ -69,7 +68,10 @@ export class Navigation {
 	}
 
 	activateFirstControl() {
-		return this.$element.find( '.item.enabled' ).first().click();
+		return this.$element
+			.find( '.item.enabled' )
+			.first()
+			.click();
 	}
 
 	_enableMenuOptions() {
@@ -90,8 +92,8 @@ export class Navigation {
 		BG.Panel.$element.find( '.panel-title' ).after( this.$element );
 	}
 
-	_setupClick()  {
-		this.$element.find( '.item' ).on( 'click', ( e ) => {
+	_setupClick() {
+		this.$element.find( '.item' ).on( 'click', e => {
 			let $el = $( e.target ).closest( '.item' ),
 				name = $el.data( 'control-name' );
 			e.preventDefault();
@@ -111,7 +113,6 @@ export class Navigation {
 	displayControl( name ) {
 		BG.Panel.$element.find( '.customize [data-control-name="' + name + '"]' ).show();
 	}
-
 }
 
 export { Navigation as default };

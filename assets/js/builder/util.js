@@ -113,4 +113,4 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 	};
 
 	self = BOLDGRID.EDITOR.Util;
-} ( jQuery ) );
+} )( jQuery );

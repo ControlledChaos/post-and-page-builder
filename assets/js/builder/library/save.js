@@ -92,14 +92,14 @@ export class Save {
 		let $deferred = $.Deferred();
 
 		if ( 'string' !== typeof data.html ) {
-			data.html.always( ( html ) => {
+			data.html.always( html => {
 				data.html = $( html ).html();
 
 				this.ajax( data )
-					.fail( ( response ) => {
+					.fail( response => {
 						$deferred.reject( response );
 					} )
-					.done( ( response ) => {
+					.done( response => {
 						$deferred.resolve( response );
 					} );
 			} );
@@ -171,7 +171,7 @@ export class Save {
 				.fail( () => {
 					this._setState( 'save-failed' );
 				} )
-				.done( ( response ) => {
+				.done( response => {
 					this._setState( 'save-success' );
 					this._addToConfig( response.data );
 				} )

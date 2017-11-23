@@ -3,7 +3,6 @@ var $ = jQuery;
 import { StyleUpdater } from '@boldgrid/controls';
 
 export class Updater extends StyleUpdater {
-
 	init() {
 		this.$input = $( '#boldgrid-control-styles' );
 

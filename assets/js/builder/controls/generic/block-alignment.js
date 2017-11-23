@@ -39,16 +39,15 @@ BOLDGRID.EDITOR.CONTROLS.GENERIC = BOLDGRID.EDITOR.CONTROLS.GENERIC || {};
 
 			$inputs.filter( '[value="' + currentAlignment + '"]' ).prop( 'checked', true );
 
-			BG.Panel.$element.find( '.section [name="horizontal-block-alignment"]' ).on(
-				'change',
-				function() {
+			BG.Panel.$element
+				.find( '.section [name="horizontal-block-alignment"]' )
+				.on( 'change', function() {
 					var $this = $( this ),
 						value = $this.val();
 
 					self._applyMargin( $el, value );
 					BG.Panel.$element.trigger( BG.Panel.currentControl.name + '-css-change' );
-				}
-			);
+				} );
 		},
 
 		_applyMargin: function( $el, value ) {
@@ -68,4 +67,4 @@ BOLDGRID.EDITOR.CONTROLS.GENERIC = BOLDGRID.EDITOR.CONTROLS.GENERIC || {};
 	};
 
 	self = BOLDGRID.EDITOR.CONTROLS.GENERIC.Blockalignment;
-}( jQuery ) );
+} )( jQuery );

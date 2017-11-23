@@ -9,7 +9,6 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		BG = BOLDGRID.EDITOR;
 
 	BOLDGRID.EDITOR.CONTROLS.Hr = {
-
 		name: 'hr',
 
 		tooltip: 'Horizontal Line',
@@ -83,11 +82,13 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 			panel.clear();
 
 			// Set markup for panel.
-			panel.$element.find( '.panel-body' ).html( self.template( {
-				text: 'Horizontal Rule',
-				presets: BoldgridEditor.builder_config.component_library.hr.styles,
-				myPresets: self.myDesigns
-			} ) );
+			panel.$element.find( '.panel-body' ).html(
+				self.template( {
+					text: 'Horizontal Rule',
+					presets: BoldgridEditor.builder_config.component_library.hr.styles,
+					myPresets: self.myDesigns
+				} )
+			);
 
 			panel.showFooter();
 
@@ -147,5 +148,4 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 
 	self = BOLDGRID.EDITOR.CONTROLS.Hr;
 	BOLDGRID.EDITOR.CONTROLS.Hr.init();
-
 } )( jQuery );

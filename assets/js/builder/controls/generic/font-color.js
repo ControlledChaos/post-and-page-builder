@@ -10,7 +10,6 @@ BOLDGRID.EDITOR.CONTROLS.GENERIC = BOLDGRID.EDITOR.CONTROLS.GENERIC || {};
 		BG = BOLDGRID.EDITOR;
 
 	BOLDGRID.EDITOR.CONTROLS.GENERIC.Fontcolor = {
-
 		bound: false,
 
 		template: wp.template( 'boldgrid-editor-font-color' ),
@@ -19,12 +18,17 @@ BOLDGRID.EDITOR.CONTROLS.GENERIC = BOLDGRID.EDITOR.CONTROLS.GENERIC || {};
 			var $control = $( this.template() ),
 				$target = BG.Menu.getTarget( BG.Panel.currentControl );
 
-			BG.Panel.$element.find( '.panel-body .customize' ).find( '.section.font-color' ).remove();
+			BG.Panel.$element
+				.find( '.panel-body .customize' )
+				.find( '.section.font-color' )
+				.remove();
 			BG.Panel.$element.find( '.panel-body .customize' ).append( $control );
 
 			BG.Panel.$element.on( 'bg-customize-open', function() {
-				BG.Panel.$element.find( '.panel-body .customize' )
-					.find( '.section.font-color label' ).css( 'background-color', $target.css( 'color' ) );
+				BG.Panel.$element
+					.find( '.panel-body .customize' )
+					.find( '.section.font-color label' )
+					.css( 'background-color', $target.css( 'color' ) );
 			} );
 
 			return $control;
@@ -58,5 +62,4 @@ BOLDGRID.EDITOR.CONTROLS.GENERIC = BOLDGRID.EDITOR.CONTROLS.GENERIC || {};
 	};
 
 	self = BOLDGRID.EDITOR.CONTROLS.GENERIC.Fontcolor;
-
 } )( jQuery );

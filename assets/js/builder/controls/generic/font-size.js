@@ -14,7 +14,10 @@ BOLDGRID.EDITOR.CONTROLS.GENERIC = BOLDGRID.EDITOR.CONTROLS.GENERIC || {};
 		render: function() {
 			var $control = $( this.template() );
 
-			BG.Panel.$element.find( '.panel-body .customize' ).find( '.section.size' ).remove();
+			BG.Panel.$element
+				.find( '.panel-body .customize' )
+				.find( '.section.size' )
+				.remove();
 			BG.Panel.$element.find( '.panel-body .customize' ).append( $control );
 
 			return $control;
@@ -22,7 +25,7 @@ BOLDGRID.EDITOR.CONTROLS.GENERIC = BOLDGRID.EDITOR.CONTROLS.GENERIC || {};
 		bind: function() {
 			var $el = BG.Menu.getTarget( BG.Panel.currentControl ),
 				elementSize = $el.css( 'font-size' ),
-				defaultSize = elementSize ?  parseInt( elementSize ) : 14;
+				defaultSize = elementSize ? parseInt( elementSize ) : 14;
 
 			defaultSize = 5 <= defaultSize ? defaultSize : 14;
 
@@ -41,5 +44,4 @@ BOLDGRID.EDITOR.CONTROLS.GENERIC = BOLDGRID.EDITOR.CONTROLS.GENERIC || {};
 	};
 
 	self = BOLDGRID.EDITOR.CONTROLS.GENERIC.Fontsize;
-
 } )( jQuery );

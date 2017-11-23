@@ -8,7 +8,6 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 		BG = BOLDGRID.EDITOR;
 
 	BOLDGRID.EDITOR.Menu = {
-
 		$element: null,
 
 		$activeElement: null,
@@ -22,7 +21,6 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 		 * @return jQuery $element.
 		 */
 		init: function() {
-
 			this.create();
 			this.setupMenuDrag();
 			this.setupDimiss();
@@ -39,7 +37,7 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 		 * @return jQuery
 		 */
 		getTarget: function( control ) {
-			return this.$element.targetData[ control.name ];
+			return this.$element.targetData[control.name];
 		},
 
 		/**
@@ -49,7 +47,6 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 		 * @return jQuery Element being modified.
 		 */
 		getCurrentTarget: function() {
-
 			var $target;
 
 			if ( BG.Panel.currentControl ) {
@@ -71,7 +68,6 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 		 * @since 1.2.7
 		 */
 		create: function() {
-
 			this.$mceContainer = $( '#' + tinymce.activeEditor.theme.panel._items[0]._id );
 			this.$element = $( wp.template( 'boldgrid-editor-control-menu' )() );
 			this.$mceContainer.append( this.$element );
@@ -100,7 +96,6 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 		 * @param BG.Control control.
 		 */
 		createListItem: function( control ) {
-
 			var $dropdownUl,
 				$li = $( '<li></li>' ).attr( 'data-action', 'menu-' + control.name ),
 				$icon = $( '<span></span>' ).addClass( control.iconClasses );
@@ -119,9 +114,11 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 			}
 
 			if ( control.tooltip ) {
-				$li.append( wp.template( 'boldgrid-editor-tooltip' )( {
-					'message': control.tooltip
-				} ) );
+				$li.append(
+					wp.template( 'boldgrid-editor-tooltip' )( {
+						message: control.tooltip
+					} )
+				);
 			}
 
 			this.$element.find( '> ul' ).append( $li );
@@ -146,7 +143,10 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 
 		setupDropmenuOpen: function() {
 			this.$element.on( 'click', '.menu-dropdown-parent', function() {
-				$( this ).toggleClass( 'active' ).siblings().removeClass( 'active' );
+				$( this )
+					.toggleClass( 'active' )
+					.siblings()
+					.removeClass( 'active' );
 			} );
 		},
 
@@ -161,7 +161,6 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 			this.$activeElement = BOLDGRID.EDITOR.Menu.$element
 				.find( '[data-action="menu-' + control.name + '"]' )
 				.addClass( 'active' );
-
 		},
 
 		/**
@@ -184,13 +183,12 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 		reactivateMenu: function() {
 			var $panel = BOLDGRID.EDITOR.Panel.$element;
 			if ( this.$activeElement && $panel.is( ':visible' ) ) {
-				this.$element.find( '[data-action="menu-' + $panel.attr( 'data-type' ) + '"]' )
+				this.$element
+					.find( '[data-action="menu-' + $panel.attr( 'data-type' ) + '"]' )
 					.addClass( 'active' );
 			}
 		}
-
 	};
 
 	self = BOLDGRID.EDITOR.Menu;
-
 } )( jQuery );

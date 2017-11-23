@@ -10,11 +10,7 @@ BOLDGRID.EDITOR.CONTROLS.GENERIC = BOLDGRID.EDITOR.CONTROLS.GENERIC || {};
 		BG = BOLDGRID.EDITOR;
 
 	BOLDGRID.EDITOR.CONTROLS.GENERIC.Rotate = {
-		classes: [
-			'fa-rotate-90',
-			'fa-rotate-180',
-			'fa-rotate-270'
-		],
+		classes: [ 'fa-rotate-90', 'fa-rotate-180', 'fa-rotate-270' ],
 		getDefault: function() {
 			var $el = BG.Menu.getCurrentTarget(),
 				value = 0;
@@ -33,7 +29,10 @@ BOLDGRID.EDITOR.CONTROLS.GENERIC = BOLDGRID.EDITOR.CONTROLS.GENERIC || {};
 		render: function() {
 			var $control = $( this.template() );
 
-			BG.Panel.$element.find( '.panel-body .customize' ).find( '.section.rotate-control' ).remove();
+			BG.Panel.$element
+				.find( '.panel-body .customize' )
+				.find( '.section.rotate-control' )
+				.remove();
 			BG.Panel.$element.find( '.panel-body .customize' ).append( $control );
 
 			return $control;
@@ -62,5 +61,4 @@ BOLDGRID.EDITOR.CONTROLS.GENERIC = BOLDGRID.EDITOR.CONTROLS.GENERIC || {};
 	};
 
 	self = BOLDGRID.EDITOR.CONTROLS.GENERIC.Rotate;
-
 } )( jQuery );

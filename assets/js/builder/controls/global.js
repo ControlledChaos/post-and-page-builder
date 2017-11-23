@@ -72,9 +72,11 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		 * @since 1.2.7
 		 */
 		setup: function() {
-			BG.Menu.$element.find( '.bg-editor-menu-dropdown' ).on( 'click', '.action.open-color-palette', () => {
-				BG.Controls.get( 'Palette' ).openPanel();
-			} );
+			BG.Menu.$element
+				.find( '.bg-editor-menu-dropdown' )
+				.on( 'click', '.action.open-color-palette', () => {
+					BG.Controls.get( 'Palette' ).openPanel();
+				} );
 			BG.Menu.$element
 				.find( '.bg-editor-menu-dropdown' )
 				.on( 'click', '.action.delete-all-content,.action.edit-page-settings', () => {

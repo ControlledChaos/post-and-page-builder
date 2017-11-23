@@ -4,7 +4,10 @@
  * Thanks To: http://stackoverflow.com/questions/19999388/check-if-user-is-using-ie-with-jquery.
  */
 export default function() {
-	var trident, edge, msie, rv,
+	var trident,
+		edge,
+		msie,
+		rv,
 		ua = window.navigator.userAgent;
 
 	msie = ua.indexOf( 'MSIE ' );
@@ -31,4 +34,4 @@ export default function() {
 
 	// other browser
 	return;
-};
+}

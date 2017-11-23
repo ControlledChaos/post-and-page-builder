@@ -9,9 +9,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 		self = {
 			currentCategory: null,
 
-			savedCategories: [
-				'library', 'saved'
-			],
+			savedCategories: [ 'library', 'saved' ],
 
 			init: function() {
 				self.onSelectChange();
@@ -71,13 +69,11 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 						.show();
 
 					BGGB.View.$gridblockSection.scrollTop( 0 );
-
 				} else {
 					visibleGridblocks = $gridblocks
 						.hide()
 						.filter( '[data-type="' + self.currentCategory + '"]:not(.gridblock-loading)' )
-						.show()
-						.length;
+						.show().length;
 
 					BGGB.View.$gridblockSection.scrollTop( 0 );
 
@@ -98,9 +94,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			getSearchType: function() {
 				return 'all' !== self.currentCategory ? self.currentCategory : null;
 			}
-
 		};
 
 	BGGB.Category = self;
-
 } )( jQuery );

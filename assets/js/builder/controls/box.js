@@ -9,7 +9,6 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		BG = BOLDGRID.EDITOR;
 
 	BOLDGRID.EDITOR.CONTROLS.Box = {
-
 		uiBoxDimensions: {
 			'bg-box bg-box-rounded': 'box-wide',
 			'bg-box bg-box-rounded-bottom-left bg-box-rounded-bottom-right': 'box-long',
@@ -83,7 +82,10 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 
 			self._setupSliderChange();
 			BG.Panel.$element.on( 'bg-customize-exit', () => BG.Panel.showFooter() );
-			BG.Panel.$element.on( 'box-background-color-change box-border-color-change box-css-change', () => self._saveModuleClasses() );
+			BG.Panel.$element.on(
+				'box-background-color-change box-border-color-change box-css-change',
+				() => self._saveModuleClasses()
+			);
 
 			self.presetsMarkup = self.getBoxMarkup();
 		},
@@ -183,7 +185,6 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 					self._clearModuleClasses();
 					self._clearInlineStyles( $module );
 				} else {
-
 					self.addBox( $this );
 					panel.clearSelected();
 
@@ -191,7 +192,6 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 					self._saveModuleClasses();
 					$this.addClass( 'selected' );
 				}
-
 			} );
 		},
 
@@ -281,7 +281,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 			self.removeModuleClasses( $module );
 
 			if ( $this.parent( '.my-designs' ).length ) {
-				style = BoldgridEditor.builder_config.components_used.box[ $this.data( 'id' ) ].style;
+				style = BoldgridEditor.builder_config.components_used.box[$this.data( 'id' )].style;
 				$module.attr( 'style', style );
 			}
 
@@ -345,25 +345,28 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 
 			$.each( backgroundColors, function() {
 				backgrounds.push( {
-					'color': this.color,
-					'colorClass': this.background + ' ' + this.text
+					color: this.color,
+					colorClass: this.background + ' ' + this.text
 				} );
 			} );
 
 			$.each( colors, function() {
 				backgrounds.push( {
-					'color': this
+					color: this
 				} );
 			} );
 
 			$.each( presets, function( index ) {
 				$newElement = $( this );
 
-				if ( backgrounds[ colorCount ].colorClass ) {
-					$newElement.attr( 'data-value', $newElement.data( 'value' ) + ' ' + backgrounds[ colorCount ].colorClass );
-					$newElement.css( 'background-color', backgrounds[ colorCount ].color );
+				if ( backgrounds[colorCount].colorClass ) {
+					$newElement.attr(
+						'data-value',
+						$newElement.data( 'value' ) + ' ' + backgrounds[colorCount].colorClass
+					);
+					$newElement.css( 'background-color', backgrounds[colorCount].color );
 				} else {
-					$newElement.css( 'background-color', backgrounds[ colorCount ].color );
+					$newElement.css( 'background-color', backgrounds[colorCount].color );
 				}
 
 				$newElement.attr( 'data-id', index );
@@ -372,7 +375,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 					colorCount++;
 				}
 
-				if ( ! backgrounds[ colorCount ] ) {
+				if ( ! backgrounds[colorCount] ) {
 					colorCount = 0;
 				}
 
@@ -395,10 +398,12 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 				config = BoldgridEditor.builder_config.boxes,
 				presets = [];
 
-			$.each( config, function( ) {
-				boxDimensionsClass = self.uiBoxDimensions[ this ] || '';
+			$.each( config, function() {
+				boxDimensionsClass = self.uiBoxDimensions[this] || '';
 				boxDimensionsClass += ' ';
-				presets.push( '<div data-value=\'' + this + '\' class=\'' + boxDimensionsClass + this + '\'></div>' );
+				presets.push(
+					'<div data-value=\'' + this + '\' class=\'' + boxDimensionsClass + this + '\'></div>'
+				);
 			} );
 
 			return presets;
@@ -423,7 +428,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 				}
 			} );
 
-			moduleBoxClasses = moduleBoxClasses.length ?  ( '.' + moduleBoxClasses.join( '.' ) ) : false;
+			moduleBoxClasses = moduleBoxClasses.length ? '.' + moduleBoxClasses.join( '.' ) : false;
 
 			/**
 			 * Grab all classes that start with bg-box from the target
@@ -456,7 +461,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 					$testElement = $this.clone();
 
 				$testElement.css( 'display', 'none' );
-				$testElement.attr( 'style', BoldgridEditor.builder_config.components_used.box[ id ].style );
+				$testElement.attr( 'style', BoldgridEditor.builder_config.components_used.box[id].style );
 				$body.append( $testElement );
 				$this.css( 'background-color', $testElement.css( 'background-color' ) );
 				$this.css( 'border-color', $testElement.css( 'border-color' ) );
@@ -478,7 +483,10 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 					backgroundColor = $this.css( 'background-color' ),
 					uniqueValue = $this.attr( 'data-value' ) + backgroundColor;
 
-				if ( -1 === classes.indexOf( uniqueValue ) && ! BG.CONTROLS.Color.isColorTransparent( backgroundColor ) ) {
+				if (
+					-1 === classes.indexOf( uniqueValue ) &&
+					! BG.CONTROLS.Color.isColorTransparent( backgroundColor )
+				) {
 					classes.push( uniqueValue );
 				} else {
 					$this.remove();
@@ -498,9 +506,9 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		 * @since 1.2.7
 		 */
 		_updateMyDesigns: function() {
-
 			BG.Controls.$container.$body.find( '.bg-box' ).each( function() {
-				var styles, found,
+				var styles,
+					found,
 					$this = $( this );
 
 				styles = {
@@ -529,8 +537,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		 * @param Event e.
 		 */
 		openPanel: function() {
-
-			var panel =  BG.Panel,
+			var panel = BG.Panel,
 				template = wp.template( 'boldgrid-editor-box' );
 
 			self.updateUiStyles();
@@ -541,11 +548,13 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 			// Remove all content from the panel.
 			panel.clear();
 
-			panel.$element.find( '.panel-body' ).html( template( {
-				'presets': self.$presets,
-				'myPresets': BoldgridEditor.builder_config.components_used.box,
-				'colorControls': self.colorControls
-			} ) );
+			panel.$element.find( '.panel-body' ).html(
+				template( {
+					presets: self.$presets,
+					myPresets: BoldgridEditor.builder_config.components_used.box,
+					colorControls: self.colorControls
+				} )
+			);
 
 			self.styleMyDesigns();
 			self.removeInvalid();
@@ -561,10 +570,8 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 			panel.scrollToSelected();
 			BG.Panel.showFooter();
 		}
-
 	};
 
 	BOLDGRID.EDITOR.CONTROLS.Box.init();
 	self = BOLDGRID.EDITOR.CONTROLS.Box;
-
 } )( jQuery );

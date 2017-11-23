@@ -9,7 +9,6 @@ import { Save } from './save';
 
 	var BGGB = BOLDGRID.EDITOR.GRIDBLOCK,
 		self = {
-
 			$window: $( window ),
 
 			openInit: false,
@@ -75,7 +74,9 @@ import { Save } from './save';
 			 * @since 1.4
 			 */
 			loadGridblocks: function() {
-				var interval, load, blocks,
+				var interval,
+					load,
+					blocks,
 					iteration = 0;
 
 				if ( true === self.loadingGridblocks ) {
@@ -89,8 +90,8 @@ import { Save } from './save';
 
 				self.loadingGridblocks = true;
 				load = function() {
-					var gridblockId = blocks[ iteration ],
-						gridblock = ( gridblockId ) ? BGGB.configs.gridblocks[ gridblockId ] : false;
+					var gridblockId = blocks[iteration],
+						gridblock = gridblockId ? BGGB.configs.gridblocks[gridblockId] : false;
 
 					if ( true === self.creatingIframe ) {
 						return;
@@ -119,9 +120,13 @@ import { Save } from './save';
 			 * @since 1.4
 			 */
 			createIframe: function( gridblock ) {
-				var load, postCssLoad, $contents,
-					$gridblock = BGGB.View.$gridblockSection.find( '[data-id="' + gridblock.gridblockId + '"]' ),
-					$iframe = ( self.$iframeTemp ) ? self.$iframeTemp : $( '<iframe></iframe>' );
+				var load,
+					postCssLoad,
+					$contents,
+					$gridblock = BGGB.View.$gridblockSection.find(
+						'[data-id="' + gridblock.gridblockId + '"]'
+					),
+					$iframe = self.$iframeTemp ? self.$iframeTemp : $( '<iframe></iframe>' );
 
 				self.creatingIframe = true;
 				BGGB.View.$gridblockSection.find( '.gridblocks' ).append( $gridblock );
@@ -130,8 +135,8 @@ import { Save } from './save';
 				load = function() {
 					$contents = $iframe.contents();
 					BGGB.Image.translateImages( gridblock );
-					$contents.find( 'body' )
-						.html( $( '<div>' )
+					$contents.find( 'body' ).html(
+						$( '<div>' )
 							.html( gridblock.$html )
 							.prepend( self.placeholderHtml.before )
 							.append( self.placeholderHtml.after )
@@ -152,7 +157,6 @@ import { Save } from './save';
 						$gridblock.removeClass( 'gridblock-loading' );
 						self.creatingIframe = false;
 					}, 200 );
-
 				};
 
 				postCssLoad = function() {
@@ -163,7 +167,7 @@ import { Save } from './save';
 					}
 				};
 
-				if ( 'Firefox' === BOLDGRID.EDITOR.Controls.browser  ) {
+				if ( 'Firefox' === BOLDGRID.EDITOR.Controls.browser ) {
 					$iframe.on( 'load', postCssLoad );
 				} else {
 					postCssLoad();
@@ -172,5 +176,4 @@ import { Save } from './save';
 		};
 
 	BGGB.Loader = self;
-
 } )( jQuery );

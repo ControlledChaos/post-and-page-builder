@@ -59,7 +59,8 @@ export class Content extends Base {
 	 * @return {string} Selectors.
 	 */
 	getSelectorString() {
-		let selector = BG.Controls.$container.original_selector_strings.unformatted_content_selectors_string;
+		let selector =
+			BG.Controls.$container.original_selector_strings.unformatted_content_selectors_string;
 
 		if ( BG.Controls.$container.editting_as_row ) {
 			selector = this.nestedSelector;

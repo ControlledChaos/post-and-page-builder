@@ -41,7 +41,7 @@ export class BackgroundColor {
 				currentBackgroundColor = '#FFFFFF';
 			}
 
-			this.$control.find( 'label.color-preview' ).css( 'background-color', currentBackgroundColor  );
+			this.$control.find( 'label.color-preview' ).css( 'background-color', currentBackgroundColor );
 		} );
 
 		return $control;
@@ -74,7 +74,6 @@ export class BackgroundColor {
 			BG.Panel.$element.trigger( BG.Panel.currentControl.name + '-background-color-change' );
 		} );
 	}
-
 }
 
 export { BackgroundColor as default };

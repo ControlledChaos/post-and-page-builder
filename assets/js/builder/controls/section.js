@@ -9,7 +9,6 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		BG = BOLDGRID.EDITOR;
 
 	BOLDGRID.EDITOR.CONTROLS.Section = {
-
 		$container: null,
 
 		$popover: null,
@@ -43,7 +42,9 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 				$zoomIn = $zoomControls.find( '.zoom-in' ),
 				$zoomOut = $zoomControls.find( '.zoom-out' );
 
-			BG.Service.popover.section.$element.find( '.move-sections' ).on( 'click', self.enableSectionDrag );
+			BG.Service.popover.section.$element
+				.find( '.move-sections' )
+				.on( 'click', self.enableSectionDrag );
 			$( '.exit-row-dragging, .bg-close-zoom-view' ).on( 'click', self.exitSectionDrag );
 			$zoomIn.on( 'click', self.zoom.zoomIn );
 			$zoomOut.on( 'click', self.zoom.zoomOut );
@@ -68,8 +69,8 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 				}
 			}
 
-			rect = self.$container.$body[0].getBoundingClientRect(),
-			bodyHeight = rect.bottom - rect.top + 50;
+			( rect = self.$container.$body[0].getBoundingClientRect() ),
+				( bodyHeight = rect.bottom - rect.top + 50 );
 
 			self.$container.find( 'html' ).css( 'max-height', bodyHeight );
 			$( '#content_ifr' ).css( 'max-height', bodyHeight );
@@ -125,9 +126,12 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 			$frameHtml.css( 'max-height', '' );
 			$( '#content_ifr' ).css( 'max-height', '' );
 
-			$( 'html, body' ).animate( {
-				scrollTop: $( '#postdivrich' ).offset().top
-			}, 0 );
+			$( 'html, body' ).animate(
+				{
+					scrollTop: $( '#postdivrich' ).offset().top
+				},
+				0
+			);
 		},
 
 		/**
@@ -137,7 +141,9 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		 */
 		zoomDisabled: function() {
 			if ( IMHWPB.WP_MCE_Draggable.instance && IMHWPB.WP_MCE_Draggable.instance.draggable_inactive ) {
-				alert( 'Add Block requires that BoldGrid Editing be enabled on this page. You can enable it by clicking the move icon ☩ on your editor toolbar.' );
+				alert(
+					'Add Block requires that BoldGrid Editing be enabled on this page. You can enable it by clicking the move icon ☩ on your editor toolbar.'
+				);
 				return true;
 			}
 		},
@@ -166,7 +172,9 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 				.find( '#wpadminbar' )
 				.addClass( 'focus-off' );
 
-			$( window ).trigger( 'resize' ).scrollTop( 0 );
+			$( window )
+				.trigger( 'resize' )
+				.scrollTop( 0 );
 			self.updateHtmlSize();
 			BOLDGRID.EDITOR.GRIDBLOCK.Loader.firstOpen();
 			BG.GRIDBLOCK.View.onOpen();
@@ -190,7 +198,6 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 					updateZoom( ui.value );
 				}
 			} );
-
 		},
 
 		/**
@@ -203,9 +210,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 				return ( css.match( /(^|\s)zoom-scale-\S+/g ) || [] ).join( ' ' );
 			} );
 		}
-
 	};
 
 	self = BOLDGRID.EDITOR.CONTROLS.Section;
-
 } )( jQuery );

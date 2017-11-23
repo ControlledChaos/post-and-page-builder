@@ -18,7 +18,9 @@ BOLDGRID.EDITOR.VALIDATION = BOLDGRID.EDITOR.VALIDATION || {};
 		if ( this.is( sel ) ) {
 			$closest = this;
 		} else {
-			$closest = this.parentsUntil( context ).filter( sel ).eq( 0 );
+			$closest = this.parentsUntil( context )
+				.filter( sel )
+				.eq( 0 );
 		}
 
 		return $closest;
@@ -35,7 +37,6 @@ BOLDGRID.EDITOR.VALIDATION = BOLDGRID.EDITOR.VALIDATION || {};
 	 * @since 1.2.7
 	 */
 	let wrapElementGroup = function() {
-
 		var wrap,
 			group = [],
 			contentSelector = [
@@ -64,7 +65,9 @@ BOLDGRID.EDITOR.VALIDATION = BOLDGRID.EDITOR.VALIDATION || {};
 			].join( ',' );
 
 		wrap = function() {
-			$( group ).wrapAll( '<div class="' + defaultContainerClass + '"><div class="row"><div class="col-md-12">' );
+			$( group ).wrapAll(
+				'<div class="' + defaultContainerClass + '"><div class="row"><div class="col-md-12">'
+			);
 			group = [];
 		};
 
@@ -88,7 +91,6 @@ BOLDGRID.EDITOR.VALIDATION = BOLDGRID.EDITOR.VALIDATION || {};
 	 * @param $context.
 	 */
 	self.updateContent = function( $context ) {
-
 		defaultContainerClass = BoldgridEditor.default_container || 'container-fluid';
 		container = '<div class="' + defaultContainerClass + '"></div>';
 
@@ -117,7 +119,9 @@ BOLDGRID.EDITOR.VALIDATION = BOLDGRID.EDITOR.VALIDATION || {};
 	 */
 	self.updateContainers = function( $context ) {
 		$context.find( ' .container, .container-fluid' ).each( function() {
-			$( this ).removeClass( 'container container-fluid' ).addClass( BoldgridEditor.default_container );
+			$( this )
+				.removeClass( 'container container-fluid' )
+				.addClass( BoldgridEditor.default_container );
 		} );
 	};
 
@@ -146,7 +150,11 @@ BOLDGRID.EDITOR.VALIDATION = BOLDGRID.EDITOR.VALIDATION || {};
 			var $this = $( this ),
 				$parent = $this.parent();
 
-			if ( $parent.length && $parent[0] !== self.$context[0] && false === $parent.hasClass( sectionClass ) ) {
+			if (
+				$parent.length &&
+				$parent[0] !== self.$context[0] &&
+				false === $parent.hasClass( sectionClass )
+			) {
 				$parent.addClass( sectionClass );
 			}
 		} );
@@ -166,7 +174,7 @@ BOLDGRID.EDITOR.VALIDATION = BOLDGRID.EDITOR.VALIDATION || {};
 				$this.wrap( container );
 			}
 
-			if ( ! $this.closestContext( '.boldgrid-section', self.$context ).length  ) {
+			if ( ! $this.closestContext( '.boldgrid-section', self.$context ).length ) {
 				if ( $parent.length && $parent[0] !== self.$context[0] ) {
 					$parent.addClass( sectionClass );
 				} else {
@@ -190,5 +198,4 @@ BOLDGRID.EDITOR.VALIDATION = BOLDGRID.EDITOR.VALIDATION || {};
 			}
 		} );
 	};
-
 } )( jQuery );

@@ -18,19 +18,21 @@ export class Save {
 	 * @since 1.6
 	 */
 	_setupSaveGridblock() {
-		BG.GRIDBLOCK.View.$gridblockSection.find( '.gridblocks' ).on( 'mousedown', '.gridblock .save', ( e ) => {
-			e.stopPropagation();
+		BG.GRIDBLOCK.View.$gridblockSection
+			.find( '.gridblocks' )
+			.on( 'mousedown', '.gridblock .save', e => {
+				e.stopPropagation();
 
-			let $this = $( e.target ),
-				gridblockId = $this.closest( '.gridblock' ).data( 'id' ),
-				gridblockData = BG.GRIDBLOCK.configs.gridblocks[ gridblockId ];
+				let $this = $( e.target ),
+					gridblockId = $this.closest( '.gridblock' ).data( 'id' ),
+					gridblockData = BG.GRIDBLOCK.configs.gridblocks[gridblockId];
 
-			BG.Controls.get( 'Library' ).openPanel( {
-				title: gridblockData.getTitle(),
-				type: gridblockData.type,
-				html: BG.GRIDBLOCK.Create.getHtml( gridblockId )
+				BG.Controls.get( 'Library' ).openPanel( {
+					title: gridblockData.getTitle(),
+					type: gridblockData.type,
+					html: BG.GRIDBLOCK.Create.getHtml( gridblockId )
+				} );
 			} );
-		} );
 	}
 }
 

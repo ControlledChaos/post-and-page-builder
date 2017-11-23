@@ -9,7 +9,6 @@ BOLDGRID.EDITOR.RESIZE = BOLDGRID.EDITOR.RESIZE || {};
 		BG = BOLDGRID.EDITOR;
 
 	BOLDGRID.EDITOR.RESIZE.Row = {
-
 		$body: null,
 
 		handleSize: 20,
@@ -45,19 +44,23 @@ BOLDGRID.EDITOR.RESIZE = BOLDGRID.EDITOR.RESIZE || {};
 		 * @since 1.2.7
 		 */
 		createHandles: function() {
-
-			self.$topHandle = $( '<span class="draghandle top" title="Drag Resize Row" data-setting="padding-top"></span>' );
-			self.$bottomHandle = $( '<span class="draghandle bottom" title="Drag Resize Row" data-setting="padding-bottom"></span>' );
+			self.$topHandle = $(
+				'<span class="draghandle top" title="Drag Resize Row" data-setting="padding-top"></span>'
+			);
+			self.$bottomHandle = $(
+				'<span class="draghandle bottom" title="Drag Resize Row" data-setting="padding-bottom"></span>'
+			);
 
 			$.each( [ self.$topHandle, self.$bottomHandle ], function() {
 				this.css( {
-					'position': 'fixed',
-					'height': self.handleSize,
-					'width': self.handleSize
+					position: 'fixed',
+					height: self.handleSize,
+					width: self.handleSize
 				} );
 			} );
 
-			self.$container.find( 'body' )
+			self.$container
+				.find( 'body' )
 				.after( self.$topHandle )
 				.after( self.$bottomHandle );
 
@@ -93,7 +96,9 @@ BOLDGRID.EDITOR.RESIZE = BOLDGRID.EDITOR.RESIZE || {};
 					self.hideHandles();
 				},
 				drag: function( e, ui ) {
-					var padding, rowPos, relativePos,
+					var padding,
+						rowPos,
+						relativePos,
 						diff = ui.position.top - ui.originalPosition.top;
 
 					if ( 'padding-top' === setting ) {
@@ -111,8 +116,7 @@ BOLDGRID.EDITOR.RESIZE = BOLDGRID.EDITOR.RESIZE || {};
 					if ( 0 > padding ) {
 						rowPos = self.$currentRow[0].getBoundingClientRect();
 						ui.position.top =
-							rowPos[relativePos] -
-							( ui.helper.hasClass( 'top' ) ? 0 : self.handleOffset );
+							rowPos[relativePos] - ( ui.helper.hasClass( 'top' ) ? 0 : self.handleOffset );
 						padding = 0;
 					}
 
@@ -150,13 +154,13 @@ BOLDGRID.EDITOR.RESIZE = BOLDGRID.EDITOR.RESIZE || {};
 			self.$currentRow = $this;
 
 			self.$topHandle.css( {
-				'top': pos.top - 1,
-				'left': rightOffset
+				top: pos.top - 1,
+				left: rightOffset
 			} );
 
 			self.$bottomHandle.css( {
-				'top': pos.bottom - self.handleOffset + 1,
-				'left': rightOffset
+				top: pos.bottom - self.handleOffset + 1,
+				left: rightOffset
 			} );
 
 			self.$topHandle.show();
@@ -176,9 +180,7 @@ BOLDGRID.EDITOR.RESIZE = BOLDGRID.EDITOR.RESIZE || {};
 			self.$topHandle.hide();
 			self.$bottomHandle.hide();
 		}
-
 	};
 
 	self = BOLDGRID.EDITOR.RESIZE.Row;
-
 } )( jQuery );

@@ -18,11 +18,11 @@ import { Border } from './generic/border';
 		basicControlInstances: [],
 
 		bgControls: {
-			'margin': Margin,
-			'padding': Padding,
+			margin: Margin,
+			padding: Padding,
 			'box-shadow': BoxShadow,
 			'border-radius': BorderRadius,
-			'border': Border,
+			border: Border,
 			'background-color': BackgroundColor
 		},
 
@@ -55,7 +55,7 @@ import { Border } from './generic/border';
 					colorPicker: { width: 215 }
 				} );
 
-			bgControl.applyCssRules = ( property ) => {
+			bgControl.applyCssRules = property => {
 				BG.Controls.addStyle( bgControl.$target, property );
 				BG.Panel.$element.trigger( BG.Panel.currentControl.name + '-css-change' );
 			};
@@ -123,12 +123,13 @@ import { Border } from './generic/border';
 					addOptions = customizeSupportOptions[this];
 				}
 
-				if ( self.bgControls[ customizationOption ] ) {
-					$control = self.appendBasicBGControl( addOptions, self.bgControls[ customizationOption ] );
+				if ( self.bgControls[customizationOption] ) {
+					$control = self.appendBasicBGControl( addOptions, self.bgControls[customizationOption] );
 				} else {
 					customizationOption = customizationOption.replace( '-', '' );
 					customizationOption = customizationOption.toLowerCase();
-					customizationOption = customizationOption.charAt( 0 ).toUpperCase() + customizationOption.slice( 1 );
+					customizationOption =
+						customizationOption.charAt( 0 ).toUpperCase() + customizationOption.slice( 1 );
 
 					$control = BG.CONTROLS.GENERIC[customizationOption].render( addOptions );
 					BG.CONTROLS.GENERIC[customizationOption].bind( addOptions );
@@ -143,7 +144,7 @@ import { Border } from './generic/border';
 
 		bindControlRefresh() {
 			BG.Panel.$element.on( 'bg-customize-open', () => {
-				_.each( self.basicControlInstances, ( control ) => {
+				_.each( self.basicControlInstances, control => {
 					if ( control.refreshValues ) {
 						control.refreshValues();
 					}
@@ -198,5 +199,4 @@ import { Border } from './generic/border';
 	};
 
 	self = BOLDGRID.EDITOR.CONTROLS.Generic;
-
-}( jQuery ) );
+} )( jQuery );

@@ -74,9 +74,12 @@ import { Base as Notice } from './base';
 		animatePanel: function() {
 			BG.Panel.$element
 				.addClass( 'animated bounceInDown' )
-				.one( 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-					$( '.bg-editor-loading' ).hide();
-				} );
+				.one(
+					'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+					function() {
+						$( '.bg-editor-loading' ).hide();
+					}
+				);
 		},
 
 		/**

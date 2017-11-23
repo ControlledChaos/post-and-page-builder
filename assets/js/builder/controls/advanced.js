@@ -44,7 +44,7 @@ export class Advanced {
 	 */
 	openPanel( $target, targetType ) {
 		this.$target = $target;
-		BG.Menu.$element.targetData[ this.name ] = $target;
+		BG.Menu.$element.targetData[this.name] = $target;
 
 		BG.Panel.clear();
 		BG.Panel.showFooter();

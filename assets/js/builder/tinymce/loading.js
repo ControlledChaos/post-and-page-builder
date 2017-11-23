@@ -2,7 +2,6 @@ var $ = window.jQuery,
 	BG = BOLDGRID.EDITOR;
 
 export class Loading {
-
 	constructor() {
 		this.failsafeTimeout = 3000;
 		this.$element = $( '.bg-editor-loading-main' );
@@ -61,7 +60,6 @@ export class Loading {
 			this.hide();
 		}, this.failsafeTimeout );
 	}
-
 }
 
 export { Loading as default };

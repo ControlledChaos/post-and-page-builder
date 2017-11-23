@@ -102,7 +102,11 @@ export class Base {
 		}
 
 		// Do not update if user is dragging.
-		if ( BG.Controls.$container.$current_drag || BG.Controls.$container.resize || this.disableAddPopover ) {
+		if (
+			BG.Controls.$container.$current_drag ||
+			BG.Controls.$container.resize ||
+			this.disableAddPopover
+		) {
 			return false;
 		}
 
@@ -190,7 +194,6 @@ export class Base {
 			if ( 'enter' === this.mostRecentAction ) {
 				this.updatePosition( event );
 			}
-
 		}, this.debounceTime );
 	}
 
@@ -242,12 +245,12 @@ export class Base {
 			this.hideHandles( event );
 		} );
 
-		BG.Controls.$container.on( 'mouseleave', ( event ) => {
+		BG.Controls.$container.on( 'mouseleave', event => {
 			this.hideEventType = event.type;
 			this.debouncedHide();
 		} );
 
-		BG.Controls.$container.on( this.hideHandleEvents.join( ' ' ), ( event ) => {
+		BG.Controls.$container.on( this.hideHandleEvents.join( ' ' ), event => {
 			this.hideEventType = event.type;
 			this.hideHandles();
 		} );
@@ -282,9 +285,11 @@ export class Base {
 	 * @return {jQuery} Popover element.
 	 */
 	_render() {
-		let $popover = $( _.template( this.template )( {
-			'actions': BG.Controls.$container.additional_menu_items
-		} ) );
+		let $popover = $(
+			_.template( this.template )( {
+				actions: BG.Controls.$container.additional_menu_items
+			} )
+		);
 
 		$popover.$menu = $popover.find( '.popover-menu-imhwpb' );
 		BG.Controls.$container.$body.after( $popover );

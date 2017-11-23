@@ -17,7 +17,7 @@ BOLDGRID.EDITOR.STYLE = BOLDGRID.EDITOR.STYLE || {};
 			 * @since 1.4
 			 */
 			getStyles: function( url ) {
-				let onComplete = ( siteMarkup ) => {
+				let onComplete = siteMarkup => {
 					self.siteMarkup = siteMarkup;
 					BG.GRIDBLOCK.View.headMarkup = self.getHeadElements( siteMarkup );
 					BG.$window.trigger( 'boldgrid_page_html', self.siteMarkup );
@@ -25,10 +25,10 @@ BOLDGRID.EDITOR.STYLE = BOLDGRID.EDITOR.STYLE || {};
 				};
 
 				$.get( url )
-					.success( ( markup ) => {
+					.success( markup => {
 						onComplete( markup );
 					} )
-					.fail( ( event ) => {
+					.fail( event => {
 						onComplete( event.responseText || '' );
 					} );
 			},
@@ -53,7 +53,8 @@ BOLDGRID.EDITOR.STYLE = BOLDGRID.EDITOR.STYLE || {};
 						markup = this.outerHTML,
 						tagName = $this.prop( 'tagName' );
 
-					if ( 'LINK' === tagName &&
+					if (
+						'LINK' === tagName &&
 						'stylesheet' !== $this.attr( 'rel' ) &&
 						'boldgrid-custom-styles-css' !== $this.attr( 'id' )
 					) {
@@ -67,9 +68,7 @@ BOLDGRID.EDITOR.STYLE = BOLDGRID.EDITOR.STYLE || {};
 
 				return headMarkup;
 			}
-
 		};
 
 	BG.STYLE.Remote = self;
-
 } )( jQuery );

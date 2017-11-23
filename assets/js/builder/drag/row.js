@@ -9,7 +9,6 @@ BOLDGRID.EDITOR.DRAG = BOLDGRID.EDITOR.DRAG || {};
 		BG = BOLDGRID.EDITOR;
 
 	BOLDGRID.EDITOR.DRAG.Row = {
-
 		$recentRowElement: [],
 
 		/**
@@ -34,7 +33,6 @@ BOLDGRID.EDITOR.DRAG = BOLDGRID.EDITOR.DRAG || {};
 		 * @since 1.3
 		 */
 		dragCursorPosition: function( pageY ) {
-
 			var $container = BG.Controls.$container,
 				$current = $container.$current_drag;
 
@@ -99,8 +97,12 @@ BOLDGRID.EDITOR.DRAG = BOLDGRID.EDITOR.DRAG || {};
 		validateDragEnter: function( $dragEntered ) {
 			var validDrag;
 
-			validDrag = $dragEntered.hasClass( 'boldgrid-section' ) &&
-				0 === $dragEntered.find( '.row:not(.dragging-imhwpb,.row .row)' ).not( BG.Controls.$container.$current_drag ).length &&
+			validDrag =
+				$dragEntered.hasClass( 'boldgrid-section' ) &&
+				0 ===
+					$dragEntered
+						.find( '.row:not(.dragging-imhwpb,.row .row)' )
+						.not( BG.Controls.$container.$current_drag ).length &&
 				0 !== $dragEntered.find( '.container-fluid, .container' ).length;
 
 			return validDrag;
@@ -115,7 +117,8 @@ BOLDGRID.EDITOR.DRAG = BOLDGRID.EDITOR.DRAG || {};
 		moveIntoSection: function( $dragEntered ) {
 
 			// Prepend Row into sections container.
-			$dragEntered.find( '.container-fluid, .container' )
+			$dragEntered
+				.find( '.container-fluid, .container' )
 				.first()
 				.prepend( BG.Controls.$container.$temp_insertion );
 		},
@@ -131,7 +134,7 @@ BOLDGRID.EDITOR.DRAG = BOLDGRID.EDITOR.DRAG || {};
 			var $dragElement = BG.Controls.$container.$temp_insertion;
 
 			if ( $current.get( 0 ) !== $dragElement[0] ) {
-				$current[ type ]( $dragElement );
+				$current[type]( $dragElement );
 				self.postRowInsert();
 			}
 		},
@@ -144,7 +147,6 @@ BOLDGRID.EDITOR.DRAG = BOLDGRID.EDITOR.DRAG || {};
 		 * @return boolean rowRepositioned Whether or not we moved an element.
 		 */
 		insertTopBottom: function( pageY ) {
-
 			var $container = BG.Controls.$container,
 				rowMinMax = $container.$current_drag.IMHWPB.row_min_max,
 				isTop = pageY < rowMinMax.offset_top,
@@ -153,10 +155,9 @@ BOLDGRID.EDITOR.DRAG = BOLDGRID.EDITOR.DRAG || {};
 				queryVal = isTop ? 'first' : 'last',
 				rowRepositioned = false;
 
-
 			// If cursor is at the top or bottom, place before or after.
 			if ( isTop || isBottom ) {
-				self._insertRow( $container.get_other_top_level_elements()[ queryVal ](), placeType );
+				self._insertRow( $container.get_other_top_level_elements()[queryVal](), placeType );
 				rowRepositioned = true;
 			}
 
@@ -171,15 +172,21 @@ BOLDGRID.EDITOR.DRAG = BOLDGRID.EDITOR.DRAG || {};
 		 * @param jQuery $triggerRow.
 		 */
 		_reorderRows: function( $triggerRow ) {
-			var currentBeforeDrag, currentFarAfter, changingSection, currentAfterDrag, currentFarBefore,
+			var currentBeforeDrag,
+				currentFarAfter,
+				changingSection,
+				currentAfterDrag,
+				currentFarBefore,
 				$container = BG.Controls.$container,
 				$dragElement = $container.$temp_insertion,
 				$rows = $container.get_other_top_level_elements(),
 				currentIndex = $rows.index( $triggerRow ),
-				dragIndex =  $rows.index( $dragElement ),
+				dragIndex = $rows.index( $dragElement ),
 				position = 'after';
 
-			changingSection = $dragElement.closest( '.boldgrid-section' )[0] !== $triggerRow.closest( '.boldgrid-section' )[0];
+			changingSection =
+				$dragElement.closest( '.boldgrid-section' )[0] !==
+				$triggerRow.closest( '.boldgrid-section' )[0];
 
 			// Entered element is before or after drag.
 			currentBeforeDrag = currentIndex < dragIndex;
@@ -211,11 +218,9 @@ BOLDGRID.EDITOR.DRAG = BOLDGRID.EDITOR.DRAG || {};
 				position = 'after';
 			}
 
-			$triggerRow[ position ]( $dragElement );
+			$triggerRow[position]( $dragElement );
 		}
-
 	};
 
 	self = BOLDGRID.EDITOR.DRAG.Row;
-
 } )( jQuery );

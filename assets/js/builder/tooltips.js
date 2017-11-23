@@ -34,8 +34,14 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 		 * @param {string} message Message for tooltip
 		 */
 		addTooltip( $el, message ) {
-			if ( false === $el.children().first().hasClass( 'boldgrid-tooltip-wrap' ) ) {
-				$el.prepend( self.template( { 'message': message } ) );
+			if (
+				false ===
+				$el
+					.children()
+					.first()
+					.hasClass( 'boldgrid-tooltip-wrap' )
+			) {
+				$el.prepend( self.template( { message: message } ) );
 			}
 		},
 
@@ -58,13 +64,15 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 		 */
 		_configTooltips() {
 			_.each( BoldgridEditor.builder_config.helpTooltip, function( message, selector ) {
-				BG.Panel.$element.add( BOLDGRID.EDITOR.CONTROLS.Color.$colorPanel ).find( selector ).each( function() {
-					self.addTooltip( $( this ), message );
-				} );
+				BG.Panel.$element
+					.add( BOLDGRID.EDITOR.CONTROLS.Color.$colorPanel )
+					.find( selector )
+					.each( function() {
+						self.addTooltip( $( this ), message );
+					} );
 			} );
 		}
 	};
 
 	self = BOLDGRID.EDITOR.Tooltip;
-
 } )( jQuery );

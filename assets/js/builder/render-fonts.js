@@ -22,7 +22,7 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 					family = $this.attr( 'data-font-family' );
 
 				if ( family ) {
-					families[ family ] = families[ family ] || {};
+					families[family] = families[family] || {};
 
 					// Add more props like sans serif and weight.
 				}
@@ -38,7 +38,9 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 		 * @return array Families that need to be reuqested.
 		 */
 		updateFontLink: function( $scope ) {
-			var families, familyParam, params,
+			var families,
+				familyParam,
+				params,
 				baseUrl = 'https://fonts.googleapis.com/css?',
 				$head = $scope.find( 'head' ),
 				$link = $head.find( '#boldgrid-google-fonts' );
@@ -65,5 +67,4 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 			}
 		}
 	};
-
 } )( jQuery );

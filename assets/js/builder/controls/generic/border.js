@@ -5,14 +5,13 @@ import template from '../../../../../includes/template/customize/color.html';
 import { Border as BorderWidth } from '@boldgrid/controls';
 
 export class Border extends BorderWidth {
-
 	constructor( options ) {
 		super( options );
 
 		this.configs = {
-			'name': 'generic-border-color',
-			'label': 'Border Color',
-			'propertyName': 'border-color'
+			name: 'generic-border-color',
+			label: 'Border Color',
+			propertyName: 'border-color'
 		};
 	}
 
@@ -48,7 +47,8 @@ export class Border extends BorderWidth {
 		let $control = $( _.template( template )( this.configs ) );
 
 		BG.Panel.$element.on( 'bg-customize-open', () => {
-			this.$control.find( 'label.color-preview' )
+			this.$control
+				.find( 'label.color-preview' )
 				.css( 'background-color', this.$target.css( this.configs.propertyName ) );
 		} );
 
@@ -73,10 +73,11 @@ export class Border extends BorderWidth {
 				BG.Controls.addStyle( this.$target, this.configs.propertyName, value );
 			}
 
-			BG.Panel.$element.trigger( BG.Panel.currentControl.name + '-' + this.configs.propertyName + '-change' );
+			BG.Panel.$element.trigger(
+				BG.Panel.currentControl.name + '-' + this.configs.propertyName + '-change'
+			);
 		} );
 	}
-
 }
 
 export { Border as default };

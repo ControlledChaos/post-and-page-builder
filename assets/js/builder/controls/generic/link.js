@@ -14,13 +14,15 @@ BOLDGRID.EDITOR.CONTROLS.GENERIC = BOLDGRID.EDITOR.CONTROLS.GENERIC || {};
 		render: function() {
 			var $control = $( this.template() );
 
-			BG.Panel.$element.find( '.panel-body .customize' ).find( '.section.insert-link' ).remove();
+			BG.Panel.$element
+				.find( '.panel-body .customize' )
+				.find( '.section.insert-link' )
+				.remove();
 			BG.Panel.$element.find( '.panel-body .customize' ).append( $control );
 
 			return $control;
 		},
 		bind: function() {
-
 			BG.Panel.$element.find( '.section.insert-link' ).on( 'click', function() {
 				var $el = BG.Menu.getTarget( BG.Panel.currentControl );
 
@@ -31,5 +33,4 @@ BOLDGRID.EDITOR.CONTROLS.GENERIC = BOLDGRID.EDITOR.CONTROLS.GENERIC || {};
 	};
 
 	self = BOLDGRID.EDITOR.CONTROLS.GENERIC.Link;
-
 } )( jQuery );

@@ -100,9 +100,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 
 				_.each( BG.GRIDBLOCK.configs.gridblocks, gridblock => {
 					if ( 'iframeCreated' === gridblock.state ) {
-						gridblock.$iframeContents
-							.find( '#boldgrid-custom-styles' )
-							.html( stylesheetCss );
+						gridblock.$iframeContents.find( '#boldgrid-custom-styles' ).html( stylesheetCss );
 					}
 				} );
 			},
@@ -141,10 +139,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			hasGridblocks: function() {
 				var pending = 0;
 				_.each( BG.GRIDBLOCK.configs.gridblocks, function( gridblock ) {
-					if (
-						'ready' === gridblock.state &&
-						BG.GRIDBLOCK.Category.canDisplayGridblock( gridblock )
-					) {
+					if ( 'ready' === gridblock.state && BG.GRIDBLOCK.Category.canDisplayGridblock( gridblock ) ) {
 						pending++;
 					}
 				} );
@@ -182,9 +177,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			 * @since 1.5
 			 */
 			updateDisplay: function() {
-				let isSaved = BG.GRIDBLOCK.Category.isSavedCategory(
-					BG.GRIDBLOCK.Category.currentCategory
-				);
+				let isSaved = BG.GRIDBLOCK.Category.isSavedCategory( BG.GRIDBLOCK.Category.currentCategory );
 				BG.GRIDBLOCK.Loader.loadGridblocks();
 
 				if ( ! isSaved && ! self.hasGridblocks() ) {

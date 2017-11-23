@@ -9,126 +9,126 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 	'use strict';
 
 	var BG = BOLDGRID.EDITOR,
-	self = {
+		self = {
+			$window: $( window ),
 
-		$window: $( window ),
+			/**
+			 * Grab the markup for the selected Gridblock
+			 *
+			 * @since 1.4
+			 *
+			 * @param  {number} gridblockId Unique id for a gridblock.
+			 * @return {string}             Html requested.
+			 */
+			getHtml: function( gridblockId ) {
+				var html = '',
+					gridblockData = {};
 
-		/**
-		 * Grab the markup for the selected Gridblock
-		 *
-		 * @since 1.4
-		 *
-		 * @param  {number} gridblockId Unique id for a gridblock.
-		 * @return {string}             Html requested.
-		 */
-		getHtml: function( gridblockId ) {
-			var html = '',
-				gridblockData = {};
+				if ( BG.GRIDBLOCK.configs.gridblocks[gridblockId] ) {
+					gridblockData = BG.GRIDBLOCK.configs.gridblocks[gridblockId];
+				}
 
-			if ( BG.GRIDBLOCK.configs.gridblocks[ gridblockId ] ) {
-				gridblockData = BG.GRIDBLOCK.configs.gridblocks[ gridblockId ];
-			}
+				if ( self.getDynamicElements( gridblockData ).length ) {
+					html = self.installImages( gridblockData );
+				} else {
+					html = self.getStaticHtml( gridblockData );
+				}
 
-			if ( self.getDynamicElements( gridblockData ).length ) {
-				html = self.installImages( gridblockData );
-			} else {
-				html = self.getStaticHtml( gridblockData );
-			}
+				return html;
+			},
 
-			return html;
-		},
+			/**
+			 * If the gridblock doesn't have any images to replace, just return the html.
+			 *
+			 * @since 1.4
+			 *
+			 * @param  {object} gridblockData Get the static html.
+			 * @return {string}               Html of gridblock.
+			 */
+			getStaticHtml: function( gridblockData ) {
+				var html = gridblockData.html;
 
-		/**
-		 * If the gridblock doesn't have any images to replace, just return the html.
-		 *
-		 * @since 1.4
-		 *
-		 * @param  {object} gridblockData Get the static html.
-		 * @return {string}               Html of gridblock.
-		 */
-		getStaticHtml: function( gridblockData ) {
-			var html = gridblockData.html;
+				if ( gridblockData.$html ) {
+					html = gridblockData.getHtml();
+				}
 
-			if ( gridblockData.$html ) {
-				html = gridblockData.getHtml();
-			}
+				return html;
+			},
 
-			return html;
-		},
+			/**
+			 * Get all elements that need images replaced.
+			 *
+			 * @since 1.5
+			 *
+			 * @param  {Object} gridblockData Single gridblock info.
+			 * @return {jquery}               Collection of elements that need to have images replaced.
+			 */
+			getDynamicElements: function( gridblockData ) {
+				var $dynamicElements = gridblockData.$html.find( '[dynamicImage]' );
 
-		/**
-		 * Get all elements that need images replaced.
-		 *
-		 * @since 1.5
-		 *
-		 * @param  {Object} gridblockData Single gridblock info.
-		 * @return {jquery}               Collection of elements that need to have images replaced.
-		 */
-		getDynamicElements: function( gridblockData ) {
-			var $dynamicElements = gridblockData.$html.find( '[dynamicImage]' );
+				if (
+					gridblockData.$html[0].hasAttribute( 'dynamicImage' ) &&
+					'none' !== gridblockData.$html.css( 'background-image' )
+				) {
+					$dynamicElements.push( gridblockData.$html );
+				}
 
-			if ( gridblockData.$html[0].hasAttribute( 'dynamicImage' ) &&
-				'none' !== gridblockData.$html.css( 'background-image' ) ) {
+				return $dynamicElements;
+			},
 
-				$dynamicElements.push( gridblockData.$html );
-			}
+			/**
+			 * Get the markup for pages that need images replaced.
+			 *
+			 * @since 1.5
+			 *
+			 * @param  {object} gridblockData Gridblock info.
+			 * @return {$.Deffered}           Deferred Object.
+			 */
+			installImages: function( gridblockData ) {
+				var $deferred = $.Deferred(),
+					completed = 0,
+					$imageReplacements = self.getDynamicElements( gridblockData );
 
-			return $dynamicElements;
-		},
+				$imageReplacements.each( function() {
+					var $element = $( this );
+					$element.removeAttr( 'dynamicimage' );
 
-		/**
-		 * Get the markup for pages that need images replaced.
-		 *
-		 * @since 1.5
-		 *
-		 * @param  {object} gridblockData Gridblock info.
-		 * @return {$.Deffered}           Deferred Object.
-		 */
-		installImages: function( gridblockData ) {
-			var $deferred = $.Deferred(),
-				completed = 0,
-				$imageReplacements = self.getDynamicElements( gridblockData );
+					$.ajax( {
+						type: 'post',
+						url: ajaxurl,
+						dataType: 'json',
+						timeout: 10000,
+						data: {
+							action: 'boldgrid_canvas_image',
 
-			$imageReplacements.each( function() {
-				var $element = $( this );
-				$element.removeAttr( 'dynamicimage' );
+							// eslint-disable-next-line
+							boldgrid_gridblock_image_ajax_nonce: BoldgridEditor.grid_block_nonce,
 
-				$.ajax( {
-					type: 'post',
-					url: ajaxurl,
-					dataType: 'json',
-					timeout: 10000,
-					data: {
-						action: 'boldgrid_canvas_image',
+							// eslint-disable-next-line
+							image_data: BG.GRIDBLOCK.Image.getEncodedSrc($element)
+						}
+					} )
+						.done( function( response ) {
+							if ( response && response.success ) {
+								BG.GRIDBLOCK.Image.addImageUrl( $element, response.data );
+							}
 
-						// eslint-disable-next-line
-						boldgrid_gridblock_image_ajax_nonce: BoldgridEditor.grid_block_nonce,
-
-						// eslint-disable-next-line
-						image_data: BG.GRIDBLOCK.Image.getEncodedSrc( $element )
-					}
-				} ).done( function( response ) {
-
-					if ( response && response.success ) {
-						BG.GRIDBLOCK.Image.addImageUrl( $element, response.data );
-					}
-
-					completed++;
-					if ( completed === $imageReplacements.length ) {
-						$deferred.resolve( gridblockData.getHtml() );
-					}
-				} ).fail( function() {
-					completed++;
-					if ( completed === $imageReplacements.length ) {
-						$deferred.resolve( gridblockData.getHtml() );
-					}
+							completed++;
+							if ( completed === $imageReplacements.length ) {
+								$deferred.resolve( gridblockData.getHtml() );
+							}
+						} )
+						.fail( function() {
+							completed++;
+							if ( completed === $imageReplacements.length ) {
+								$deferred.resolve( gridblockData.getHtml() );
+							}
+						} );
 				} );
-			} );
 
-			return $deferred;
-		}
-	};
+				return $deferred;
+			}
+		};
 
 	BG.GRIDBLOCK.Create = self;
-
 } )( jQuery );

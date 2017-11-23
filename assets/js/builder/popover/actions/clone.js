@@ -1,7 +1,6 @@
 var BG = BOLDGRID.EDITOR;
 
 export class Clone {
-
 	constructor( popover ) {
 		this.popover = popover;
 	}

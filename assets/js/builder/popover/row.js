@@ -5,7 +5,6 @@ import { Base } from './base.js';
 import template from '../../../../includes/template/popover/row.html';
 
 export class Row extends Base {
-
 	constructor() {
 		super();
 
@@ -43,8 +42,8 @@ export class Row extends Base {
 	 */
 	getPositionCss( clientRect ) {
 		return {
-			'top': clientRect.top,
-			'left': clientRect.left + clientRect.width
+			top: clientRect.top,
+			left: clientRect.left + clientRect.width
 		};
 	}
 
@@ -76,7 +75,6 @@ export class Row extends Base {
 
 		return selectorString;
 	}
-
 }
 
 export { Row as default };

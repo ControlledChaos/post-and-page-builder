@@ -8,15 +8,13 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 		BG = BOLDGRID.EDITOR;
 
 	BG.Feedback = {
-
 		init: function() {
 			self.$input = $( '[name="boldgrid-record-feedback"]' );
 			self.bindEvents();
 		},
 
 		bindEvents: function() {
-			$( window )
-				.on( 'boldgrid_added_gridblock', self.addGridblock );
+			$( window ).on( 'boldgrid_added_gridblock', self.addGridblock );
 		},
 
 		/**
@@ -44,9 +42,9 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 		addGridblock: function( event, data ) {
 			if ( data && data.template ) {
 				self.add( {
-					'action': 'installed_gridblock',
-					'data': {
-						'template': data.template
+					action: 'installed_gridblock',
+					data: {
+						template: data.template
 					}
 				} );
 			}
@@ -55,5 +53,4 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 
 	self = BOLDGRID.EDITOR.Feedback;
 	BOLDGRID.EDITOR.Feedback.init();
-
 } )( jQuery );

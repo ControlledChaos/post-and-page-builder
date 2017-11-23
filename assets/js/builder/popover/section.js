@@ -5,7 +5,6 @@ import { Base } from './base.js';
 import template from '../../../../includes/template/popover/section.html';
 
 export class Section extends Base {
-
 	constructor() {
 		super();
 
@@ -13,9 +12,7 @@ export class Section extends Base {
 
 		this.name = 'section';
 
-		this.selectors = [
-			'.boldgrid-section'
-		];
+		this.selectors = [ '.boldgrid-section' ];
 
 		this.emptySectionTemplate = wp.template( 'boldgrid-editor-empty-section' );
 
@@ -37,13 +34,13 @@ export class Section extends Base {
 		};
 
 		this.$element.find( '[data-action]' ).on( 'click', stopPropagation );
-		this.$element.find( '[data-action="section-width"]' ).on( 'click', ( e ) => this.sectionWidth( e ) );
+		this.$element.find( '[data-action="section-width"]' ).on( 'click', e => this.sectionWidth( e ) );
 		this.$element.find( '[data-action="move-up"]' ).on( 'click', () => this.moveUp() );
 		this.$element.find( '[data-action="move-down"]' ).on( 'click', () => this.moveDown() );
 		this.$element.find( '[data-action="background"]' ).on( 'click', () => this.background() );
-		this.$element.find( '[data-action="save-gridblock"]' ).on( 'click', ( e ) => this._saveGridblock( e ) );
+		this.$element.find( '[data-action="save-gridblock"]' ).on( 'click', e => this._saveGridblock( e ) );
 		this.$element.find( '[data-action="add-new"]' ).on( 'click', () => this.addNewSection() );
-		this.$element.find( '.context-menu-imhwpb' ).on( 'click', ( e ) => this.menuDirection( e ) );
+		this.$element.find( '.context-menu-imhwpb' ).on( 'click', e => this.menuDirection( e ) );
 	}
 
 	/**
@@ -67,9 +64,9 @@ export class Section extends Base {
 	 */
 	getPositionCss( clientRect ) {
 		return {
-			'top': clientRect.bottom + 35,
-			'left': 'calc(50% - 38px)',
-			'transform': 'translateX(-50%)'
+			top: clientRect.bottom + 35,
+			left: 'calc(50% - 38px)',
+			transform: 'translateX(-50%)'
 		};
 	}
 
@@ -79,7 +76,7 @@ export class Section extends Base {
 	 * @since 1.2.7
 	 */
 	addNewSection() {
-		let $newSection = $( this.emptySectionTemplate() ) ;
+		let $newSection = $( this.emptySectionTemplate() );
 		this.$target.after( $newSection );
 		this.transistionSection( $newSection );
 	}
@@ -93,9 +90,13 @@ export class Section extends Base {
 	transistionSection( $newSection ) {
 		IMHWPB['tinymce_undo_disabled'] = true;
 
-		$newSection.animate( {
+		$newSection.animate(
+			{
 				'background-color': 'transparent'
-			}, 1500, 'swing', function() {
+			},
+			1500,
+			'swing',
+			function() {
 				BG.Controls.addStyle( $newSection, 'background-color', '' );
 				IMHWPB['tinymce_undo_disabled'] = false;
 				tinymce.activeEditor.undoManager.add();
@@ -119,7 +120,6 @@ export class Section extends Base {
 		} else {
 			this.$element.find( '.popover-menu-imhwpb' ).removeClass( 'menu-down' );
 		}
-
 	}
 
 	/**
@@ -181,7 +181,6 @@ export class Section extends Base {
 		BG.CONTROLS.Container.toggleSectionWidth( this.$target.find( '.container, .container-fluid' ) );
 		this.$target.trigger( BG.Controls.$container.delete_event );
 	}
-
 }
 
 export { Section as default };

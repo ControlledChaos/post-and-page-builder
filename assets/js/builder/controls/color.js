@@ -640,4 +640,4 @@ import { Palette } from './color/palette';
 	};
 
 	self = BOLDGRID.EDITOR.CONTROLS.Color;
-}( jQuery ) );
+} )( jQuery );

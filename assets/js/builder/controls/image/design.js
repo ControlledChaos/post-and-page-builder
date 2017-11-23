@@ -10,7 +10,6 @@ BOLDGRID.EDITOR.CONTROLS.IMAGE = BOLDGRID.EDITOR.CONTROLS.IMAGE || {};
 		BG = BOLDGRID.EDITOR;
 
 	BOLDGRID.EDITOR.CONTROLS.IMAGE.Design = {
-
 		classes: BoldgridEditor.builder_config.image,
 
 		name: 'image',
@@ -75,7 +74,6 @@ BOLDGRID.EDITOR.CONTROLS.IMAGE = BOLDGRID.EDITOR.CONTROLS.IMAGE || {};
 			self._setupPanelClick();
 			self._setupCustomizeHandlers();
 		},
-
 
 		/**
 		 * Bind Event: When customization exits.
@@ -210,11 +208,13 @@ BOLDGRID.EDITOR.CONTROLS.IMAGE = BOLDGRID.EDITOR.CONTROLS.IMAGE || {};
 		 * @since 1.2.7
 		 */
 		_updateMyDesigns: function() {
-
 			self.usedComponents = BoldgridEditor.builder_config.components_used.image.slice( 0 );
 
 			BG.Controls.$container.$body.find( '.bg-img' ).each( function() {
-				var classes, savedComponents, savedIndex, findIndex,
+				var classes,
+					savedComponents,
+					savedIndex,
+					findIndex,
 					$this = $( this ),
 					$clone = $this.clone().removeClass( 'bg-control-element' );
 
@@ -236,7 +236,6 @@ BOLDGRID.EDITOR.CONTROLS.IMAGE = BOLDGRID.EDITOR.CONTROLS.IMAGE || {};
 					} );
 				}
 			} );
-
 		},
 
 		/**
@@ -255,21 +254,21 @@ BOLDGRID.EDITOR.CONTROLS.IMAGE = BOLDGRID.EDITOR.CONTROLS.IMAGE || {};
 			panel.clear();
 
 			// Set markup for panel.
-			panel.$element.find( '.panel-body' ).html( template( {
-				'src': $target.attr( 'src' ),
-				'presets': self.classes,
-				'myPresets': self.usedComponents
-			} ) );
+			panel.$element.find( '.panel-body' ).html(
+				template( {
+					src: $target.attr( 'src' ),
+					presets: self.classes,
+					myPresets: self.usedComponents
+				} )
+			);
 
 			self.preselectImage();
 
 			// Open Panel.
 			panel.open( self );
 		}
-
 	};
 
 	BOLDGRID.EDITOR.CONTROLS.IMAGE.Design.init();
 	self = BOLDGRID.EDITOR.CONTROLS.IMAGE.Design;
-
 } )( jQuery );

@@ -10,11 +10,11 @@
 		"start-js": "webpack-dev-server --colors",
 		"start-css": "gulp watch",
 		"build-webpack": "NODE_ENV=production webpack --colors",
-		"format-js": "prettier-eslint \"src/**/*.js\" --write",
+		"format-js": "prettier-eslint \"assets/js/builder/**/*.js\" --write",
 		"build": "npm run build-webpack & gulp build & gulp merge-webpack"
 	},
 	"lint-staged": {
-		"*.{js,json,scss}": ["npm run format-js", "git add"]
+		"assets/js/builder/*.{js,json,scss}": ["npm run format-js", "git add"]
 	},
 	"repository": {
 		"type": "git",
@@ -50,7 +50,9 @@
 		"karma-phantomjs-launcher": "^1.0.2",
 		"karma-spec-reporter": "0.0.26",
 		"lint-staged": "^5.0.0",
+		"prettier": "^1.8.2",
 		"prettier-eslint": "^8.2.2",
+		"prettier-eslint-cli": "^4.4.0",
 		"pump": "^1.0.1",
 		"run-sequence": "^1.2.2",
 		"style-loader": "^0.18.2"

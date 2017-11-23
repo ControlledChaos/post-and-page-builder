@@ -3,7 +3,11 @@ var $ = jQuery;
 export default function( event, $left, $entered ) {
 	var self = BOLDGRID.EDITOR.Controls.$container;
 
-	if ( self.recent_event && self.recent_event.entered == $entered[0] && self.recent_event.left == $left[0] ) {
+	if (
+		self.recent_event &&
+		self.recent_event.entered == $entered[0] &&
+		self.recent_event.left == $left[0]
+	) {
 		return true;
 	}
 
@@ -62,4 +66,4 @@ export default function( event, $left, $entered ) {
 
 	// Moves element.
 	self.move_column_to( $entered );
-};
+}

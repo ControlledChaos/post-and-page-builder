@@ -16,17 +16,17 @@ export class Template {
 		this.updateBodyClass();
 		this.updateDefaultContainer();
 
-		this.$templateInput.on( 'change', ( e ) => {
+		this.$templateInput.on( 'change', e => {
 			this.updateBodyClass();
 			this.updateDefaultContainer();
 
 			if ( BoldgridEditor.features.template_via_url ) {
 				BOLDGRID.EDITOR.Service.loading.show();
 				BOLDGRID.EDITOR.Service.editorWidth.updateIframeUrl(
-					BoldgridEditor.site_url + '&template_choice=' + $( e.target ).val() );
+					BoldgridEditor.site_url + '&template_choice=' + $( e.target ).val()
+				);
 			}
 		} );
-
 	}
 
 	/**
@@ -38,8 +38,8 @@ export class Template {
 		let config = BoldgridEditor.builder_config.templateContainers;
 
 		if ( ! BoldgridEditor.is_boldgrid_template ) {
-			if ( config[ this.$templateInput.val() ] ) {
-				BoldgridEditor['default_container'] = config[ this.$templateInput.val() ];
+			if ( config[this.$templateInput.val()] ) {
+				BoldgridEditor['default_container'] = config[this.$templateInput.val()];
 			} else {
 				BoldgridEditor['default_container'] = 'container-fluid';
 			}
@@ -68,7 +68,7 @@ export class Template {
 	 * @return {Boolean}              Is the template slug a BG template?
 	 */
 	isBoldgridTemplate( templateSlug ) {
-		return !! BoldgridEditor.internalPageTemplates[ templateSlug ];
+		return !! BoldgridEditor.internalPageTemplates[templateSlug];
 	}
 }
 
