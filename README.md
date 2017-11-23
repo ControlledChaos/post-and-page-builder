@@ -4,6 +4,8 @@
 [![Code Climate](https://codeclimate.com/github/BoldGrid/boldgrid-editor/badges/gpa.svg)](https://codeclimate.com/github/BoldGrid/boldgrid-editor)
 
 # BoldGrid Editor #
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/BoldGrid/boldgrid-editor.svg)](https://greenkeeper.io/)
 **Contributors:** rramo012, imh_brad, timph, joemoto
 
 **Tags:** drag and drop, tinymce, editor
