@@ -75,7 +75,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 					dataType: 'json',
 					timeout: 10000,
 					data: _.defaults( options, {
-
+						/*eslint-disable */
 						// If filtered to a type, load 30 otherwise 50.
 						quantity: type ? 30 : 50,
 						color_palettes: 1,
@@ -86,6 +86,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 						type: type,
 						color: JSON.stringify( { colors: BG.CONTROLS.Color.getGridblockColors() } ),
 						category: self.getCategory()
+						/*eslint-enable */
 					} )
 				} );
 			},
