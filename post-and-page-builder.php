@@ -62,6 +62,9 @@ if ( ! function_exists( 'boldgrid_editor_init' ) ) {
 	$upgrade = new Boldgrid_Editor_Upgrade();
 	add_action( 'upgrader_process_complete', array( $upgrade, 'plugin_update_check' ), 10, 2 );
 
+	$theme = new Boldgrid_Editor_Theme();
+	add_filter( 'boldgrid_theme_framework_config', array( $theme, 'BGTFW_config_filters' ) );
+
 	// Load on an early hook so we can tie into framework configs.
 	if ( is_admin() ) {
 		add_action( 'init', 'boldgrid_editor_init' );

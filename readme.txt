@@ -38,9 +38,15 @@ WordPress Editor.
 
 For more information, see changelog.txt.
 
+= 1.6.1 In Progress =
+
+Release Date: December 12th, 2017
+
+* Bug Fix: Remove old plugin name (boldgrid-editor) from BG themes recommendations.
+
 = 1.6 =
 
-Release Date: November 14h, 2017
+Release Date: November 14th, 2017
 
 * New Feature: Advanced controls and Custom Design UI updates.
 * New Feature: Added new Post Type - Block.

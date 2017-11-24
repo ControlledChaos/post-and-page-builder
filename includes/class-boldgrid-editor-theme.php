@@ -69,6 +69,43 @@ class Boldgrid_Editor_Theme {
 	}
 
 	/**
+	 * Add filters to the BGTFW.
+	 *
+	 * This is done at an earlier hook, configs or main service are unavailable.
+	 *
+	 * @since 1.6.1
+	 *
+	 * @param array $configs Copnfigurations.
+	 *
+	 * @return array configs.
+	 */
+	public function BGTFW_config_filters( $configs ) {
+		$configs = $this->update_tgm( $configs );
+
+		return $configs;
+	}
+
+	/**
+	 * Remove boldgrid-editor slug from the reccomended plugins.
+	 *
+	 * @since 1.6.1
+	 *
+	 * @param  array $configs BGTFW Configurations.
+	 * @return array          BGTFW Configurations.
+	 */
+	public function update_tgm( $configs ) {
+		$plugins = array();
+		foreach( $configs['tgm']['plugins'] as $plugin ) {
+			if ( 'boldgrid-editor' !== $plugin['slug'] ) {
+				$plugins[] = $plugin;
+			}
+		}
+		$configs['tgm']['plugins'] = $plugins;
+
+		return $configs;
+	}
+
+	/**
 	 * Remove theme container if previewing a post or page.
 	 *
 	 * We dont need to know if this is a page or post because the filter only applies to pages.
