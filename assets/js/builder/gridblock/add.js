@@ -106,8 +106,8 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 
 				draggable.validate_markup();
 
-				tinymce.activeEditor.fire( 'setContent' );
-				tinymce.activeEditor.focus();
+				BOLDGRID.EDITOR.mce.fire( 'setContent' );
+				BOLDGRID.EDITOR.mce.focus();
 
 				setTimeout( function() {
 					BG.CONTROLS.Add.scrollToElement( $inserting, 0 );
@@ -116,7 +116,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 				self.$window.trigger( 'resize' );
 
 				IMHWPB['tinymce_undo_disabled'] = false;
-				tinymce.activeEditor.undoManager.add();
+				BOLDGRID.EDITOR.mce.undoManager.add();
 
 				self.$window.trigger(
 					'boldgrid_added_gridblock',

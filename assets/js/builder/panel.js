@@ -293,7 +293,7 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 			this.$element.removeClass( 'drag-disabled' );
 			this.$element.trigger( 'bg-panel-close' );
 			this.$body.removeClass( 'bg-editor-overlay' );
-			tinymce.activeEditor.undoManager.add();
+			BOLDGRID.EDITOR.mce.undoManager.add();
 		},
 
 		/**
@@ -525,8 +525,8 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 		 */
 		collapseSelection: function() {
 			if ( 'icon' !== self.currentControl.name ) {
-				tinyMCE.activeEditor.selection.collapse( false );
-				tinyMCE.activeEditor.nodeChanged();
+				BOLDGRID.EDITOR.mce.selection.collapse( false );
+				BOLDGRID.EDITOR.mce.nodeChanged();
 			}
 		},
 
@@ -621,7 +621,7 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 		open: function( control ) {
 			var $target;
 
-			tinymce.activeEditor.undoManager.add();
+			BOLDGRID.EDITOR.mce.undoManager.add();
 
 			BOLDGRID.EDITOR.Menu.activateControl( control );
 

@@ -33,7 +33,7 @@ BOLDGRID.EDITOR.CONTROLS.MEDIA = BOLDGRID.EDITOR.CONTROLS.MEDIA || {};
 			var target = BG.Menu.getTarget( self ).get( 0 );
 
 			if ( target ) {
-				wp.mce.views.edit( tinymce.activeEditor, target );
+				wp.mce.views.edit( BOLDGRID.EDITOR.mce, target );
 			}
 		},
 

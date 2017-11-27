@@ -26,8 +26,8 @@ BOLDGRID.EDITOR.CONTROLS.GENERIC = BOLDGRID.EDITOR.CONTROLS.GENERIC || {};
 			BG.Panel.$element.find( '.section.insert-link' ).on( 'click', function() {
 				var $el = BG.Menu.getTarget( BG.Panel.currentControl );
 
-				tinymce.activeEditor.selection.select( $el[0] );
-				tinymce.activeEditor.execCommand( 'WP_Link' );
+				BOLDGRID.EDITOR.mce.selection.select( $el[0] );
+				BOLDGRID.EDITOR.mce.execCommand( 'WP_Link' );
 			} );
 		}
 	};

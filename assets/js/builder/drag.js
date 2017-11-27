@@ -30,7 +30,7 @@ jQuery.fn.IMHWPB_Draggable = function( settings, $ ) {
 	self.scrollInterval = false;
 
 	// Tinymce element used for auto scrolling.
-	self.$mce_32 = $( '#' + tinymce.activeEditor.theme.panel._items[0]._id );
+	self.$mce_32 = $( '#' + BOLDGRID.EDITOR.mce.theme.panel._items[0]._id );
 
 	self.$post_status_info = $( '#post-status-info' );
 
@@ -2817,15 +2817,15 @@ jQuery.fn.IMHWPB_Draggable = function( settings, $ ) {
 					$element.addClass( 'resizing-imhwpb' );
 
 					if ( self.ie_version && tinymce ) {
-						tinymce.activeEditor.getBody().setAttribute( 'contenteditable', false );
-						tinymce.activeEditor.boldgridResize = true;
+						BOLDGRID.EDITOR.mce.getBody().setAttribute( 'contenteditable', false );
+						BOLDGRID.EDITOR.mce.boldgridResize = true;
 					}
 				} else {
 					$element.removeClass( 'resizing-imhwpb' );
 
 					if ( self.ie_version && tinymce ) {
-						tinymce.activeEditor.getBody().setAttribute( 'contenteditable', true );
-						tinymce.activeEditor.boldgridResize = false;
+						BOLDGRID.EDITOR.mce.getBody().setAttribute( 'contenteditable', true );
+						BOLDGRID.EDITOR.mce.boldgridResize = false;
 					}
 				}
 			}

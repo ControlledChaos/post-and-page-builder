@@ -393,7 +393,7 @@ BOLDGRID.EDITOR.CONTROLS.IMAGE = BOLDGRID.EDITOR.CONTROLS.IMAGE || {};
 				self.preview = Caman( panel.$element.find( '.preview img' )[0] );
 			}
 
-			tinyMCE.activeEditor.selection.collapse( false );
+			BOLDGRID.EDITOR.mce.selection.collapse( false );
 
 			// Open Panel.
 			panel.open( self );

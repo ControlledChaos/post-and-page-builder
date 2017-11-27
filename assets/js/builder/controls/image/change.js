@@ -30,7 +30,7 @@ BOLDGRID.EDITOR.CONTROLS.IMAGE = BOLDGRID.EDITOR.CONTROLS.IMAGE || {};
 		 * @since 1.2.8
 		 */
 		openModal: function() {
-			var node = tinymce.activeEditor.selection.getNode();
+			var node = BOLDGRID.EDITOR.mce.selection.getNode();
 
 			/*
 			 * Ensure the selected element is an image.
@@ -42,11 +42,11 @@ BOLDGRID.EDITOR.CONTROLS.IMAGE = BOLDGRID.EDITOR.CONTROLS.IMAGE || {};
 				1 === node.childElementCount &&
 				'IMG' === node.firstChild.nodeName
 			) {
-				tinymce.activeEditor.selection.select( node.firstChild );
+				BOLDGRID.EDITOR.mce.selection.select( node.firstChild );
 			}
 
 			// Mimic the click of the "Edit" button.
-			tinymce.activeEditor.buttons.wp_img_edit.onclick();
+			BOLDGRID.EDITOR.mce.buttons.wp_img_edit.onclick();
 
 			// Change the media modal to "Replace Image".
 			wp.media.frame.setState( 'replace-image' );

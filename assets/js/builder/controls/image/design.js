@@ -152,7 +152,7 @@ BOLDGRID.EDITOR.CONTROLS.IMAGE = BOLDGRID.EDITOR.CONTROLS.IMAGE || {};
 					return ( css.match( /(^|\s)img-\S+/g ) || [] ).join( ' ' );
 				} );
 
-				tinyMCE.activeEditor.selection.collapse( false );
+				BOLDGRID.EDITOR.mce.selection.collapse( false );
 
 				if ( $this.hasClass( 'selected' ) ) {
 					panel.clearSelected();

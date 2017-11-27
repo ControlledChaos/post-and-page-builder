@@ -43,6 +43,7 @@ For more information, see changelog.txt.
 Release Date: December 12th, 2017
 
 * Bug Fix: Remove old plugin name (boldgrid-editor) from BG themes recommendations.
+* Bug Fix: Fix compatibility issues with Advanced Custom Fields plugin.
 
 = 1.6 =
 

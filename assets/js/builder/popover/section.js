@@ -99,7 +99,7 @@ export class Section extends Base {
 			function() {
 				BG.Controls.addStyle( $newSection, 'background-color', '' );
 				IMHWPB['tinymce_undo_disabled'] = false;
-				tinymce.activeEditor.undoManager.add();
+				BOLDGRID.EDITOR.mce.undoManager.add();
 			}
 		);
 	}

@@ -93,7 +93,7 @@ IMHWPB.WP_MCE_Draggable = function() {
 	 * Insert content from the media modal tab to the editor
 	 */
 	this.insert_from_media_modal_tab = function( tab_slug ) {
-		tinymce.activeEditor.selection.setCursorLocation( self.draggable_instance.$boldgrid_menu_action_clicked, 0 );
+		BOLDGRID.EDITOR.mce.selection.setCursorLocation( self.draggable_instance.$boldgrid_menu_action_clicked, 0 );
 
 		wp.media.editor.open();
 		wp.media.frame.setState( tab_slug );
@@ -117,7 +117,7 @@ IMHWPB.WP_MCE_Draggable = function() {
 				.find( 'button:not([data-mce-bogus])' )
 				.not( this_button );
 			self.replace_all_buttons( buttons );
-			tinymce.activeEditor.selection.setCursorLocation( this, 1 );
+			BOLDGRID.EDITOR.mce.selection.setCursorLocation( this, 1 );
 		}
 	};
 
@@ -167,8 +167,8 @@ IMHWPB.WP_MCE_Draggable = function() {
 	 * Drag Start Event
 	 */
 	this.drag_start = function() {
-		tinymce.activeEditor.getBody().setAttribute( 'contenteditable', false );
-		tinyMCE.activeEditor.selection.collapse( false );
+		BOLDGRID.EDITOR.mce.getBody().setAttribute( 'contenteditable', false );
+		BOLDGRID.EDITOR.mce.selection.collapse( false );
 		self.end_undo_level_mce();
 		self.draggable_instance.$master_container.find( 'html' ).addClass( 'drag-progress' );
 	};
@@ -194,16 +194,16 @@ IMHWPB.WP_MCE_Draggable = function() {
 	 * Put the cursor in the passed element
 	 */
 	this.set_cursor = function( event, $new_element ) {
-		tinymce.activeEditor.selection.setCursorLocation( $new_element, 0 );
+		BOLDGRID.EDITOR.mce.selection.setCursorLocation( $new_element, 0 );
 	};
 
 	/**
 	 * Prevent the edit
 	 */
 	this.prevent_edit = function() {
-		tinyMCE.activeEditor.selection.collapse( false );
+		BOLDGRID.EDITOR.mce.selection.collapse( false );
 		if ( ! self.draggable_instance.ie_version ) {
-			tinymce.activeEditor.getBody().setAttribute( 'contenteditable', false );
+			BOLDGRID.EDITOR.mce.getBody().setAttribute( 'contenteditable', false );
 		}
 	};
 
@@ -219,15 +219,15 @@ IMHWPB.WP_MCE_Draggable = function() {
 	 * Procedure that when dragging is complete
 	 */
 	this.drag_end_event = function( event, dropped_element ) {
-		tinymce.activeEditor.getBody().setAttribute( 'contenteditable', true );
+		BOLDGRID.EDITOR.mce.getBody().setAttribute( 'contenteditable', true );
 		IMHWPB.tinymce_undo_disabled = false;
 		self.add_tiny_mce_history();
 		self.initialize_gallery_objects( self.draggable_instance.$master_container );
 		self.draggable_instance.$master_container.find( 'html' ).removeClass( 'drag-progress' );
 
 		//Set the cursor into the recently dropped element
-		if ( tinymce && tinymce.activeEditor.selection && dropped_element ) {
-			tinymce.activeEditor.selection.setCursorLocation( dropped_element, 0 );
+		if ( tinymce && BOLDGRID.EDITOR.mce.selection && dropped_element ) {
+			BOLDGRID.EDITOR.mce.selection.setCursorLocation( dropped_element, 0 );
 		}
 	};
 
@@ -240,15 +240,15 @@ IMHWPB.WP_MCE_Draggable = function() {
 		if ( ! self.draggable_instance.ie_version ) {
 
 			// Blur the editor, allows FF to focus on click and add caret back in.
-			tinymce.activeEditor.getBody().blur();
+			BOLDGRID.EDITOR.mce.getBody().blur();
 
 			//This action use to add an undo level, but it appears as if contenteditable, is doing that for us.
-			tinymce.activeEditor.getBody().setAttribute( 'contenteditable', true );
+			BOLDGRID.EDITOR.mce.getBody().setAttribute( 'contenteditable', true );
 
 			// Stops tinymce from scorlling to top.
 			var $temp = $( '<a>temp</a>' );
-			$( tinyMCE.activeEditor.getBody() ).append( $temp );
-			tinymce.activeEditor.selection.setCursorLocation( $temp[0], 0 );
+			$( BOLDGRID.EDITOR.mce.getBody() ).append( $temp );
+			BOLDGRID.EDITOR.mce.selection.setCursorLocation( $temp[0], 0 );
 			$temp.focus();
 			$temp.remove();
 		}
@@ -262,14 +262,14 @@ IMHWPB.WP_MCE_Draggable = function() {
 	this.add_column_done = function( event, $added_element ) {
 		self.add_tiny_mce_history();
 		self.initialize_gallery_objects( self.draggable_instance.$master_container );
-		tinymce.activeEditor.selection.setCursorLocation( $added_element, 0 );
+		BOLDGRID.EDITOR.mce.selection.setCursorLocation( $added_element, 0 );
 	};
 
 	/**
 	 * Add undo level to tinymce
 	 */
 	this.add_tiny_mce_history = function() {
-		tinymce.activeEditor.execCommand( 'mceAddUndoLevel' );
+		BOLDGRID.EDITOR.mce.execCommand( 'mceAddUndoLevel' );
 	};
 
 	/**
@@ -289,8 +289,8 @@ IMHWPB.WP_MCE_Draggable = function() {
 		self.remove_mce_resize_handles();
 
 		if ( ! self.draggable_instance.ie_version ) {
-			tinyMCE.activeEditor.selection.select( tinyMCE.activeEditor.getBody(), true );
-			tinyMCE.activeEditor.selection.collapse( false );
+			BOLDGRID.EDITOR.mce.selection.select( BOLDGRID.EDITOR.mce.getBody(), true );
+			BOLDGRID.EDITOR.mce.selection.collapse( false );
 		}
 	};
 
@@ -306,7 +306,7 @@ IMHWPB.WP_MCE_Draggable = function() {
 
 	this.addDeactivateClasses = function() {
 		$( 'html' ).addClass( 'draggable-inactive' );
-		$( tinymce.activeEditor.iframeElement )
+		$( BOLDGRID.EDITOR.mce.iframeElement )
 			.contents()
 			.find( 'html' )
 			.addClass( 'draggable-inactive' );
@@ -475,7 +475,7 @@ IMHWPB.WP_MCE_Draggable = function() {
 	this.edit_row = function( event, nested_row ) {
 		var $p = $( nested_row ).find( 'p, a' );
 		if ( $p.length ) {
-			tinymce.activeEditor.selection.setCursorLocation( $p[0], 0 );
+			BOLDGRID.EDITOR.mce.selection.setCursorLocation( $p[0], 0 );
 		}
 	};
 

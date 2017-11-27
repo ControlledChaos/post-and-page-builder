@@ -44,7 +44,7 @@ BOLDGRID.EDITOR.CONTROLS.MEDIA = BOLDGRID.EDITOR.CONTROLS.MEDIA || {};
 			var $target = BG.Menu.getTarget( this );
 
 			if ( BG.Controls.$container.find( $target ).length ) {
-				tinymce.activeEditor.selection.select( $target[0] );
+				BOLDGRID.EDITOR.mce.selection.select( $target[0] );
 			}
 		},
 

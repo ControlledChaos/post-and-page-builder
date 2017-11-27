@@ -210,12 +210,12 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 				var $historyControls = $( '.history-controls' );
 
 				$historyControls.find( '.redo-link' ).on( 'click', function() {
-					tinymce.activeEditor.undoManager.redo();
+					BOLDGRID.EDITOR.mce.undoManager.redo();
 					$( window ).trigger( 'resize' );
 					self.updateHistoryStates();
 				} );
 				$historyControls.find( '.undo-link' ).on( 'click', function() {
-					tinymce.activeEditor.undoManager.undo();
+					BOLDGRID.EDITOR.mce.undoManager.undo();
 					$( window ).trigger( 'resize' );
 					self.updateHistoryStates();
 				} );
@@ -229,13 +229,13 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			updateHistoryStates: function() {
 				var $historyControls = $( '.history-controls' );
 
-				if ( tinymce.activeEditor.undoManager ) {
+				if ( BOLDGRID.EDITOR.mce.undoManager ) {
 					$historyControls
 						.find( '.redo-link' )
-						.attr( 'disabled', ! tinymce.activeEditor.undoManager.hasRedo() );
+						.attr( 'disabled', ! BOLDGRID.EDITOR.mce.undoManager.hasRedo() );
 					$historyControls
 						.find( '.undo-link' )
-						.attr( 'disabled', ! tinymce.activeEditor.undoManager.hasUndo() );
+						.attr( 'disabled', ! BOLDGRID.EDITOR.mce.undoManager.hasUndo() );
 				}
 			},
 

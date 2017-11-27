@@ -102,7 +102,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		 * @since 1.2.7
 		 */
 		collapseSelection: function() {
-			tinymce.activeEditor.execCommand( 'wp_link_cancel' );
+			BOLDGRID.EDITOR.mce.execCommand( 'wp_link_cancel' );
 		},
 
 		/**
@@ -154,7 +154,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		 */
 		highlightElement: function() {
 			var $el = BG.Menu.getTarget( self );
-			tinymce.activeEditor.selection.select( $el[0] );
+			BOLDGRID.EDITOR.mce.selection.select( $el[0] );
 		},
 
 		/**

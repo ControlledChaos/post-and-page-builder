@@ -113,7 +113,7 @@ BOLDGRID.EDITOR.DRAG = BOLDGRID.EDITOR.DRAG || {};
 				self.currentDrag.$element.removeClass( 'section-drag-element' );
 				self.currentDrag = false;
 				self.$container.$html.removeClass( 'no-select-imhwpb section-dragging-active' );
-				tinymce.activeEditor.undoManager.add();
+				BOLDGRID.EDITOR.mce.undoManager.add();
 				BG.CONTROLS.Section.updateHtmlSize();
 			}
 		},

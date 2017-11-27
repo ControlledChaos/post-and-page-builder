@@ -195,7 +195,7 @@ import { Palette } from './color/palette';
 		openPicker: function( $input ) {
 			self.$colorPanel.show();
 			self.$currentInput = $input;
-			tinymce.activeEditor.undoManager.add();
+			BOLDGRID.EDITOR.mce.undoManager.add();
 		},
 
 		/**
@@ -205,7 +205,7 @@ import { Palette } from './color/palette';
 		 */
 		closePicker: function() {
 			if ( self.$colorPanel.is( ':visible' ) ) {
-				tinymce.activeEditor.undoManager.add();
+				BOLDGRID.EDITOR.mce.undoManager.add();
 				self.$colorPanel.hide();
 				self.$currentInput = null;
 				self.saveCustomColors();

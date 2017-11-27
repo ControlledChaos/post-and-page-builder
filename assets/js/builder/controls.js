@@ -107,7 +107,7 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 		 */
 		addStyle: function( element, property, value ) {
 			element.css( property, value );
-			tinymce.activeEditor.dom.setStyle( element, property, value );
+			BOLDGRID.EDITOR.mce.dom.setStyle( element, property, value );
 		},
 
 		/**

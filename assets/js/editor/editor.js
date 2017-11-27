@@ -1,4 +1,6 @@
 var IMHWPB = IMHWPB || {};
+window.BOLDGRID = window.BOLDGRID || {};
+BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 
 /**
  * IMHWPB.Editor
@@ -267,6 +269,8 @@ IMHWPB.Editor = function( $ ) {
 			if ( 'content' !== editor.id ) {
 				return;
 			}
+
+			BOLDGRID.EDITOR.mce = editor;
 
 			/**
 			 * When replacing an image with an image we will carry over the classes, width and
