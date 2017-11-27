@@ -148,43 +148,6 @@ class Boldgrid_Layout extends Boldgrid_Editor_Media_Tab {
 	}
 
 	/**
-	 * Filters out all nested rows from gridblocks
-	 *
-	 * @param array $row_content
-	 * @since 1.0.5
-	 * @return array $updated_row_content
-	 */
-	public static function remove_nested_rows( $row_content ) {
-		/**
-		 * Check if given row is nested
-		 */
-		$nested_row_check = function ( $row ) use($row_content ) {
-			$is_nested_row = false;
-			foreach ( $row_content as $existing_row ) {
-
-				if ( false !== strpos( $existing_row['html'], $row['html'] ) &&
-					 $existing_row['html'] != $row['html'] ) {
-					$is_nested_row = true;
-					break;
-				}
-			}
-
-			return $is_nested_row;
-		};
-
-		// Move all rows that are not nested into a new array
-		$updated_row_content = array ();
-		foreach ( $row_content as $row ) {
-
-			if ( false == $nested_row_check( $row ) ) {
-				$updated_row_content[] = $row;
-			}
-		}
-
-		return $updated_row_content;
-	}
-
-	/**
 	 * Remove all duplicate gridblocks from array
 	 *
 	 * @param array $row_content
@@ -347,7 +310,6 @@ class Boldgrid_Layout extends Boldgrid_Editor_Media_Tab {
 		// Update GridBlock array
 		$row_content = self::sort_gridblocks( $row_content );
 		$row_content = self::remove_duplicate_gridblocks( $row_content );
-		$row_content = self::remove_nested_rows( $row_content );
 
 		return $row_content;
 	}
