@@ -84,7 +84,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 						key: BoldgridEditor.boldgrid_settings.api_key,
 						transparent_backgrounds: 'post' === BoldgridEditor.post_type ? 1 : 0,
 						type: type,
-						color: JSON.stringify( { colors: BG.CONTROLS.Color.getGridblockColors() } ),
+						color: JSON.stringify({ colors: BG.CONTROLS.Color.getGridblockColors() }),
 						category: self.getCategory()
 						/*eslint-enable */
 					} )
