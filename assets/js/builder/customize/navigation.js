@@ -40,33 +40,57 @@ export class Navigation {
 		};
 	}
 
+	/**
+	 * Setup.
+	 *
+	 * @since 1.6.0
+	 *
+	 * @return {Navigation} Class Instance.
+	 */
 	init() {
 		this._render();
 		this._setupClick();
-
 		this._bindEvents();
 
 		return this;
 	}
 
-	_bindEvents() {
-		BG.Panel.$element.on( 'open', () => this.onPanelOpen() );
-	}
-
+	/**
+	 * Show navigation.
+	 *
+	 * @since 1.6
+	 */
 	enable() {
 		this.$element.show();
 	}
 
+	/**
+	 * Hide navigation.
+	 *
+	 * @since 1.6
+	 */
 	disable() {
 		this.$element.hide();
 	}
 
+	/**
+	 * Process when panel opens.
+	 *
+	 * @since 1.6
+	 */
 	onPanelOpen() {
 		this._enableMenuOptions();
 		this.activateFirstControl();
 		this.disable();
 	}
 
+	/**
+	 * Activate control.
+	 *
+	 * @since 1.6
+	 *
+	 * @return {Jquery} Nav Item.
+	 */
 	activateFirstControl() {
 		return this.$element
 			.find( '.item.enabled' )
@@ -74,6 +98,31 @@ export class Navigation {
 			.click();
 	}
 
+	/**
+	 * Display a generic control by name.
+	 *
+	 * @since 1.6.0
+	 *
+	 * @param  {string} name Control name.
+	 */
+	displayControl( name ) {
+		BG.Panel.$element.find( '.customize [data-control-name="' + name + '"]' ).show();
+	}
+
+	/**
+	 * Bind events for customize navigation.
+	 *
+	 * @since 1.6.0
+	 */
+	_bindEvents() {
+		BG.Panel.$element.on( 'open', () => this.onPanelOpen() );
+	}
+
+	/**
+	 * Display eligble menu items.
+	 *
+	 * @since 1.6
+	 */
 	_enableMenuOptions() {
 		let $items = this.$element.find( '.item' ).removeClass( 'enabled' ),
 			$customize = BG.Panel.$element.find( '.customize' );
@@ -86,12 +135,22 @@ export class Navigation {
 		} );
 	}
 
+	/**
+	 * Render the navigation.
+	 *
+	 * @since 1.6.0
+	 */
 	_render() {
 		this.$element = $( this.template( this.data ) );
 		this.$element.hide();
 		BG.Panel.$element.find( '.panel-title' ).after( this.$element );
 	}
 
+	/**
+	 * When a user clicks on a nav item, display the coresponding control.
+	 *
+	 * @since 1.6.0
+	 */
 	_setupClick() {
 		this.$element.find( '.item' ).on( 'click', e => {
 			let $el = $( e.target ).closest( '.item' ),
@@ -108,10 +167,6 @@ export class Navigation {
 
 			this.displayControl( name );
 		} );
-	}
-
-	displayControl( name ) {
-		BG.Panel.$element.find( '.customize [data-control-name="' + name + '"]' ).show();
 	}
 }
 
