@@ -70,7 +70,7 @@ class Boldgrid_Editor_Version {
 		// Check that PHP is installed at our required version or deactivate and die:
 		$required_php_version = '5.3';
 		if ( version_compare( phpversion(), $required_php_version, '<' ) ) {
-			deactivate_plugins( BOLDGRID_EDITOR_PATH . '/boldgrid-editor.php' );
+			deactivate_plugins( BOLDGRID_EDITOR_PATH . '/post-and-page-builder.php' );
 			wp_die(
 				'<p><center><strong>Post and Page Builder</strong> requires PHP ' . $required_php_version .
 				' or greater.</center></p>', 'Plugin Activation Error',
@@ -85,7 +85,7 @@ class Boldgrid_Editor_Version {
 		global $wp_version;
 		$required_wp_version = '4.2';
 		if ( version_compare( $wp_version, $required_wp_version, '<' ) ) {
-			deactivate_plugins( BOLDGRID_EDITOR_PATH . '/boldgrid-editor.php' );
+			deactivate_plugins( BOLDGRID_EDITOR_PATH . '/post-and-page-builder.php' );
 			wp_die(
 				'<p><center><strong>Post and Page Builder</strong> requires WordPress ' .
 				$required_wp_version . ' or higher.</center></p>', 'Plugin Activation Error',
