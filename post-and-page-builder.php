@@ -39,17 +39,23 @@ if ( ! defined( 'BOLDGRID_EDITOR_CONFIGDIR' ) ) {
 /**
 * Initialize the editor plugin for Editors and Administrators in the admin section.
 */
-if ( ! function_exists( 'boldgrid_editor_init' ) ) {
+if ( ! function_exists( 'boldgrid_editor_setup' ) ) {
 
 	// Load the editor class.
 	require_once BOLDGRID_EDITOR_PATH . '/includes/class-boldgrid-editor.php';
 
 	register_activation_hook( __FILE__, array( 'Boldgrid_Editor_Activate', 'on_activate' ) );
-	register_deactivation_hook( __FILE__,  array( 'Boldgrid_Editor_Activate', 'on_deactivate' ) );
+	register_activation_hook( __FILE__, 'boldgrid_editor_deactivate' );
 
+	register_deactivation_hook( __FILE__,  array( 'Boldgrid_Editor_Activate', 'on_deactivate' ) );
 	register_uninstall_hook( __FILE__, array( 'Boldgrid_Editor_Uninstall', 'on_delete' ) );
 
-	function boldgrid_editor_init () {
+	add_action( 'activate_boldgrid-editor/boldgrid-editor.php', function () {
+		wp_die( 'BoldGrid Editor has been renamed to Post and Page Builder. You can delete the '.
+			'BoldGrid Editor plugin and continue using the Post and Page Builder plugin.' );
+	} );
+
+	function boldgrid_editor_setup () {
 		Boldgrid_Editor_Service::register(
 			'main',
 			new Boldgrid_Editor()
@@ -58,17 +64,22 @@ if ( ! function_exists( 'boldgrid_editor_init' ) ) {
 		Boldgrid_Editor_Service::get( 'main' )->run();
 	}
 
+	function boldgrid_editor_deactivate() {
+		deactivate_plugins( array( 'boldgrid-editor/boldgrid-editor.php' ), true );
+	}
+
 	// Plugin update checks.
 	$upgrade = new Boldgrid_Editor_Upgrade();
 	add_action( 'upgrader_process_complete', array( $upgrade, 'plugin_update_check' ), 10, 2 );
+
 
 	$theme = new Boldgrid_Editor_Theme();
 	add_filter( 'boldgrid_theme_framework_config', array( $theme, 'BGTFW_config_filters' ) );
 
 	// Load on an early hook so we can tie into framework configs.
 	if ( is_admin() ) {
-		add_action( 'init', 'boldgrid_editor_init' );
+		add_action( 'init', 'boldgrid_editor_setup' );
 	} else {
-		add_action( 'setup_theme', 'boldgrid_editor_init' );
+		add_action( 'setup_theme', 'boldgrid_editor_setup' );
 	}
 }
