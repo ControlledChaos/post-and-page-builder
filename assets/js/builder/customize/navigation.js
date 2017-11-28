@@ -24,8 +24,8 @@ export class Navigation {
 		this.data = {
 			controls: [
 				{ name: 'design', icon: designSvg, label: 'Element Design' },
-				{ name: 'margin', icon: marginSvg, label: 'Margin' },
 				{ name: 'padding', icon: paddingSvg, label: 'Padding' },
+				{ name: 'margin', icon: marginSvg, label: 'Margin' },
 				{ name: 'fontSize', icon: fontSizeSvg, label: 'Font Size' },
 				{ name: 'fontColor', icon: colorSvg, label: 'Color' },
 				{ name: 'background-color', icon: backgroundColorSvg, label: 'Background Color' },
