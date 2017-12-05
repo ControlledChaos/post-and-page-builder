@@ -46,7 +46,7 @@ Release Date: December 12th, 2017
 * Bug Fix: Fix compatibility issues with Advanced Custom Fields plugin.
 * Bug Fix: Disable margin control on columns.
 * Bug Fix: Fixed error when activating old plugin name.
-* Bug Fix: Box shadow switch unclickable.
+* Bug Fix: Advanced Control -> Box shadow switch unclickable.
 * Update:  SASS compiler updated.
 
 = 1.6 =
