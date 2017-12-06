@@ -50,7 +50,8 @@ if ( ! function_exists( 'boldgrid_editor_setup' ) ) {
 	register_deactivation_hook( __FILE__,  array( 'Boldgrid_Editor_Activate', 'on_deactivate' ) );
 	register_uninstall_hook( __FILE__, array( 'Boldgrid_Editor_Uninstall', 'on_delete' ) );
 
-	add_action( 'activate_boldgrid-editor/boldgrid-editor.php', 'boldgrid_editor_block_activate' );
+	add_action( 'activate_boldgrid-editor/boldgrid-editor.php',
+		array( 'Boldgrid_Editor_Activate', 'block_activate' ) );
 
 	function boldgrid_editor_setup () {
 		Boldgrid_Editor_Service::register(
@@ -59,17 +60,6 @@ if ( ! function_exists( 'boldgrid_editor_setup' ) ) {
 		);
 
 		Boldgrid_Editor_Service::get( 'main' )->run();
-	}
-
-	function boldgrid_editor_block_activate () {
-		wp_die(
-			'BoldGrid Editor has been renamed to Post and Page Builder. You can delete the '.
-			'BoldGrid Editor plugin and continue using the Post and Page Builder plugin.',
-			'Plugin Activation Failed',
-			array(
-				'back_link' => true,
-			)
-		);
 	}
 
 	function boldgrid_editor_deactivate() {

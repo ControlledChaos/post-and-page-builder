@@ -40,4 +40,20 @@ class Boldgrid_Editor_Activate {
 		flush_rewrite_rules();
 		Boldgrid_Editor_Preview::delete_post();
 	}
+
+	/**
+	 * Block the activation of boldgrid-editor.
+	 *
+	 * @since 1.6.1
+	 */
+	public static function block_activate() {
+		wp_die(
+			'BoldGrid Editor has been renamed to Post and Page Builder. You can delete the '.
+			'BoldGrid Editor plugin and continue using the Post and Page Builder plugin.',
+			'Plugin Activation Failed',
+			array(
+				'back_link' => true,
+			)
+		);
+	}
 }
