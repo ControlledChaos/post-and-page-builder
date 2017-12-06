@@ -13,6 +13,11 @@
 		}
 	}
 
+	&.customize-open,
+	&.customize-open .panel-body {
+		background-color: #fff;
+	}
+
 	.customize div[data-control-name] {
 		margin-left: 10px;
 		margin-right: 10px;
@@ -31,7 +36,7 @@
 
 		@include selected-preset();
 
-		&:after {
+		&::after {
 			top: 2px;
 			right: 0;
 		}
