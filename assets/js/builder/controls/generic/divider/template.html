@@ -1,0 +1,22 @@
+<div class="design">
+	<h4>Design</h4>
+	<select>
+		<option value="none">None</option>
+		<% _.each ( config.styles, function( style, name ) {  %>
+			<option value="<%=name%>"><%=name%></option>
+		<% } ); %>
+	</select>
+</div>
+<div class="position">
+	<h4>Position</h4>
+	<input type="radio" name="position" value="top"> Top<br>
+    <input type="radio" name="position" value="bottom"> Bottom<br>
+</div>
+<div class="direction">
+	<h4>Direction</h4>
+	<input type="radio" name="direction" value="downward"> Down<br>
+	<input type="radio" name="direction" value="upward"> Up<br>
+</div>
+<div class="height">
+	<h4>Height</h4>
+</div>

@@ -11,6 +11,7 @@ export class Advanced {
 			width: '375px',
 			customizeCallback: true,
 			customizeSupport: [
+				'divider',
 				'margin',
 				'padding',
 				'border',

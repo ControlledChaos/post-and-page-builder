@@ -3,19 +3,20 @@ var $ = window.jQuery,
 
 import template from '../../../../includes/template/customize/navigation.html';
 
-import marginSvg from 'svg-inline-loader?classPrefix!../../../../assets/image/icons/customize-nav/margin.svg';
-import paddingSvg from 'svg-inline-loader?classPrefix!../../../../assets/image/icons/customize-nav/padding.svg';
-import borderSvg from 'svg-inline-loader?classPrefix!../../../../assets/image/icons/customize-nav/border.svg';
-import boxShadow from 'svg-inline-loader?classPrefix!../../../../assets/image/icons/customize-nav/box-shadow.svg';
-import borderRadius from 'svg-inline-loader?classPrefix!../../../../assets/image/icons/customize-nav/border-radius.svg';
-import customClasses from 'svg-inline-loader?classPrefix!../../../../assets/image/icons/customize-nav/custom-class.svg';
-import widthSvg from 'svg-inline-loader?classPrefix!../../../../assets/image/icons/customize-nav/width.svg';
-import blockAlignment from 'svg-inline-loader?classPrefix!../../../../assets/image/icons/customize-nav/block-align.svg';
-import colorSvg from 'svg-inline-loader?classPrefix!../../../../assets/image/icons/customize-nav/color.svg';
-import backgroundColorSvg from 'svg-inline-loader?classPrefix!../../../../assets/image/icons/customize-nav/background-color.svg';
-import rotateSvg from 'svg-inline-loader?classPrefix!../../../../assets/image/icons/customize-nav/rotate.svg';
-import fontSizeSvg from 'svg-inline-loader?classPrefix!../../../../assets/image/icons/customize-nav/font-size.svg';
-import designSvg from 'svg-inline-loader?classPrefix!../../../../assets/image/icons/customize-nav/design.svg';
+import marginSvg from '../../../../assets/image/icons/customize-nav/margin.svg';
+import paddingSvg from '../../../../assets/image/icons/customize-nav/padding.svg';
+import borderSvg from '../../../../assets/image/icons/customize-nav/border.svg';
+import boxShadow from '../../../../assets/image/icons/customize-nav/box-shadow.svg';
+import borderRadius from '../../../../assets/image/icons/customize-nav/border-radius.svg';
+import customClasses from '../../../../assets/image/icons/customize-nav/custom-class.svg';
+import widthSvg from '../../../../assets/image/icons/customize-nav/width.svg';
+import blockAlignment from '../../../../assets/image/icons/customize-nav/block-align.svg';
+import colorSvg from '../../../../assets/image/icons/customize-nav/color.svg';
+import backgroundColorSvg from '../../../../assets/image/icons/customize-nav/background-color.svg';
+import rotateSvg from '../../../../assets/image/icons/customize-nav/rotate.svg';
+import fontSizeSvg from '../../../../assets/image/icons/customize-nav/font-size.svg';
+import designSvg from '../../../../assets/image/icons/customize-nav/design.svg';
+import dividerSvg from '../../../../assets/image/icons/customize-nav/divider.svg';
 
 export class Navigation {
 	constructor() {
@@ -24,6 +25,7 @@ export class Navigation {
 		this.data = {
 			controls: [
 				{ name: 'design', icon: designSvg, label: 'Element Design' },
+				{ name: 'divider', icon: dividerSvg, label: 'Divider' },
 				{ name: 'padding', icon: paddingSvg, label: 'Padding' },
 				{ name: 'margin', icon: marginSvg, label: 'Margin' },
 				{ name: 'fontSize', icon: fontSizeSvg, label: 'Font Size' },

@@ -47,6 +47,10 @@ var webpackConfig = {
 				]
 			},
 			{
+				test: /\.svg$/,
+				loader: 'svg-inline-loader',
+			},
+			{
 				test: /\.js$/,
 				loader: 'babel-loader'
 			},

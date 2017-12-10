@@ -90,7 +90,6 @@ class Boldgrid_Editor_Builder {
 
 
 		$builder_configs = json_decode( $fs->get_contents( BOLDGRID_EDITOR_PATH . '/assets/json/builder.json' ), true );
-		$builder_configs['component_library'] = json_decode( $fs->get_contents( BOLDGRID_EDITOR_PATH . '/assets/json/components.json' ), true );
 		$builder_configs['fonts'] = json_decode( $fs->get_contents( BOLDGRID_EDITOR_PATH . '/assets/json/webfonts.json' ), true );
 		$builder_configs['theme_fonts'] = $fonts->get_theme_fonts();
 		$builder_configs['theme_features'] = self::get_theme_features();

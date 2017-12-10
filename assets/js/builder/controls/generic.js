@@ -5,6 +5,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 import { Padding, Margin, BoxShadow, BorderRadius } from '@boldgrid/controls';
 import { BackgroundColor } from './generic/background-color';
 import { Border } from './generic/border';
+import { Control as Divider } from './generic/divider/control';
 
 ( function( $ ) {
 	'use strict';
@@ -22,11 +23,13 @@ import { Border } from './generic/border';
 			padding: Padding,
 			'box-shadow': BoxShadow,
 			'border-radius': BorderRadius,
+			divider: Divider,
 			border: Border,
 			'background-color': BackgroundColor
 		},
 
 		allControls: [
+			'divider',
 			'background-color',
 			'fontColor',
 			'margin',
