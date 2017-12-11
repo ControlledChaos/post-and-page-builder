@@ -132,6 +132,7 @@ Release Date: December 12th, 2017
 * Bug Fix: Disable margin control on columns.
 * Bug Fix: Fixed error when activating old plugin name.
 * Bug Fix: Advanced Control -> Box shadow switch unclickable.
+* Bug Fix: Fix JS error when adding Blocks on text tab.
 * Update: SASS compiler updated.
 
 = 1.6 =
