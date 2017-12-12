@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/BoldGrid/boldgrid-editor.svg?branch=master)](https://travis-ci.org/BoldGrid/boldgrid-editor)
+[![Build Status](https://travis-ci.org/BoldGrid/post-and-page-builder.svg?branch=master)](https://travis-ci.org/BoldGrid/post-and-page-builder)
 [![License](https://img.shields.io/badge/license-GPL--2.0%2B-orange.svg)](https://raw.githubusercontent.com/BoldGrid/boldgrid-editor/master/LICENSE)
 [![PHP Version](https://img.shields.io/badge/PHP-5.3%2B-blue.svg)](https://php.net)
 [![Code Climate](https://codeclimate.com/github/BoldGrid/boldgrid-editor/badges/gpa.svg)](https://codeclimate.com/github/BoldGrid/boldgrid-editor)
