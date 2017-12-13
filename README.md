@@ -10,7 +10,7 @@
 
 **Requires at least:** 4.4
 
-**Tested up to:** 4.9
+**Tested up to:** 4.9.1
 
 **License:** GPLv2 or later
 
