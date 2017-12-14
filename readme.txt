@@ -18,7 +18,7 @@ The Post and Page Builder is an intuitive drag and drop editor plugin and the ea
 
 Try out the [BoldGrid demo](https://www.boldgrid.com/demo/) to see for yourself!
 
-[youtube https://youtu.be/QoIb7OhV9ys]
+[youtube https://www.youtube.com/embed/QoIb7OhV9ys?rel=0]
 
 = Features =
 
@@ -99,7 +99,7 @@ The Post and Page Builder is open source software. Join in on our [GitHub reposi
 
 = From within WordPress =
 1. Visit 'Plugins > Add New'
-1. Search for 'Post and Page Builder'
+1. Search for 'Post & Page Builder by BoldGrid'
 1. Activate Post and Page Builder from your Plugins page.
 
 = Manually =
