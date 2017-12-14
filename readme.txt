@@ -99,7 +99,7 @@ The Post and Page Builder is open source software. Join in on our [GitHub reposi
 
 = From within WordPress =
 1. Visit 'Plugins > Add New'
-1. Search for 'Post & Page Builder by BoldGrid'
+1. Search for 'Post and Page Builder by BoldGrid'
 1. Activate Post and Page Builder from your Plugins page.
 
 = Manually =
