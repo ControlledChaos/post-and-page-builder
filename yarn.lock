@@ -382,9 +382,9 @@
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@material/typography/-/typography-0.3.0.tgz#f828c2d3215bfd66c58072709b4260c64125390a"
 
-"Buttons@git+https://github.com/alexwolfe/Buttons.git":
+"Buttons@https://github.com/alexwolfe/Buttons":
   version "2.0.0"
-  resolved "git+https://github.com/alexwolfe/Buttons.git#0a91b65bc9e3a8bbbefbe1af20047dabed0d742e"
+  resolved "https://github.com/alexwolfe/Buttons#0a91b65bc9e3a8bbbefbe1af20047dabed0d742e"
   dependencies:
     grunt "^0.4.5"
     grunt-saucelabs "^8.3.2"
