@@ -4,7 +4,7 @@ Tags: drag and drop, tinymce, editor
 Requires at least: 4.4
 Tested up to: 4.9.1
 Requires PHP: 5.3
-Stable tag: 1.6
+Stable tag: 1.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -123,9 +123,9 @@ WordPress Editor.
 
 For more information, see changelog.txt.
 
-= 1.6.1 In Progress =
+= 1.6.1 =
 
-Release Date: December 12th, 2017
+Release Date: December 19th, 2017
 
 * Bug Fix: Remove old plugin name (boldgrid-editor) from BG themes recommendations.
 * Bug Fix: Fix compatibility issues with Advanced Custom Fields plugin.
