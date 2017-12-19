@@ -12,7 +12,7 @@
 		"build-webpack": "NODE_ENV=production webpack --colors",
 		"format-js": "prettier-eslint \"assets/js/builder/**/*.js\" --write",
 		"format-sass": "stylelint \"assets/scss/**/*.scss\" --fix --syntax scss",
-		"build": "npm run build-webpack & gulp build & gulp merge-webpack & npm test",
+		"build": "npm run build-webpack && gulp build && gulp merge-webpack && npm test",
 		"test": "cross-env NODE_ENV=test karma start karma.config.js --single-run"
 	},
 	"lint-staged": {
