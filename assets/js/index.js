@@ -7,7 +7,7 @@ BOLDGRID.EDITOR.$window = $( window );
 import 'istyping';
 import 'fourpan';
 import 'textselect';
-import 'jquery-slimScroll';
+import 'jquery-slimscroll';
 import 'wp-color-picker-alpha/src/wp-color-picker-alpha.js';
 
 import 'jquery-ui-dist/jquery-ui.structure.css';
