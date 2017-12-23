@@ -2,6 +2,10 @@
 	height: 30px;
 }
 
+.select2-container {
+	z-index: 999999;
+}
+
 .editor-panel .font-family-select .ui-selectmenu-button {
 	padding: 6px 11px 8px;
 	position: absolute;

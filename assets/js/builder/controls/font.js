@@ -50,6 +50,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 				'box-shadow',
 				'border',
 				'border-radius',
+				'animation',
 				'background-color',
 				'blockAlignment',
 				'customClasses'

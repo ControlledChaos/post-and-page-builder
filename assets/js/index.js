@@ -1,4 +1,5 @@
-let $ = jQuery;
+// let $ = jQuery;
+import $ from 'jquery';
 
 window.BOLDGRID = window.BOLDGRID || {};
 BOLDGRID.EDITOR.$window = $( window );

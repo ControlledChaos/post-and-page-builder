@@ -10,10 +10,12 @@ const srcDir = path.resolve( __dirname, '../..' );
 var webpackConfig = {
 	context: srcDir,
 
-	entry: [ './assets/js/index.js' ],
-
+	entry: {
+		public: './assets/js/public.js',
+		editor: './assets/js/index.js'
+	},
 	output: {
-		filename: './bundle.js',
+		filename: './[name].js',
 		path: distDir,
 		publicPath: '/'
 	},

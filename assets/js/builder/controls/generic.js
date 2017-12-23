@@ -2,7 +2,7 @@ window.BOLDGRID = window.BOLDGRID || {};
 BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 
-import { Padding, Margin, BoxShadow, BorderRadius } from '@boldgrid/controls';
+import { Padding, Margin, BoxShadow, BorderRadius, Animation } from '@boldgrid/controls';
 import { BackgroundColor } from './generic/background-color';
 import { Border } from './generic/border';
 
@@ -23,6 +23,7 @@ import { Border } from './generic/border';
 			'box-shadow': BoxShadow,
 			'border-radius': BorderRadius,
 			border: Border,
+			animation: Animation,
 			'background-color': BackgroundColor
 		},
 
@@ -30,6 +31,7 @@ import { Border } from './generic/border';
 			'background-color',
 			'fontColor',
 			'margin',
+			'animation',
 			'padding',
 			'border',
 			'box-shadow',
