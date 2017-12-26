@@ -18,7 +18,7 @@ The Post and Page Builder is an intuitive drag and drop editor plugin and the ea
 
 Try out the [BoldGrid demo](https://www.boldgrid.com/demo/) to see for yourself!
 
-[youtube https://www.youtube.com/embed/QoIb7OhV9ys?rel=0]
+[youtube https://youtu.be/QoIb7OhV9ys?rel=0]
 
 = Features =
 
@@ -122,6 +122,12 @@ WordPress Editor.
 == Changelog ==
 
 For more information, see changelog.txt.
+
+= 1.6.2 =
+
+Release Date: December 26th, 2017
+
+* Bug Fix: Edit links displayed when not logged in.
 
 = 1.6.1 =
 
