@@ -13,7 +13,7 @@ Official Download Link:
 
 **Contributors:** boldgrid, rramo012, imh_brad, timph, joemoto
 
-**Tags:** drag and drop, tinymce, editor
+**Tags:** page builder, drag and drop, tinymce, editor, landing page
 
 **Requires at least:** 4.4
 
