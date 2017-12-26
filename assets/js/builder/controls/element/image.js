@@ -39,6 +39,7 @@ BOLDGRID.EDITOR.CONTROLS.IMAGE = BOLDGRID.EDITOR.CONTROLS.IMAGE || {};
 				'border-radius',
 				'padding',
 				'border',
+				'animation',
 				'box-shadow',
 				'customClasses'
 			]

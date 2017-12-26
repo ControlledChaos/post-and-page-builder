@@ -6,7 +6,7 @@ import LoadingGraphic from './tinymce/loading';
 import { Palette } from './controls/color/palette';
 import { Intro } from './notice/intro';
 import { Save as LibrarySave } from './library/save';
-import { Advanced } from './controls/advanced';
+import { Advanced } from './controls/element/advanced';
 import { Lead as GridblockLead } from './gridblock/lead';
 import ContentPopover from './popover/content';
 import ColumnPopover from './popover/column';

@@ -91,9 +91,9 @@
     url-loader "^0.6.2"
     webpack "^3.8.1"
 
-"@boldgrid/controls@^0.10.0":
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/@boldgrid/controls/-/controls-0.10.0.tgz#f14ffd53c1c85e72856f43c616748abc3263b356"
+"@boldgrid/controls@^0.10.2":
+  version "0.10.2"
+  resolved "https://registry.yarnpkg.com/@boldgrid/controls/-/controls-0.10.2.tgz#38e6f14c0a6fb909c09eef9badcabef2de784d0a"
   dependencies:
     "@boldgrid/components" "^2.9.1"
     "@material/switch" "^0.27.0"
@@ -389,9 +389,9 @@
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@material/typography/-/typography-0.3.0.tgz#f828c2d3215bfd66c58072709b4260c64125390a"
 
-"Buttons@https://github.com/alexwolfe/Buttons":
+"Buttons@git+https://github.com/alexwolfe/Buttons.git":
   version "2.0.0"
-  resolved "https://github.com/alexwolfe/Buttons#0a91b65bc9e3a8bbbefbe1af20047dabed0d742e"
+  resolved "git+https://github.com/alexwolfe/Buttons.git#0a91b65bc9e3a8bbbefbe1af20047dabed0d742e"
   dependencies:
     grunt "^0.4.5"
     grunt-saucelabs "^8.3.2"
