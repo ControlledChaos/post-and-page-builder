@@ -153,6 +153,7 @@
         "[data-tooltip-id='box-padding']": "Padding is used to create space around your content, inside your text background.",
         "[data-tooltip-id='custom-classes']": "These class names must be defined in your theme or through the Customizer.",
         "[data-tooltip-id='box-margin']": "Margin is used to create space around your background, outside your text background.",
+        "[data-tooltip-id='css-id']": "An ID is unique per element. You can use an ID to add styles to an element or to add a link directly to the element.",
         "[data-tooltip-id='spacing']": "Letter Spacing will change the distance between characters. Line Spacing changes the distances between lines.",
         "[data-tooltip-id='vertical-position']": "Vertical Position will move your background images up and down. Note: If your image already spans the full height of a section, no changes will occur."
     }

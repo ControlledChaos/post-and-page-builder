@@ -1,6 +1,6 @@
 === Post and Page Builder by BoldGrid - Visual Drag and Drop Editor ===
 Contributors: boldgrid, rramo012, imh_brad, joemoto, timph
-Tags: page builder, drag and drop, tinymce, editor, landing page
+Tags: boldgrid, page builder, drag and drop, tinymce, editor, landing page
 Requires at least: 4.4
 Tested up to: 4.9.1
 Requires PHP: 5.3
@@ -122,6 +122,13 @@ WordPress Editor.
 == Changelog ==
 
 For more information, see changelog.txt.
+
+= 1.7 =
+
+Release Date: TBD
+
+* New Feature: Most elements now support animation controls.
+* New Feature: CSS ID's can now be specified via customization controls.
 
 = 1.6.2 =
 

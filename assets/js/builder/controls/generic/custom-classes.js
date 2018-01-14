@@ -35,6 +35,45 @@ BOLDGRID.EDITOR.CONTROLS.GENERIC = BOLDGRID.EDITOR.CONTROLS.GENERIC || {};
 		 * @since 1.5.1
 		 */
 		bind: function() {
+			this.bindClasses();
+			this.bindId();
+		},
+
+		/**
+		 * Bind the event of entering Id's
+		 *
+		 * @since 1.7
+		 */
+		bindId() {
+			var panel = BG.Panel,
+				$target = BG.Menu.getCurrentTarget(),
+				currentId = $target.attr( 'id' );
+
+			panel.$element
+				.find( '[name="css-id"]' )
+				.on( 'input', function() {
+					var $this = $( this ),
+						value = $this.val();
+
+					// Strip out invalid input.
+					value = value.replace( /[^A-Za-z0-9\-\_]/g, '' );
+
+					$target.attr( 'id', value );
+					$this.val( value );
+
+					if ( ! value ) {
+						$target.removeAttr( 'id' );
+					}
+				} )
+				.val( currentId );
+		},
+
+		/**
+		 * Bind thew event of enetering classes.
+		 *
+		 * @since 1.5
+		 */
+		bindClasses() {
 			var panel = BG.Panel,
 				$target = BG.Menu.getCurrentTarget(),
 				currentClasses = $target.attr( 'custom-classes' );

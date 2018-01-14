@@ -38,6 +38,11 @@
 		<p>List any additional classes to seperated by spaces or commas.</p>
 		<textarea name="custom-classes" rows="3">Write something here</textarea>
 	</div>
+	<div class='section css-id' data-tooltip-id='css-id'>
+		<h4>CSS ID</h4>
+		<p>Enter an ID for this element.</p>
+		<input name="css-id" type="text">
+	</div>
 </script>
 <script type="text/html" id="tmpl-boldgrid-editor-horizontal-block-alignment">
 	<div class='horizontal-block-alignment section' data-tooltip-id='horizontal-block-alignment'>
