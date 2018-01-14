@@ -39,7 +39,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 
 		panel: {
 			title: 'Text Setting',
-			height: '550px',
+			height: '575px',
 			width: '325px',
 			includeFooter: true,
 			customizeLeaveCallback: true,
@@ -50,6 +50,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 				'box-shadow',
 				'border',
 				'border-radius',
+				'animation',
 				'background-color',
 				'blockAlignment',
 				'customClasses'

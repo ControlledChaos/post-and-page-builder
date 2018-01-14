@@ -2208,6 +2208,9 @@ body.boldgrid-editor-fullscreen {
 .section .selectize-dropdown-content {
   height: 30px; }
 
+.select2-container {
+  z-index: 999999; }
+
 .editor-panel .font-family-select .ui-selectmenu-button {
   padding: 6px 11px 8px;
   position: absolute;
@@ -2339,7 +2342,7 @@ body.boldgrid-editor-fullscreen {
   color: white;
   text-align: center;
   font-size: 32px;
-  z-index: 1;
+  z-index: 99999;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2363,10 +2366,10 @@ body.boldgrid-editor-fullscreen {
   position: relative;
   left: -4px;
   top: -2px;
-  -webkit-transition: -webkit-box-shadow .5s;
-  transition: -webkit-box-shadow .5s;
-  transition: box-shadow .5s;
-  transition: box-shadow .5s, -webkit-box-shadow .5s; }
+  -webkit-transition: -webkit-box-shadow 0.5s;
+  transition: -webkit-box-shadow 0.5s;
+  transition: box-shadow 0.5s;
+  transition: box-shadow 0.5s, -webkit-box-shadow 0.5s; }
 
 .boldgrid-zoomout-section {
   display: none; }
@@ -2384,8 +2387,8 @@ html:not(.dragging-section) .delete-icon-wrap {
   cursor: pointer;
   -webkit-box-shadow: 0 2px 5px 0 #313131;
   box-shadow: 0 2px 5px 0 #313131;
-  -webkit-transition: color .5s;
-  transition: color .5s;
+  -webkit-transition: color 0.5s;
+  transition: color 0.5s;
   position: fixed;
   display: none; }
 
@@ -2432,7 +2435,7 @@ html:not(.dragging-section) .delete-icon-wrap {
 
 .zoom-navbar .loading-remote .bg-editor-loading:after {
   background-color: #232121;
-  top: calc( 50% - 15px); }
+  top: calc(50% - 15px); }
 
 .loading-remote-body .loading-remote {
   display: block; }
@@ -2481,7 +2484,7 @@ html:not(.dragging-section) .delete-icon-wrap {
   padding: 36px 20px 47px;
   text-align: center;
   top: 79px !important;
-  left: calc( 50% - 61px);
+  left: calc(50% - 61px);
   background: rgba(0, 0, 0, 0.8);
   border: 0; }
 
@@ -2591,8 +2594,8 @@ html:not(.dragging-section) .delete-icon-wrap {
   -webkit-box-shadow: -7px 0 0 0 #0073aa;
   box-shadow: -7px 0 0 0 #0073aa;
   cursor: pointer;
-  -webkit-transition: background-color .5s, color .5s;
-  transition: background-color .5s, color .5s;
+  -webkit-transition: background-color 0.5s, color 0.5s;
+  transition: background-color 0.5s, color 0.5s;
   text-decoration: none; }
 
 .boldgrid-zoomout .bg-close-zoom-view:hover {
@@ -2639,7 +2642,7 @@ html:not(.dragging-section) .delete-icon-wrap {
 .boldgrid-zoomout #wpbody,
 .boldgrid-zoomout #wpwrap,
 .boldgrid-zoomout #wrap {
-  height: calc( 100% - 79px);
+  height: calc(100% - 79px);
   min-width: 0;
   padding: 0;
   min-height: 0; }
@@ -2761,8 +2764,8 @@ html:not(.dragging-section) .delete-icon-wrap {
   right: 0;
   z-index: 1;
   opacity: 0;
-  -webkit-transition: opacity .5s, visibility .5s;
-  transition: opacity .5s, visibility .5s;
+  -webkit-transition: opacity 0.5s, visibility 0.5s;
+  transition: opacity 0.5s, visibility 0.5s;
   visibility: hidden; }
 
 .zoom-gridblocks-section .gridblocks.gridblock-loading:before {
@@ -2782,16 +2785,16 @@ html:not(.dragging-section) .delete-icon-wrap {
   border-top: 6px solid #0073aa;
   font-weight: lighter; }
 
-.zoom-gridblocks-section .gridblocks:not([filter="saved"]) .my-gridblocks-404,
-.zoom-gridblocks-section .gridblocks:not([filter="saved"]) .gridblock[data-type="saved"] {
+.zoom-gridblocks-section .gridblocks:not([filter='saved']) .my-gridblocks-404,
+.zoom-gridblocks-section .gridblocks:not([filter='saved']) .gridblock[data-type='saved'] {
   display: none !important; }
 
-.zoom-gridblocks-section .gridblocks[filter="saved"][my-gridblocks-count="0"] .my-gridblocks-404.saved,
-.zoom-gridblocks-section .gridblocks[filter="library"][library-gridblocks-count="0"] .my-gridblocks-404.library {
+.zoom-gridblocks-section .gridblocks[filter='saved'][my-gridblocks-count='0'] .my-gridblocks-404.saved,
+.zoom-gridblocks-section .gridblocks[filter='library'][library-gridblocks-count='0'] .my-gridblocks-404.library {
   display: block !important; }
 
-.zoom-gridblocks-section .gridblocks[filter="library"] .action-items .save,
-.zoom-gridblocks-section .gridblocks[filter="saved"] .action-items .save {
+.zoom-gridblocks-section .gridblocks[filter='library'] .action-items .save,
+.zoom-gridblocks-section .gridblocks[filter='saved'] .action-items .save {
   display: none; }
 
 .zoom-gridblocks-section .gridblock {
@@ -2801,8 +2804,8 @@ html:not(.dragging-section) .delete-icon-wrap {
   margin: 50px 0 0;
   border: 3px solid #ccc;
   border-radius: 1px;
-  -webkit-transition: border-color .5s;
-  transition: border-color .5s;
+  -webkit-transition: border-color 0.5s;
+  transition: border-color 0.5s;
   left: 7px;
   cursor: move;
   width: 586px;
@@ -2834,8 +2837,8 @@ html:not(.dragging-section) .delete-icon-wrap {
   transform: translateY(-50%) translateX(-100%);
   background-color: #ccc;
   border-radius: 4px 0 0 4px;
-  -webkit-transition: background-color .5s;
-  transition: background-color .5s;
+  -webkit-transition: background-color 0.5s;
+  transition: background-color 0.5s;
   cursor: move; }
 
 .zoom-gridblocks-section .gridblock .fa-arrows {
@@ -2856,8 +2859,8 @@ html:not(.dragging-section) .delete-icon-wrap {
   top: 0;
   bottom: 0;
   background: rgba(255, 255, 255, 0);
-  -webkit-transition: background-color .5s;
-  transition: background-color .5s; }
+  -webkit-transition: background-color 0.5s;
+  transition: background-color 0.5s; }
 
 .zoom-gridblocks-section .gridblock:hover {
   border-color: #32373c; }
@@ -2892,18 +2895,18 @@ html:not(.dragging-section) .delete-icon-wrap {
   display: block;
   left: 50%;
   top: 50%;
-  -webkit-transition: background-color .2s, opacity .5s;
-  transition: background-color .2s, opacity .5s;
+  -webkit-transition: background-color 0.2s, opacity 0.5s;
+  transition: background-color 0.2s, opacity 0.5s;
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%); }
 
-.zoom-gridblocks-section .gridblock[data-is-premium="1"][data-requires-premium="1"] {
+.zoom-gridblocks-section .gridblock[data-is-premium='1'][data-requires-premium='1'] {
   cursor: default; }
 
-.zoom-gridblocks-section .gridblock[data-is-premium="1"][data-requires-premium="1"] .add-gridblock:before {
+.zoom-gridblocks-section .gridblock[data-is-premium='1'][data-requires-premium='1'] .add-gridblock:before {
   content: 'Upgrade To Premium'; }
 
-.zoom-gridblocks-section .gridblock[data-is-premium="1"][data-requires-premium="1"] .save {
+.zoom-gridblocks-section .gridblock[data-is-premium='1'][data-requires-premium='1'] .save {
   display: none !important; }
 
 .zoom-gridblocks-section .gridblock .premium-label {
@@ -2919,15 +2922,15 @@ html:not(.dragging-section) .delete-icon-wrap {
   color: white;
   font-weight: lighter;
   position: absolute;
-  -webkit-transition: opacity .5s;
-  transition: opacity .5s; }
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s; }
 
 .zoom-gridblocks-section .gridblock .premium-label .boldgrid-seal {
   position: absolute;
   left: -20px;
   top: 13px; }
 
-.zoom-gridblocks-section .gridblock[data-is-premium="1"]:hover .premium-label {
+.zoom-gridblocks-section .gridblock[data-is-premium='1']:hover .premium-label {
   opacity: 1; }
 
 .zoom-gridblocks-section .gridblock .add-gridblock:hover:before {
@@ -2953,8 +2956,8 @@ html:not(.dragging-section) .delete-icon-wrap {
   padding: 17px;
   z-index: 1;
   font-size: 28px;
-  -webkit-transition: opacity .5s;
-  transition: opacity .5s; }
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s; }
 
 .zoom-gridblocks-section .gridblock .action-items .fa {
   padding: 10px;
@@ -2969,8 +2972,8 @@ html:not(.dragging-section) .delete-icon-wrap {
   -webkit-box-shadow: 0 2px 5px 0 #313131;
   box-shadow: 0 2px 5px 0 #313131;
   cursor: pointer;
-  -webkit-transition: background-color .5s;
-  transition: background-color .5s; }
+  -webkit-transition: background-color 0.5s;
+  transition: background-color 0.5s; }
 
 .zoom-gridblocks-section .gridblock .action-items .fa:before {
   vertical-align: sub; }

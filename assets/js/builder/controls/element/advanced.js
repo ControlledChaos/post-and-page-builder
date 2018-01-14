@@ -17,6 +17,7 @@ export class Advanced {
 				'width',
 				'box-shadow',
 				'border-radius',
+				'animation',
 				'background-color',
 				'blockAlignment',
 				'customClasses'

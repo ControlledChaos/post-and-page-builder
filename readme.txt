@@ -1,10 +1,10 @@
 === Post and Page Builder by BoldGrid - Visual Drag and Drop Editor ===
 Contributors: boldgrid, rramo012, imh_brad, joemoto, timph
-Tags: drag and drop, tinymce, editor
+Tags: page builder, drag and drop, tinymce, editor, landing page
 Requires at least: 4.4
 Tested up to: 4.9.1
 Requires PHP: 5.3
-Stable tag: 1.6
+Stable tag: 1.6.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +18,7 @@ The Post and Page Builder is an intuitive drag and drop editor plugin and the ea
 
 Try out the [BoldGrid demo](https://www.boldgrid.com/demo/) to see for yourself!
 
-[youtube https://youtu.be/QoIb7OhV9ys]
+[youtube https://youtu.be/QoIb7OhV9ys?rel=0]
 
 = Features =
 
@@ -99,7 +99,7 @@ The Post and Page Builder is open source software. Join in on our [GitHub reposi
 
 = From within WordPress =
 1. Visit 'Plugins > Add New'
-1. Search for 'Post and Page Builder'
+1. Search for 'Post and Page Builder by BoldGrid'
 1. Activate Post and Page Builder from your Plugins page.
 
 = Manually =
@@ -123,9 +123,15 @@ WordPress Editor.
 
 For more information, see changelog.txt.
 
-= 1.6.1 In Progress =
+= 1.6.2 =
 
-Release Date: December 12th, 2017
+Release Date: December 26th, 2017
+
+* Bug Fix: Edit links displayed when not logged in.
+
+= 1.6.1 =
+
+Release Date: December 19th, 2017
 
 * Bug Fix: Remove old plugin name (boldgrid-editor) from BG themes recommendations.
 * Bug Fix: Fix compatibility issues with Advanced Custom Fields plugin.

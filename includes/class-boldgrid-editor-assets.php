@@ -131,9 +131,18 @@ class Boldgrid_Editor_Assets {
 			plugins_url( '/assets/js/jquery-stellar/jquery.stellar.js', BOLDGRID_EDITOR_ENTRY ),
 		array( 'jquery' ),BOLDGRID_EDITOR_VERSION, true );
 
+		$script_url = plugins_url( '/assets/js/public.min.js', BOLDGRID_EDITOR_ENTRY );
+		if ( defined( 'BGEDITOR_SCRIPT_DEBUG' ) && BGEDITOR_SCRIPT_DEBUG ) {
+			$script_url = $this->configs['development_server'] . '/public.js';
+		}
+
 		wp_enqueue_script(
-			'boldgrid-editor-public', plugins_url( self::get_minified_js( '/assets/js/editor/public' ), BOLDGRID_EDITOR_ENTRY ),
+			'boldgrid-editor-public', $script_url,
 		array( 'jquery' ), BOLDGRID_EDITOR_VERSION, true );
+
+		wp_enqueue_style( 'animate-css',
+			plugins_url( '/assets/css/animate.min.css', BOLDGRID_EDITOR_ENTRY ),
+			array(), BOLDGRID_EDITOR_VERSION );
 
 		// Enqueue Styles that which depend on version.
 		$this->enqueue_latest();
@@ -339,7 +348,7 @@ class Boldgrid_Editor_Assets {
 
 		$script_url = plugins_url( '/assets/js/editor.min.js', $plugin_file );
 		if ( defined( 'BGEDITOR_SCRIPT_DEBUG' ) && BGEDITOR_SCRIPT_DEBUG ) {
-			$script_url = $this->configs['development_server'] . '/bundle.js';
+			$script_url = $this->configs['development_server'] . '/editor.js';
 		}
 
 		wp_register_script( 'boldgrid-editor-drag',
