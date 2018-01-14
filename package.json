@@ -64,7 +64,7 @@
 		"prettier-eslint": "^8.2.2",
 		"prettier-eslint-cli": "^4.4.0",
 		"pump": "^1.0.1",
-		"run-sequence": "^1.2.2",
+		"run-sequence": "^2.2.1",
 		"style-loader": "^0.18.2",
 		"stylelint": "^8.2.0"
 	},
