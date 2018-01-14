@@ -17,6 +17,7 @@ import rotateSvg from 'svg-inline-loader?classPrefix!../../../../assets/image/ic
 import fontSizeSvg from 'svg-inline-loader?classPrefix!../../../../assets/image/icons/customize-nav/font-size.svg';
 import designSvg from 'svg-inline-loader?classPrefix!../../../../assets/image/icons/customize-nav/design.svg';
 import animationSvg from 'svg-inline-loader?classPrefix!../../../../assets/image/icons/customize-nav/animation.svg';
+import devicesSvg from 'svg-inline-loader?classPrefix!../../../../assets/image/icons/customize-nav/devices.svg';
 
 export class Navigation {
 	constructor() {
@@ -37,6 +38,7 @@ export class Navigation {
 				{ name: 'animation', icon: animationSvg, label: 'Animation' },
 				{ name: 'width', icon: widthSvg, label: 'Width' },
 				{ name: 'blockAlignment', icon: blockAlignment, label: 'Block Alignment' },
+				{ name: 'device-visibility', icon: devicesSvg, label: 'Responsive Utilities' },
 				{ name: 'customClasses', icon: customClasses, label: 'Custom CSS Classes' }
 			]
 		};

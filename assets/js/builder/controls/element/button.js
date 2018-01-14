@@ -99,7 +99,15 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 			includeFooter: true,
 			customizeLeaveCallback: true,
 			customizeCallback: true,
-			customizeSupport: [ 'margin', 'padding', 'border', 'box-shadow', 'animation', 'customClasses' ]
+			customizeSupport: [
+				'margin',
+				'padding',
+				'border',
+				'box-shadow',
+				'animation',
+				'customClasses',
+				'device-visibility'
+			]
 		},
 
 		/**

@@ -41,6 +41,7 @@ BOLDGRID.EDITOR.CONTROLS.IMAGE = BOLDGRID.EDITOR.CONTROLS.IMAGE || {};
 				'border',
 				'animation',
 				'box-shadow',
+				'device-visibility',
 				'customClasses'
 			]
 		},

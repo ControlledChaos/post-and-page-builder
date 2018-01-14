@@ -41,6 +41,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 				'border',
 				'border-radius',
 				'background-color',
+				'device-visibility',
 				'animation',
 				'customClasses'
 			]

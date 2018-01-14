@@ -29,7 +29,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 
 		panel: {
 			title: 'Section Background',
-			height: '600px',
+			height: '625px',
 			width: '325px',
 			scrollTarget: '.presets',
 			customizeSupport: [
@@ -41,6 +41,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 				'animation',
 				'border-radius',
 				'blockAlignment',
+				'device-visibility',
 				'customClasses'
 			],
 			sizeOffset: -230

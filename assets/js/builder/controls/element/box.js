@@ -36,7 +36,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 
 		panel: {
 			title: 'Column Background',
-			height: '575px',
+			height: '625px',
 			width: '325px',
 			customizeSupport: [
 				'width',
@@ -48,6 +48,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 				'animation',
 				'blockAlignment',
 				'background-color',
+				'device-visibility',
 				'customClasses'
 			],
 			includeFooter: true,

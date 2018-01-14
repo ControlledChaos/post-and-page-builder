@@ -7,7 +7,7 @@ export class Advanced {
 
 		this.panel = {
 			title: 'Advanced',
-			height: '600px',
+			height: '650px',
 			width: '375px',
 			customizeCallback: true,
 			customizeSupport: [
@@ -20,6 +20,7 @@ export class Advanced {
 				'animation',
 				'background-color',
 				'blockAlignment',
+				'device-visibility',
 				'customClasses'
 			]
 		};
