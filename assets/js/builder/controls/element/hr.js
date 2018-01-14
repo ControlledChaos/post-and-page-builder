@@ -35,6 +35,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 				'box-shadow',
 				'width',
 				'blockAlignment',
+				'animation',
 				'customClasses'
 			],
 			customizeSupportOptions: {

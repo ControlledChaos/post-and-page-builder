@@ -1,8 +1,7 @@
-[![Build Status](https://travis-ci.org/BoldGrid/boldgrid-editor.svg?branch=master)](https://travis-ci.org/BoldGrid/boldgrid-editor)
+[![Build Status](https://travis-ci.org/BoldGrid/post-and-page-builder.svg?branch=master)](https://travis-ci.org/BoldGrid/post-and-page-builder)
 [![License](https://img.shields.io/badge/license-GPL--2.0%2B-orange.svg)](https://raw.githubusercontent.com/BoldGrid/boldgrid-editor/master/LICENSE)
 [![PHP Version](https://img.shields.io/badge/PHP-5.3%2B-blue.svg)](https://php.net)
-[![Code Climate](https://codeclimate.com/github/BoldGrid/boldgrid-editor/badges/gpa.svg)](https://codeclimate.com/github/BoldGrid/boldgrid-editor)
-[![Greenkeeper badge](https://badges.greenkeeper.io/BoldGrid/boldgrid-editor.svg)](https://greenkeeper.io/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/BoldGrid/post-and-page-builder.svg)](https://greenkeeper.io/)
 
 Plugin Page:
 [https://wordpress.org/plugins/post-and-page-builder/](https://wordpress.org/plugins/post-and-page-builder/)
@@ -14,11 +13,11 @@ Official Download Link:
 
 **Contributors:** boldgrid, rramo012, imh_brad, timph, joemoto
 
-**Tags:** drag and drop, tinymce, editor
+**Tags:** page builder, drag and drop, tinymce, editor, landing page
 
 **Requires at least:** 4.4
 
-**Tested up to:** 4.9
+**Tested up to:** 4.9.1
 
 **License:** GPLv2 or later
 

@@ -27,7 +27,7 @@ class Boldgrid_Editor_Uninstall {
 	 *
 	 * @return
 	 */
-	public function on_delete() {
+	public static function on_delete() {
 		Boldgrid_Editor_Option::clear_all();
 	}
 }

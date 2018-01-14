@@ -16,6 +16,7 @@ import backgroundColorSvg from 'svg-inline-loader?classPrefix!../../../../assets
 import rotateSvg from 'svg-inline-loader?classPrefix!../../../../assets/image/icons/customize-nav/rotate.svg';
 import fontSizeSvg from 'svg-inline-loader?classPrefix!../../../../assets/image/icons/customize-nav/font-size.svg';
 import designSvg from 'svg-inline-loader?classPrefix!../../../../assets/image/icons/customize-nav/design.svg';
+import animationSvg from 'svg-inline-loader?classPrefix!../../../../assets/image/icons/customize-nav/animation.svg';
 
 export class Navigation {
 	constructor() {
@@ -33,6 +34,7 @@ export class Navigation {
 				{ name: 'border', icon: borderSvg, label: 'Border' },
 				{ name: 'border-radius', icon: borderRadius, label: 'Border Radius' },
 				{ name: 'box-shadow', icon: boxShadow, label: 'Box Shadow' },
+				{ name: 'animation', icon: animationSvg, label: 'Animation' },
 				{ name: 'width', icon: widthSvg, label: 'Width' },
 				{ name: 'blockAlignment', icon: blockAlignment, label: 'Block Alignment' },
 				{ name: 'customClasses', icon: customClasses, label: 'Custom CSS Classes' }

@@ -29,39 +29,8 @@ var config = {
 	buildDest: './build',
 	cssDest: './assets/css',
 	jsDest: './assets/js',
-	jsonDir: './assets/json',
-	buildIgnoredFiles: [
-		'./**/*',
-		'!*.yml',
-		'!.htaccess',
-		'!./.*rc',
-		'!./node_modules',
-		'!./node_modules/**',
-		'!./yarn.lock',
-		'!./gulpfile.js',
-		'!./bin',
-		'!./bin/**',
-		'!README.md',
-		'!./tools',
-		'!./tools/**/*',
-		'!./tests',
-		'!./tests/**/*',
-		'!./package.json',
-		'!karma.conf.js',
-		'!webpack.config.js',
-		'!./build',
-		'!./build/**',
-		'!phpunit.xml'
-	]
+	jsonDir: './assets/json'
 };
-
-gulp.task( 'clean', function() {
-	return del( config.buildDest, { force: true } );
-} );
-
-gulp.task( 'pre-deploy', function() {
-	return gulp.src( config.buildIgnoredFiles ).pipe( gulp.dest( config.buildDest ) );
-} );
 
 // Compile sass files.
 gulp.task( 'sass', function() {
@@ -145,10 +114,6 @@ gulp.task( 'jsmin-editor', function( cb ) {
 
 gulp.task( 'build', function( cb ) {
 	sequence( [ 'sass', 'jsmin-editor', 'jsmin-media' ], cb );
-} );
-
-gulp.task( 'deploy', function( cb ) {
-	sequence( 'clean', 'pre-deploy', cb );
 } );
 
 gulp.task( 'watch', function() {

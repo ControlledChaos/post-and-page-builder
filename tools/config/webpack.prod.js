@@ -16,10 +16,12 @@ const scssDir = distDir + '/assets/scss/';
 module.exports = {
 	context: srcDir,
 
-	entry: [ './assets/js/index.js' ],
-
+	entry: {
+		public: './assets/js/public.js',
+		editor: './assets/js/index.js'
+	},
 	output: {
-		filename: './assets/js/editor.min.js',
+		filename: './assets/js/[name].min.js',
 		path: distDir,
 		publicPath: '/'
 	},

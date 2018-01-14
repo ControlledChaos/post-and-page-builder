@@ -194,7 +194,9 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 				$( '#insert-gridblocks-button' ).on( 'click', function() {
 					$( '.wp-switch-editor.switch-tmce' ).click();
 					if ( ! BG.CONTROLS.Section.$container ) {
-						setTimeout( BG.CONTROLS.Section.enableSectionDrag, 600 );
+						$( window ).one( 'boldgrid_editor_loaded', () => {
+							BG.CONTROLS.Section.enableSectionDrag();
+						} );
 					} else {
 						BG.CONTROLS.Section.enableSectionDrag();
 					}

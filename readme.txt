@@ -1,11 +1,10 @@
-=== Post and Page Builder by BoldGrid – Visual Drag and Drop Editor ===
+=== Post and Page Builder by BoldGrid - Visual Drag and Drop Editor ===
 Contributors: boldgrid, rramo012, imh_brad, joemoto, timph
-Donate link: https://www.boldgrid.com/
-Tags: drag and drop, tinymce, editor
+Tags: page builder, drag and drop, tinymce, editor, landing page
 Requires at least: 4.4
-Tested up to: 4.9
+Tested up to: 4.9.1
 Requires PHP: 5.3
-Stable tag: 1.6
+Stable tag: 1.6.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,39 +12,134 @@ Post and Page Builder is a standalone plugin which adds functionality to the exi
 
 == Description ==
 
-Post and Page Builder is a standalone plugin which adds functionality to the existing TinyMCE Editor used in the WordPress page and post editor.
+= What is the Post and Page Builder by BoldGrid? =
+
+The Post and Page Builder is an intuitive drag and drop editor plugin and the easiest way to create and edit pages for any theme. Whether you are new to WordPress or consider yourself a pro, BoldGrid solutions will make your WordPress life better. Stop dealing with site-breaking shortcodes and theme restricted editors. You are going to love just how fast and easily you can create beautiful websites now.
+
+Try out the [BoldGrid demo](https://www.boldgrid.com/demo/) to see for yourself!
+
+[youtube https://youtu.be/QoIb7OhV9ys?rel=0]
+
+= Features =
+
+* Drag and Drop editing
+* Full width, column and row based layouts
+* Dozens of predefined layouts to work from
+* Save and reuse Block designs
+* Save and reuse full page layouts
+* 100% Mobile-friendly - responsive layouts
+* Image Filters
+* Google fonts
+* Background images, patterns, and colors
+* Page Gradients
+* Google Maps
+* Parallax Scroll Effect
+* Image Editor
+* Font Awesome Icons
+* Input for custom CSS classes
+* Bootstrap Grid
+* Clean, simple markup
+* No need for Shortcodes!
+* Growing Community and knowledge base
+
+Additional Features when used with other BoldGrid plugins:
+
+* Dozens of free layout templates
+* Integrated with professional image banks
+* Contact Forms
+* On-page SEO recommendations for targeted search phrase
+
+Visit our website to learn more about additional [BoldGrid plugins](https://www.boldgrid.com/wordpress-plugins/) to further improve your WordPress experience!
+
+= People Love BoldGrid =
+
+"It's really the perfect starting point for just about any web project, allowing users to get their site up and running in very short time. " - Digital.com
+
+"BoldGrid is a great extension to WordPress that will make my job a lot easier and faster while creating custom layouts and pages." - Webhostingmedia.net
+
+"Well, I have seen many site builders but this is the only one that provides so many features." - Woblogger.com
+
+= A Post and Page Builder That Works With Your Theme and Plugins =
+
+The Post and Page Builder by BoldGrid is designed to work with almost any WordPress theme. Add it to your existing website today, or try a BoldGrid theme for your new website. Alternatively, consider upgrading and using the powerful BoldGrid framework theme (available in Premium subscription) as an excellent time saver for agencies and developers.
+
+= A Post and Page Builder Stuffed With Content Layouts =
+
+Create layouts and pages faster and easier than ever with Blocks by BoldGrid. Blocks are pre-built page sections consisting of various layouts of rows and columns prepopulated with content that can be edited visually or with HTML and CSS. Blocks utilize a wide variety of content that can be completely customized to fit your needs such as icons, buttons, free and premium images, font packs, and more.
+
+= A Post and Page Builder That Is Faster Than The Rest =
+
+The Post and Page Builder by BoldGrid is designed to create pages that load fast. BoldGrid ditches shortcodes in favor of clean markup that can be served quickly. That also means BoldGrid code is easy to assess and customize.
+
 
 == Frequently Asked Questions ==
 
-Do you have questions or issues with the Post and Page Builder by BoldGrid? Use the following support
-channel: [BoldGrid Support](https://www.boldgrid.com/support/).
+= Will the Post and Page Builder work with my theme? =
+
+Yes; the Post and Page Builder will work with any theme. We recommend using BoldGrid themes which provide additional features and are optimized for use with the Post and Page Builder.
+
+= Where can I find more help? =
+For information on using the Post and Page Builder or other BoldGrid plugins, please visit our [Support Center](https://www.boldgrid.com/support/).
+
+For general questions check out our [Frequently Asked Questions](https://www.boldgrid.com/faqs/) page.
+
+= Where can I report issues or ask questions? =
+Bugs can be reported either in the [WordPress support forum](https://wordpress.org/support/plugin/post-and-page-builder) or in the [BoldGrid Support Center](https://www.boldgrid.com/support/questions/).
+
+= How can I contribute? =
+
+The Post and Page Builder is open source software. Join in on our [GitHub repository](https://github.com/BoldGrid/post-and-page-builder/).
 
 == Installation ==
 
-=== From within WordPress ===
+= Minimum Requirements =
+
+* PHP version 5.3 or greater
+* WordPress 4.4 or greater
+
+= From within WordPress =
 1. Visit 'Plugins > Add New'
-1. Search for 'Post and Page Builder'
+1. Search for 'Post and Page Builder by BoldGrid'
 1. Activate Post and Page Builder from your Plugins page.
 
-=== Manually ===
+= Manually =
 1. Upload the entire post-and-page-builder folder to the /wp-content/plugins/ directory.
 1. Activate the plugin through the Plugins menu in WordPress.
 
 You will find a 'Post and Page Builder' menu in your WordPress admin panel and find most features within the
 WordPress Editor.
 
+== Screenshots ==
+
+1. Section Background settings.
+2. Editing Color Palettes.
+3. Creating a new page.
+4. Adding Blocks to your page.
+5. Edit Page view.
+6. Text Settings view.
+7. Adding Icons.
+
 == Changelog ==
 
 For more information, see changelog.txt.
 
-= 1.6.1 In Progress =
+= 1.6.2 =
 
-Release Date: December 12th, 2017
+Release Date: December 26th, 2017
+
+* Bug Fix: Edit links displayed when not logged in.
+
+= 1.6.1 =
+
+Release Date: December 19th, 2017
 
 * Bug Fix: Remove old plugin name (boldgrid-editor) from BG themes recommendations.
 * Bug Fix: Fix compatibility issues with Advanced Custom Fields plugin.
 * Bug Fix: Disable margin control on columns.
 * Bug Fix: Fixed error when activating old plugin name.
+* Bug Fix: Advanced Control -> Box shadow switch unclickable.
+* Bug Fix: Fix JS error when adding Blocks on text tab.
+* Update: SASS compiler updated.
 
 = 1.6 =
 
