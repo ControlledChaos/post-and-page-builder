@@ -208,6 +208,7 @@ class Boldgrid_Editor_Theme {
 	 * @return boolean
 	 */
 	public static function is_editing_boldgrid_theme() {
+		global $boldgrid_theme_framework;
 		$post_id = ! empty( $_REQUEST['post'] ) ? intval( $_REQUEST['post'] ) : null;
 
 		$is_editing_boldgrid_theme = ( bool ) self::get_boldgrid_theme_name( wp_get_theme() );
@@ -223,6 +224,10 @@ class Boldgrid_Editor_Theme {
 				$is_editing_boldgrid_theme = ( bool ) self::get_boldgrid_theme_name( $staged_theme );
 			}
 		}
+
+		// Check the framework global.
+		$is_editing_boldgrid_theme = $is_editing_boldgrid_theme ?
+			$is_editing_boldgrid_theme : ! empty( $boldgrid_theme_framework );
 
 		/**
 		 * Allow other theme developers to indicate that they would like all BG edit tools enabled.
