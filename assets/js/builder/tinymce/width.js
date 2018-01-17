@@ -57,6 +57,21 @@ export class Width {
 		return $postContainer;
 	}
 
+	/*
+	 * Get the width from the hidden iframe.
+	 *
+	 * @since 1.6.3
+	 */
+	getWidth() {
+		let width = 'auto';
+
+		if ( this.$postContainer && this.$postContainer.width() ) {
+			width = this.$postContainer.width();
+		}
+
+		return width;
+	}
+
 	/**
 	 * After the iframe is loaded, run this process.
 	 *
@@ -70,7 +85,7 @@ export class Width {
 			IMHWPB.WP_MCE_Draggable.instance.resize_done_event();
 		}
 
-		BG.$window.trigger( 'boldgrid_post_width', { width: this.$postContainer.width() } );
+		BG.$window.trigger( 'boldgrid_post_width', { width: this.getWidth() } );
 		BG.Service.loading.hide();
 	}
 

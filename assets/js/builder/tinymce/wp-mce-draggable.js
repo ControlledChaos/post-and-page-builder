@@ -333,7 +333,7 @@ IMHWPB.WP_MCE_Draggable = function() {
 			 * editor to the same width.
 			 */
 			BG.Service.editorWidth.$resizeiframe.attr( 'width', BG.Controls.$container.$html.width() );
-			BG.Controls.$container.$body.css( 'width', BG.Service.editorWidth.$postContainer.width() );
+			BG.Controls.$container.$body.css( 'width', BG.Service.editorWidth.getWidth() );
 		}
 	};
 
