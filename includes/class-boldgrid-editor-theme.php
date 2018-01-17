@@ -231,7 +231,7 @@ class Boldgrid_Editor_Theme {
 
 		// Check boldgrid theme.
 		$is_editing_boldgrid_theme = $is_editing_boldgrid_theme ?
-			$is_editing_boldgrid_theme : ( bool ) get_theme_mod( 'boldgrid_color_palette' )
+			$is_editing_boldgrid_theme : ( bool ) get_theme_mod( 'boldgrid_color_palette' );
 
 		/**
 		 * Allow other theme developers to indicate that they would like all BG edit tools enabled.
