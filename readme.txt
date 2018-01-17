@@ -123,6 +123,13 @@ WordPress Editor.
 
 For more information, see changelog.txt.
 
+= 1.6.3 =
+
+Release Date: January 18th, 2018
+
+* Bug Fix: Issue causing editor to fail when an empty block is saved to your block library.
+* Bug Fix: Editor width is set incorrectly if front end of site is inaccessible.
+
 = 1.6.2 =
 
 Release Date: December 26th, 2017
