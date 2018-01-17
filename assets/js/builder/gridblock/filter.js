@@ -126,7 +126,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			 */
 			setConfig: function() {
 				$.each( self.configs, function( gridblockId ) {
-					if ( ! self.removedGridlocks[gridblockId] ) {
+					if ( ! self.removedGridlocks[gridblockId] && this.html ) {
 						delete this.html;
 						this.gridblockId = gridblockId;
 						this.uniqueMarkup = self.createUniqueMarkup( this.$html );
