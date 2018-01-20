@@ -130,9 +130,9 @@
     svg-inline-loader "^0.8.0"
     title-case "^2.1.1"
 
-"@boldgrid/wordpress-tag-sync@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@boldgrid/wordpress-tag-sync/-/wordpress-tag-sync-1.2.0.tgz#6b299085aa82cd5e12e48e2cc7c2e73b9b95d98b"
+"@boldgrid/wordpress-tag-sync@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@boldgrid/wordpress-tag-sync/-/wordpress-tag-sync-1.2.1.tgz#841822a643075b740d4b8a784eb4b4b9356b1c1e"
 
 "@material/animation@^0.25.0":
   version "0.25.0"
