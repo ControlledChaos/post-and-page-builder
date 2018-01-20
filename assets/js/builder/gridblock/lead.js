@@ -64,6 +64,10 @@ export class Lead {
 			BG.CONTROLS.Section.enableSectionDrag();
 			this.dismissPrompt();
 		} );
+
+		$( '#content-html' ).one( 'click', () => {
+			this.dismissPrompt();
+		} );
 	}
 
 	/**
@@ -81,4 +85,4 @@ export class Lead {
 	}
 }
 
-export { Save as default };
+export { Lead as default };

@@ -133,6 +133,7 @@ Release Date: February 20th, 2018
 * Bug Fix: Blockquote elements now have the text control available to them.
 * Bug Fix: Warning thrown while listing posts in admin.
 * Bug Fix: HEX input field missing from color picker.
+* Bug Fix: Getting started displayed after switching to text tab.
 
 = 1.6.3 =
 
