@@ -17,7 +17,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 
 		iconClasses: 'fa fa-text-width',
 
-		selectors: [ 'p, h1, h2, h3, h4, h5, h6, table, section, ul, ol, dl' ],
+		selectors: [ 'p, h1, h2, h3, h4, h5, h6, table, section, ul, ol, dl', 'blockquote' ],
 
 		// Ignore images clicked in paragraphs.
 		exceptionSelector: 'img, .draggable-tools-imhwpb *',
