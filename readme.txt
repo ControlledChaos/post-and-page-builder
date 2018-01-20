@@ -129,6 +129,7 @@ Release Date: TBD
 
 * New Feature: Most elements now support animation controls.
 * New Feature: CSS ID's can now be specified via customization controls.
+* New Feature: Added Connect Key prompt.
 
 = 1.6.3 =
 

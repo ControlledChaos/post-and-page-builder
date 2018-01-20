@@ -171,6 +171,9 @@ class Boldgrid_Editor {
 		$boldgrid_editor_wpforms   = new Boldgrid_Editor_Wpforms();
 		$boldgrid_editor_setup     = new Boldgrid_Editor_Setup();
 
+		// Load tge BoldGrid library.
+		$this->loadLibrary();
+
 		// Init Form deps.
 		$boldgrid_editor_wpforms->init();
 
@@ -270,6 +273,29 @@ class Boldgrid_Editor {
 
 		$boldgrid_editor_crop = new Boldgrid_Editor_Crop();
 		$boldgrid_editor_crop->add_hooks();
+	}
+
+	/**
+	 * Load library.
+	 *
+	 * @since 1.7
+	 *
+	 * @return Boldgrid\Library\Util\Load loader.
+	 */
+	protected function loadLibrary() {
+		// Include the autoloader to set plugin options and create instance.
+		$loader = require plugin_dir_path( BOLDGRID_EDITOR_ENTRY ) . 'vendor/autoload.php';
+
+		// Load Library.
+		return new Boldgrid\Library\Util\Load(
+			array(
+				'type' => 'plugin',
+				'file' => plugin_basename( BOLDGRID_EDITOR_ENTRY ),
+				'loader' => $loader,
+				'keyValidate' => true,
+				'licenseActivate' => false,
+			)
+		);
 	}
 
 	/**

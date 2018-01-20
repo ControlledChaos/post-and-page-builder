@@ -1,6 +1,6 @@
 {
 	"name": "boldgrid-editor",
-	"version": "1.6.0",
+	"version": "1.7.0",
 	"description": "Post and Page Builder is a standalone plugin which adds functionality to the existing TinyMCE Editor.",
 	"main": "gulpfile.js",
 	"scripts": {
@@ -12,7 +12,7 @@
 		"build-webpack": "NODE_ENV=production webpack --colors",
 		"format-js": "prettier-eslint \"assets/js/builder/**/*.js\" --write",
 		"format-sass": "stylelint \"assets/scss/**/*.scss\" --fix --syntax scss",
-		"build": "npm run build-webpack && gulp build && gulp merge-webpack && npm test",
+		"build": "npm run build-webpack && gulp build && gulp merge-webpack && composer install && npm test",
 		"test": "cross-env NODE_ENV=test karma start karma.config.js --single-run"
 	},
 	"lint-staged": {

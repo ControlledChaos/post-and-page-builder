@@ -136,32 +136,14 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			 */
 			addToConfig: function( gridblocks ) {
 				_.each( gridblocks, function( gridblockData, index ) {
-					if ( self.canDisplayGridblock( gridblockData ) ) {
-						gridblocks[index] = self.addRequiredProperties( gridblockData );
-						BG.GRIDBLOCK.Filter.addGridblockConfig(
-							gridblocks[index],
-							'generated-' + self.gridblockCount
-						);
+					gridblocks[index] = self.addRequiredProperties( gridblockData );
+					BG.GRIDBLOCK.Filter.addGridblockConfig(
+						gridblocks[index],
+						'generated-' + self.gridblockCount
+					);
 
-						self.gridblockCount++;
-					}
+					self.gridblockCount++;
 				} );
-			},
-
-			/**
-			 * Should we display the gridblock.
-			 *
-			 * @param  {Object} gridblockData Gridblock data.
-			 * @return {boolean}              Whether or not we can display.
-			 */
-			canDisplayGridblock( gridblockData ) {
-				let canDisplayGridblock = true;
-
-				if ( gridblockData.is_premium && ! BoldgridEditor.inspiration_active ) {
-					canDisplayGridblock = false;
-				}
-
-				return canDisplayGridblock;
 			},
 
 			/**
