@@ -131,6 +131,7 @@ Release Date: February 20th, 2018
 * New Feature: CSS ID's can now be specified via customization controls.
 * New Feature: Added Connect Key prompt.
 * Bug Fix: Warning thrown while listing posts in admin.
+* Bug Fix: HEX input field missing from color picker.
 
 = 1.6.3 =
 

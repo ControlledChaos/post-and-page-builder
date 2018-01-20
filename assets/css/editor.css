@@ -2109,6 +2109,9 @@ body.boldgrid-editor-fullscreen {
 .color-panel .wp-color-result {
   display: none; }
 
+.color-panel .wp-picker-input-wrap {
+  display: block !important; }
+
 .color-panel .wp-picker-container {
   margin-top: 10px; }
 
