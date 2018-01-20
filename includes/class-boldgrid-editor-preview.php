@@ -266,9 +266,12 @@ class Boldgrid_Editor_Preview {
 			return;
 		}
 
+		$post_not_in = $query->get( 'post__not_in' );
+		$post_not_in = is_array( $post_not_in ) ? $post_not_in : array();
+
 		// Other plugins may set 'post__not_in' as well, and override our setting below.
 		// We'll use array_merge and $query->get so to play nice with other plugins.
-		$query->set( 'post__not_in', array_merge( array ( $this->preview_page_id ), $query->get( 'post__not_in' ) ) );
+		$query->set( 'post__not_in', array_merge( array ( $this->preview_page_id ), $post_not_in ) );
 	}
 
 	/**

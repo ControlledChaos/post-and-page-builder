@@ -125,11 +125,12 @@ For more information, see changelog.txt.
 
 = 1.7 =
 
-Release Date: TBD
+Release Date: February 20th, 2018
 
 * New Feature: Most elements now support animation controls.
 * New Feature: CSS ID's can now be specified via customization controls.
 * New Feature: Added Connect Key prompt.
+* Bug Fix: Warning thrown while listing posts in admin.
 
 = 1.6.3 =
 
