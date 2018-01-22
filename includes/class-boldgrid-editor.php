@@ -289,6 +289,8 @@ class Boldgrid_Editor {
 			return;
 		}
 
+		$this->show_key_prompt();
+
 		// Include the autoloader to set plugin options and create instance.
 		$loader = require $path;
 
@@ -299,9 +301,22 @@ class Boldgrid_Editor {
 				'file' => plugin_basename( BOLDGRID_EDITOR_ENTRY ),
 				'loader' => $loader,
 				'keyValidate' => true,
-				'licenseActivate' => false,
 			)
 		);
+	}
+
+	/**
+	 * If the user has not yet entered their API key, prompt them to enter one on the block listing page.
+	 *
+	 * @since 1.7
+	 */
+	public function show_key_prompt() {
+		add_action( 'load-edit.php', function () {
+			$post_type = ! empty( $_REQUEST['post_type'] ) ? $_REQUEST['post_type'] : $post_type;
+			if ( 'bg_block' === $post_type ) {
+				add_filter( 'Boldgrid\Library\Library\Notice\KeyPrompt_display',  '__return_true' );
+			}
+		} );
 	}
 
 	/**
