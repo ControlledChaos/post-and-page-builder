@@ -283,8 +283,14 @@ class Boldgrid_Editor {
 	 * @return Boldgrid\Library\Util\Load loader.
 	 */
 	protected function loadLibrary() {
+		$path = plugin_dir_path( BOLDGRID_EDITOR_ENTRY ) . 'vendor/autoload.php';
+
+		if ( ! file_exists( $path ) ) {
+			return;
+		}
+
 		// Include the autoloader to set plugin options and create instance.
-		$loader = require plugin_dir_path( BOLDGRID_EDITOR_ENTRY ) . 'vendor/autoload.php';
+		$loader = require $path;
 
 		// Load Library.
 		return new Boldgrid\Library\Util\Load(
