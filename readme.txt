@@ -123,7 +123,7 @@ WordPress Editor.
 
 For more information, see changelog.txt.
 
-= 1.7 =
+= 1.7.0 =
 
 Release Date: February 20th, 2018
 
