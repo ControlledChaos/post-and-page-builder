@@ -41,6 +41,8 @@ if ( ! defined( 'BOLDGRID_EDITOR_CONFIGDIR' ) ) {
 */
 if ( ! function_exists( 'boldgrid_editor_setup' ) ) {
 
+	// Prevent invalid PHP version from loading.
+	require BOLDGRID_EDITOR_PATH . '/includes/version-check.php';
 	// Load the editor class.
 	require_once BOLDGRID_EDITOR_PATH . '/includes/class-boldgrid-editor.php';
 
