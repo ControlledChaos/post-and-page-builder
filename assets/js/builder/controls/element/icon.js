@@ -26,7 +26,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		 */
 		panel: {
 			title: 'Change Icon',
-			height: '615px',
+			height: '675px',
 			width: '335px',
 			includeFooter: true,
 			customizeLeaveCallback: true,

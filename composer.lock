@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2c0a365eb213f90c374ecc8b5795d3b4",
+    "content-hash": "a00a3572f98450eeca86819769758bf8",
     "packages": [
         {
             "name": "boldgrid/library",
-            "version": "dev-dev",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/BoldGrid/library.git",
-                "reference": "057d0024a44a6b5c008486159cabbf31545f5d49"
+                "reference": "bb17504b66ce9dd08b5a99c426d37dc92724fb99"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BoldGrid/library/zipball/057d0024a44a6b5c008486159cabbf31545f5d49",
-                "reference": "057d0024a44a6b5c008486159cabbf31545f5d49",
+                "url": "https://api.github.com/repos/BoldGrid/library/zipball/bb17504b66ce9dd08b5a99c426d37dc92724fb99",
+                "reference": "bb17504b66ce9dd08b5a99c426d37dc92724fb99",
                 "shasum": ""
             },
             "type": "library",
@@ -28,7 +28,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "GPL2.0"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -53,15 +53,13 @@
                 }
             ],
             "description": "The BoldGrid Library for shared code used in official BoldGrid plugins and themes.",
-            "time": "2018-01-16T14:28:19+00:00"
+            "time": "2018-01-23T15:36:27+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "boldgrid/library": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
