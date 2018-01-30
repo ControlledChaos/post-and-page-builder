@@ -53,6 +53,10 @@ var webpackConfig = {
 				loader: 'babel-loader'
 			},
 			{
+				test: /\.svg$/,
+				loader: 'svg-inline-loader'
+			},
+			{
 				test: /\.js$/,
 				enforce: 'pre',
 				exclude: /node_modules/,

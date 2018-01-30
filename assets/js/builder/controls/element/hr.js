@@ -2,6 +2,8 @@ window.BOLDGRID = window.BOLDGRID || {};
 BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 
+import ComponentConfig from '@boldgrid/components/src/components/config';
+
 ( function( $ ) {
 	'use strict';
 
@@ -87,7 +89,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 			panel.$element.find( '.panel-body' ).html(
 				self.template( {
 					text: 'Horizontal Rule',
-					presets: BoldgridEditor.builder_config.component_library.hr.styles,
+					presets: ComponentConfig.hr.styles,
 					myPresets: self.myDesigns
 				} )
 			);

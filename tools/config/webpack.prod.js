@@ -44,6 +44,10 @@ module.exports = {
 				]
 			},
 			{
+				test: /\.svg$/,
+				loader: 'svg-inline-loader'
+			},
+			{
 				test: /\.js$/,
 				use: [ 'babel-loader' ]
 			},
@@ -124,10 +128,6 @@ module.exports = {
 			{
 				from: require.resolve( '@boldgrid/components/dist/css/components.css' ),
 				to: cssDir
-			},
-			{
-				from: require.resolve( '@boldgrid/components/dist/json/components.json' ),
-				to: jsonDir
 			},
 			{
 				from: 'node_modules/@boldgrid/controls/dist/scss/color-palette-scss',
