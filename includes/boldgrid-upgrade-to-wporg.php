@@ -28,7 +28,7 @@ return function ( $plugin_path, $wporg_package_url ) {
 	 * @param  string $wporg_plugin_slug
 	 * @return string|null
 	 */
-	function get_plugin_basename( $wporg_plugin_slug ) {
+	function lookup_plugin_basename( $wporg_plugin_slug ) {
 		$wporg_plugin_basename = null;
 
 		$wporg_plugin = get_plugins( '/' . $wporg_plugin_slug );
@@ -43,7 +43,7 @@ return function ( $plugin_path, $wporg_package_url ) {
 	}
 
 	$wporg_plugin_slug = basename( $wporg_package_url, '.zip' );
-	$wporg_plugin_basename = get_plugin_basename( $wporg_plugin_slug );
+	$wporg_plugin_basename = lookup_plugin_basename( $wporg_plugin_slug );
 
 	if ( ! $wporg_plugin_basename ) {
 		// The wporg plugin was not found; proceed with installation.
