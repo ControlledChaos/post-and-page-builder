@@ -25,7 +25,7 @@ BoldGrid Editor is a standalone plugin which adds functionality to the existing 
 == Changelog ==
 
 = 1.6.0.2 =
-* Bug fix:      JIRA WPB-3710   Changed function name in conflict with wpcore.
+* Bug fix:      JIRA WPB-3710   Changed function to anonymous, due to conflict in the global space.
 
 = 1.6.0.1 =
 * New feature:  JIRA WPB-3644   Updating to the WordPress.org version.
