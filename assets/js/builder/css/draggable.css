@@ -768,7 +768,7 @@ html {
 	padding:30px 45px 200px 45px;
 }
 
-html .mceContentBody  {
+html #tinymce.mceContentBody  {
     max-width:100% !important;
     margin: 0 auto;
 	min-height: 200px;
