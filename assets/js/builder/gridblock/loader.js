@@ -3,6 +3,7 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 
 import { Save } from './save';
+import { Shortcode } from './shortcode';
 
 ( function( $ ) {
 	'use strict';
@@ -39,6 +40,8 @@ import { Save } from './save';
 					BGGB.Drag.init();
 					BGGB.Generate.fetch();
 
+					self.shortcode = new Shortcode();
+					self.shortcode.prefetch();
 					new Save().init();
 				}
 			},
@@ -115,6 +118,38 @@ import { Save } from './save';
 			},
 
 			/**
+			 * Create the iframe content. Updated from content set html to allow js load events to fire.
+			 *
+			 * @since 1.7
+			 *
+			 * @param  {$} $iframe Iframe element.
+			 * @param  {object} content Content for iframe.
+			 */
+			iframeContent( $iframe, content ) {
+				const iframeDocument = $iframe[0].contentWindow.document;
+
+				iframeDocument.open();
+				iframeDocument.write(
+					`<!DOCTYPE html>
+					<html>
+						<head>
+							<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+							${content.head}
+						</head>
+						<body>
+							<div>
+								${self.placeholderHtml.before}
+								${content.body}
+								${self.placeholderHtml.after}
+							</div>
+						</body>
+					</html>`
+				);
+
+				iframeDocument.close();
+			},
+
+			/**
 			 * Given a Gridblock config, Render the coresponding iframe.
 			 *
 			 * @since 1.4
@@ -122,7 +157,6 @@ import { Save } from './save';
 			createIframe: function( gridblock ) {
 				var load,
 					postCssLoad,
-					$contents,
 					$gridblock = BGGB.View.$gridblockSection.find(
 						'[data-id="' + gridblock.gridblockId + '"]'
 					),
@@ -133,18 +167,17 @@ import { Save } from './save';
 				$gridblock.prepend( $iframe );
 
 				load = function() {
-					$contents = $iframe.contents();
-					BGGB.Image.translateImages( gridblock );
-					$contents.find( 'body' ).html(
-						$( '<div>' )
-							.html( gridblock.$html )
-							.prepend( self.placeholderHtml.before )
-							.append( self.placeholderHtml.after )
-					);
+					let content, $contents;
 
+					BGGB.Image.translateImages( gridblock );
+					content = self.shortcode.convert( gridblock.getHtml() );
+					self.iframeContent( $iframe, content );
+
+					$contents = $iframe.contents();
 					BGGB.View.addStyles( $contents );
 					BGGB.View.addBodyClasses( $contents );
-					self.$iframeTemp = $iframe.clone();
+
+					//	self.$iframeTemp = $iframe.clone();
 
 					if ( BGGB.Category.canDisplayGridblock( gridblock ) ) {
 						$gridblock.css( 'display', '' );

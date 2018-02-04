@@ -95,7 +95,8 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			 * @param  {jQuery} $placeHolder Element created to show loading graphic.
 			 */
 			sendGridblock: function( html, $placeHolder, gridblockId ) {
-				var $inserting = $( html ),
+				var html = wp.mce.views.setMarkers( html ),
+					$inserting = $( html ),
 					draggable = IMHWPB.WP_MCE_Draggable.draggable_instance;
 
 				if ( ! $inserting || ! draggable ) {
