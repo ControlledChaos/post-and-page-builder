@@ -130,10 +130,12 @@ Release Date: February 20th, 2018
 * New Feature: Most elements now support animation controls.
 * New Feature: CSS ID's can now be specified via customization controls.
 * New Feature: Added Connect Key prompt.
+* New Feature: Support audio and video blocks in Blocks.
 * Bug Fix: Blockquote elements now have the text control available to them.
 * Bug Fix: Warning thrown while listing posts in admin.
 * Bug Fix: HEX input field missing from color picker.
 * Bug Fix: Getting started displayed after switching to text tab.
+* Bug Fix: Fixing iframe heights in editor.
 
 = 1.6.3 =
 
