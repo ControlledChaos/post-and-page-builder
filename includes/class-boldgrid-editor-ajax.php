@@ -50,6 +50,33 @@ class Boldgrid_Editor_Ajax {
 	}
 
 	/**
+	 * Generate gridblocks.
+	 *
+	 * @since 1.7
+	 */
+	public function generate_gridblocks() {
+		$params = ! empty( $_POST ) ? $_POST : array();
+
+		$this->validate_nonce( 'boldgrid_editor_gridblock_save' );
+
+		$response = wp_remote_post( $url, array(
+			'timeout' => 10,
+			'body' => $params,
+		) );
+
+		if ( is_wp_error( $response ) || empty( $response ) ) {
+			status_header( 500 );
+			wp_send_json_error();
+		} else {
+			foreach( $response as &$block ) {
+				$block['html'] = do_shortcode( $block['html'] );
+			}
+
+			wp_send_json_success( $response );
+		}
+	}
+
+	/**
 	 * Validate image nonce.
 	 *
 	 * @since 1.5

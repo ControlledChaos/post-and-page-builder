@@ -69,15 +69,16 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 				options = options || {};
 
 				return $.ajax( {
-					url:
-						BoldgridEditor.plugin_configs.asset_server +
-						BoldgridEditor.plugin_configs.ajax_calls.gridblock_generate,
+					type: 'post',
+					url: ajaxurl,
 					dataType: 'json',
-					timeout: 10000,
+					timeout: 15000,
 					data: _.defaults( options, {
+						action: 'boldgrid_generate_blocks',
+
 						/*eslint-disable */
 						// If filtered to a type, load 30 otherwise 50.
-						quantity: type ? 30 : 50,
+						quantity: 30,
 						color_palettes: 1,
 						version: BoldgridEditor.version,
 						include_temporary_resources: 1,
