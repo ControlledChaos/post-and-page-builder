@@ -23,7 +23,6 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 
 				$.each( self.configs, function( gridblockId ) {
 					this.html = self.unsetImageUrls( this.html );
-
 					this.$html = $( this.html );
 
 					self.removeInvalidGridblocks( this, gridblockId );
@@ -150,6 +149,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 				gridblockData = _.defaults( gridblockData, {
 					dynamicImages: true,
 					gridblockId: gridblockId,
+					$previewHtml: $( gridblockData.preview_html ),
 					$html: gridblockData['html-jquery']
 				} );
 

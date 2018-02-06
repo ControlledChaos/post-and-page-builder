@@ -169,9 +169,20 @@ import { Shortcode } from './shortcode';
 				load = function() {
 					let content, $contents;
 
-					BGGB.Image.translateImages( gridblock );
-					content = self.shortcode.convert( gridblock.getHtml() );
-					self.iframeContent( $iframe, content );
+					BGGB.Image.translateImages( gridblock, gridblock.$html );
+
+					if ( gridblock.$previewHtml ) {
+						BGGB.Image.translateImages( gridblock, gridblock.$previewHtml );
+					}
+
+					//					content = self.shortcode.convert( gridblock.getHtml() );
+
+					// self.iframeContent( $iframe, content );
+
+					self.iframeContent( $iframe, {
+						head: '',
+						body: gridblock.$previewHtml ? gridblock.$previewHtml[0].outerHTML : gridblock.getHtml()
+					} );
 
 					$contents = $iframe.contents();
 					BGGB.View.addStyles( $contents );

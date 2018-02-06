@@ -16,10 +16,10 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			 *
 			 * @param  {Object} gridblockData Current Gridblock.
 			 */
-			translateImages: function( gridblockData ) {
+			translateImages: function( gridblockData, $html ) {
 				if ( gridblockData.dynamicImages ) {
-					self.replaceImages( gridblockData );
-					self.replaceBackgrounds( gridblockData );
+					self.replaceImages( $html );
+					self.replaceBackgrounds( $html );
 				} else {
 					self.transferSrcAttr( gridblockData );
 				}
@@ -35,8 +35,8 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			 *
 			 * @param  {object} gridblockData Current Gridblock.
 			 */
-			transferSrcAttr: function( gridblockData ) {
-				gridblockData.$html.find( 'img[data-src]' ).each( function() {
+			transferSrcAttr: function( $html ) {
+				$html.find( 'img[data-src]' ).each( function() {
 					var $this = $( this ),
 						src = $this.attr( 'data-src' );
 
@@ -51,8 +51,8 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			 *
 			 * @param  {jQuery} $gridblock Gridblock Object.
 			 */
-			replaceImages: function( gridblockData ) {
-				gridblockData.$html.find( 'img' ).each( function() {
+			replaceImages: function( $html ) {
+				$html.find( 'img' ).each( function() {
 					var $this = $( this ),
 						src = $this.attr( 'data-src' );
 
@@ -98,9 +98,8 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			 *
 			 * @param  {jQuery} $gridblock gridblock previewed.
 			 */
-			replaceBackgrounds: function( gridblockData ) {
+			replaceBackgrounds: function( $gridblock ) {
 				var setBackground,
-					$gridblock = gridblockData.$html,
 					backgroundImage = $gridblock.css( 'background-image' ) || '',
 					hasImage = backgroundImage.match( /url\(?.+?\)/ ),
 					imageUrl = self.getBackgroundUrl( $gridblock );
