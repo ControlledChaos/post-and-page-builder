@@ -23,6 +23,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 
 				$.each( self.configs, function( gridblockId ) {
 					this.html = self.unsetImageUrls( this.html );
+					this.$previewHtml = $( self.unsetImageUrls( this.preview_html ) );
 					this.$html = $( this.html );
 
 					self.removeInvalidGridblocks( this, gridblockId );
@@ -79,10 +80,11 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 				 * Get the jQuery HTML Object.
 				 * @return {jQuery} HTML to be added to the page.
 				 */
-				getHtml: function() {
+				getHtml: function( key ) {
 					let html = '';
+					key = key && 'preview' === key ? '$previewHtml' : '$html';
 
-					this.$html.each( function() {
+					this[key].each( function() {
 						if ( this.outerHTML ) {
 							html += this.outerHTML;
 						}
@@ -149,11 +151,11 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 				gridblockData = _.defaults( gridblockData, {
 					dynamicImages: true,
 					gridblockId: gridblockId,
-					$previewHtml: $( gridblockData.preview_html ),
 					$html: gridblockData['html-jquery']
 				} );
 
 				delete gridblockData.html;
+				delete gridblockData.preview_html;
 				delete gridblockData['html-jquery'];
 
 				_.extend( gridblockData, self.configMethods );

@@ -45,6 +45,25 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			},
 
 			/**
+			 * Set image attributes from gridblock response.
+			 *
+			 * @since 1.7
+			 *
+			 * @param {$} $img Image element.
+			 * @param {string} src Path to image.
+			 */
+			setImageAttributes( $img, src ) {
+				for ( let axis of [ 'height', 'width' ] ) {
+					if ( $img.data( axis ) ) {
+						$img.attr( axis, $img.data( axis ) );
+						$img.removeAttr( 'data-' + axis );
+					}
+				}
+
+				$img.attr( 'src', src );
+			},
+
+			/**
 			 * Scan each image, replace image src with encoded version.
 			 *
 			 * @since 1.5
@@ -57,10 +76,10 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 						src = $this.attr( 'data-src' );
 
 					$this.removeAttr( 'data-src' );
-					$this.attr( 'dynamicImage', '' );
+					$this.attr( 'dynamicimage', '' );
 
 					if ( ! self.isRandomUnsplash( src ) ) {
-						$this.attr( 'src', src );
+						self.setImageAttributes( $this, src );
 						return;
 					}
 
@@ -74,7 +93,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 					self
 						.getDataURL( src )
 						.done( function( result ) {
-							$this.attr( 'src', result );
+							self.setImageAttributes( $this, result );
 						} )
 						.fail( function() {
 
@@ -82,7 +101,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 							self
 								.getRedirectURL( src )
 								.done( function( result ) {
-									$this.attr( 'src', result );
+									self.setImageAttributes( $this, result );
 								} )
 								.fail( function() {
 									BG.GRIDBLOCK.Filter.setPlaceholderSrc( $this );
@@ -110,7 +129,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 				};
 
 				if ( hasImage ) {
-					$gridblock.attr( 'dynamicImage', '' );
+					$gridblock.attr( 'dynamicimage', '' );
 
 					if ( ! self.isRandomUnsplash( imageUrl ) ) {
 						return;

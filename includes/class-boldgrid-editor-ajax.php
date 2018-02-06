@@ -55,6 +55,8 @@ class Boldgrid_Editor_Ajax {
 	 * @since 1.7
 	 */
 	public function generate_blocks() {
+		global $wp_embed;
+
 		$params = ! empty( $_POST ) ? $_POST : array();
 
 		$this->validate_nonce( 'gridblock_save' );
@@ -71,7 +73,9 @@ class Boldgrid_Editor_Ajax {
 			if ( ! empty( $response ) ) {
 
 				foreach( $response as &$block ) {
-					$block['preview_html'] = do_shortcode( $block['html'] );
+
+					$block['preview_html'] = $wp_embed->run_shortcode( $block['html'] );
+					$block['preview_html'] = do_shortcode( $block['preview_html'] );
 					$block['html'] = $block['html'];
 				}
 

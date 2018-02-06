@@ -3,7 +3,6 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 
 import { Save } from './save';
-import { Shortcode } from './shortcode';
 
 ( function( $ ) {
 	'use strict';
@@ -40,8 +39,6 @@ import { Shortcode } from './shortcode';
 					BGGB.Drag.init();
 					BGGB.Generate.fetch();
 
-					self.shortcode = new Shortcode();
-					self.shortcode.prefetch();
 					new Save().init();
 				}
 			},
@@ -175,13 +172,9 @@ import { Shortcode } from './shortcode';
 						BGGB.Image.translateImages( gridblock, gridblock.$previewHtml );
 					}
 
-					//					content = self.shortcode.convert( gridblock.getHtml() );
-
-					// self.iframeContent( $iframe, content );
-
 					self.iframeContent( $iframe, {
 						head: '',
-						body: gridblock.$previewHtml ? gridblock.$previewHtml[0].outerHTML : gridblock.getHtml()
+						body: gridblock.getHtml( 'preview' )
 					} );
 
 					$contents = $iframe.contents();

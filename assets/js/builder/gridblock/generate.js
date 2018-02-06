@@ -170,9 +170,13 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			 * @param {object} gridblockData A Gridblock config.
 			 */
 			addRequiredProperties: function( gridblockData ) {
-				var $html = $( gridblockData.html );
+				var $html = $( gridblockData.html ),
+					$previewHtml = $( gridblockData.preview_html );
 
 				self.updateBackgroundImages( $html );
+				self.updateBackgroundImages( $previewHtml );
+
+				gridblockData.$previewHtml = $previewHtml;
 				gridblockData['html-jquery'] = $html;
 
 				return gridblockData;

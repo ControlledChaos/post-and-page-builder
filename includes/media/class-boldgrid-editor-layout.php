@@ -94,6 +94,7 @@ class Boldgrid_Layout extends Boldgrid_Editor_Media_Tab {
 
 		return array (
 			'html' => $shortcode_translated_html,
+			'preview_html' => do_shortcode( $shortcode_translated_html ),
 			'type' => 'bg_block' === $post->post_type ? 'library' : 'saved',
 			'is_post' => ! empty( $post ) ? 'post' === $post->post_type : false,
 			'str_length' => strlen( $shortcode_translated_html )
