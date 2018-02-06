@@ -20,6 +20,10 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 				BG.GRIDBLOCK.configs = {};
 				BG.GRIDBLOCK.configs.gridblocks = {};
 				self.loadingTemplate = wp.template( 'boldgrid-editor-gridblock-loading' );
+			},
+
+			savedBlocksConfigs( configs ) {
+				self.configs = configs;
 
 				$.each( self.configs, function( gridblockId ) {
 					this.html = self.unsetImageUrls( this.html );

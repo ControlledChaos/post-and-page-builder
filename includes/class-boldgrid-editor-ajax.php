@@ -55,12 +55,10 @@ class Boldgrid_Editor_Ajax {
 	 * @since 1.7
 	 */
 	public function generate_blocks() {
-		global $wp_embed;
-
 		$params = ! empty( $_POST ) ? $_POST : array();
 
 		$this->validate_nonce( 'gridblock_save' );
-		$response = wp_safe_remote_get( self::getEndpoint('gridblock_generate'), array(
+		$response = wp_safe_remote_get( self::get_end_point('gridblock_generate'), array(
 			'timeout' => 10,
 			'body' => $params,
 		) );
@@ -73,9 +71,7 @@ class Boldgrid_Editor_Ajax {
 			if ( ! empty( $response ) ) {
 
 				foreach( $response as &$block ) {
-
-					$block['preview_html'] = $wp_embed->run_shortcode( $block['html'] );
-					$block['preview_html'] = do_shortcode( $block['preview_html'] );
+					$block['preview_html'] = Boldgrid_Layout::run_shortcodes( $block['html'] );
 					$block['html'] = $block['html'];
 				}
 
@@ -87,6 +83,12 @@ class Boldgrid_Editor_Ajax {
 		wp_send_json_error();
 	}
 
+	public function get_saved_blocks() {
+		$this->validate_nonce( 'gridblock_save' );
+
+		wp_send_json( Boldgrid_Layout::get_all_gridblocks() );
+	}
+
 	/**
 	 * Get a full Url to an end point.
 	 *
@@ -95,7 +97,7 @@ class Boldgrid_Editor_Ajax {
 	 * @param  string $key Key.
 	 * @return string      URl.
 	 */
-	public static function getEndPoint( $key ) {
+	public static function get_end_point( $key ) {
 		$config = Boldgrid_Editor_Service::get( 'config' );
 		return $config['asset_server'] . $config['ajax_calls'][ $key ];
 	}

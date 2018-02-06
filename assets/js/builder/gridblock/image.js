@@ -21,7 +21,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 					self.replaceImages( $html );
 					self.replaceBackgrounds( $html );
 				} else {
-					self.transferSrcAttr( gridblockData );
+					self.transferSrcAttr( $html );
 				}
 			},
 

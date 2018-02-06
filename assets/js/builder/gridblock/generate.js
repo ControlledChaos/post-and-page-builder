@@ -148,7 +148,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			},
 
 			/**
-			 * Set the background image for any remote gridblocks..
+			 * Set the background image for any remote gridblocks.
 			 *
 			 * @since 1.5
 			 *

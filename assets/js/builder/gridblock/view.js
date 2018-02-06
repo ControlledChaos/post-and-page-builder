@@ -2,6 +2,8 @@ window.BOLDGRID = window.BOLDGRID || {};
 BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 
+import { FetchSaved } from './fetch-saved';
+
 /**
  * Handles setting up the Gridblocks view.
  */
@@ -31,6 +33,8 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 				BG.GRIDBLOCK.Category.init();
 				self.endlessScroll();
 				self.templateClass = self.getTemplateClass();
+
+				self.fetchSaved = new FetchSaved();
 			},
 
 			/**
@@ -106,20 +110,6 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			},
 
 			/**
-			 * Set Gridblock count.
-			 *
-			 * @since 1.5
-			 */
-			setGridblockCount: function() {
-				let types = _.countBy( BOLDGRID.EDITOR.GRIDBLOCK.configs.gridblocks || [], 'type' );
-
-				self.$gridblockSection
-					.find( '.gridblocks' )
-					.attr( 'my-gridblocks-count', ( types.saved || 0 ).toString() )
-					.attr( 'library-gridblocks-count', ( types.library || 0 ).toString() );
-			},
-
-			/**
 			 * Process when page loads.
 			 *
 			 * @since 1.5
@@ -182,6 +172,8 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 
 				if ( ! isSaved && ! self.hasGridblocks() ) {
 					BG.GRIDBLOCK.Generate.fetch();
+				} else if ( isSaved && ! self.hasGridblocks() ) {
+					self.fetchSaved.fetch();
 				}
 			},
 
@@ -321,7 +313,6 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 					markup = self.generateInitialMarkup();
 					$gridblockContainer.append( markup );
 					self.$gridblockSection.trigger( 'scroll' );
-					self.setGridblockCount();
 				}
 			},
 
