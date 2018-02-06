@@ -54,26 +54,46 @@ class Boldgrid_Editor_Ajax {
 	 *
 	 * @since 1.7
 	 */
-	public function generate_gridblocks() {
+	public function generate_blocks() {
 		$params = ! empty( $_POST ) ? $_POST : array();
 
-		$this->validate_nonce( 'boldgrid_editor_gridblock_save' );
-
-		$response = wp_remote_post( $url, array(
+		$this->validate_nonce( 'gridblock_save' );
+		$response = wp_safe_remote_get( self::getEndpoint('gridblock_generate'), array(
 			'timeout' => 10,
 			'body' => $params,
 		) );
 
-		if ( is_wp_error( $response ) || empty( $response ) ) {
-			status_header( 500 );
-			wp_send_json_error();
-		} else {
-			foreach( $response as &$block ) {
-				$block['html'] = do_shortcode( $block['html'] );
-			}
+		if ( ! is_wp_error( $response ) ) {
+			$response = wp_remote_retrieve_body( $response );
+			$response = json_decode( $response, true );
+			$response = $response ? $response : array();
 
-			wp_send_json_success( $response );
+			if ( ! empty( $response ) ) {
+
+				foreach( $response as &$block ) {
+					$block['preview_html'] = do_shortcode( $block['html'] );
+					$block['html'] = $block['html'];
+				}
+
+				wp_send_json( $response );
+			}
 		}
+
+		status_header( 500 );
+		wp_send_json_error();
+	}
+
+	/**
+	 * Get a full Url to an end point.
+	 *
+	 * @since 1.7
+	 *
+	 * @param  string $key Key.
+	 * @return string      URl.
+	 */
+	public static function getEndPoint( $key ) {
+		$config = Boldgrid_Editor_Service::get( 'config' );
+		return $config['asset_server'] . $config['ajax_calls'][ $key ];
 	}
 
 	/**

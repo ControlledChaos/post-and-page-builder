@@ -75,9 +75,8 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 					timeout: 15000,
 					data: _.defaults( options, {
 						action: 'boldgrid_generate_blocks',
-
 						/*eslint-disable */
-						// If filtered to a type, load 30 otherwise 50.
+						boldgrid_editor_gridblock_save: BoldgridEditor.nonce_gridblock_save,
 						quantity: 30,
 						color_palettes: 1,
 						version: BoldgridEditor.version,
