@@ -66,12 +66,45 @@ class Boldgrid_Editor_Templater {
 			array( $this, 'register_project_templates' )
 		);
 
-
 		// Add a filter to the template include to determine if the page has our
 		// template assigned and return it's path
 		add_filter( 'template_include', array( $this, 'view_project_template') );
 
 		add_action( 'add_meta_boxes_page', array( $this, 'set_default_metabox' ), 1 );
+		add_action( 'posts_selection', array( $this, 'set_content_width' ) );
+	}
+
+	/**
+	 * If editting a post that has the template set to an editor template, set content width.
+	 *
+	 * @since 1.7
+	 */
+	public function set_content_width() {
+		global $post;
+		global $pagenow;
+
+		if ( is_admin() &&
+			$pagenow &&
+			'post.php' === $pagenow &&
+			! empty( $post ) &&
+			in_array( $post->post_type, array( 'page', 'bg_block' ) ) ) {
+
+			if ( $this->is_custom_template( $post->page_template ) || 'bg_block' === $post->post_type ) {
+				self::update_content_width();
+			}
+		}
+	}
+
+	/**
+	 * Update content width.
+	 *
+	 * @since 1.7
+	 */
+	public static function update_content_width() {
+		global $content_width;
+
+		$config = Boldgrid_Editor_Service::get( 'config' );
+		$content_width = $config['templates']['default_content_width'];
 	}
 
 	/**
@@ -107,6 +140,7 @@ class Boldgrid_Editor_Templater {
 			&& '' == $post->page_template // Only when page_template is not set
 		) {
 			$post->page_template = $this->get_template_slug( $template_choice );
+			self::update_content_width();
 		}
 	}
 
@@ -232,6 +266,8 @@ class Boldgrid_Editor_Templater {
 	 * @since 1.6
 	 */
 	public function add_template_filters() {
+		self::update_content_width();
+
 		add_filter( 'body_class', array( $this, 'add_body_class' ), 30 );
 		add_filter( 'wp_calculate_image_sizes', array( $this, 'default_srcset' ), 40 );
 

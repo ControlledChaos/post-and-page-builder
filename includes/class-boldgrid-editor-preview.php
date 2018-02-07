@@ -159,6 +159,8 @@ class Boldgrid_Editor_Preview {
 			$template_choice = Boldgrid_Editor_Setup::get_template_choice();
 			if ( $templater->is_custom_template( $templater->get_template_slug( $template_choice ) ) ) {
 				$template = $templater->get_full_path( $template_choice );
+
+				Boldgrid_Editor_Templater::update_content_width();
 			}
 		}
 

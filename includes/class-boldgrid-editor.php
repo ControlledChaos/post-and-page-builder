@@ -314,7 +314,7 @@ class Boldgrid_Editor {
 	 */
 	public function show_key_prompt() {
 		add_action( 'load-edit.php', function () {
-			$post_type = ! empty( $_REQUEST['post_type'] ) ? $_REQUEST['post_type'] : $post_type;
+			$post_type = ! empty( $_REQUEST['post_type'] ) ? $_REQUEST['post_type'] : null;
 			if ( 'bg_block' === $post_type ) {
 				add_filter( 'Boldgrid\Library\Library\Notice\KeyPrompt_display',  '__return_true' );
 			}

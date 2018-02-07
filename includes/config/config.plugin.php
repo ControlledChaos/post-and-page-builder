@@ -16,6 +16,9 @@ return array (
 	'development_server'    => 'http://localhost:4000',
 	'plugin_name'           => 'boldgrid-editor',
 	'plugin_key_code'       => 'editor',
+	'templates' => array(
+		'default_content_width' => 1140,
+	),
 	'urls' => array(
 		'premium_key' => 'https://www.boldgrid.com/connect-keys'
 	),
