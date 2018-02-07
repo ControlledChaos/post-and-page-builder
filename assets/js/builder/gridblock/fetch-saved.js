@@ -9,7 +9,14 @@ export class FetchSaved {
 		this.status = '';
 	}
 
+	/**
+	 * API call for all saved & library blocks.
+	 *
+	 * @since 1.7
+	 */
 	fetch() {
+
+		// Fetch currently grabs all blocks in 1 run, dont run twice.
 		if ( this.status ) {
 			return false;
 		}
@@ -48,6 +55,13 @@ export class FetchSaved {
 			.attr( 'library-gridblocks-count', ( types.library || 0 ).toString() );
 	}
 
+	/**
+	 * Make the API call to get saved blocks.
+	 *
+	 * @since 1.7
+	 *
+	 * @return {$.deferred} Deferred API call.
+	 */
 	_call() {
 		return $.ajax( {
 			type: 'post',

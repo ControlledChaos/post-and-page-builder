@@ -83,6 +83,11 @@ class Boldgrid_Editor_Ajax {
 		wp_send_json_error();
 	}
 
+	/**
+	 * Get saved blocks. Used by GridBlock preview screen display display library blocks.
+	 *
+	 * @since 1.7
+	 */
 	public function get_saved_blocks() {
 		$this->validate_nonce( 'gridblock_save' );
 

@@ -221,25 +221,16 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			 * @param  {number} gridblockId Index of gridblock.
 			 */
 			isSimpleGridblock: function( $html ) {
-				var validNumOfDescendents = 3,
+				var validNumOfDescendents = 5,
 					isSimpleGridblock = false,
 					$testDiv = $( '<div>' ).html( $html.clone() );
 
 				// Remove spaces from the test div. Causes areas with only spacers to fail tests.
 				$testDiv.find( '.mod-space' ).remove();
 
-				$testDiv.find( '.row:not(.row .row)' ).each( function() {
-					var $descendents,
-						$this = $( this );
-
-					if ( ! $this.siblings().length ) {
-						$descendents = $this.find( '*' );
-						if ( $descendents.length <= validNumOfDescendents ) {
-							isSimpleGridblock = true;
-							return false;
-						}
-					}
-				} );
+				if ( $testDiv.find( '*' ).length <= validNumOfDescendents ) {
+					isSimpleGridblock = true;
+				}
 
 				$testDiv.find( '.row:not(.row .row) > [class^="col-"] > .row' ).each( function() {
 					var $hr,
