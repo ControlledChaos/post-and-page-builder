@@ -131,6 +131,7 @@ Release Date: February 20th, 2018
 * New Feature: CSS ID's can now be specified via customization controls.
 * New Feature: Added Connect Key prompt.
 * New Feature: Support audio and video blocks in Blocks.
+* New Feature: Shortcodes now display in block previews.
 * Bug Fix: Blockquote elements now have the text control available to them.
 * Bug Fix: Warning thrown while listing posts in admin.
 * Bug Fix: HEX input field missing from color picker.

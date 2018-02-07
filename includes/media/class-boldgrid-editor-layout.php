@@ -50,8 +50,6 @@ class Boldgrid_Layout extends Boldgrid_Editor_Media_Tab {
 	 * @return array $row_content
 	 */
 	public static function parse_gridblocks( $content, $post = null ) {
-		global $shortcode_tags;
-
 		if ( 'bg_block' === $post->post_type ) {
 			$block = self::format_gridblock_data( $post, $content );
 			return $block['html'] ? array( $block ) : array();
@@ -72,13 +70,6 @@ class Boldgrid_Layout extends Boldgrid_Editor_Media_Tab {
 
 				// Save Markup
 				$row_html = self::outer_HTML( $potential_row );
-
-				// If a shortcode exists, Ignore the row
-				foreach ( $shortcode_tags as $tag => $details ) {
-					if ( has_shortcode( $row_html, $tag ) ) {
-						continue 2;
-					}
-				}
 
 				$rows[] = self::format_gridblock_data( $post, $row_html );
 			}
