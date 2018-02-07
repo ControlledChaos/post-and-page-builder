@@ -158,6 +158,8 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 					$html: gridblockData['html-jquery']
 				} );
 
+				gridblockData.$previewHtml = gridblockData.$previewHtml || gridblockData.$html;
+
 				delete gridblockData.html;
 				delete gridblockData.preview_html;
 				delete gridblockData['html-jquery'];
