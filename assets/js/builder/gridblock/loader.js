@@ -136,6 +136,7 @@ import { Save } from './save';
 						<body>
 							<div>
 								${self.placeholderHtml.before}
+								<span class="content-placeholder"></span>
 								${content.body}
 								${self.placeholderHtml.after}
 							</div>
@@ -167,19 +168,18 @@ import { Save } from './save';
 					let content, $contents;
 
 					BGGB.Image.translateImages( gridblock, gridblock.$html );
-
-					if ( gridblock.$previewHtml ) {
-						BGGB.Image.translateImages( gridblock, gridblock.$previewHtml );
-					}
+					BGGB.Image.translateImages( gridblock, gridblock.$previewHtml );
 
 					self.iframeContent( $iframe, {
 						head: '',
-						body: gridblock.getHtml( 'preview' )
+						body: ''
 					} );
 
 					$contents = $iframe.contents();
 					BGGB.View.addStyles( $contents );
 					BGGB.View.addBodyClasses( $contents );
+
+					$contents.find( '.content-placeholder' ).replaceWith( gridblock.$previewHtml );
 
 					//	self.$iframeTemp = $iframe.clone();
 
