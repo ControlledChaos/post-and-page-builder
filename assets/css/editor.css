@@ -2783,13 +2783,14 @@ html:not(.dragging-section) .delete-icon-wrap {
   transition: opacity 0.5s, visibility 0.5s;
   visibility: hidden; }
 
-.zoom-gridblocks-section .gridblocks.gridblock-loading:before {
+.zoom-gridblocks-section .gridblocks.gridblock-loading::before {
   visibility: visible;
   opacity: 1; }
 
 .zoom-gridblocks-section .gridblocks.gridblock-loading .gridblock {
   display: none; }
 
+.zoom-gridblocks-section .gridblocks .my-gridblocks-500,
 .zoom-gridblocks-section .gridblocks .my-gridblocks-404 {
   display: none;
   padding: 40px;
@@ -2799,6 +2800,9 @@ html:not(.dragging-section) .delete-icon-wrap {
   margin: 60px 30px;
   border-top: 6px solid #0073aa;
   font-weight: lighter; }
+
+.zoom-gridblocks-section .gridblocks .my-gridblocks-500 {
+  border-color: red; }
 
 .zoom-gridblocks-section .gridblocks:not([filter='saved']) .my-gridblocks-404,
 .zoom-gridblocks-section .gridblocks:not([filter='saved']) .gridblock[data-type='saved'] {
@@ -2810,6 +2814,12 @@ html:not(.dragging-section) .delete-icon-wrap {
 .zoom-gridblocks-section .gridblocks[filter='saved'][my-gridblocks-count='0'] .my-gridblocks-404.saved,
 .zoom-gridblocks-section .gridblocks[filter='library'][library-gridblocks-count='0'] .my-gridblocks-404.library {
   display: block !important; }
+
+.zoom-gridblocks-section .gridblocks[error="saved"] .my-gridblocks-404 {
+  display: none !important; }
+
+.zoom-gridblocks-section .gridblocks[error="saved"][filter="library"] .my-gridblocks-500, .zoom-gridblocks-section .gridblocks[error="saved"][filter="saved"] .my-gridblocks-500 {
+  display: block; }
 
 .zoom-gridblocks-section .gridblocks[filter='library'] .action-items .save,
 .zoom-gridblocks-section .gridblocks[filter='saved'] .action-items .save {

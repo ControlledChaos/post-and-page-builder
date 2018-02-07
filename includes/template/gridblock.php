@@ -20,6 +20,10 @@
 </div>
 <div class="boldgrid-zoomout-section zoom-gridblocks-section">
 	<div class="gridblocks">
+		<div class="my-gridblocks-500">
+			We experienced an issue retrieving your saved Blocks. We're sorry for the inconvinence.
+			Please try again later.
+		</div>
 		<div class="my-gridblocks-404 saved">
 			We didn't find any Blocks on your pages. Once you add Blocks to a post or page, it
 			will show up here for your convenience.

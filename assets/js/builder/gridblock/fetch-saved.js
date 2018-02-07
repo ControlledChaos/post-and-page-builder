@@ -29,15 +29,15 @@ export class FetchSaved {
 				this.status = 'done';
 				BGGB.Filter.savedBlocksConfigs( gridblocks );
 				BGGB.View.createGridblocks();
+				this.setGridblockCount();
 			} )
 			.always( () => {
 				this.status = 'fetching';
 				BGGB.Generate.gridblockLoadingUI.finish();
-				this.setGridblockCount();
 			} )
 			.fail( () => {
 				this.status = 'failed';
-				BGGB.View.$gridblockSection.append( wp.template( 'boldgrid-editor-gridblock-error' )() );
+				BGGB.View.$gridblockSection.find( '.gridblocks' ).attr( 'error', 'saved' );
 			} );
 	}
 
