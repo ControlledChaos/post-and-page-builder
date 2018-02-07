@@ -459,6 +459,12 @@ html:not(.dragging-section) .delete-icon-wrap {
 		}
 	}
 
+	.gridblocks:not([filter="library"]) {
+		.gridblock[data-type="library"] {
+			display: none !important;
+		}
+	}
+
 	.gridblocks[filter='saved'][my-gridblocks-count='0'] .my-gridblocks-404.saved,
 	.gridblocks[filter='library'][library-gridblocks-count='0'] .my-gridblocks-404.library {
 		display: block !important;

@@ -56,9 +56,10 @@ class Boldgrid_Editor_Ajax {
 	 */
 	public function generate_blocks() {
 		$params = ! empty( $_POST ) ? $_POST : array();
+		$params['color'] = ! empty( $params['color'] ) ? stripslashes( $params['color'] ) : null;
 
 		$this->validate_nonce( 'gridblock_save' );
-		$response = wp_safe_remote_get( self::get_end_point('gridblock_generate'), array(
+		$response = wp_remote_get( self::get_end_point('gridblock_generate'), array(
 			'timeout' => 10,
 			'body' => $params,
 		) );
@@ -67,7 +68,6 @@ class Boldgrid_Editor_Ajax {
 			$response = wp_remote_retrieve_body( $response );
 			$response = json_decode( $response, true );
 			$response = $response ? $response : array();
-
 			if ( ! empty( $response ) ) {
 
 				foreach( $response as &$block ) {
