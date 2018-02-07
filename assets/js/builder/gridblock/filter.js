@@ -30,7 +30,9 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 					this.$previewHtml = $( self.unsetImageUrls( this.preview_html ) );
 					this.$html = $( this.html );
 
-					self.removeInvalidGridblocks( this, gridblockId );
+					if ( 'library' !== this.type ) {
+						self.removeInvalidGridblocks( this, gridblockId );
+					}
 				} );
 
 				self.setConfig();
