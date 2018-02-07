@@ -75,6 +75,10 @@ body {
 	min-height: 100%;
 }
 
+.centered-section {
+	position: static !important;
+}
+
 .centered-section > *:only-of-type {
 	position: absolute;
 	top: 50%;
