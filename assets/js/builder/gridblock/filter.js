@@ -22,6 +22,13 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 				self.loadingTemplate = wp.template( 'boldgrid-editor-gridblock-loading' );
 			},
 
+			/**
+			 * Add the block configs from the saved API call.
+			 *
+			 * @since 1.7
+			 *
+			 * @param  {array} configs List of blocks.
+			 */
 			savedBlocksConfigs( configs ) {
 				self.configs = configs;
 

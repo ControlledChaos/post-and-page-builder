@@ -316,6 +316,14 @@ class Boldgrid_Layout extends Boldgrid_Editor_Media_Tab {
 		return $row_content;
 	}
 
+	/**
+	 * Translate shortcodes on some content.
+	 *
+	 * @since 1.7
+	 *
+	 * @param  string $html Content.
+	 * @return string       Content updated.
+	 */
 	public static function run_shortcodes( $html ) {
 		global $wp_embed;
 
