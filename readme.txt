@@ -138,6 +138,7 @@ Release Date: February 20th, 2018
 * Bug Fix: Getting started displayed after switching to text tab.
 * Bug Fix: Fixing iframe heights in editor.
 * Bug Fix: Duplicate font families in drop down.
+* Bug Fix: Saving existing blocks to library missing section wrapper.
 
 = 1.6.3 =
 
