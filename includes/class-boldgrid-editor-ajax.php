@@ -50,6 +50,64 @@ class Boldgrid_Editor_Ajax {
 	}
 
 	/**
+	 * Generate gridblocks.
+	 *
+	 * @since 1.7
+	 */
+	public function generate_blocks() {
+		$params = ! empty( $_POST ) ? $_POST : array();
+		$params['color'] = ! empty( $params['color'] ) ? stripslashes( $params['color'] ) : null;
+
+		$this->validate_nonce( 'gridblock_save' );
+		$response = wp_remote_get( self::get_end_point('gridblock_generate'), array(
+			'timeout' => 10,
+			'body' => $params,
+		) );
+
+		if ( ! is_wp_error( $response ) ) {
+			$response = wp_remote_retrieve_body( $response );
+			$response = json_decode( $response, true );
+			$response = $response ? $response : array();
+			if ( ! empty( $response ) ) {
+
+				foreach( $response as &$block ) {
+					$block['preview_html'] = Boldgrid_Layout::run_shortcodes( $block['html'] );
+					$block['html'] = $block['html'];
+				}
+
+				wp_send_json( $response );
+			}
+		}
+
+		status_header( 500 );
+		wp_send_json_error();
+	}
+
+	/**
+	 * Get saved blocks. Used by GridBlock preview screen display display library blocks.
+	 *
+	 * @since 1.7
+	 */
+	public function get_saved_blocks() {
+		$this->validate_nonce( 'gridblock_save' );
+
+		wp_send_json( Boldgrid_Layout::get_all_gridblocks() );
+	}
+
+	/**
+	 * Get a full Url to an end point.
+	 *
+	 * @since 1.7
+	 *
+	 * @param  string $key Key.
+	 * @return string      URl.
+	 */
+	public static function get_end_point( $key ) {
+		$config = Boldgrid_Editor_Service::get( 'config' );
+		return $config['asset_server'] . $config['ajax_calls'][ $key ];
+	}
+
+	/**
 	 * Validate image nonce.
 	 *
 	 * @since 1.5

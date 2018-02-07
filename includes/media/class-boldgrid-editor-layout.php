@@ -94,6 +94,7 @@ class Boldgrid_Layout extends Boldgrid_Editor_Media_Tab {
 
 		return array (
 			'html' => $shortcode_translated_html,
+			'preview_html' => self::run_shortcodes( $shortcode_translated_html ),
 			'type' => 'bg_block' === $post->post_type ? 'library' : 'saved',
 			'is_post' => ! empty( $post ) ? 'post' === $post->post_type : false,
 			'str_length' => strlen( $shortcode_translated_html )
@@ -313,6 +314,21 @@ class Boldgrid_Layout extends Boldgrid_Editor_Media_Tab {
 		$row_content = self::remove_duplicate_gridblocks( $row_content );
 
 		return $row_content;
+	}
+
+	/**
+	 * Translate shortcodes on some content.
+	 *
+	 * @since 1.7
+	 *
+	 * @param  string $html Content.
+	 * @return string       Content updated.
+	 */
+	public static function run_shortcodes( $html ) {
+		global $wp_embed;
+
+		$preview_html = $wp_embed->run_shortcode( $html );
+		return do_shortcode( $preview_html );
 	}
 
 	/**

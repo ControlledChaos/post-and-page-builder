@@ -28,6 +28,8 @@ class Boldgrid_Editor_Uninstall {
 	 * @return
 	 */
 	public static function on_delete() {
-		Boldgrid_Editor_Option::clear_all();
+
+		// Disabled this, it may cause undesirable effects.
+		// Boldgrid_Editor_Option::clear_all();
 	}
 }

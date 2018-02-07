@@ -64,10 +64,10 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			 * @return {jquery}               Collection of elements that need to have images replaced.
 			 */
 			getDynamicElements: function( gridblockData ) {
-				var $dynamicElements = gridblockData.$html.find( '[dynamicImage]' );
+				var $dynamicElements = gridblockData.$html.find( '[dynamicimage]' );
 
 				if (
-					gridblockData.$html[0].hasAttribute( 'dynamicImage' ) &&
+					gridblockData.$html[0].hasAttribute( 'dynamicimage' ) &&
 					'none' !== gridblockData.$html.css( 'background-image' )
 				) {
 					$dynamicElements.push( gridblockData.$html );

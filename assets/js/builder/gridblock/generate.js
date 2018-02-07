@@ -57,6 +57,14 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 					} );
 			},
 
+			/**
+			 * Does this user need to upgrade for this block?
+			 *
+			 * @since 1.7
+			 *
+			 * @param  {$} $gridblock Gridblock element.
+			 * @return {boolean}      Is it required?
+			 */
 			needsUpgrade( $gridblock ) {
 				return (
 					parseInt( $gridblock.attr( 'data-is-premium' ) ) &&
@@ -69,15 +77,15 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 				options = options || {};
 
 				return $.ajax( {
-					url:
-						BoldgridEditor.plugin_configs.asset_server +
-						BoldgridEditor.plugin_configs.ajax_calls.gridblock_generate,
+					type: 'post',
+					url: ajaxurl,
 					dataType: 'json',
-					timeout: 10000,
+					timeout: 15000,
 					data: _.defaults( options, {
+						action: 'boldgrid_generate_blocks',
 						/*eslint-disable */
-						// If filtered to a type, load 30 otherwise 50.
-						quantity: type ? 30 : 50,
+						boldgrid_editor_gridblock_save: BoldgridEditor.nonce_gridblock_save,
+						quantity: 30,
 						color_palettes: 1,
 						version: BoldgridEditor.version,
 						include_temporary_resources: 1,
@@ -148,7 +156,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			},
 
 			/**
-			 * Set the background image for any remote gridblocks..
+			 * Set the background image for any remote gridblocks.
 			 *
 			 * @since 1.5
 			 *
@@ -170,9 +178,13 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			 * @param {object} gridblockData A Gridblock config.
 			 */
 			addRequiredProperties: function( gridblockData ) {
-				var $html = $( gridblockData.html );
+				var $html = $( gridblockData.html ),
+					$previewHtml = $( gridblockData.preview_html );
 
 				self.updateBackgroundImages( $html );
+				self.updateBackgroundImages( $previewHtml );
+
+				gridblockData.$previewHtml = $previewHtml;
 				gridblockData['html-jquery'] = $html;
 
 				return gridblockData;

@@ -116,6 +116,10 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 
 				self.$window.trigger( 'resize' );
 
+				setTimeout( () => {
+					self.$window.trigger( 'resize' );
+				}, 1000 );
+
 				IMHWPB['tinymce_undo_disabled'] = false;
 				BOLDGRID.EDITOR.mce.undoManager.add();
 

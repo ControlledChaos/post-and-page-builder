@@ -16,12 +16,12 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			 *
 			 * @param  {Object} gridblockData Current Gridblock.
 			 */
-			translateImages: function( gridblockData ) {
+			translateImages: function( gridblockData, $html ) {
 				if ( gridblockData.dynamicImages ) {
-					self.replaceImages( gridblockData );
-					self.replaceBackgrounds( gridblockData );
+					self.replaceImages( $html );
+					self.replaceBackgrounds( $html );
 				} else {
-					self.transferSrcAttr( gridblockData );
+					self.transferSrcAttr( $html );
 				}
 			},
 
@@ -35,13 +35,32 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			 *
 			 * @param  {object} gridblockData Current Gridblock.
 			 */
-			transferSrcAttr: function( gridblockData ) {
-				gridblockData.$html.find( 'img[data-src]' ).each( function() {
+			transferSrcAttr: function( $html ) {
+				$html.find( 'img[data-src]' ).each( function() {
 					var $this = $( this ),
 						src = $this.attr( 'data-src' );
 
 					$this.removeAttr( 'data-src' ).attr( 'src', src );
 				} );
+			},
+
+			/**
+			 * Set image attributes from gridblock response.
+			 *
+			 * @since 1.7
+			 *
+			 * @param {$} $img Image element.
+			 * @param {string} src Path to image.
+			 */
+			setImageAttributes( $img, src ) {
+				for ( let axis of [ 'height', 'width' ] ) {
+					if ( $img.data( axis ) ) {
+						$img.attr( axis, $img.data( axis ) );
+						$img.removeAttr( 'data-' + axis );
+					}
+				}
+
+				$img.attr( 'src', src );
 			},
 
 			/**
@@ -51,16 +70,16 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			 *
 			 * @param  {jQuery} $gridblock Gridblock Object.
 			 */
-			replaceImages: function( gridblockData ) {
-				gridblockData.$html.find( 'img' ).each( function() {
+			replaceImages: function( $html ) {
+				$html.find( 'img' ).each( function() {
 					var $this = $( this ),
 						src = $this.attr( 'data-src' );
 
 					$this.removeAttr( 'data-src' );
-					$this.attr( 'dynamicImage', '' );
+					$this.attr( 'dynamicimage', '' );
 
 					if ( ! self.isRandomUnsplash( src ) ) {
-						$this.attr( 'src', src );
+						self.setImageAttributes( $this, src );
 						return;
 					}
 
@@ -74,7 +93,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 					self
 						.getDataURL( src )
 						.done( function( result ) {
-							$this.attr( 'src', result );
+							self.setImageAttributes( $this, result );
 						} )
 						.fail( function() {
 
@@ -82,7 +101,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 							self
 								.getRedirectURL( src )
 								.done( function( result ) {
-									$this.attr( 'src', result );
+									self.setImageAttributes( $this, result );
 								} )
 								.fail( function() {
 									BG.GRIDBLOCK.Filter.setPlaceholderSrc( $this );
@@ -98,9 +117,8 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			 *
 			 * @param  {jQuery} $gridblock gridblock previewed.
 			 */
-			replaceBackgrounds: function( gridblockData ) {
+			replaceBackgrounds: function( $gridblock ) {
 				var setBackground,
-					$gridblock = gridblockData.$html,
 					backgroundImage = $gridblock.css( 'background-image' ) || '',
 					hasImage = backgroundImage.match( /url\(?.+?\)/ ),
 					imageUrl = self.getBackgroundUrl( $gridblock );
@@ -111,7 +129,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 				};
 
 				if ( hasImage ) {
-					$gridblock.attr( 'dynamicImage', '' );
+					$gridblock.attr( 'dynamicimage', '' );
 
 					if ( ! self.isRandomUnsplash( imageUrl ) ) {
 						return;

@@ -20,13 +20,26 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 				BG.GRIDBLOCK.configs = {};
 				BG.GRIDBLOCK.configs.gridblocks = {};
 				self.loadingTemplate = wp.template( 'boldgrid-editor-gridblock-loading' );
+			},
+
+			/**
+			 * Add the block configs from the saved API call.
+			 *
+			 * @since 1.7
+			 *
+			 * @param  {array} configs List of blocks.
+			 */
+			savedBlocksConfigs( configs ) {
+				self.configs = configs;
 
 				$.each( self.configs, function( gridblockId ) {
 					this.html = self.unsetImageUrls( this.html );
-
+					this.$previewHtml = $( self.unsetImageUrls( this.preview_html ) );
 					this.$html = $( this.html );
 
-					self.removeInvalidGridblocks( this, gridblockId );
+					if ( 'library' !== this.type ) {
+						self.removeInvalidGridblocks( this, gridblockId );
+					}
 				} );
 
 				self.setConfig();
@@ -80,10 +93,11 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 				 * Get the jQuery HTML Object.
 				 * @return {jQuery} HTML to be added to the page.
 				 */
-				getHtml: function() {
+				getHtml: function( key ) {
 					let html = '';
+					key = key && 'preview' === key ? '$previewHtml' : '$html';
 
-					this.$html.each( function() {
+					this[key].each( function() {
 						if ( this.outerHTML ) {
 							html += this.outerHTML;
 						}
@@ -153,7 +167,10 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 					$html: gridblockData['html-jquery']
 				} );
 
+				gridblockData.$previewHtml = gridblockData.$previewHtml || gridblockData.$html;
+
 				delete gridblockData.html;
+				delete gridblockData.preview_html;
 				delete gridblockData['html-jquery'];
 
 				_.extend( gridblockData, self.configMethods );
@@ -215,25 +232,16 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			 * @param  {number} gridblockId Index of gridblock.
 			 */
 			isSimpleGridblock: function( $html ) {
-				var validNumOfDescendents = 3,
+				var validNumOfDescendents = 5,
 					isSimpleGridblock = false,
 					$testDiv = $( '<div>' ).html( $html.clone() );
 
 				// Remove spaces from the test div. Causes areas with only spacers to fail tests.
 				$testDiv.find( '.mod-space' ).remove();
 
-				$testDiv.find( '.row:not(.row .row)' ).each( function() {
-					var $descendents,
-						$this = $( this );
-
-					if ( ! $this.siblings().length ) {
-						$descendents = $this.find( '*' );
-						if ( $descendents.length <= validNumOfDescendents ) {
-							isSimpleGridblock = true;
-							return false;
-						}
-					}
-				} );
+				if ( $testDiv.find( '*' ).length <= validNumOfDescendents ) {
+					isSimpleGridblock = true;
+				}
 
 				$testDiv.find( '.row:not(.row .row) > [class^="col-"] > .row' ).each( function() {
 					var $hr,

@@ -3,7 +3,6 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 
 import { Save } from './save';
-import { Shortcode } from './shortcode';
 
 ( function( $ ) {
 	'use strict';
@@ -40,8 +39,6 @@ import { Shortcode } from './shortcode';
 					BGGB.Drag.init();
 					BGGB.Generate.fetch();
 
-					self.shortcode = new Shortcode();
-					self.shortcode.prefetch();
 					new Save().init();
 				}
 			},
@@ -139,6 +136,7 @@ import { Shortcode } from './shortcode';
 						<body>
 							<div>
 								${self.placeholderHtml.before}
+								<span class="content-placeholder"></span>
 								${content.body}
 								${self.placeholderHtml.after}
 							</div>
@@ -169,13 +167,19 @@ import { Shortcode } from './shortcode';
 				load = function() {
 					let content, $contents;
 
-					BGGB.Image.translateImages( gridblock );
-					content = self.shortcode.convert( gridblock.getHtml() );
-					self.iframeContent( $iframe, content );
+					BGGB.Image.translateImages( gridblock, gridblock.$html );
+					BGGB.Image.translateImages( gridblock, gridblock.$previewHtml );
+
+					self.iframeContent( $iframe, {
+						head: '',
+						body: ''
+					} );
 
 					$contents = $iframe.contents();
 					BGGB.View.addStyles( $contents );
 					BGGB.View.addBodyClasses( $contents );
+
+					$contents.find( '.content-placeholder' ).replaceWith( gridblock.$previewHtml );
 
 					//	self.$iframeTemp = $iframe.clone();
 

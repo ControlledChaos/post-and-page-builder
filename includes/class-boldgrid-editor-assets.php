@@ -255,7 +255,6 @@ class Boldgrid_Editor_Assets {
 			'display_gridblock_lead' => 'post-new.php' === $pagenow && 'tinymce' === $default_tab,
 			'display_intro' => Boldgrid_Editor_Setup::should_show_setup(),
 			'setup_settings' => Boldgrid_Editor_Option::get( 'setup' ),
-			'gridblocks' => Boldgrid_Layout::get_all_gridblocks(),
 			'control_styles' => ! $is_bg_theme ? Boldgrid_Editor_Builder_Styles::get_option() : array(),
 			'admin-url' => get_admin_url(),
 			'inspiration' => get_option( 'boldgrid_install_options' ),

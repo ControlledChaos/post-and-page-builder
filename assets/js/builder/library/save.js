@@ -106,7 +106,7 @@ export class Save {
 
 			return $deferred;
 		} else {
-			data.html = $( data.html ).html();
+			data.html = $( '<div>' + data.html + '</div>' ).html();
 			return this.ajax( data );
 		}
 	}
@@ -117,6 +117,15 @@ export class Save {
 	 * @since 1.6
 	 */
 	_addToConfig( post ) {
+
+		/*
+		 * If the user has not yet fetched saved blocks, don't add to the list because otherwise
+		 * it will appear twice.
+		 */
+		if ( ! BG.GRIDBLOCK.View.fetchSaved || ! BG.GRIDBLOCK.View.fetchSaved.status ) {
+			return;
+		}
+
 		let gridblockData = {
 			html: post.post_content,
 			post: post,
