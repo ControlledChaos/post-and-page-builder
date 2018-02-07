@@ -219,8 +219,10 @@ class Boldgrid_Editor_Assets {
 
 		$builder = new Boldgrid_Editor_Builder();
 
-		$boldgrid_settings = get_option( 'boldgrid_settings' );
-		$boldgrid_settings['api_key'] = get_option( 'boldgrid_api_key' );
+		$config = Boldgrid_Editor_Service::get( 'config' );
+		$boldgrid_settings = Boldgrid_Editor_Config::get_mixed_option( 'boldgrid_settings' );
+		$boldgrid_settings = $boldgrid_settings ? $boldgrid_settings : array();
+		$boldgrid_settings['api_key'] = $config['api_key'];
 
 		$vars = array(
 			'plugin_configs' => $this->configs,
