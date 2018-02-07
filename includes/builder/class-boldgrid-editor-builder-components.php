@@ -120,6 +120,8 @@ class Boldgrid_Editor_Builder_Components {
 			$fonts[] = $node->getAttribute( 'data-font-family' );
 		}
 
+		$fonts = array_unique( $fonts );
+
 		return $fonts;
 	}
 }
