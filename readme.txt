@@ -136,6 +136,7 @@ Release Date: February 20th, 2018
 * Bug Fix: HEX input field missing from color picker.
 * Bug Fix: Getting started displayed after switching to text tab.
 * Bug Fix: Fixing iframe heights in editor.
+* Bug Fix: Duplicate font families in drop down.
 
 = 1.6.3 =
 
