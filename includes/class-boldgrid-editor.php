@@ -47,7 +47,6 @@ class Boldgrid_Editor {
 		$this->is_boldgrid_theme = Boldgrid_Editor_Theme::is_editing_boldgrid_theme();
 
 		$config = new Boldgrid_Editor_Config();
-		$config = apply_filters( 'boldgrid_editor_config', $config );
 		$this->set_config( $config );
 		$tab_configs = require BOLDGRID_EDITOR_PATH . '/includes/config/layouts.php';
 		$tab_configs = apply_filters( 'boldgrid-media-modal-config', $tab_configs );
@@ -280,7 +279,7 @@ class Boldgrid_Editor {
 	/**
 	 * Load library.
 	 *
-	 * @since 1.7
+	 * @since 1.7.0
 	 *
 	 * @return Boldgrid\Library\Util\Load loader.
 	 */
@@ -310,7 +309,7 @@ class Boldgrid_Editor {
 	/**
 	 * If the user has not yet entered their API key, prompt them to enter one on the block listing page.
 	 *
-	 * @since 1.7
+	 * @since 1.7.0
 	 */
 	public function show_key_prompt() {
 		add_action( 'load-edit.php', function () {

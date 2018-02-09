@@ -66,6 +66,15 @@ class Boldgrid_Editor_Config {
 		// Merge the global and local configs.
 		$configs = array_merge( $global_configs, $local_configs );
 
+		/*
+		 * Update all plugin configurations.
+		 *
+		 * @since 1.7.0
+		 *
+		 * @param array $configs All plugin configurations.
+		 */
+		$configs = apply_filters( 'BoldgridEditor\Config', $configs );
+
 		// Set the configs in a class property.
 		$this->set_configs( $configs );
 	}
@@ -73,7 +82,7 @@ class Boldgrid_Editor_Config {
 	/**
 	 * The api key option is not being save in the correct, method. Chack bothe site and regular.
 	 *
-	 * @since 1.7
+	 * @since 1.7.0
 	 *
 	 * @param  string $name Option Name.
 	 * @return string       Value.

@@ -47,7 +47,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			/**
 			 * Set image attributes from gridblock response.
 			 *
-			 * @since 1.7
+			 * @since 1.7.0
 			 *
 			 * @param {$} $img Image element.
 			 * @param {string} src Path to image.

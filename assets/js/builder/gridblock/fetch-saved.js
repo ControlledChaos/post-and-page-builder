@@ -12,7 +12,7 @@ export class FetchSaved {
 	/**
 	 * API call for all saved & library blocks.
 	 *
-	 * @since 1.7
+	 * @since 1.7.0
 	 */
 	fetch() {
 
@@ -58,7 +58,7 @@ export class FetchSaved {
 	/**
 	 * Make the API call to get saved blocks.
 	 *
-	 * @since 1.7
+	 * @since 1.7.0
 	 *
 	 * @return {$.deferred} Deferred API call.
 	 */

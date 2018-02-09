@@ -6,7 +6,7 @@ class Public {
 	/**
 	 * Setup the class.
 	 *
-	 * @since 1.7
+	 * @since 1.7.0
 	 */
 	init() {
 		$( () => {
@@ -20,7 +20,7 @@ class Public {
 	/**
 	 * Run Parallax settings.
 	 *
-	 * @since 1.7
+	 * @since 1.7.0
 	 */
 	setupParallax() {
 		let $parallaxBackgrounds = $( '.background-parallax' );

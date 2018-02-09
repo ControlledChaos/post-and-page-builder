@@ -77,7 +77,7 @@ class Boldgrid_Editor_Templater {
 	/**
 	 * If editting a post that has the template set to an editor template, set content width.
 	 *
-	 * @since 1.7
+	 * @since 1.7.0
 	 */
 	public function set_content_width() {
 		global $post;
@@ -98,7 +98,7 @@ class Boldgrid_Editor_Templater {
 	/**
 	 * Update content width.
 	 *
-	 * @since 1.7
+	 * @since 1.7.0
 	 */
 	public static function update_content_width() {
 		global $content_width;

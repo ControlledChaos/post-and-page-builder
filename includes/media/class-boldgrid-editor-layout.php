@@ -310,7 +310,7 @@ class Boldgrid_Layout extends Boldgrid_Editor_Media_Tab {
 	/**
 	 * Translate shortcodes on some content.
 	 *
-	 * @since 1.7
+	 * @since 1.7.0
 	 *
 	 * @param  string $html Content.
 	 * @return string       Content updated.

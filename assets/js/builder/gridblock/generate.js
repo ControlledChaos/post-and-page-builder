@@ -60,7 +60,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			/**
 			 * Does this user need to upgrade for this block?
 			 *
-			 * @since 1.7
+			 * @since 1.7.0
 			 *
 			 * @param  {$} $gridblock Gridblock element.
 			 * @return {boolean}      Is it required?

@@ -25,7 +25,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			/**
 			 * Add the block configs from the saved API call.
 			 *
-			 * @since 1.7
+			 * @since 1.7.0
 			 *
 			 * @param  {array} configs List of blocks.
 			 */

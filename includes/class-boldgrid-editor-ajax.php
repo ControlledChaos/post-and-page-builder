@@ -52,7 +52,7 @@ class Boldgrid_Editor_Ajax {
 	/**
 	 * Generate gridblocks.
 	 *
-	 * @since 1.7
+	 * @since 1.7.0
 	 */
 	public function generate_blocks() {
 		$params = ! empty( $_POST ) ? $_POST : array();
@@ -86,7 +86,7 @@ class Boldgrid_Editor_Ajax {
 	/**
 	 * Get saved blocks. Used by GridBlock preview screen display display library blocks.
 	 *
-	 * @since 1.7
+	 * @since 1.7.0
 	 */
 	public function get_saved_blocks() {
 		$this->validate_nonce( 'gridblock_save' );
@@ -97,7 +97,7 @@ class Boldgrid_Editor_Ajax {
 	/**
 	 * Get a full Url to an end point.
 	 *
-	 * @since 1.7
+	 * @since 1.7.0
 	 *
 	 * @param  string $key Key.
 	 * @return string      URl.

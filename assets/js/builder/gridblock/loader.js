@@ -117,7 +117,7 @@ import { Save } from './save';
 			/**
 			 * Create the iframe content. Updated from content set html to allow js load events to fire.
 			 *
-			 * @since 1.7
+			 * @since 1.7.0
 			 *
 			 * @param  {$} $iframe Iframe element.
 			 * @param  {object} content Content for iframe.

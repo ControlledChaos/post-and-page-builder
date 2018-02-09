@@ -42,7 +42,7 @@ BOLDGRID.EDITOR.CONTROLS.GENERIC = BOLDGRID.EDITOR.CONTROLS.GENERIC || {};
 		/**
 		 * Bind the event of entering Id's
 		 *
-		 * @since 1.7
+		 * @since 1.7.0
 		 */
 		bindId() {
 			var panel = BG.Panel,
