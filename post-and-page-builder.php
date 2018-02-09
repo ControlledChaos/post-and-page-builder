@@ -26,6 +26,11 @@ if ( ! defined( 'BOLDGRID_EDITOR_PATH' ) ) {
 	define( 'BOLDGRID_EDITOR_PATH', dirname( __FILE__ ) );
 }
 
+// Define temporary path for migration.
+if ( ! defined( 'BOLDGRID_PPB_PATH' ) ) {
+	define( 'BOLDGRID_PPB_PATH', dirname( __FILE__ ) );
+}
+
 // Define Editor entry.
 if ( ! defined( 'BOLDGRID_EDITOR_ENTRY' ) ) {
 	define( 'BOLDGRID_EDITOR_ENTRY', __FILE__ );
@@ -42,7 +47,7 @@ if ( ! defined( 'BOLDGRID_EDITOR_CONFIGDIR' ) ) {
 if ( ! function_exists( 'boldgrid_editor_setup' ) ) {
 
 	// Prevent invalid PHP version from loading.
-	require BOLDGRID_EDITOR_PATH . '/includes/version-check.php';
+	require BOLDGRID_PPB_PATH . '/includes/version-check.php';
 	// Load the editor class.
 	require_once BOLDGRID_EDITOR_PATH . '/includes/class-boldgrid-editor.php';
 
