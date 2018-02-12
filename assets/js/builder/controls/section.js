@@ -63,12 +63,6 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 				return;
 			}
 
-			if ( 'Firefox' === BG.Controls.browser ) {
-				if ( self.$container.$body.find( '.wpview' ).length ) {
-					return;
-				}
-			}
-
 			( rect = self.$container.$body[0].getBoundingClientRect() ),
 				( bodyHeight = rect.bottom - rect.top + 50 );
 
