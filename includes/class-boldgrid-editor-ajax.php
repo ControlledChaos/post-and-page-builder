@@ -59,16 +59,20 @@ class Boldgrid_Editor_Ajax {
 		$params['color'] = ! empty( $params['color'] ) ? stripslashes( $params['color'] ) : null;
 
 		$this->validate_nonce( 'gridblock_save' );
-		$response = wp_remote_get( self::get_end_point('gridblock_generate'), array(
+		$api_response = wp_remote_get( self::get_end_point('gridblock_generate'), array(
 			'timeout' => 10,
 			'body' => $params,
 		) );
 
-		if ( ! is_wp_error( $response ) ) {
-			$response = wp_remote_retrieve_body( $response );
+		if ( ! is_wp_error( $api_response ) ) {
+			$header = 'License-Types';
+			$response = wp_remote_retrieve_body( $api_response );
 			$response = json_decode( $response, true );
 			$response = $response ? $response : array();
 			if ( ! empty( $response ) ) {
+				$types = wp_remote_retrieve_header( $api_response, $header );
+				$types = $types ? $types : '[]';
+				header( "$header: " . $types );
 
 				foreach( $response as &$block ) {
 					$block['preview_html'] = Boldgrid_Layout::run_shortcodes( $block['html'] );
