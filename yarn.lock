@@ -54,9 +54,9 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@boldgrid/components@^2.11.1":
-  version "2.11.1"
-  resolved "https://registry.yarnpkg.com/@boldgrid/components/-/components-2.11.1.tgz#c7c14bb9290374a0716efdfdd908105eaef782a7"
+"@boldgrid/components@^2.11.2":
+  version "2.11.2"
+  resolved "https://registry.yarnpkg.com/@boldgrid/components/-/components-2.11.2.tgz#8091b9ab382514394ace23adc988f5e38e41c70b"
   dependencies:
     babel-core "^6.22.1"
     babel-eslint "^8.0.1"
