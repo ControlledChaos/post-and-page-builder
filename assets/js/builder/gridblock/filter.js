@@ -95,7 +95,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 				 */
 				getHtml: function( key ) {
 					let html = '';
-					key = key && 'preview' === key ? '$previewHtml' : '$html';
+					key = ( key && 'preview' === key ) ? '$previewHtml' : '$html';
 
 					this[key].each( function() {
 						if ( this.outerHTML ) {
