@@ -29,6 +29,7 @@ Try out the [BoldGrid demo](https://www.boldgrid.com/demo/) to see for yourself!
 * Save and reuse full page layouts
 * 100% Mobile-friendly - responsive layouts
 * Image Filters
+* Animations
 * Google fonts
 * Background images, patterns, and colors
 * Page Gradients
