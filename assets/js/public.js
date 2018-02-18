@@ -12,7 +12,11 @@ class Public {
 		$( () => {
 			this.setupParallax();
 
-			let wowJs = new wow.WOW();
+			let wowJs = new wow.WOW( {
+				live: false,
+				mobile: false
+			} );
+
 			wowJs.init();
 		} );
 	}
