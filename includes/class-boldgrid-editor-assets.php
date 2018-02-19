@@ -337,6 +337,7 @@ class Boldgrid_Editor_Assets {
 		// Dependencies.
 		$deps = array(
 			'jquery',
+			'media-views',
 			'jquery-ui-draggable',
 			'jquery-ui-resizable',
 			'jquery-ui-slider',

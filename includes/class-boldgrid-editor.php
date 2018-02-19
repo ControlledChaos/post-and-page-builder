@@ -295,6 +295,10 @@ class Boldgrid_Editor {
 		// Include the autoloader to set plugin options and create instance.
 		$loader = require $path;
 
+		if ( ! class_exists( 'Boldgrid\Library\Util\Load' ) ) {
+			return;
+		}
+
 		// Load Library.
 		return new Boldgrid\Library\Util\Load(
 			array(
