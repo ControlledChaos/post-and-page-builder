@@ -235,28 +235,22 @@ html:not(.dragging-section) .delete-icon-wrap {
 		right: 0;
 		bottom: 0;
 		width: 10px;
-		border-left: 1px solid #ddd;
 		width: 70px;
 		height: 100%;
-		background: #f1f1f1;
-		box-shadow: -7px 0 0 0 #0073aa;
+		background: #0073aa;
 		cursor: pointer;
 		transition: background-color 0.5s, color 0.5s;
 		text-decoration: none;
 
 		&:hover {
-			background: #fff;
-
-			&:after {
-				color: #0073aa;
-			}
+			background: rgba(0, 115, 170, 0.8);
 		}
 
 		&:after {
-			content: '\f335';
+			content: '\f147';
 			display: block;
 			font: normal 22px/45px dashicons;
-			color: black;
+			color: white;
 		}
 	}
 

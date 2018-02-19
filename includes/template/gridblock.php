@@ -14,8 +14,8 @@
 		<label>Block Filters</label>
 		<select></select>
 	</span>
-	<a href="#" title="Close" class="bg-close-zoom-view">
-		<span class="screen-reader-text">Close</span>
+	<a href="#" title="Accept" class="bg-close-zoom-view">
+		<span class="screen-reader-text">Accept</span>
 	</a>
 </div>
 <div class="boldgrid-zoomout-section zoom-gridblocks-section">

@@ -2602,28 +2602,22 @@ html:not(.dragging-section) .delete-icon-wrap {
   right: 0;
   bottom: 0;
   width: 10px;
-  border-left: 1px solid #ddd;
   width: 70px;
   height: 100%;
-  background: #f1f1f1;
-  -webkit-box-shadow: -7px 0 0 0 #0073aa;
-  box-shadow: -7px 0 0 0 #0073aa;
+  background: #0073aa;
   cursor: pointer;
   -webkit-transition: background-color 0.5s, color 0.5s;
   transition: background-color 0.5s, color 0.5s;
   text-decoration: none; }
 
 .boldgrid-zoomout .bg-close-zoom-view:hover {
-  background: #fff; }
-
-.boldgrid-zoomout .bg-close-zoom-view:hover:after {
-  color: #0073aa; }
+  background: rgba(0, 115, 170, 0.8); }
 
 .boldgrid-zoomout .bg-close-zoom-view:after {
-  content: '\f335';
+  content: '\f147';
   display: block;
   font: normal 22px/45px dashicons;
-  color: black; }
+  color: white; }
 
 .boldgrid-zoomout #wp-content-wrap,
 .boldgrid-zoomout .mce-container {
