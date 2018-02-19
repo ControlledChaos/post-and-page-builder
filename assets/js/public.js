@@ -1,5 +1,6 @@
 var $ = window.jQuery;
-import wow from 'wowjs';
+
+import 'imports-loader?this=>window!wowjs';
 
 class Public {
 
@@ -12,7 +13,7 @@ class Public {
 		$( () => {
 			this.setupParallax();
 
-			let wowJs = new wow.WOW( {
+			let wowJs = new window.WOW( {
 				live: false,
 				mobile: false
 			} );
