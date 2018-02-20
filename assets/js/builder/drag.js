@@ -2390,7 +2390,7 @@ jQuery.fn.IMHWPB_Draggable = function( settings, $ ) {
 			self.$temp_insertion.removeClass( 'dragging-imhwpb popover-hover' );
 			self.$temp_insertion.addClass( 'cloned-div-imhwpb' );
 
-			self.placeholder = new Placeholder( self.$temp_insertion );
+			self.placeholder = new Placeholder( self.$current_drag, self.$temp_insertion );
 			self.placeholder.setContent();
 
 			// Set Dragging Image.

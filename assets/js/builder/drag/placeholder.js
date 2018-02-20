@@ -3,13 +3,21 @@ export class Placeholder {
 	/**
 	 * Setup needed values.
 	 *
+	 * 2 Elements are needed here because the drag process uses a cloned element during the drag process.
+	 * The iframes of the cloned elements are not yet rendered, therefore the heights are 0. Passing
+	 * the original element in to get the heights of the iframes.
+	 *
 	 * @since 1.7.0
 	 *
-	 * @param  {$} $draggedElement Element being dragged.
+	 * @param  {$} $dragged Element the user started dragging.
+	 * @param  {$} $clone Cloned Element.
 	 */
-	constructor( $draggedElement ) {
-		this.iframes = [];
-		this.$draggedElement = $draggedElement;
+	constructor( $dragged, $clone ) {
+		this.iframesReplaced = [];
+
+		this.$renderedIframes = [];
+		this.$clone = $clone;
+		this.$dragged = $dragged;
 	}
 
 	/**
@@ -18,11 +26,13 @@ export class Placeholder {
 	 * @since 1.7.0
 	 */
 	setContent() {
-		this.$draggedElement.find( 'iframe' ).each( ( index, el ) => {
-			let $iframe = $( el ),
-				$placeHolder = this.createPlaceholder( $iframe );
+		this.$renderedIframes = this.$dragged.find( 'iframe' );
 
-			this.iframes.push( {
+		this.$clone.find( 'iframe' ).each( ( index, el ) => {
+			let $iframe = $( el ),
+				$placeHolder = this.createPlaceholder( this.$renderedIframes.eq( index ) );
+
+			this.iframesReplaced.push( {
 				$element: $iframe,
 				$placholder: $placeHolder
 			} );
@@ -37,7 +47,7 @@ export class Placeholder {
 	 * @since 1.7.0
 	 */
 	revertContent() {
-		for ( let iframe of this.iframes ) {
+		for ( let iframe of this.iframesReplaced ) {
 			iframe.$placholder.replaceWith( iframe.$element );
 		}
 	}
@@ -57,7 +67,8 @@ export class Placeholder {
 
 		$placeHolder.css( {
 			height: height,
-			width: '100%',
+			width: width,
+			maxWidth: '100%',
 			'background-color': '#ccc'
 		} );
 
