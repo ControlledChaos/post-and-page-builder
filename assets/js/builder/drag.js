@@ -2,6 +2,7 @@ var BG = BOLDGRID.EDITOR;
 
 import ContentDragging from './drag/content.js';
 import ColumnDragging from './drag/column.js';
+import { Placeholder } from './drag/placeholder.js';
 import ieVersion from './browser/ie-version.js';
 
 jQuery.fn.IMHWPB_Draggable = function( settings, $ ) {
@@ -1162,6 +1163,7 @@ jQuery.fn.IMHWPB_Draggable = function( settings, $ ) {
 		}
 
 		self.$current_drag.remove();
+		self.placeholder.revertContent();
 		self.finish_dragging();
 		self.trigger( self.drag_end_event, self.$temp_insertion );
 		self.$current_drag = null;
@@ -2293,7 +2295,6 @@ jQuery.fn.IMHWPB_Draggable = function( settings, $ ) {
 		 * Handle the drop event of a draggable.
 		 */
 		drop: function( event ) {
-
 			if ( self.$current_drag ) {
 				self.prevent_default( event );
 
@@ -2315,7 +2316,6 @@ jQuery.fn.IMHWPB_Draggable = function( settings, $ ) {
 			if ( self.drag_drop_triggered ) {
 				return;
 			}
-
 			if ( ! self.$current_drag ) {
 				return;
 			}
@@ -2389,6 +2389,9 @@ jQuery.fn.IMHWPB_Draggable = function( settings, $ ) {
 			self.$temp_insertion = $( self.original_html );
 			self.$temp_insertion.removeClass( 'dragging-imhwpb popover-hover' );
 			self.$temp_insertion.addClass( 'cloned-div-imhwpb' );
+
+			self.placeholder = new Placeholder( self.$temp_insertion );
+			self.placeholder.setContent();
 
 			// Set Dragging Image.
 			// Add the inline-style so that its not modified by content changed.

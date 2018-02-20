@@ -52,7 +52,8 @@ import { FetchSaved } from './fetch-saved';
 					data: {
 						// eslint-disable-next-line
 						release_channel: BoldgridEditor.boldgrid_settings.theme_release_channel,
-						key: BoldgridEditor.boldgrid_settings.api_key
+						key: BoldgridEditor.boldgrid_settings.api_key,
+						version: BoldgridEditor.version
 					}
 				} )
 					.done( data => {
