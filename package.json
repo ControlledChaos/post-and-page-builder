@@ -69,7 +69,7 @@
 		"stylelint": "^8.2.0"
 	},
 	"dependencies": {
-		"@boldgrid/components": "^2.11.2",
+		"@boldgrid/components": "^2.12.0",
 		"@boldgrid/controls": "^0.12.1",
 		"animate.css": "^3.5.2",
 		"babel-eslint": "^8.0.2",
