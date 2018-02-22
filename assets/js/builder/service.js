@@ -13,6 +13,7 @@ import ColumnPopover from './popover/column';
 import RowPopover from './popover/row';
 import SectionPopover from './popover/section';
 import { Navigation as CustomizeNavigation } from './customize/navigation.js';
+import { View } from './view';
 
 export class Service {
 	init() {
@@ -36,6 +37,7 @@ export class Service {
 	_onWindowLoad() {
 		this.editorWidth = new EditorWidth().init();
 		this.loading = new LoadingGraphic().init();
+		new View().init();
 	}
 
 	/**
