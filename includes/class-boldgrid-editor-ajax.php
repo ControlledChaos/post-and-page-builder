@@ -59,6 +59,12 @@ class Boldgrid_Editor_Ajax {
 		$params['color'] = ! empty( $params['color'] ) ? stripslashes( $params['color'] ) : null;
 
 		$this->validate_nonce( 'gridblock_save' );
+
+		$times_requested = Boldgrid_Editor_Option::get( 'count_usage_blocks', 0 );
+
+		// If the user has not yet reqyested gridblocks, return from our preset collection.
+		$params[ 'curated_collection' ] = ! $times_requested ? 1 : false;
+
 		$api_response = wp_remote_get( self::get_end_point('gridblock_generate'), array(
 			'timeout' => 10,
 			'body' => $params,
@@ -78,6 +84,9 @@ class Boldgrid_Editor_Ajax {
 					$block['preview_html'] = Boldgrid_Layout::run_shortcodes( $block['html'] );
 					$block['html'] = $block['html'];
 				}
+
+				// Count how many times blocks have been generated.
+				Boldgrid_Editor_Option::update( 'count_usage_blocks', $times_requested + 1 );
 
 				wp_send_json( $response );
 			}
