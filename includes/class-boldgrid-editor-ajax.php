@@ -63,7 +63,7 @@ class Boldgrid_Editor_Ajax {
 		$times_requested = Boldgrid_Editor_Option::get( 'count_usage_blocks', 0 );
 
 		// If the user has not yet reqyested gridblocks, return from our preset collection.
-		$params[ 'curated_collection' ] = ! $times_requested ? 1 : false;
+		$params['collection'] = ! $times_requested ? 1 : false;
 
 		$api_response = wp_remote_get( self::get_end_point('gridblock_generate'), array(
 			'timeout' => 10,
