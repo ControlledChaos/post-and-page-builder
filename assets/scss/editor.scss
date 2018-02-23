@@ -1,87 +1,88 @@
-@import "variables";
-@import "mixins";
+@import 'variables';
+@import 'mixins';
 
 /*--------------------------------------------------------------
 # Loading
 --------------------------------------------------------------*/
-@import "admin/spinner";
-@import "admin/overlay";
-@import "admin/loading";
-@import "admin/form";
-@import "admin/button";
-@import "admin/page-title";
+@import 'admin/spinner';
+@import 'admin/overlay';
+@import 'admin/loading';
+@import 'admin/form';
+@import 'admin/button';
+@import 'admin/page-title';
 
 /*--------------------------------------------------------------
 # Panel Styles
 --------------------------------------------------------------*/
-@import "builder/panel";
+@import 'builder/panel';
 
 /*--------------------------------------------------------------
 # Controls
 --------------------------------------------------------------*/
-@import "controls/template";
-@import "controls/border";
-@import "controls/width";
-@import "controls/bg-controls";
+@import 'controls/template';
+@import 'controls/border';
+@import 'controls/width';
+@import 'controls/bg-controls';
 
 /*--------------------------------------------------------------
 # Menu Styles
 --------------------------------------------------------------*/
-@import "builder/menu";
+@import 'builder/menu';
 
 /*--------------------------------------------------------------
 # Menu Styles
 --------------------------------------------------------------*/
-@import "builder/tinymce";
+@import 'builder/tinymce';
 
 /*--------------------------------------------------------------
 # Post.php Modifications
 --------------------------------------------------------------*/
-@import "builder/post-box";
+@import 'builder/post-box';
 
 /*--------------------------------------------------------------
 # Tooltip
 --------------------------------------------------------------*/
-@import "builder/tooltip";
+@import 'builder/tooltip';
 
 /*--------------------------------------------------------------
 # Drag n Drop Resize
 --------------------------------------------------------------*/
-@import "builder/resize";
+@import 'builder/resize';
 
 /*--------------------------------------------------------------
 # Color Controls
 --------------------------------------------------------------*/
-@import "builder/colors";
+@import 'builder/colors';
 
 /*--------------------------------------------------------------
 # General Edit Controls
 --------------------------------------------------------------*/
-@import "builder/edit";
+@import 'builder/edit';
 
 /*--------------------------------------------------------------
 # General Edit Controls
 --------------------------------------------------------------*/
-@import "builder/font-select";
+@import 'builder/font-select';
 
 /*--------------------------------------------------------------
 # Setup the view for sections.
 --------------------------------------------------------------*/
-@import "builder/section/view";
-@import "builder/section/lead";
+@import 'builder/section/view';
+@import 'builder/section/lead';
 
 /*--------------------------------------------------------------
 # Handler section drag controls.
 --------------------------------------------------------------*/
-@import "builder/section/drag";
+@import 'builder/section/drag';
+@import 'builder/drag';
 
 /*--------------------------------------------------------------
 # General Edit Controls
 --------------------------------------------------------------*/
-@import "admin/upgrade-notice";
-@import "admin/setup";
+@import 'admin/upgrade-notice';
+@import 'admin/setup';
 
 /*--------------------------------------------------------------
 # Forms Integration
 --------------------------------------------------------------*/
-@import "../../support/wpforms/assets/css/editor";
+@import '../../support/wpforms/assets/css/editor';

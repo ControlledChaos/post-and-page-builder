@@ -61,17 +61,33 @@ export class Placeholder {
 	 * @return {$}         Placeholder element.
 	 */
 	createPlaceholder( $iframe ) {
-		let $placeHolder = $( '<div class="media-placeholder">' ),
+		let $placeHolder = $( this.getPlaceholderHtml() ),
 			height = $iframe.height() || $iframe[0].height,
 			width = $iframe.width() || $iframe[0].width;
 
 		$placeHolder.css( {
 			height: height,
-			width: width,
-			maxWidth: '100%',
-			'background-color': '#ccc'
+			width: width
 		} );
 
 		return $placeHolder;
+	}
+
+	/**
+	 * Get placeholder markup.
+	 *
+	 * @since 1.7.0
+	 *
+	 * @return {string} HTML.
+	 */
+	getPlaceholderHtml() {
+		return `
+			<div class="media-placeholder">
+				<div>
+					<div class="dashicons dashicons-admin-media"></div>
+					<div>Media</div>
+				</div>
+			</div>
+		`;
 	}
 }
