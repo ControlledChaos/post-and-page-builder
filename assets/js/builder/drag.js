@@ -42,6 +42,12 @@ jQuery.fn.IMHWPB_Draggable = function( settings, $ ) {
 	this.hover_timout = settings.hover_timout || 175;
 
 	/**
+	 * How far away from a column in the verticle direction should I drag before becoming unlocked.
+	 * @type {Number}
+	 */
+	this.columnUnlockThreshold = 75;
+
+	/**
 	 * The interaction container refers to the wrapper that holds all the draggable items.
 	 */
 	this.$interaction_container = null;
@@ -2063,7 +2069,7 @@ jQuery.fn.IMHWPB_Draggable = function( settings, $ ) {
 			min_max = {
 				offset_left: client_rect.left,
 				offset_right: client_rect.left + $row.outerWidth( true ),
-				offset_top: Math.max( 0, client_rect.top - 150 ),
+				offset_top: Math.max( 0, client_rect.top - self.columnUnlockThreshold ),
 				offset_bottom: client_rect.top + $row.outerHeight( true )
 			};
 		}
