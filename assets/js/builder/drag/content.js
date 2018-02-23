@@ -163,7 +163,7 @@ export default function( event, $left, $entered ) {
 				$first_child.length &&
 				1 === $direct_descendents.length &&
 				false == $first_child.is( self.column_selectors_string + ', .draggable-tools-imhwpb' ) &&
-				$first_child.is( 'div' )
+				$first_child.is( 'div:not(.dragging-started-imhwpb)' )
 			) {
 
 				/**
