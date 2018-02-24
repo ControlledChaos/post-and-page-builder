@@ -87,6 +87,7 @@ class Boldgrid_Editor_Ajax {
 
 				// Count how many times blocks have been generated.
 				Boldgrid_Editor_Option::update( 'count_usage_blocks', $times_requested + 1 );
+				Boldgrid_Editor_Option::update( 'block_default_industry', $params['category'] );
 
 				wp_send_json( $response );
 			}

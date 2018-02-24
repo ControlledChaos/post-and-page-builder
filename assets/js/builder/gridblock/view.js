@@ -3,6 +3,7 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 
 import { FetchSaved } from './fetch-saved';
+import { Industry } from './industry';
 
 /**
  * Handles setting up the Gridblocks view.
@@ -19,13 +20,16 @@ import { FetchSaved } from './fetch-saved';
 			siteMarkup: '',
 
 			init: function() {
-				self.$filterSelectWrap = $( '.boldgrid-gridblock-categories' );
+				self.$filterSelectWrap = $( '.filter-controls' );
 				self.gridblockTemplate = wp.template( 'boldgrid-editor-gridblock' );
-				self.$filterSelect = self.$filterSelectWrap.find( 'select' );
+				self.$filterSelect = self.$filterSelectWrap.find( '.boldgrid-gridblock-categories select' );
+				self.findElements();
+
+				self.industry = new Industry();
+				self.industry.init();
 
 				self.fetchTypes();
 
-				self.findElements();
 				self.positionGridblockContainer();
 				self.setupUndoRedo();
 				self.createGridblocks();

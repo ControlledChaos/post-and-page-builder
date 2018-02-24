@@ -2419,16 +2419,19 @@ html:not(.dragging-section) .delete-icon-wrap {
 .zoom-navbar {
   display: none; }
 
-.zoom-navbar .boldgrid-gridblock-categories {
+.zoom-navbar .filter-controls {
   display: none;
   position: absolute;
-  top: 0;
+  min-width: 400px;
   left: 75%;
   top: 50%;
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%); }
 
-.zoom-navbar .boldgrid-gridblock-categories label {
+.zoom-navbar .filter-controls .block-filter {
+  margin: 0 10px; }
+
+.zoom-navbar .filter-controls label {
   font-weight: 600;
   margin-right: 10px; }
 
@@ -2441,14 +2444,14 @@ html:not(.dragging-section) .delete-icon-wrap {
   font-size: 17px;
   top: 14px; }
 
-.zoom-navbar .loading-remote .bg-editor-loading:after,
-.zoom-navbar .loading-remote .bg-editor-loading:before {
+.zoom-navbar .loading-remote .bg-editor-loading::after,
+.zoom-navbar .loading-remote .bg-editor-loading::before {
   left: -40px;
   height: 30px;
   width: 30px;
   background-size: 100%; }
 
-.zoom-navbar .loading-remote .bg-editor-loading:after {
+.zoom-navbar .loading-remote .bg-editor-loading::after {
   background-color: #232121;
   top: calc(50% - 15px); }
 
@@ -3035,6 +3038,8 @@ html:not(.dragging-section) .delete-icon-wrap {
     left: 0; }
   .boldgrid-zoomout .zoom-navbar {
     top: 46px; }
+  .boldgrid-zoomout .zoom-navbar .boldgrid-gridblock-industry {
+    display: none; }
   .boldgrid-zoomout #wp-admin-bar-menu-toggle {
     display: none !important; } }
 

@@ -10,9 +10,26 @@
 		<div class="enabled bg-editor-loading absolute"></div>
 		<span>Loading Blocks</span>
 	</div>
-	<span class="boldgrid-gridblock-categories">
-		<label>Block Filters</label>
-		<select></select>
+	<span class="filter-controls">
+		<span class="boldgrid-gridblock-categories block-filter">
+			<label>Types</label>
+			<select></select>
+		</span>
+		<span class="boldgrid-gridblock-industry block-filter">
+			<label>Category</label>
+			<select>
+				<option value="real_estate">Real Estate</option>
+				<option value="photography">Photography</option>
+				<option value="restaurant">Restaurant</option>
+				<option value="music">Music</option>
+				<option value="fitness">Fitness</option>
+				<option value="design">Design</option>
+				<option value="fashion">Fashion</option>
+				<option value="consulting">Constulting</option>
+				<option value="marketing">Marketing</option>
+				<option value="home_repair">Home Repair</option>
+			</select>
+		</span>
 	</span>
 	<a href="#" title="Accept" class="bg-close-zoom-view">
 		<span class="screen-reader-text">Accept</span>

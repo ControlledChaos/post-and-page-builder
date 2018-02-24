@@ -94,7 +94,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 						transparent_backgrounds: 'post' === BoldgridEditor.post_type ? 1 : 0,
 						type: type,
 						color: JSON.stringify({ colors: BG.CONTROLS.Color.getGridblockColors() }),
-						category: self.getCategory()
+						category: BG.GRIDBLOCK.View.industry.$select.val()
 						/*eslint-enable */
 					} )
 				} );
@@ -114,26 +114,6 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 				finish: function() {
 					$( 'body' ).removeClass( 'loading-remote-body' );
 				}
-			},
-
-			/**
-			 * Get the users installed category.
-			 *
-			 * @since 1.5
-			 *
-			 * @return {string} inspiration catgegory.
-			 */
-			getCategory: function() {
-				var category;
-				if (
-					BoldgridEditor &&
-					BoldgridEditor.inspiration &&
-					BoldgridEditor.inspiration.subcategory_key
-				) {
-					category = BoldgridEditor.inspiration.subcategory_key;
-				}
-
-				return category;
 			},
 
 			/**

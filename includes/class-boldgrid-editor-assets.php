@@ -247,6 +247,7 @@ class Boldgrid_Editor_Assets {
 			'images' => Boldgrid_Editor_Builder::get_post_images(),
 			'colors' => Boldgrid_Editor_Theme::get_color_palettes(),
 			'saved_colors' => Boldgrid_Editor_Option::get( 'custom_colors', array() ),
+			'block_default_industry' => Boldgrid_Editor_Option::get( 'block_default_industry' ),
 			'internalPageTemplates' => Boldgrid_Editor_Service::get( 'templater' )->templates,
 			'sample_backgrounds' => Boldgrid_Editor_Builder::get_background_data(),
 			'builder_config' => Boldgrid_Editor_Builder::get_builder_config(),

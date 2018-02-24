@@ -72,13 +72,17 @@ html:not(.dragging-section) .delete-icon-wrap {
 .zoom-navbar {
 	display: none;
 
-	.boldgrid-gridblock-categories {
+	.filter-controls {
 		display: none;
 		position: absolute;
-		top: 0;
+		min-width: 400px;
 		left: 75%;
 		top: 50%;
 		transform: translateX(-50%) translateY(-50%);
+
+		.block-filter {
+			margin: 0 10px;
+		}
 
 		label {
 			font-weight: 600;
@@ -94,15 +98,15 @@ html:not(.dragging-section) .delete-icon-wrap {
 		font-size: 17px;
 		top: 14px;
 
-		.bg-editor-loading:after,
-		.bg-editor-loading:before {
+		.bg-editor-loading::after,
+		.bg-editor-loading::before {
 			left: -40px;
 			height: 30px;
 			width: 30px;
 			background-size: 100%;
 		}
 
-		.bg-editor-loading:after {
+		.bg-editor-loading::after {
 			background-color: #232121;
 			top: calc(50% - 15px);
 		}
@@ -744,6 +748,10 @@ html:not(.dragging-section) .delete-icon-wrap {
 
 		.zoom-navbar {
 			top: 46px;
+
+			.boldgrid-gridblock-industry {
+				display: none;
+			}
 		}
 
 		#wp-admin-bar-menu-toggle {

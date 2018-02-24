@@ -7,7 +7,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 
 	var BGGB = BOLDGRID.EDITOR.GRIDBLOCK,
 		self = {
-			currentCategory: null,
+			currentCategory: 'all',
 
 			savedCategories: [ 'library', 'saved' ],
 
@@ -27,10 +27,9 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			onSelectChange: function() {
 				var $select = BGGB.View.$gridblockNav.find( '.boldgrid-gridblock-categories select' );
 
-				self.currentCategory = $select.val();
 				$select.on( 'change', function() {
 					self.currentCategory = $select.val();
-					self.showByCategory();
+					self.updateDisplay();
 				} );
 			},
 
@@ -44,25 +43,30 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			 */
 			canDisplayGridblock: function( gridblockConfig ) {
 				var category = BGGB.Category.currentCategory || 'all',
-					isSaved = self.isSavedCategory( gridblockConfig.type );
+					isSaved = self.isSavedCategory( gridblockConfig.type ),
+					industryMatches = gridblockConfig.category === BGGB.View.industry.$select.val(),
+					typeMatches = gridblockConfig.type === category || ( 'all' === category && ! isSaved );
 
-				return gridblockConfig.type === category || ( 'all' === category && ! isSaved );
+				return industryMatches && typeMatches;
 			},
 
 			/**
-			 * Show the Gridblocks for the selected category.
+			 * Show the Gridblocks for the selected filters.
 			 *
 			 * @since 1.5
 			 */
-			showByCategory: function() {
-				var visibleGridblocks,
-					$gridblocks = BGGB.View.$gridblockSection.find( '.gridblock' ),
+			updateDisplay: function() {
+				var $gridblocks = BGGB.View.$gridblockSection.find( '.gridblock' ),
 					$wrapper = BGGB.View.$gridblockSection.find( '.gridblocks' );
 
 				$wrapper.attr( 'filter', self.currentCategory );
 
 				if ( 'all' === self.currentCategory ) {
-					$gridblocks
+					$gridblocks = $gridblocks
+						.hide()
+						.filter(
+							'[data-category="' + BGGB.View.industry.$select.val() + '"]:not(.gridblock-loading)'
+						)
 						.filter( ':not(.gridblock-loading)' )
 						.filter( ':not([data-type="saved"])' )
 						.filter( ':not([data-type="library"])' )
@@ -70,17 +74,20 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 
 					BGGB.View.$gridblockSection.scrollTop( 0 );
 				} else {
-					visibleGridblocks = $gridblocks
+					$gridblocks = $gridblocks
 						.hide()
+						.filter(
+							'[data-category="' + BGGB.View.industry.$select.val() + '"]:not(.gridblock-loading)'
+						)
 						.filter( '[data-type="' + self.currentCategory + '"]:not(.gridblock-loading)' )
-						.show().length;
+						.show();
 
 					BGGB.View.$gridblockSection.scrollTop( 0 );
+				}
 
-					// If less than 4 gridblocks are showing, render more gridblocks.
-					if ( 4 > visibleGridblocks ) {
-						BGGB.View.updateDisplay();
-					}
+				// If less than 4 gridblocks are showing, render more gridblocks.
+				if ( 4 > $gridblocks.length ) {
+					BGGB.View.updateDisplay();
 				}
 			},
 
