@@ -655,8 +655,8 @@ jQuery.fn.IMHWPB_Draggable = function( settings, $ ) {
 		}
 
 		self.wrap_hr_tags();
-		self.wrap_content_elements();
-		self.add_redundant_classes();
+		self.wrap_content_elements( self );
+		self.add_redundant_classes( self );
 		self.removeClasses( self );
 		self.remove_resizing_classes( self );
 	};
@@ -680,11 +680,13 @@ jQuery.fn.IMHWPB_Draggable = function( settings, $ ) {
 	 *
 	 * This is done because tinyMCE frequently does this which causes irregularities
 	 * also by doing this, we make it easier to drag items.
+	 *
+	 * @since jQuery $context
 	 */
-	this.wrap_content_elements = function() {
+	this.wrap_content_elements = function( $context ) {
 
 		// This needs to occur everytime something is added to page.
-		self.find( 'img, a' ).each( function() {
+		$context.find( 'img, a' ).each( function() {
 
 			// Find out its already draggable.
 			var $this = $( this );
@@ -694,7 +696,7 @@ jQuery.fn.IMHWPB_Draggable = function( settings, $ ) {
 					.parent()
 					.closest_context(
 						self.original_selector_strings.content_selectors_string,
-						self
+						$context
 					).length
 			) {
 
@@ -961,8 +963,8 @@ jQuery.fn.IMHWPB_Draggable = function( settings, $ ) {
 	/**
 	 * Finds all column selectors and add additional column classes.
 	 */
-	this.add_redundant_classes = function() {
-		self
+	this.add_redundant_classes = function( $context ) {
+		$context
 			.find( self.original_selector_strings.general_column_selectors_string )
 			.each( function() {
 				var $current_element = $( this );

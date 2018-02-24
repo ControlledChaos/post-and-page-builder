@@ -8,6 +8,7 @@ import { Save } from './save';
 	'use strict';
 
 	var BGGB = BOLDGRID.EDITOR.GRIDBLOCK,
+		BG = BOLDGRID.EDITOR,
 		self = {
 			$window: $( window ),
 
@@ -189,6 +190,7 @@ import { Save } from './save';
 
 					gridblock.state = 'iframeCreated';
 					gridblock.$iframeContents = $contents;
+					BG.Controls.$container.wrap_content_elements( gridblock.$previewHtml );
 
 					setTimeout( function() {
 						$gridblock.removeClass( 'gridblock-loading' );

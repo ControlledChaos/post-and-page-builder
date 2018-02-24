@@ -508,7 +508,7 @@ html:not(.dragging-section) .delete-icon-wrap {
 
 		iframe {
 			width: 1170px;
-			height: 600px;
+			height: 780px;
 			position: absolute;
 			left: 50%;
 			top: 50%;
@@ -696,7 +696,7 @@ html:not(.dragging-section) .delete-icon-wrap {
 @media (min-width: 1600px) {
 	.zoom-gridblocks-section {
 		.gridblock {
-			height: 354px;
+			height: 461px;
 			width: 690px;
 
 			iframe {
@@ -709,8 +709,8 @@ html:not(.dragging-section) .delete-icon-wrap {
 @media (max-width: 1359px) {
 	.zoom-gridblocks-section {
 		.gridblock {
-			height: 271px;
-			width: 527px;
+			height: 352px;
+			width: 528px;
 
 			iframe {
 				transform: translateX(-50%) translateY(-50%) scale(0.45);
