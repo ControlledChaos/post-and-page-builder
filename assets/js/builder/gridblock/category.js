@@ -44,7 +44,9 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			canDisplayGridblock: function( gridblockConfig ) {
 				var category = BGGB.Category.currentCategory || 'all',
 					isSaved = self.isSavedCategory( gridblockConfig.type ),
-					industryMatches = gridblockConfig.category === BGGB.View.industry.getSelected(),
+					industryMatches =
+						gridblockConfig.category === BGGB.View.industry.getSelected() ||
+						self.isSavedCategory( self.currentCategory ),
 					typeMatches = gridblockConfig.type === category || ( 'all' === category && ! isSaved );
 
 				return industryMatches && typeMatches;
@@ -64,9 +66,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 				if ( 'all' === self.currentCategory ) {
 					$gridblocks = $gridblocks
 						.hide()
-						.filter(
-							'[data-category="' + BGGB.View.industry.getSelected() + '"]:not(.gridblock-loading)'
-						)
+						.filter( `[data-category="${BGGB.View.industry.getSelected()}"]:not(.gridblock-loading)` )
 						.filter( ':not(.gridblock-loading)' )
 						.filter( ':not([data-type="saved"])' )
 						.filter( ':not([data-type="library"])' )
@@ -74,11 +74,15 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 
 					BGGB.View.$gridblockSection.scrollTop( 0 );
 				} else {
+					$gridblocks.hide();
+
+					if ( ! self.isSavedCategory( self.currentCategory ) ) {
+						$gridblocks = $gridblocks.filter(
+							`[data-category="${BGGB.View.industry.getSelected()}"]:not(.gridblock-loading)`
+						);
+					}
+
 					$gridblocks = $gridblocks
-						.hide()
-						.filter(
-							'[data-category="' + BGGB.View.industry.getSelected() + '"]:not(.gridblock-loading)'
-						)
 						.filter( '[data-type="' + self.currentCategory + '"]:not(.gridblock-loading)' )
 						.show();
 
