@@ -2429,6 +2429,7 @@ html:not(.dragging-section) .delete-icon-wrap {
   transform: translateX(-50%) translateY(-50%); }
 
 .zoom-navbar .filter-controls .block-filter {
+  display: none;
   margin: 0 10px; }
 
 .zoom-navbar .filter-controls label {

@@ -38,7 +38,6 @@ import { Save } from './save';
 					BGGB.View.init();
 					BGGB.Delete.init();
 					BGGB.Drag.init();
-					BGGB.Generate.fetch();
 
 					new Save().init();
 				}

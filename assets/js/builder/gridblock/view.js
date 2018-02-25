@@ -47,6 +47,8 @@ import { Industry } from './industry';
 			 * @since 1.6
 			 */
 			fetchTypes() {
+				self.finishedTypeFetch = false;
+
 				return $.ajax( {
 					url:
 						BoldgridEditor.plugin_configs.asset_server +
@@ -86,7 +88,10 @@ import { Industry } from './industry';
 				}
 
 				self.$filterSelect.html( html );
-				self.$filterSelectWrap.fadeIn();
+				self.$filterSelectWrap.find( '.boldgrid-gridblock-categories' ).show();
+
+				self.finishedTypeFetch = true;
+				self.industry.showFilters();
 			},
 
 			/**
@@ -175,7 +180,7 @@ import { Industry } from './industry';
 				let isSaved = BG.GRIDBLOCK.Category.isSavedCategory( BG.GRIDBLOCK.Category.currentCategory );
 				BG.GRIDBLOCK.Loader.loadGridblocks();
 
-				if ( ! isSaved && ! self.hasGridblocks() ) {
+				if ( ! isSaved && ! self.hasGridblocks() && 'complete' === self.industry.state ) {
 					BG.GRIDBLOCK.Generate.fetch();
 				} else if ( isSaved && ! self.hasGridblocks() ) {
 					self.fetchSaved.fetch();

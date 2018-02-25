@@ -1,4 +1,5 @@
-var BGGB = BOLDGRID.EDITOR.GRIDBLOCK;
+var BGGB = BOLDGRID.EDITOR.GRIDBLOCK,
+	$ = jQuery;
 
 export class Industry {
 
@@ -8,11 +9,17 @@ export class Industry {
 	 * @since 1.7.0
 	 */
 	init() {
-		this.$select = BGGB.View.$gridblockNav.find( '.boldgrid-gridblock-industry select' );
 
-		this._setDefault();
-		this.setFilterVal();
-		this._onSelectChange();
+		/*
+		 * If the user has a saved industry and it matches one of the industries returned in the API, use it.
+		 * Otherwise use the following default.
+		 */
+		this.defaults = { selection: 'photography' };
+		this.state = 'pending';
+		this.$selectWrap = BGGB.View.$gridblockNav.find( '.boldgrid-gridblock-industry' );
+		this.$select = this.$selectWrap.find( 'select' );
+
+		this._fetch();
 	}
 
 	/**
@@ -21,7 +28,84 @@ export class Industry {
 	 * @since 1.7.0
 	 */
 	setFilterVal() {
-		BGGB.View.$gridblockSection.find( '.gridblocks' ).attr( 'industry', this.$select.val() );
+		BGGB.View.$gridblockSection.find( '.gridblocks' ).attr( 'industry', this.getSelected() );
+	}
+
+	/**
+	 * Get the currently selected industry.
+	 *
+	 * @since 1.7.0
+	 *
+	 * @return {string} Get selected.
+	 */
+	getSelected() {
+		return this.$select.val() || this.defaults.selection;
+	}
+
+	/**
+	 * Create select menu options.
+	 *
+	 * @since 1.7.0
+	 *
+	 * @param  {array} options Options.
+	 * @return {string}        Menu Options.
+	 */
+	createSelectOptions( options ) {
+		let html = '';
+
+		for ( let option of options ) {
+			html += `<option value="${option.slug}">${option.title}</option>`;
+		}
+
+		return html;
+	}
+
+	/**
+	 * Show the filters section if all filters have been retrieved.
+	 *
+	 * @since 1.7.0
+	 */
+	showFilters() {
+		if ( 'complete' === this.state && BGGB.View.finishedTypeFetch ) {
+			BGGB.View.$filterSelectWrap.fadeIn();
+		}
+	}
+
+	/**
+	 * Get available industries from the remote.
+	 *
+	 * @since 1.7.0
+	 */
+	_fetch() {
+		this.state = 'loading';
+		BGGB.Generate.gridblockLoadingUI.start();
+
+		return (
+			$.ajax( {
+				type: 'get',
+				url:
+					BoldgridEditor.plugin_configs.asset_server +
+					BoldgridEditor.plugin_configs.ajax_calls.gridblock_industries,
+				dataType: 'json',
+				timeout: 10000
+			} )
+
+				// On success, create select menu.
+				.done( response => {
+					this.$select.html( this.createSelectOptions( response ) );
+					this._setDefault();
+					this.$selectWrap.show();
+					this._onSelectChange();
+				} )
+
+				// Afterwards even on fail, set the html attribute and fire fetch blocks.
+				.always( () => {
+					this.setFilterVal();
+					this.state = 'complete';
+					this.showFilters();
+					BGGB.View.updateDisplay();
+				} )
+		);
 	}
 
 	/**
@@ -50,7 +134,7 @@ export class Industry {
 		if ( this.$select.find( '[value="' + defaultCategory + '"]' ).length ) {
 
 			// If the select value exists use it.
-			this.$select.val( defaultCategory );
+			this.$select.val( defaultCategory ).change();
 		} else {
 
 			// Otherwise preset the first item from the select box.
@@ -61,6 +145,8 @@ export class Industry {
 	/**
 	 * Get the saved inspirations category.
 	 *
+	 * Not all categories are supported, if alias exists it needs to be specified.
+	 *
 	 * @since 1.7.0
 	 *
 	 * @return {string} Inspirations Category.
@@ -70,6 +156,10 @@ export class Industry {
 
 		if ( BoldgridEditor.inspiration && BoldgridEditor.inspiration.subcategory_key ) {
 			category = BoldgridEditor.inspiration.subcategory_key;
+		}
+
+		if ( 'property_management' === category ) {
+			category = 'real_estate';
 		}
 
 		return category;

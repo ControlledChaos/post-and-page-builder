@@ -44,7 +44,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			canDisplayGridblock: function( gridblockConfig ) {
 				var category = BGGB.Category.currentCategory || 'all',
 					isSaved = self.isSavedCategory( gridblockConfig.type ),
-					industryMatches = gridblockConfig.category === BGGB.View.industry.$select.val(),
+					industryMatches = gridblockConfig.category === BGGB.View.industry.getSelected(),
 					typeMatches = gridblockConfig.type === category || ( 'all' === category && ! isSaved );
 
 				return industryMatches && typeMatches;
@@ -65,7 +65,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 					$gridblocks = $gridblocks
 						.hide()
 						.filter(
-							'[data-category="' + BGGB.View.industry.$select.val() + '"]:not(.gridblock-loading)'
+							'[data-category="' + BGGB.View.industry.getSelected() + '"]:not(.gridblock-loading)'
 						)
 						.filter( ':not(.gridblock-loading)' )
 						.filter( ':not([data-type="saved"])' )
@@ -77,7 +77,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 					$gridblocks = $gridblocks
 						.hide()
 						.filter(
-							'[data-category="' + BGGB.View.industry.$select.val() + '"]:not(.gridblock-loading)'
+							'[data-category="' + BGGB.View.industry.getSelected() + '"]:not(.gridblock-loading)'
 						)
 						.filter( '[data-type="' + self.currentCategory + '"]:not(.gridblock-loading)' )
 						.show();

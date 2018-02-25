@@ -94,7 +94,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 						transparent_backgrounds: 'post' === BoldgridEditor.post_type ? 1 : 0,
 						type: type,
 						color: JSON.stringify({ colors: BG.CONTROLS.Color.getGridblockColors() }),
-						category: BG.GRIDBLOCK.View.industry.$select.val()
+						category: BG.GRIDBLOCK.View.industry.getSelected()
 						/*eslint-enable */
 					} )
 				} );
