@@ -115,6 +115,26 @@ import { Save } from './save';
 			},
 
 			/**
+			 * Change height to match content.
+			 *
+			 * @since 1.7.0
+			 *
+			 * @param  {$} $iframe    iframe element.
+			 * @param  {$} $gridblock groidblock UI element.
+			 */
+			adjustHeight( $iframe, $gridblock ) {
+				let $contents = $iframe.contents(),
+					scale = 0.59,
+
+					// 400 offset for redacted placeholder.
+					height = $contents.find( 'body > div' ).height() - 400,
+					bodyHeight = height * scale;
+
+				$iframe.height( height );
+				$gridblock.css( 'height', bodyHeight );
+			},
+
+			/**
 			 * Create the iframe content. Updated from content set html to allow js load events to fire.
 			 *
 			 * @since 1.7.0
@@ -170,6 +190,12 @@ import { Save } from './save';
 					BGGB.Image.translateImages( gridblock, gridblock.$html );
 					BGGB.Image.translateImages( gridblock, gridblock.$previewHtml );
 
+					$iframe.on( 'load', () => {
+						setTimeout( () => {
+							self.adjustHeight( $iframe, $gridblock );
+						}, 1000 );
+					} );
+
 					self.iframeContent( $iframe, {
 						head: '',
 						body: ''
@@ -192,6 +218,7 @@ import { Save } from './save';
 					BG.Controls.$container.wrap_content_elements( gridblock.$previewHtml );
 
 					setTimeout( function() {
+						$gridblock.addClass( 'animated fadeInUp' );
 						$gridblock.removeClass( 'gridblock-loading' );
 						self.creatingIframe = false;
 					}, 200 );
