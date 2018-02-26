@@ -174,7 +174,7 @@ IMHWPB.Editor = function( $ ) {
 				$current_node.replaceWith( $inserting_content[0].outerHTML );
 				tinymce.activeEditor.fire( 'setContent' );
 				tinymce.activeEditor.focus();
-				tinymce.activeEditor.execCommand( 'mceAddUndoLevel' );
+				BOLDGRID.EDITOR.mce.undoManager.add();
 
 				/*
 				 * When using BoldGrid Connect Search to add an image to the

@@ -269,7 +269,7 @@ IMHWPB.WP_MCE_Draggable = function() {
 	 * Add undo level to tinymce
 	 */
 	this.add_tiny_mce_history = function() {
-		BOLDGRID.EDITOR.mce.execCommand( 'mceAddUndoLevel' );
+		BOLDGRID.EDITOR.mce.undoManager.add();
 	};
 
 	/**
