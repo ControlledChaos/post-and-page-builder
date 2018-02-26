@@ -32,16 +32,16 @@ class Boldgrid_Editor_Gridblock_Post {
 	public function add_menu_items() {
 		add_submenu_page(
 			'edit.php?post_type=bg_block',
-			'All Pages',
-			'All Pages',
+			__( 'All Pages', 'boldgrid-editor' ),
+			__( 'All Pages', 'boldgrid-editor' ),
 			'edit_pages',
 			'edit.php?post_type=page'
 		);
 
 		add_submenu_page(
 			'edit.php?post_type=bg_block',
-			'Add New Page',
-			'Add New Page',
+			__( 'Add New Page', 'boldgrid-editor' ),
+			__( 'Add New Page', 'boldgrid-editor' ),
 			'edit_pages',
 			'post-new.php?post_type=page'
 		);
