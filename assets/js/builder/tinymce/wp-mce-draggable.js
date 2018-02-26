@@ -169,6 +169,7 @@ IMHWPB.WP_MCE_Draggable = function() {
 	this.drag_start = function() {
 		BOLDGRID.EDITOR.mce.getBody().setAttribute( 'contenteditable', false );
 		BOLDGRID.EDITOR.mce.selection.collapse( false );
+
 		self.end_undo_level_mce();
 		self.draggable_instance.$master_container.find( 'html' ).addClass( 'drag-progress' );
 	};
@@ -220,6 +221,8 @@ IMHWPB.WP_MCE_Draggable = function() {
 	 */
 	this.drag_end_event = function( event, dropped_element ) {
 		BOLDGRID.EDITOR.mce.getBody().setAttribute( 'contenteditable', true );
+		BOLDGRID.EDITOR.mce.selection.setCursorLocation( null );
+
 		IMHWPB.tinymce_undo_disabled = false;
 		self.add_tiny_mce_history();
 		self.initialize_gallery_objects( self.draggable_instance.$master_container );
@@ -242,15 +245,12 @@ IMHWPB.WP_MCE_Draggable = function() {
 			// Blur the editor, allows FF to focus on click and add caret back in.
 			BOLDGRID.EDITOR.mce.getBody().blur();
 
-			//This action use to add an undo level, but it appears as if contenteditable, is doing that for us.
+			/*
+			 * This action use to add an undo level, but it appears as if contenteditable,
+			 * This doing that for us.
+			 */
 			BOLDGRID.EDITOR.mce.getBody().setAttribute( 'contenteditable', true );
-
-			// Stops tinymce from scorlling to top.
-			var $temp = $( '<a>temp</a>' );
-			$( BOLDGRID.EDITOR.mce.getBody() ).append( $temp );
-			BOLDGRID.EDITOR.mce.selection.setCursorLocation( $temp[0], 0 );
-			$temp.focus();
-			$temp.remove();
+			BOLDGRID.EDITOR.mce.selection.setCursorLocation( null );
 		}
 
 		$window.trigger( 'resize' );
