@@ -699,7 +699,6 @@ jQuery.fn.IMHWPB_Draggable = function( settings, $ ) {
 						$context
 					).length
 			) {
-
 				// This HR is not already draggable.
 				$this.wrap( '<p class=\'mod-reset\'></p>' );
 			}

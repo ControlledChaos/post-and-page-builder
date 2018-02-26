@@ -190,11 +190,10 @@ import { Save } from './save';
 					BGGB.Image.translateImages( gridblock, gridblock.$html );
 					BGGB.Image.translateImages( gridblock, gridblock.$previewHtml );
 
-					$iframe.on( 'load', () => {
-						setTimeout( () => {
-							self.adjustHeight( $iframe, $gridblock );
-						}, 1000 );
-					} );
+					setTimeout( () => {
+						self.adjustHeight( $iframe, $gridblock );
+						BG.Controls.$container.wrap_content_elements( gridblock.$previewHtml );
+					}, 1000 );
 
 					self.iframeContent( $iframe, {
 						head: '',
@@ -215,7 +214,6 @@ import { Save } from './save';
 
 					gridblock.state = 'iframeCreated';
 					gridblock.$iframeContents = $contents;
-					BG.Controls.$container.wrap_content_elements( gridblock.$previewHtml );
 
 					setTimeout( function() {
 						$gridblock.addClass( 'animated fadeInUp' );
