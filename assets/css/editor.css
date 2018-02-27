@@ -2438,6 +2438,10 @@ html:not(.dragging-section) .delete-icon-wrap {
   -ms-flex-align: center;
   align-items: center; }
 
+.zoom-navbar .add-new-key span {
+  font-family: Josefin Sans;
+  font-size: 16px; }
+
 .zoom-navbar .filter-controls {
   display: none;
   position: absolute;
