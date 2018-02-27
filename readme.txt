@@ -134,9 +134,11 @@ Release Date: February 20th, 2018
 * New Feature: Support audio and video blocks in Blocks.
 * New Feature: Shortcodes now display in block previews.
 * New Feature: Blocks can now be requested by industry.
+* New Feature: Blocks now display full height in previews.
 * Bug Fix: Blockquote elements now have the text control available to them.
 * Bug Fix: Warning thrown while listing posts in admin.
 * Bug Fix: HEX input field missing from color picker.
+* Bug Fix: Undo/Redo no longer change scroll position.
 * Bug Fix: Getting started displayed after switching to text tab.
 * Bug Fix: Fixing iframe heights in editor.
 * Bug Fix: Duplicate font families in drop down.
