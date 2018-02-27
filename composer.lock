@@ -4,20 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+    "hash": "fac6fa06c06fb7ef38f1794d2a7d5f3b",
     "content-hash": "a00a3572f98450eeca86819769758bf8",
     "packages": [
         {
             "name": "boldgrid/library",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/BoldGrid/library.git",
-                "reference": "20f8c06d11cf3b9cbca307b6d394737770a8267a"
+                "reference": "c8e09548fc138330974a18484606d9c43c727bc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BoldGrid/library/zipball/20f8c06d11cf3b9cbca307b6d394737770a8267a",
-                "reference": "20f8c06d11cf3b9cbca307b6d394737770a8267a",
+                "url": "https://api.github.com/repos/BoldGrid/library/zipball/c8e09548fc138330974a18484606d9c43c727bc9",
+                "reference": "c8e09548fc138330974a18484606d9c43c727bc9",
                 "shasum": ""
             },
             "type": "library",
@@ -53,7 +54,7 @@
                 }
             ],
             "description": "The BoldGrid Library for shared code used in official BoldGrid plugins and themes.",
-            "time": "2018-02-14T17:35:15+00:00"
+            "time": "2018-02-27 14:47:42"
         }
     ],
     "packages-dev": [],
