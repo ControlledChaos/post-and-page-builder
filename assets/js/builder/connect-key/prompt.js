@@ -18,20 +18,13 @@ export class ConnectKey {
 
 		this.config = {
 			free: {
-				text: 'Add BoldGrid Connect',
-				action: () => this.showNotice(),
-				html: enterKeyHtml
+				text: 'Add BoldGrid Connect'
 			},
 			basic: {
-				text: 'Upgrade To Premium',
-				action: () => {
-					window.open( this.newKeyLink, '_blank' );
-				}
+				text: 'Upgrade To Premium'
 			},
 			premium: {
-				text: 'Premium Active',
-				action: () => this.showNotice(),
-				html: enterKeyHtml
+				text: 'Premium Active'
 			}
 		};
 
@@ -50,7 +43,9 @@ export class ConnectKey {
 	}
 
 	/**
-	 * After license types are returned
+	 * After license types are returned.
+	 *
+	 * WARNING this action occurs after every fetch gridblocks call.
 	 *
 	 * @since 1.7.0
 	 *
@@ -59,6 +54,7 @@ export class ConnectKey {
 	postLicenseCheck( licenseTypes ) {
 		this.licenseTypes = licenseTypes instanceof Array ? licenseTypes : [];
 
+		this._setHasPremium();
 		this._displayBlocksButton();
 	}
 
@@ -77,6 +73,21 @@ export class ConnectKey {
 	}
 
 	/**
+	 * Remove invalid characters from the connect key.
+	 *
+	 * @since 1.7.0
+	 *
+	 * @param  {string} key Connect Key.
+	 * @return {string}     Connect Key Sanitized.
+	 */
+	sanitizeKey( key ) {
+		return key
+			.replace( /[^a-z0-9]/gi, '' )
+			.replace( /(.{8})/g, '$1-' )
+			.slice( 0, -1 );
+	}
+
+	/**
 	 * Validate a connect key.
 	 *
 	 * @since 1.7.0
@@ -88,13 +99,7 @@ export class ConnectKey {
 	validateKey( key ) {
 		const keyLength = 35;
 
-		return (
-			keyLength !==
-			key
-				.replace( /[^a-z0-9]/gi, '' )
-				.replace( /(.{8})/g, '$1-' )
-				.slice( 0, -1 ).length
-		);
+		return keyLength !== this.sanitizeKey( key ).length;
 	}
 
 	/**
@@ -104,8 +109,10 @@ export class ConnectKey {
 	 */
 	showNotice() {
 		const $content = $(
-			_.template( this.activeConfig.html )( {
-				newKeyLink: this.newKeyLink
+			_.template( enterKeyHtml )( {
+				newKeyLink: this.newKeyLink,
+				journey: this.licenseTypes.length ? 'existing-key' : '',
+				license: this.getLicenseType( this.licenseTypes )
 			} )
 		);
 
@@ -144,6 +151,18 @@ export class ConnectKey {
 	}
 
 	/**
+	 * Set has premium as an attribute.
+	 *
+	 * @since 1.7.0
+	 */
+	_setHasPremium() {
+		BG.GRIDBLOCK.View.$gridblocks.attr(
+			'data-requires-premium',
+			-1 === this.licenseTypes.indexOf( 'premium' ) ? 1 : 0
+		);
+	}
+
+	/**
 	 * Find the commonly used form handlers.
 	 *
 	 * @since 1.7.0
@@ -151,12 +170,14 @@ export class ConnectKey {
 	 * @param  {$} $content Form Handlers.
 	 */
 	_findFormElements( $content ) {
+		this.$content = $content;
 		this.$form = $content.find( 'form' );
 		this.$tos = this.$form.find( '[name="tos"]' );
 		this.$keyEntry = this.$form.find( '[name="boldgrid-connect-key"]' );
 		this.$formError = this.$form.find( '.error' );
 		this.$formSuccess = $content.find( '.success' );
 		this.$formPrompt = $content.find( '.key-entry' );
+		this.$changeConnectKey = $content.find( '.change-connect-key' );
 	}
 
 	/**
@@ -171,6 +192,12 @@ export class ConnectKey {
 
 		this._bindFormSubmission();
 		this._bindPanelClose();
+
+		// Bind change key.
+		this.$changeConnectKey.on( 'click', e => {
+			e.preventDefault();
+			this.$content.removeAttr( 'data-journey' );
+		} );
 	}
 
 	/**
@@ -197,9 +224,12 @@ export class ConnectKey {
 
 				this._saveKey()
 					.done( result => {
-						this.$formSuccess.attr( 'data-key-type', this.getLicenseType( result.data ) );
+						this.licenseTypes = result.data.licenses;
+						this.$formSuccess.attr( 'data-key-type', this.getLicenseType( this.licenseTypes ) );
+						this.apiKey = result.data.key;
 						this.$formPrompt.hide();
 						this.$formSuccess.addClass( 'animated zoomIn' ).show();
+						this.postLicenseCheck( this.licenseTypes );
 					} )
 					.fail( () => {
 						this._displayError( `
@@ -245,7 +275,7 @@ export class ConnectKey {
 		this.$actionButton.on( 'click', e => {
 			e.preventDefault();
 
-			this.activeConfig.action();
+			this.showNotice();
 		} );
 	}
 

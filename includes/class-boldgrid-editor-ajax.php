@@ -189,7 +189,10 @@ class Boldgrid_Editor_Ajax {
 
 		if ( ! empty( $types ) ) {
 			update_option( 'boldgrid_api_key', $connectKey );
-			wp_send_json_success( $types );
+			wp_send_json_success( array(
+				'licenses' => $types,
+				'key' => $connectKey,
+			) );
 		} else {
 			status_header( 400 );
 			wp_send_json_error();

@@ -643,18 +643,6 @@ html:not(.dragging-section) .delete-icon-wrap {
 			transform: translateX(-50%) translateY(-50%);
 		}
 
-		&[data-is-premium='1'][data-requires-premium='1'] {
-			cursor: default;
-
-			.add-gridblock::before {
-				content: 'Upgrade To Premium';
-			}
-
-			.save {
-				display: none !important;
-			}
-		}
-
 		.premium-label {
 			opacity: 0;
 			font-variant: small-caps;
@@ -735,7 +723,20 @@ html:not(.dragging-section) .delete-icon-wrap {
 			}
 		}
 	}
+
+	.gridblocks[data-requires-premium='1'] .gridblock[data-is-premium='1'] {
+		cursor: default;
+
+		.add-gridblock::before {
+			content: 'Upgrade To Premium';
+		}
+
+		.save {
+			display: none !important;
+		}
+	}
 }
+
 
 @media (min-width: 1600px) {
 	.zoom-gridblocks-section {

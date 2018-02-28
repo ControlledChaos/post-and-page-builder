@@ -48,7 +48,7 @@
 <script type="text/html" id="tmpl-boldgrid-editor-gridblock">
 <div class="gridblock gridblock-loading"
 	data-id="{{data.gridblockId}}" data-type="{{data.type}}" data-category="{{data.category}}"
-	data-is-premium="{{data.is_premium ? 1 : 0}}" data-requires-premium="{{data.requires_premium ? 1 : 0}}"
+	data-is-premium="{{data.is_premium ? 1 : 0}}"
 	data-template="{{data.template}}">
 	<i class="fa fa-arrows" aria-hidden="true"></i>
 	<div class="add-gridblock"></div>

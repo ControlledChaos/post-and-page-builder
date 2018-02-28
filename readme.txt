@@ -130,7 +130,7 @@ Release Date: February 20th, 2018
 
 * New Feature: Most elements now support animation controls.
 * New Feature: CSS ID's can now be specified via customization controls.
-* New Feature: Added Connect Key prompt.
+* New Feature: Users can now specify a Connect Key.
 * New Feature: Support audio and video blocks in Blocks.
 * New Feature: Shortcodes now display in block previews.
 * New Feature: Blocks can now be requested by industry.

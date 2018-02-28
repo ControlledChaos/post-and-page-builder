@@ -2971,15 +2971,6 @@ html:not(.dragging-section) .delete-icon-wrap {
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%); }
 
-.zoom-gridblocks-section .gridblock[data-is-premium='1'][data-requires-premium='1'] {
-  cursor: default; }
-
-.zoom-gridblocks-section .gridblock[data-is-premium='1'][data-requires-premium='1'] .add-gridblock::before {
-  content: 'Upgrade To Premium'; }
-
-.zoom-gridblocks-section .gridblock[data-is-premium='1'][data-requires-premium='1'] .save {
-  display: none !important; }
-
 .zoom-gridblocks-section .gridblock .premium-label {
   opacity: 0;
   font-variant: small-caps;
@@ -3051,6 +3042,15 @@ html:not(.dragging-section) .delete-icon-wrap {
 
 .zoom-gridblocks-section .gridblock .action-items .fa:hover {
   background-color: #f95b26; }
+
+.zoom-gridblocks-section .gridblocks[data-requires-premium='1'] .gridblock[data-is-premium='1'] {
+  cursor: default; }
+
+.zoom-gridblocks-section .gridblocks[data-requires-premium='1'] .gridblock[data-is-premium='1'] .add-gridblock::before {
+  content: 'Upgrade To Premium'; }
+
+.zoom-gridblocks-section .gridblocks[data-requires-premium='1'] .gridblock[data-is-premium='1'] .save {
+  display: none !important; }
 
 @media (min-width: 1600px) {
   .zoom-gridblocks-section .gridblock {
@@ -3156,17 +3156,39 @@ html:not(.dragging-section) .delete-icon-wrap {
   margin: 10px;
   text-align: center; }
 
+.panel-body .connect-key-entry .existing-key {
+  display: none;
+  padding: 13px; }
+
+.panel-body .connect-key-entry .existing-key p {
+  font-size: 15px; }
+
+.panel-body .connect-key-entry[data-journey="existing-key"] .key-entry,
+.panel-body .connect-key-entry[data-journey="existing-key"] .success {
+  display: none; }
+
+.panel-body .connect-key-entry[data-journey="existing-key"] .existing-key {
+  display: block; }
+
+.panel-body .connect-key-entry .existing-key,
 .panel-body .connect-key-entry .success {
   display: none;
   padding: 13px; }
 
+.panel-body .connect-key-entry .existing-key[data-key-type="basic"] .basic-key,
+.panel-body .connect-key-entry .existing-key[data-key-type="premium"] .premium-key,
 .panel-body .connect-key-entry .success[data-key-type="basic"] .basic-key,
 .panel-body .connect-key-entry .success[data-key-type="premium"] .premium-key {
   display: block; }
 
+.panel-body .connect-key-entry .existing-key .post-add-message,
 .panel-body .connect-key-entry .success .post-add-message {
   font-size: 15px;
   display: none; }
+
+.panel-body .connect-key-entry .existing-key .button,
+.panel-body .connect-key-entry .success .button {
+  margin-top: 15px; }
 
 .panel-body .connect-key-entry .dashicons-admin-network {
   font-size: 50px;

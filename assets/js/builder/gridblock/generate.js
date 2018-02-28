@@ -70,7 +70,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			needsUpgrade( $gridblock ) {
 				return (
 					parseInt( $gridblock.attr( 'data-is-premium' ) ) &&
-					parseInt( $gridblock.attr( 'data-requires-premium' ) )
+					parseInt( BG.GRIDBLOCK.View.$gridblocks.attr( 'data-requires-premium' ) )
 				);
 			},
 
