@@ -35,6 +35,8 @@ import { Industry } from './industry';
 				self.createGridblocks();
 				BG.GRIDBLOCK.Loader.loadGridblocks();
 				BG.GRIDBLOCK.Category.init();
+				BG.Service.connectKey.init();
+
 				self.endlessScroll();
 				self.templateClass = self.getTemplateClass();
 

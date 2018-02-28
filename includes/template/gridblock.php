@@ -1,5 +1,8 @@
 <div class="zoom-navbar zoom-navbar-top">
-	<a href="#" class="add-new-key"><span>Add Connect Key</span></a>
+	<a href="#" class="connect-key-action new-connect-key">
+		<span class="dashicons dashicons-admin-network"></span>
+		<div class="action-text">Add BoldGrid Connect</div>
+	</a>
 	<div class="history-controls">
 		<button class='undo-link' title="Undo" type="button"><i class="mce-ico mce-i-undo"></i></button>
 		<button class='redo-link' title="Redo" type="button"><i class="mce-ico mce-i-redo"></i></button>

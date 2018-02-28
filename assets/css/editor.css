@@ -2419,9 +2419,9 @@ html:not(.dragging-section) .delete-icon-wrap {
 .zoom-navbar {
   display: none; }
 
-.zoom-navbar .add-new-key {
+.zoom-navbar .connect-key-action {
   position: absolute;
-  background: #f95a27;
+  background: #f95b26;
   left: 0;
   bottom: -1px;
   top: 0;
@@ -2429,16 +2429,34 @@ html:not(.dragging-section) .delete-icon-wrap {
   color: white;
   text-decoration: none;
   font-size: 15px;
-  -webkit-box-shadow: 0 0 9px -1px black;
-  box-shadow: 0 0 9px -1px black;
+  -webkit-box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.9);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
   -ms-flex-align: center;
-  align-items: center; }
+  align-items: center;
+  -webkit-transition: background-color 0.3s, -webkit-box-shadow 0.3s;
+  transition: background-color 0.3s, -webkit-box-shadow 0.3s;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  transition: background-color 0.3s, box-shadow 0.3s, -webkit-box-shadow 0.3s;
+  visibility: hidden; }
 
-.zoom-navbar .add-new-key span {
+.zoom-navbar .connect-key-action:hover {
+  background-color: #fa6e3f; }
+
+.zoom-navbar .connect-key-action:active {
+  background-color: #fa8158;
+  -webkit-box-shadow: none;
+  box-shadow: none; }
+
+.zoom-navbar .connect-key-action span {
+  position: relative;
+  top: -2px;
+  margin-right: 7px; }
+
+.zoom-navbar .connect-key-action.new-connect-key .action-text {
   font-family: Josefin Sans;
   font-size: 16px; }
 
@@ -2635,12 +2653,14 @@ html:not(.dragging-section) .delete-icon-wrap {
   cursor: pointer;
   -webkit-transition: background-color 0.5s, color 0.5s;
   transition: background-color 0.5s, color 0.5s;
-  text-decoration: none; }
+  text-decoration: none;
+  -webkit-box-shadow: 0 -1px 5px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 -1px 5px 0 rgba(0, 0, 0, 0.4); }
 
 .boldgrid-zoomout .bg-close-zoom-view:hover {
   background: rgba(0, 115, 170, 0.8); }
 
-.boldgrid-zoomout .bg-close-zoom-view:after {
+.boldgrid-zoomout .bg-close-zoom-view::after {
   content: '\f147';
   display: block;
   font: normal 22px/45px dashicons;
@@ -2738,7 +2758,7 @@ html:not(.dragging-section) .delete-icon-wrap {
 .history-controls button i {
   font-size: 26px; }
 
-.history-controls button i:before {
+.history-controls button i::before {
   position: relative;
   left: -2px;
   top: -2px; }
@@ -2767,7 +2787,7 @@ html:not(.dragging-section) .delete-icon-wrap {
   overflow: scroll;
   overflow-x: hidden; }
 
-.zoom-gridblocks-section:after {
+.zoom-gridblocks-section::after {
   visibility: hidden;
   display: block;
   font-size: 0;
@@ -2790,7 +2810,7 @@ html:not(.dragging-section) .delete-icon-wrap {
   margin-bottom: 80px;
   position: relative; }
 
-.zoom-gridblocks-section .gridblocks:before {
+.zoom-gridblocks-section .gridblocks::before {
   content: '';
   background-color: #f1f1f1;
   position: absolute;
@@ -2954,7 +2974,7 @@ html:not(.dragging-section) .delete-icon-wrap {
 .zoom-gridblocks-section .gridblock[data-is-premium='1'][data-requires-premium='1'] {
   cursor: default; }
 
-.zoom-gridblocks-section .gridblock[data-is-premium='1'][data-requires-premium='1'] .add-gridblock:before {
+.zoom-gridblocks-section .gridblock[data-is-premium='1'][data-requires-premium='1'] .add-gridblock::before {
   content: 'Upgrade To Premium'; }
 
 .zoom-gridblocks-section .gridblock[data-is-premium='1'][data-requires-premium='1'] .save {
@@ -3118,6 +3138,32 @@ html:not(.dragging-section) .delete-icon-wrap {
   .wp-admin .editing-blocker .gridblock-lead {
     margin-left: 10%;
     margin-right: 10%; } }
+
+.panel-body .connect-key-entry {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+.panel-body .connect-key-entry a {
+  color: #0073aa; }
+
+.panel-body .connect-key-entry .error {
+  color: red;
+  display: none; }
+
+.panel-body .connect-key-entry .column:first-of-type {
+  width: 80px;
+  text-align: center; }
+
+.panel-body .connect-key-entry .dashicons-admin-network {
+  font-size: 50px;
+  width: 50px;
+  height: 50px;
+  margin-top: 20px;
+  color: #f95b26; }
+
+.panel-body .connect-key-entry input[type="text"] {
+  width: 350px; }
 
 /*--------------------------------------------------------------
 # Handler section drag controls.

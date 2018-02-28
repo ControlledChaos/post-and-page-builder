@@ -42,6 +42,8 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 						self.licenseTypes = xhr.getResponseHeader( 'License-Types' ) || '[]';
 						self.licenseTypes = JSON.parse( self.licenseTypes );
 
+						BG.Service.connectKey.postLicenseCheck( self.licenseTypes );
+
 						self.addToConfig( gridblocks );
 						BG.GRIDBLOCK.View.createGridblocks();
 					} )
@@ -90,7 +92,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 						version: BoldgridEditor.version,
 						include_temporary_resources: 1,
 						release_channel: BoldgridEditor.boldgrid_settings.theme_release_channel,
-						key: BoldgridEditor.boldgrid_settings.api_key,
+						key: BG.Service.connectKey.apiKey,
 						transparent_backgrounds: 'post' === BoldgridEditor.post_type ? 1 : 0,
 						type: type,
 						color: JSON.stringify({ colors: BG.CONTROLS.Color.getGridblockColors() }),
