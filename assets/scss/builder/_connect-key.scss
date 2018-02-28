@@ -13,7 +13,23 @@
 
 		.column:first-of-type {
 			width: 80px;
+			margin: 10px;
 			text-align: center;
+		}
+
+		.success {
+			display: none;
+			padding: 13px;
+
+			&[data-key-type="basic"] .basic-key,
+			&[data-key-type="premium"] .premium-key {
+				display: block;
+			}
+
+			.post-add-message {
+				font-size: 15px;
+				display: none;
+			}
 		}
 
 		.dashicons-admin-network {

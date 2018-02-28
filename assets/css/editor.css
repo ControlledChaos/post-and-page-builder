@@ -3153,7 +3153,20 @@ html:not(.dragging-section) .delete-icon-wrap {
 
 .panel-body .connect-key-entry .column:first-of-type {
   width: 80px;
+  margin: 10px;
   text-align: center; }
+
+.panel-body .connect-key-entry .success {
+  display: none;
+  padding: 13px; }
+
+.panel-body .connect-key-entry .success[data-key-type="basic"] .basic-key,
+.panel-body .connect-key-entry .success[data-key-type="premium"] .premium-key {
+  display: block; }
+
+.panel-body .connect-key-entry .success .post-add-message {
+  font-size: 15px;
+  display: none; }
 
 .panel-body .connect-key-entry .dashicons-admin-network {
   font-size: 50px;

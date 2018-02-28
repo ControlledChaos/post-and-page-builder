@@ -167,6 +167,36 @@ class Boldgrid_Editor_Ajax {
 	}
 
 	/**
+	 * Save a users connect key in the database.
+	 *
+	 * @since 1.7.0
+	 */
+	public function save_key() {
+		$this->validate_nonce( 'gridblock_save' );
+
+		$connectKey = ! empty( $_POST['connectKey'] ) ? sanitize_text_field( $_POST['connectKey'] ) : null;
+		$connectKey = md5( $connectKey );
+
+		$api_response = wp_remote_get( self::get_end_point('gridblock_industries'), array(
+			'timeout' => 10,
+			'body' => array( 'key' => $connectKey ),
+		) );
+
+		$types = wp_remote_retrieve_header( $api_response, 'License-Types' );
+		$types = $types ? $types : '[]';
+		$types = json_decode( $types, true );
+		$types = array_intersect( $types, array( 'basic', 'premium' ) );
+
+		if ( ! empty( $types ) ) {
+			update_option( 'boldgrid_api_key', $connectKey );
+			wp_send_json_success( $types );
+		} else {
+			status_header( 400 );
+			wp_send_json_error();
+		}
+	}
+
+	/**
 	 * Save a Gridblock.
 	 *
 	 * @since 1.6

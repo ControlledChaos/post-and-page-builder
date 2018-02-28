@@ -258,6 +258,7 @@ class Boldgrid_Editor {
 		add_action( 'wp_ajax_boldgrid_editor_save_gridblock', array ( $boldgrid_editor_ajax, 'save_gridblock' ) );
 		add_action( 'wp_ajax_boldgrid_redirect_url', array ( $boldgrid_editor_ajax, 'get_redirect_url' ) );
 		add_action( 'wp_ajax_boldgrid_generate_blocks', array ( $boldgrid_editor_ajax, 'generate_blocks' ) );
+		add_action( 'wp_ajax_boldgrid_editor_save_key', array ( $boldgrid_editor_ajax, 'save_key' ) );
 		add_action( 'wp_ajax_boldgrid_get_saved_blocks', array ( $boldgrid_editor_ajax, 'get_saved_blocks' ) );
 
 		// Add Loading Graphic.

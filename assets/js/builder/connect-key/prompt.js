@@ -3,9 +3,18 @@ var BG = BOLDGRID.EDITOR;
 import enterKeyHtml from './enter-key.html';
 
 export class ConnectKey {
+
+	/**
+	 * Set default configuration values.
+	 *
+	 * @since 1.7.0
+	 */
 	constructor() {
 		this.licenseTypes = [];
 		this.activeConfig = {};
+
+		this.newKeyLink =
+			BoldgridEditor.plugin_configs.urls.premium_key + '?source=plugin-add-gridblock';
 
 		this.config = {
 			free: {
@@ -16,10 +25,7 @@ export class ConnectKey {
 			basic: {
 				text: 'Upgrade To Premium',
 				action: () => {
-					window.open(
-						BoldgridEditor.plugin_configs.urls.premium_key + '?source=plugin-add-gridblock',
-						'_blank'
-					);
+					window.open( this.newKeyLink, '_blank' );
 				}
 			},
 			premium: {
@@ -32,7 +38,7 @@ export class ConnectKey {
 		this.controlConfig = {
 			panel: {
 				title: 'BoldGrid Connect',
-				height: '295px',
+				height: '310px',
 				width: '600px',
 				icon: 'dashicons dashicons-admin-network',
 				autoCenter: true,
@@ -71,17 +77,45 @@ export class ConnectKey {
 	}
 
 	/**
+	 * Validate a connect key.
+	 *
+	 * @since 1.7.0
+	 *
+	 * @param  {string} key A connect key.
+	 *
+	 * @return {boolean}    Was this successful?
+	 */
+	validateKey( key ) {
+		const keyLength = 35;
+
+		return (
+			keyLength !==
+			key
+				.replace( /[^a-z0-9]/gi, '' )
+				.replace( /(.{8})/g, '$1-' )
+				.slice( 0, -1 ).length
+		);
+	}
+
+	/**
 	 * Show the notice as a modal.
 	 *
 	 * @since 1.7.0
 	 */
 	showNotice() {
+		const $content = $(
+			_.template( this.activeConfig.html )( {
+				newKeyLink: this.newKeyLink
+			} )
+		);
 
 		// Remove all content from the panel.
 		BG.Panel.clear();
 
 		// Set markup for panel.
-		BG.Panel.$element.find( '.panel-body' ).html( this.activeConfig.html );
+		BG.Panel.$element.find( '.panel-body' ).html( $content );
+
+		this._bindHandlers( $content );
 
 		// Open Panel.
 		BG.Panel.open( this.controlConfig );
@@ -89,6 +123,124 @@ export class ConnectKey {
 		BG.Panel.centerPanel();
 	}
 
+	/**
+	 * Get the license type name.
+	 *
+	 * @since 1.7.0
+	 *
+	 * @param  {array} licenseTypes License types for user.
+	 * @return {string}             License type.
+	 */
+	getLicenseType( licenseTypes ) {
+		let type = 'free';
+
+		if ( -1 !== licenseTypes.indexOf( 'premium' ) ) {
+			type = 'premium';
+		} else if ( -1 !== licenseTypes.indexOf( 'basic' ) ) {
+			type = 'basic';
+		}
+
+		return type;
+	}
+
+	/**
+	 * Find the commonly used form handlers.
+	 *
+	 * @since 1.7.0
+	 *
+	 * @param  {$} $content Form Handlers.
+	 */
+	_findFormElements( $content ) {
+		this.$form = $content.find( 'form' );
+		this.$tos = this.$form.find( '[name="tos"]' );
+		this.$keyEntry = this.$form.find( '[name="boldgrid-connect-key"]' );
+		this.$formError = this.$form.find( '.error' );
+		this.$formSuccess = $content.find( '.success' );
+		this.$formPrompt = $content.find( '.key-entry' );
+	}
+
+	/**
+	 * Bind the form handler.
+	 *
+	 * @since 1.7.0
+	 *
+	 * @param  {$} $content Content Element.
+	 */
+	_bindHandlers( $content ) {
+		this._findFormElements( $content );
+
+		this._bindFormSubmission();
+		this._bindPanelClose();
+	}
+
+	/**
+	 * Bind the panel closure.
+	 *
+	 * @since 1.7.0
+	 */
+	_bindPanelClose() {
+		this.$formSuccess.find( 'button' ).on( 'click', () => BG.Panel.closePanel() );
+	}
+
+	/**
+	 * On form submission, run this process.
+	 *
+	 * @since 1.7.0
+	 */
+	_bindFormSubmission() {
+		this.$form.on( 'submit', e => {
+			e.preventDefault();
+
+			this.$formError.hide().removeClass( 'animated' );
+			if ( this._validate() ) {
+				BG.Panel.showLoading();
+
+				this._saveKey()
+					.done( result => {
+						this.$formSuccess.attr( 'data-key-type', this.getLicenseType( result.data ) );
+						this.$formPrompt.hide();
+						this.$formSuccess.addClass( 'animated zoomIn' ).show();
+					} )
+					.fail( () => {
+						this._displayError( `
+							We were unable to confirm your Connect Key, please check your entry and try again.
+						` );
+					} )
+					.always( () => {
+						BG.Panel.hideLoading();
+					} );
+			}
+		} );
+	}
+
+	/**
+	 * Save a Connect Key.
+	 *
+	 * @since 1.7.0
+	 */
+	_saveKey() {
+		return $.ajax( {
+			type: 'post',
+			url: ajaxurl,
+			dataType: 'json',
+			timeout: 10000,
+			data: {
+				action: 'boldgrid_editor_save_key',
+
+				// eslint-disable-next-line
+				boldgrid_editor_gridblock_save: BoldgridEditor.nonce_gridblock_save,
+
+				// eslint-disable-next-line
+				connectKey: this.$keyEntry.val().trim()
+			}
+		} );
+	}
+
+	/**
+	 * Bind the click of the add connect action.
+	 *
+	 * @since 1.7.0
+	 */
 	_bindClick() {
 		this.$actionButton.on( 'click', e => {
 			e.preventDefault();
@@ -116,16 +268,45 @@ export class ConnectKey {
 	 * @since 1.7.0
 	 */
 	_setActiveConfig() {
-		let config = this.config.free;
-
-		if ( -1 !== this.licenseTypes.indexOf( 'basic' ) ) {
-			config = this.config.basic;
-		} else if ( -1 !== this.licenseTypes.indexOf( 'premium' ) ) {
-			config = this.config.premium;
-		}
+		const config = this.config[this.getLicenseType( this.licenseTypes )];
 
 		this.activeConfig = config;
 	}
 
-	validate() {}
+	/**
+	 * Display an error on the screen.
+	 *
+	 * @since 1.7.0
+	 *
+	 * @param  {string} error Show the error.
+	 */
+	_displayError( error ) {
+		this.$formError
+			.html( error )
+			.show()
+			.addClass( 'animated bounceIn' );
+	}
+
+	/**
+	 * Validate.
+	 *
+	 * @since 1.7.0
+	 *
+	 * @return {boolean} Was this operation a success.
+	 */
+	_validate() {
+		let error = '';
+
+		if ( ! this.$tos.val() || ! this.$keyEntry.val() ) {
+			error = 'Please complete all field to continue';
+		} else if ( this.validateKey( this.$keyEntry.val() ) ) {
+			error = 'Please enter a BoldGrid Connect Key in the correct format';
+		}
+
+		if ( error ) {
+			this._displayError( error );
+		}
+
+		return ! error;
+	}
 }

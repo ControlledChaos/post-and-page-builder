@@ -2,16 +2,37 @@
 	<div class="column">
 		<span class="dashicons dashicons-admin-network"></span>
 	</div>
-	<div class="column">
-		<h2>Enter Your BoldGrid Connect Key</h2>
-		<p>Please enter your <strong>32 digit BoldGrid Connect Key</strong> below and click submit.</p>
-		<p class="error"><span>*</span> <span>You must enter a valid BoldGrid Connect Key.</span></p>
-		<label><input type="checkbox"> I agree to the <a href="https://www.boldgrid.com/software-privacy-policy/" target="_blank"
-			>Terms of Use and Privacy Policy</a></label>
+	<div class="key-entry">
+		<form>
+			<h2>Enter Your BoldGrid Connect Key</h2>
+			<p>Please enter your <strong>32 digit BoldGrid Connect Key</strong> below and click submit.</p>
+			<p class="error">You must enter a valid BoldGrid Connect Key.</p>
+			<label><input type="checkbox" required name="tos"> I agree to the <a href="https://www.boldgrid.com/software-privacy-policy/"
+				target="_blank">Terms of Use and Privacy Policy</a></label>
+			<p>
+				<input type="text" name="boldgrid-connect-key" required
+					placeholder="XXXXXXXX - XXXXXXXX - XXXXXXXX - XXXXXXXX">
+				<button class="button button-primary">Submit</button>
+			</p>
+			<p><a target="_blank" href="<%=newKeyLink %>"
+				>Don't have a Connect Key yet or lost your Key?</a></p>
+		</form>
+	</div>
+	<div class="success" data-key-type="">
+		<h2>Successfully Saved Your Connect Key!</h2>
 		<p>
-			<input type="text" placeholder="XXXXXXXX - XXXXXXXX - XXXXXXXX - XXXXXXXX">
-			<button class="button button-primary">Submit</button>
+			<span class="post-add-message basic-key">
+				Thank your for adding your Connect Key.
+				Try updgrading to a Premium subscription for full access to BoldGrid! To find out more, please see:
+				<a target="_blank" href="<%=newKeyLink %>">BoldGrid Connect Keys</a>
+			</span>
+			<span class="post-add-message premium-key">
+				Congratulations on your new BoldGrid Connect Key. You now have access to Premium Blocks 
+				and any other premium BoldGrid plugins and features.
+			</span>
 		</p>
-		<p><a href="#">Don't have a Connect Key yet or lost your Key?</a></p>
+		<p>
+			<button class="button button-primary">Okay, Got It!</button>
+		</p>
 	</div>
 </div>
