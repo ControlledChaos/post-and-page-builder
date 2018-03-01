@@ -253,13 +253,13 @@ class Boldgrid_Editor {
 			add_filter( 'tiny_mce_before_init', array ( $boldgrid_editor_mce, 'allow_empty_tags' ), 29 );
 		}
 
-		add_action( 'wp_ajax_boldgrid_canvas_image', array ( $boldgrid_editor_ajax, 'upload_image_ajax' ) );
-		add_action( 'wp_ajax_boldgrid_editor_setup', array ( $boldgrid_editor_setup, 'ajax' ) );
-		add_action( 'wp_ajax_boldgrid_editor_save_gridblock', array ( $boldgrid_editor_ajax, 'save_gridblock' ) );
-		add_action( 'wp_ajax_boldgrid_redirect_url', array ( $boldgrid_editor_ajax, 'get_redirect_url' ) );
-		add_action( 'wp_ajax_boldgrid_generate_blocks', array ( $boldgrid_editor_ajax, 'generate_blocks' ) );
-		add_action( 'wp_ajax_boldgrid_editor_save_key', array ( $boldgrid_editor_ajax, 'save_key' ) );
-		add_action( 'wp_ajax_boldgrid_get_saved_blocks', array ( $boldgrid_editor_ajax, 'get_saved_blocks' ) );
+		add_action( 'wp_ajax_boldgrid_canvas_image', array( $boldgrid_editor_ajax, 'upload_image_ajax' ) );
+		add_action( 'wp_ajax_boldgrid_editor_setup', array( $boldgrid_editor_setup, 'ajax' ) );
+		add_action( 'wp_ajax_boldgrid_editor_save_gridblock', array( $boldgrid_editor_ajax, 'save_gridblock' ) );
+		add_action( 'wp_ajax_boldgrid_redirect_url', array( $boldgrid_editor_ajax, 'get_redirect_url' ) );
+		add_action( 'wp_ajax_boldgrid_generate_blocks', array( $boldgrid_editor_ajax, 'generate_blocks' ) );
+		add_action( 'wp_ajax_boldgrid_editor_save_key', array( $boldgrid_editor_ajax, 'save_key' ) );
+		add_action( 'wp_ajax_boldgrid_get_saved_blocks', array( $boldgrid_editor_ajax, 'get_saved_blocks' ) );
 
 		// Add Loading Graphic.
 		add_filter( 'the_editor', function ( $html ) {
