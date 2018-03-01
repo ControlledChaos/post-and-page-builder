@@ -18,10 +18,10 @@ export class ConnectKey {
 
 		this.config = {
 			free: {
-				text: 'Add BoldGrid Connect'
+				text: 'Add Connect Key'
 			},
 			basic: {
-				text: 'Upgrade To Premium'
+				text: 'Get Premium'
 			},
 			premium: {
 				text: 'Premium Active'

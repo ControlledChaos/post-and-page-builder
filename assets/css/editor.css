@@ -3047,7 +3047,7 @@ html:not(.dragging-section) .delete-icon-wrap {
   cursor: default; }
 
 .zoom-gridblocks-section .gridblocks[data-requires-premium='1'] .gridblock[data-is-premium='1'] .add-gridblock::before {
-  content: 'Upgrade To Premium'; }
+  content: 'Get Premium'; }
 
 .zoom-gridblocks-section .gridblocks[data-requires-premium='1'] .gridblock[data-is-premium='1'] .save {
   display: none !important; }

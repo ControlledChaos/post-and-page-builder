@@ -5,9 +5,10 @@
 	<div class="existing-key">
 		<h2><%= ( 'basic' === license ) ? 'Free' : 'Premium' %> BoldGrid Connect Key</h2>
 		<p>
-			You already have a Connect key saved on this site. If needed you can change your Connect Key with the link below.
 			<% if ( 'basic' === license ) { %>
-			Or <a target="_blank" href="<%=newKeyLink %>">upgrade now</a>!
+			Thank your for adding your Connect Key. Try upgrading to a Premium subscription for full access to BoldGrid!
+			<% } else if ( 'premium' === license ) { %>
+			You already have a Connect key saved on this site. If needed you can change your Connect Key with the link below.
 			<% } %>
 		</p>
 		<p>
@@ -40,7 +41,8 @@
 			</span>
 			<span class="post-add-message premium-key">
 				Congratulations on your new BoldGrid Connect Key. You now have access to Premium Blocks
-				as well as any other premium BoldGrid plugins and features.
+				as well as any other premium <a target="_blank" href="https://www.boldgrid.com/wordpress-plugins/"
+					>BoldGrid plugins</a> and features.
 			</span>
 		</p>
 		<p>
