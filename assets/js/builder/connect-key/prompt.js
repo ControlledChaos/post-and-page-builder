@@ -31,8 +31,8 @@ export class ConnectKey {
 		this.controlConfig = {
 			panel: {
 				title: 'BoldGrid Connect',
-				height: '310px',
-				width: '600px',
+				height: '315px',
+				width: '610px',
 				icon: 'dashicons dashicons-admin-network',
 				autoCenter: true,
 				showOverlay: true

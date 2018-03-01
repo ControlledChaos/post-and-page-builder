@@ -444,6 +444,13 @@ html:not(.dragging-section) .delete-icon-wrap {
 		height: 0;
 	}
 
+	.gridblocks.resizing-gridblocks {
+		.gridblock,
+		iframe {
+			transition: none !important;
+		}
+	}
+
 	.gridblocks {
 		display: flex;
 		flex-wrap: wrap;

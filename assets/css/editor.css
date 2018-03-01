@@ -2796,6 +2796,11 @@ html:not(.dragging-section) .delete-icon-wrap {
   clear: both;
   height: 0; }
 
+.zoom-gridblocks-section .gridblocks.resizing-gridblocks .gridblock,
+.zoom-gridblocks-section .gridblocks.resizing-gridblocks iframe {
+  -webkit-transition: none !important;
+  transition: none !important; }
+
 .zoom-gridblocks-section .gridblocks {
   display: -webkit-box;
   display: -ms-flexbox;
