@@ -18,13 +18,16 @@ export class ConnectKey {
 
 		this.config = {
 			free: {
-				text: 'Add Connect Key'
+				text: 'Add Connect Key',
+				typeAttr: 'no-connect-key'
 			},
 			basic: {
-				text: 'Get Premium'
+				text: 'Get Premium',
+				typeAttr: 'basic-connect-key'
 			},
 			premium: {
-				text: 'Premium Active'
+				text: 'Premium Active',
+				typeAttr: 'premium-connect-key'
 			}
 		};
 
@@ -176,6 +179,7 @@ export class ConnectKey {
 		this.$keyEntry = this.$form.find( '[name="boldgrid-connect-key"]' );
 		this.$formError = this.$form.find( '.error' );
 		this.$formSuccess = $content.find( '.success' );
+		this.$upgradeKey = $content.find( '.existing-key .upgrade-key' );
 		this.$formPrompt = $content.find( '.key-entry' );
 		this.$changeConnectKey = $content.find( '.change-connect-key' );
 	}
@@ -198,6 +202,8 @@ export class ConnectKey {
 			e.preventDefault();
 			this.$content.removeAttr( 'data-journey' );
 		} );
+
+		this.$upgradeKey.on( 'click', () => {} );
 	}
 
 	/**
@@ -261,7 +267,7 @@ export class ConnectKey {
 				boldgrid_editor_gridblock_save: BoldgridEditor.nonce_gridblock_save,
 
 				// eslint-disable-next-line
-				connectKey: this.$keyEntry.val().trim()
+				connectKey: this.sanitizeKey(this.$keyEntry.val())
 			}
 		} );
 	}
@@ -288,6 +294,7 @@ export class ConnectKey {
 		this._setActiveConfig();
 
 		this.$actionText.html( this.activeConfig.text );
+		this.$actionButton.attr( 'type', this.activeConfig.typeAttr );
 		this.$actionButton.addClass( 'animated slideInLeft' );
 		this.$actionButton.css( 'visibility', 'visible' );
 	}

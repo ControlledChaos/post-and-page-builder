@@ -1,6 +1,6 @@
 <div class="zoom-navbar zoom-navbar-top">
 	<a href="#" class="connect-key-action new-connect-key">
-		<span class="dashicons dashicons-admin-network"></span>
+		<span class="dashicons"></span>
 		<div class="action-text">Add BoldGrid Connect</div>
 	</a>
 	<div class="history-controls">

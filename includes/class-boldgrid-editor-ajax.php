@@ -188,7 +188,12 @@ class Boldgrid_Editor_Ajax {
 		$types = array_intersect( $types, array( 'basic', 'premium' ) );
 
 		if ( ! empty( $types ) ) {
+
+			// Set connect data.
 			update_option( 'boldgrid_api_key', $connectKey );
+			delete_transient( 'boldgrid_api_data' );
+			delete_site_transient( 'boldgrid_api_data' );
+
 			wp_send_json_success( array(
 				'licenses' => $types,
 				'key' => $connectKey,

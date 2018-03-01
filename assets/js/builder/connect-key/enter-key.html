@@ -8,11 +8,24 @@
 			<% if ( 'basic' === license ) { %>
 			Thank your for adding your Connect Key. Try upgrading to a Premium subscription for full access to BoldGrid!
 			<% } else if ( 'premium' === license ) { %>
-			You already have a Connect key saved on this site. If needed you can change your Connect Key with the link below.
+			You already have a Premium Connect key saved on this site. If needed you can change your Connect Key with the link below.
 			<% } %>
 		</p>
+		<% if ( 'basic' === license ) { %>
+		<p><a class="button button-primary upgrade-key" target="_blank" href="<%=newKeyLink %>">Upgrade</a></p>
+		<% } %>
 		<p>
 			<a class="change-connect-key" href="#">Click here to change your Connect Key</a>
+		</p>
+	</div>
+	<div class="">
+		<h2>Upgrade Your Connect Key</h2>
+		<p>You were taken to <a target="_blank"
+			href="https://www.boldgrid.com/central">BoldGrid Central</a> to upgrade your Connect Key.
+			Once you've finished you'll be able to install Premium Blocks.
+		</p>
+		<p>
+			<a class="button">Okay, Got It!</a>
 		</p>
 	</div>
 	<div class="key-entry">

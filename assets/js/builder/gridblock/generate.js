@@ -82,7 +82,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 					type: 'post',
 					url: ajaxurl,
 					dataType: 'json',
-					timeout: 15000,
+					timeout: 20000,
 					data: _.defaults( options, {
 						action: 'boldgrid_generate_blocks',
 						/*eslint-disable */

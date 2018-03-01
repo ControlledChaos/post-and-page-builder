@@ -97,10 +97,37 @@ html:not(.dragging-section) .delete-icon-wrap {
 			box-shadow: none;
 		}
 
+		.dashicons::before {
+			content: "\f112";
+		}
+
 		span {
 			position: relative;
 			top: -2px;
 			margin-right: 7px;
+		}
+
+		&[type="premium-connect-key"] {
+			.dashicons {
+				top: -3px;
+				font-size: 28px;
+				left: -5px;
+			}
+
+			.dashicons::before {
+				content: "\f147";
+				color: $success-color;
+			}
+
+			background: $boldgrid-primary;
+
+			&:hover {
+				background-color: lighten($boldgrid-primary, 5%);
+			}
+
+			&:active {
+				background-color: lighten($boldgrid-primary, 10%);
+			}
 		}
 
 		&.new-connect-key .action-text {
