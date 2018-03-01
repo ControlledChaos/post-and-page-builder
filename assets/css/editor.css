@@ -3183,14 +3183,17 @@ html:not(.dragging-section) .delete-icon-wrap {
   margin: 10px;
   text-align: center; }
 
+.panel-body .connect-key-entry .upgrade-key-section,
 .panel-body .connect-key-entry .existing-key {
   display: none;
   padding: 13px; }
 
+.panel-body .connect-key-entry .upgrade-key-section .button,
 .panel-body .connect-key-entry .existing-key .button {
   color: white;
   margin: 10px 0; }
 
+.panel-body .connect-key-entry .upgrade-key-section p,
 .panel-body .connect-key-entry .existing-key p {
   font-size: 15px; }
 

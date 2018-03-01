@@ -175,7 +175,7 @@ class Boldgrid_Editor_Ajax {
 		$this->validate_nonce( 'gridblock_save' );
 
 		$connectKey = ! empty( $_POST['connectKey'] ) ? sanitize_text_field( $_POST['connectKey'] ) : null;
-		$connectKey = md5( $connectKey );
+		$connectKey = false === strpos( $connectKey, '-' ) ? $connectKey : md5( $connectKey );
 
 		$api_response = wp_remote_get( self::get_end_point('gridblock_industries'), array(
 			'timeout' => 10,

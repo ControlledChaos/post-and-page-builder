@@ -196,14 +196,40 @@ export class ConnectKey {
 
 		this._bindFormSubmission();
 		this._bindPanelClose();
+		this._bindUpgradeKey();
 
 		// Bind change key.
 		this.$changeConnectKey.on( 'click', e => {
 			e.preventDefault();
 			this.$content.removeAttr( 'data-journey' );
 		} );
+	}
 
-		this.$upgradeKey.on( 'click', () => {} );
+	/**
+	 * Bind the events for a user performing the upgrade process.
+	 *
+	 * @since 1.7.0
+	 */
+	_bindUpgradeKey() {
+		this.$upgradeKey.on( 'click', () => {
+			this.$content.find( '.upgrade-key-section' ).show();
+			this.$content.find( '.existing-key' ).hide();
+		} );
+
+		this.$content.find( '.upgrade-key-section .button' ).on( 'click', () => {
+			BG.Panel.showLoading();
+
+			this._saveKey( this.apiKey )
+				.done( result => {
+					this.licenseTypes = result.data.licenses;
+					this.apiKey = result.data.key;
+					this.postLicenseCheck( this.licenseTypes );
+				} )
+				.always( () => {
+					BG.Panel.hideLoading();
+					BG.Panel.closePanel();
+				} );
+		} );
 	}
 
 	/**
@@ -228,7 +254,7 @@ export class ConnectKey {
 			if ( this._validate() ) {
 				BG.Panel.showLoading();
 
-				this._saveKey()
+				this._saveKey( this.sanitizeKey( this.$keyEntry.val() ) )
 					.done( result => {
 						this.licenseTypes = result.data.licenses;
 						this.$formSuccess.attr( 'data-key-type', this.getLicenseType( this.licenseTypes ) );
@@ -254,7 +280,7 @@ export class ConnectKey {
 	 *
 	 * @since 1.7.0
 	 */
-	_saveKey() {
+	_saveKey( key ) {
 		return $.ajax( {
 			type: 'post',
 			url: ajaxurl,
@@ -267,7 +293,7 @@ export class ConnectKey {
 				boldgrid_editor_gridblock_save: BoldgridEditor.nonce_gridblock_save,
 
 				// eslint-disable-next-line
-				connectKey: this.sanitizeKey(this.$keyEntry.val())
+				connectKey: key
 			}
 		} );
 	}
