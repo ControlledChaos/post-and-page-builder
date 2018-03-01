@@ -25,7 +25,9 @@ class Boldgrid_Layout extends Boldgrid_Editor_Media_Tab {
 	 * @var array
 	 */
 	private static $staged_pages = array (
-		'staging'
+		'staging',
+		'publish',
+		'draft'
 	);
 
 	/**
@@ -97,13 +99,11 @@ class Boldgrid_Layout extends Boldgrid_Editor_Media_Tab {
 	 *
 	 * @since 1.4
 	 *
-	 * @global WP_post $post Current Post.
-	 *
 	 * @param  array $row_content Array of all gridblocks.
 	 * @return array $row_content Array of all gridblocks.
 	 */
 	public static function sort_by_post( $row_content ) {
-		global $post;
+		$post = self::get_current_post();
 
 		$current_type = $post ? $post->post_type : '';
 
@@ -246,13 +246,11 @@ class Boldgrid_Layout extends Boldgrid_Editor_Media_Tab {
 	 *
 	 * @since 1.3
 	 *
-	 * @global WP_post $post Current Post.
-	 *
 	 * @param $_REQUEST['post_id']
 	 * @return array
 	 */
 	public static function get_all_pages() {
-		global $post;
+		$post = self::get_current_post();
 
 		$current_post_status = $post ? $post->post_status : '';
 
@@ -264,6 +262,28 @@ class Boldgrid_Layout extends Boldgrid_Editor_Media_Tab {
 		}
 
 		return self::get_pages( $page_statuses );
+	}
+
+	/**
+	 * Get the requested post object. Check for parameter if global not set.
+	 *
+	 * @since 1.7.0
+	 *
+	 * @global WP_post $post Current Post.
+	 *
+	 * @param $_REQUEST['post_id']
+	 * @return $requested_post WP_Post
+	 */
+	public static function get_current_post() {
+		global $post;
+
+		$requested_post = $post;
+		$post_id = ! empty( $_REQUEST['post_id'] ) ? $_REQUEST['post_id'] : null;
+		if ( $post_id && ! $requested_post ) {
+			$requested_post = get_post( $post_id );
+		}
+
+		return $requested_post;
 	}
 
 	/**
