@@ -130,8 +130,8 @@
 .post-type-bg_block .bg-editor-loading:after {
   opacity: 0 !important; }
 
-.bg-editor-loading-main.active .bg-editor-loading-main.active .bg-editor-loading:before,
-.bg-editor-loading-main.active .bg-editor-loading-main.active .bg-editor-loading:after, .bg-editor-loading-main.active .bg-editor-loading-main.active:after {
+.bg-editor-loading-main.active .bg-editor-loading:before,
+.bg-editor-loading-main.active .bg-editor-loading:after, .bg-editor-loading-main.active:after {
   opacity: 1; }
 
 .bg-editor-loading-main.disabled .bg-editor-loading, .bg-editor-loading-main.disabled:after {
