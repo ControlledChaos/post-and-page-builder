@@ -328,7 +328,7 @@ export class ConnectKey {
 		let error = '';
 
 		if ( ! this.$tos.val() || ! this.$keyEntry.val() ) {
-			error = 'Please complete all field to continue';
+			error = 'Please complete all fields to continue';
 		} else if ( this.validateKey( this.$keyEntry.val() ) ) {
 			error = 'Please enter a BoldGrid Connect Key in the correct format';
 		}
