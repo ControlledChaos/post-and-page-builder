@@ -125,7 +125,7 @@
         "filters": [
             {
                 "slug": "all",
-                "title": "All Categories"
+                "title": "All Types"
             },
             {
                 "slug": "library",

@@ -112,9 +112,11 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			gridblockLoadingUI: {
 				start: function() {
 					$( 'body' ).addClass( 'loading-remote-body' );
+					BG.GRIDBLOCK.View.$gridblockNav.find( 'select' ).prop( 'disabled', true );
 				},
 				finish: function() {
 					$( 'body' ).removeClass( 'loading-remote-body' );
+					BG.GRIDBLOCK.View.$gridblockNav.find( 'select' ).prop( 'disabled', false );
 				}
 			},
 
