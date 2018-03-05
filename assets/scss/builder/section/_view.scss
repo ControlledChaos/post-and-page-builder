@@ -69,6 +69,14 @@ html:not(.dragging-section) .delete-icon-wrap {
 	}
 }
 
+.zoom-navbar[data-block-filter="saved"],
+.zoom-navbar[data-block-filter="library"] {
+	.boldgrid-gridblock-industry {
+		opacity: 0.3;
+		pointer-events: none;
+	}
+}
+
 .zoom-navbar {
 	display: none;
 
