@@ -44,7 +44,7 @@ if ( ! defined( 'BOLDGRID_EDITOR_CONFIGDIR' ) ) {
 /**
 * Initialize the editor plugin for Editors and Administrators in the admin section.
 */
-if ( ! function_exists( 'boldgrid_editor_setup' ) ) {
+if ( ! function_exists( 'boldgrid_editor_setup' ) && false !== strpos( BOLDGRID_EDITOR_VERSION, '1.6.0.' ) ) {
 
 	// Prevent invalid PHP version from loading.
 	require BOLDGRID_PPB_PATH . '/includes/version-check.php';
