@@ -128,7 +128,8 @@ For more information, see changelog.txt.
 
 Release Date: March 8th, 2018
 
-* Bug Fix: Builder fails to load on WordPress version less than 4.9.
+* Bug Fix: Fixed compatibility issues on older WordPress Versions.
+* Bug Fix: Fixed default category displayed for users with inspiration installs.
 * Bug Fix: Typo in Connect Key prompt.
 
 = 1.7.0 =
