@@ -124,9 +124,16 @@ WordPress Editor.
 
 For more information, see changelog.txt.
 
+= 1.7.1 =
+
+Release Date: March 8th, 2018
+
+* Bug Fix: Builder fails to load on WordPress version less than 4.9.
+* Bug Fix: Typo in Connect Key prompt.
+
 = 1.7.0 =
 
-Release Date: February 20th, 2018
+Release Date: March 7th, 2018
 
 * New Feature: Most elements now support animation controls.
 * New Feature: CSS ID's can now be specified via customization controls.
