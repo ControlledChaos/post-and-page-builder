@@ -1,4 +1,5 @@
-var BG = BOLDGRID.EDITOR;
+var BG = BOLDGRID.EDITOR,
+	$ = window.jQuery;
 
 import enterKeyHtml from './enter-key.html';
 

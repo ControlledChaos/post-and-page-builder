@@ -1,3 +1,5 @@
+var $ = window.jQuery;
+
 export class View {
 
 	/**
