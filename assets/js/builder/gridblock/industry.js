@@ -129,7 +129,8 @@ export class Industry {
 	 */
 	_setDefault() {
 		const inspirationCategory = this._getInspirationsCategory(),
-			defaultCategory = BoldgridEditor.block_default_industry || inspirationCategory;
+			defaultCategory =
+				BoldgridEditor.block_default_industry || inspirationCategory || this.defaults.selection;
 
 		if ( this.$select.find( '[value="' + defaultCategory + '"]' ).length ) {
 
@@ -155,7 +156,7 @@ export class Industry {
 		let category;
 
 		if ( BoldgridEditor.inspiration && BoldgridEditor.inspiration.subcategory_key ) {
-			category = BoldgridEditor.inspiration.subcategory_key;
+			category = BoldgridEditor.inspiration.subcategory_key.toLowerCase();
 		}
 
 		if ( 'property_management' === category ) {
