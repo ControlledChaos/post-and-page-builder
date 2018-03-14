@@ -121,11 +121,15 @@ export class Preview {
 	_bindResize() {
 		let resizeCb = _.debounce( () => {
 			if ( BG.CONTROLS.Section.sectionDragEnabled ) {
+				BGGB.View.$gridblocks.addClass( 'resizing-gridblocks' );
+
 				BGGB.View.$gridblockSection.find( '.gridblock:not(.gridblock-loading)' ).each( ( index, el ) => {
 					let $gridblock = $( el );
 
 					this.adjustHeight( $gridblock.find( 'iframe' ), $gridblock );
 				} );
+
+				BGGB.View.$gridblocks.removeClass( 'resizing-gridblocks' );
 			}
 		}, 1000 );
 

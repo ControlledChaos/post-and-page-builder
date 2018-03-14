@@ -252,6 +252,7 @@ import { Industry } from './industry';
 			 */
 			findElements: function() {
 				self.$gridblockSection = $( '.boldgrid-zoomout-section' );
+				self.$gridblocks = self.$gridblockSection.find( '.gridblocks' );
 				self.$gridblockNav = $( '.zoom-navbar' );
 				self.$pageTemplate = $( '#page_template' );
 			},
@@ -340,25 +341,11 @@ import { Industry } from './industry';
 				$.each( BG.GRIDBLOCK.configs.gridblocks, function() {
 					if ( ! this.state ) {
 						this.state = 'ready';
-						markup += self.getGridblockHtml( this );
+						markup += self.gridblockTemplate( this );
 					}
 				} );
 
 				return markup;
-			},
-
-			/**
-			 * Get the html for a GridBlock.
-			 *
-			 * @since 1.4
-			 *
-			 * @param  {Object} gridblockData Gridblock Info
-			 * @return {string}               Markup to add in gridblock iframe.
-			 */
-			getGridblockHtml: function( gridblockData ) {
-				gridblockData['requires_premium'] =
-					-1 === BG.GRIDBLOCK.Generate.licenseTypes.indexOf( 'premium' );
-				return self.gridblockTemplate( gridblockData );
 			}
 		};
 

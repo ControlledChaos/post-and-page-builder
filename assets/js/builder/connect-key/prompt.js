@@ -1,4 +1,5 @@
-var BG = BOLDGRID.EDITOR;
+var BG = BOLDGRID.EDITOR,
+	$ = window.jQuery;
 
 import enterKeyHtml from './enter-key.html';
 
@@ -18,28 +19,24 @@ export class ConnectKey {
 
 		this.config = {
 			free: {
-				text: 'Add BoldGrid Connect',
-				action: () => this.showNotice(),
-				html: enterKeyHtml
+				text: 'Add Connect Key',
+				typeAttr: 'no-connect-key'
 			},
 			basic: {
-				text: 'Upgrade To Premium',
-				action: () => {
-					window.open( this.newKeyLink, '_blank' );
-				}
+				text: 'Get Premium',
+				typeAttr: 'basic-connect-key'
 			},
 			premium: {
 				text: 'Premium Active',
-				action: () => this.showNotice(),
-				html: enterKeyHtml
+				typeAttr: 'premium-connect-key'
 			}
 		};
 
 		this.controlConfig = {
 			panel: {
 				title: 'BoldGrid Connect',
-				height: '310px',
-				width: '600px',
+				height: '315px',
+				width: '610px',
 				icon: 'dashicons dashicons-admin-network',
 				autoCenter: true,
 				showOverlay: true
@@ -50,7 +47,9 @@ export class ConnectKey {
 	}
 
 	/**
-	 * After license types are returned
+	 * After license types are returned.
+	 *
+	 * WARNING this action occurs after every fetch gridblocks call.
 	 *
 	 * @since 1.7.0
 	 *
@@ -59,6 +58,7 @@ export class ConnectKey {
 	postLicenseCheck( licenseTypes ) {
 		this.licenseTypes = licenseTypes instanceof Array ? licenseTypes : [];
 
+		this._setHasPremium();
 		this._displayBlocksButton();
 	}
 
@@ -77,6 +77,21 @@ export class ConnectKey {
 	}
 
 	/**
+	 * Remove invalid characters from the connect key.
+	 *
+	 * @since 1.7.0
+	 *
+	 * @param  {string} key Connect Key.
+	 * @return {string}     Connect Key Sanitized.
+	 */
+	sanitizeKey( key ) {
+		return key
+			.replace( /[^a-z0-9]/gi, '' )
+			.replace( /(.{8})/g, '$1-' )
+			.slice( 0, -1 );
+	}
+
+	/**
 	 * Validate a connect key.
 	 *
 	 * @since 1.7.0
@@ -88,13 +103,7 @@ export class ConnectKey {
 	validateKey( key ) {
 		const keyLength = 35;
 
-		return (
-			keyLength !==
-			key
-				.replace( /[^a-z0-9]/gi, '' )
-				.replace( /(.{8})/g, '$1-' )
-				.slice( 0, -1 ).length
-		);
+		return keyLength !== this.sanitizeKey( key ).length;
 	}
 
 	/**
@@ -104,8 +113,10 @@ export class ConnectKey {
 	 */
 	showNotice() {
 		const $content = $(
-			_.template( this.activeConfig.html )( {
-				newKeyLink: this.newKeyLink
+			_.template( enterKeyHtml )( {
+				newKeyLink: this.newKeyLink,
+				journey: this.licenseTypes.length ? 'existing-key' : '',
+				license: this.getLicenseType( this.licenseTypes )
 			} )
 		);
 
@@ -144,6 +155,18 @@ export class ConnectKey {
 	}
 
 	/**
+	 * Set has premium as an attribute.
+	 *
+	 * @since 1.7.0
+	 */
+	_setHasPremium() {
+		BG.GRIDBLOCK.View.$gridblocks.attr(
+			'data-requires-premium',
+			-1 === this.licenseTypes.indexOf( 'premium' ) ? 1 : 0
+		);
+	}
+
+	/**
 	 * Find the commonly used form handlers.
 	 *
 	 * @since 1.7.0
@@ -151,12 +174,15 @@ export class ConnectKey {
 	 * @param  {$} $content Form Handlers.
 	 */
 	_findFormElements( $content ) {
+		this.$content = $content;
 		this.$form = $content.find( 'form' );
 		this.$tos = this.$form.find( '[name="tos"]' );
 		this.$keyEntry = this.$form.find( '[name="boldgrid-connect-key"]' );
 		this.$formError = this.$form.find( '.error' );
 		this.$formSuccess = $content.find( '.success' );
+		this.$upgradeKey = $content.find( '.existing-key .upgrade-key' );
 		this.$formPrompt = $content.find( '.key-entry' );
+		this.$changeConnectKey = $content.find( '.change-connect-key' );
 	}
 
 	/**
@@ -171,6 +197,40 @@ export class ConnectKey {
 
 		this._bindFormSubmission();
 		this._bindPanelClose();
+		this._bindUpgradeKey();
+
+		// Bind change key.
+		this.$changeConnectKey.on( 'click', e => {
+			e.preventDefault();
+			this.$content.removeAttr( 'data-journey' );
+		} );
+	}
+
+	/**
+	 * Bind the events for a user performing the upgrade process.
+	 *
+	 * @since 1.7.0
+	 */
+	_bindUpgradeKey() {
+		this.$upgradeKey.on( 'click', () => {
+			this.$content.find( '.upgrade-key-section' ).show();
+			this.$content.find( '.existing-key' ).hide();
+		} );
+
+		this.$content.find( '.upgrade-key-section .button' ).on( 'click', () => {
+			BG.Panel.showLoading();
+
+			this._saveKey( this.apiKey )
+				.done( result => {
+					this.licenseTypes = result.data.licenses;
+					this.apiKey = result.data.key;
+					this.postLicenseCheck( this.licenseTypes );
+				} )
+				.always( () => {
+					BG.Panel.hideLoading();
+					BG.Panel.closePanel();
+				} );
+		} );
 	}
 
 	/**
@@ -195,11 +255,14 @@ export class ConnectKey {
 			if ( this._validate() ) {
 				BG.Panel.showLoading();
 
-				this._saveKey()
+				this._saveKey( this.sanitizeKey( this.$keyEntry.val() ) )
 					.done( result => {
-						this.$formSuccess.attr( 'data-key-type', this.getLicenseType( result.data ) );
+						this.licenseTypes = result.data.licenses;
+						this.$formSuccess.attr( 'data-key-type', this.getLicenseType( this.licenseTypes ) );
+						this.apiKey = result.data.key;
 						this.$formPrompt.hide();
 						this.$formSuccess.addClass( 'animated zoomIn' ).show();
+						this.postLicenseCheck( this.licenseTypes );
 					} )
 					.fail( () => {
 						this._displayError( `
@@ -218,7 +281,7 @@ export class ConnectKey {
 	 *
 	 * @since 1.7.0
 	 */
-	_saveKey() {
+	_saveKey( key ) {
 		return $.ajax( {
 			type: 'post',
 			url: ajaxurl,
@@ -231,7 +294,7 @@ export class ConnectKey {
 				boldgrid_editor_gridblock_save: BoldgridEditor.nonce_gridblock_save,
 
 				// eslint-disable-next-line
-				connectKey: this.$keyEntry.val().trim()
+				connectKey: key
 			}
 		} );
 	}
@@ -245,7 +308,7 @@ export class ConnectKey {
 		this.$actionButton.on( 'click', e => {
 			e.preventDefault();
 
-			this.activeConfig.action();
+			this.showNotice();
 		} );
 	}
 
@@ -258,6 +321,7 @@ export class ConnectKey {
 		this._setActiveConfig();
 
 		this.$actionText.html( this.activeConfig.text );
+		this.$actionButton.attr( 'type', this.activeConfig.typeAttr );
 		this.$actionButton.addClass( 'animated slideInLeft' );
 		this.$actionButton.css( 'visibility', 'visible' );
 	}
@@ -298,7 +362,7 @@ export class ConnectKey {
 		let error = '';
 
 		if ( ! this.$tos.val() || ! this.$keyEntry.val() ) {
-			error = 'Please complete all field to continue';
+			error = 'Please complete all fields to continue';
 		} else if ( this.validateKey( this.$keyEntry.val() ) ) {
 			error = 'Please enter a BoldGrid Connect Key in the correct format';
 		}

@@ -62,6 +62,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 					$wrapper = BGGB.View.$gridblockSection.find( '.gridblocks' );
 
 				$wrapper.attr( 'filter', self.currentCategory );
+				BGGB.View.$gridblockNav.attr( 'data-block-filter', self.currentCategory );
 
 				if ( 'all' === self.currentCategory ) {
 					$gridblocks = $gridblocks

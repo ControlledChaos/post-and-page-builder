@@ -17,6 +17,33 @@
 			text-align: center;
 		}
 
+		.upgrade-key-section,
+		.existing-key {
+			display: none;
+			padding: 13px;
+
+			.button {
+				color: white;
+				margin: 10px 0;
+			}
+
+			p {
+				font-size: 15px;
+			}
+		}
+
+		&[data-journey="existing-key"] {
+			.key-entry,
+			.success {
+				display: none;
+			}
+
+			.existing-key {
+				display: block;
+			}
+		}
+
+		.existing-key,
 		.success {
 			display: none;
 			padding: 13px;
@@ -29,6 +56,10 @@
 			.post-add-message {
 				font-size: 15px;
 				display: none;
+			}
+
+			.button {
+				margin-top: 15px;
 			}
 		}
 

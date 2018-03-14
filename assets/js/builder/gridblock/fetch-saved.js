@@ -71,6 +71,7 @@ export class FetchSaved {
 			data: {
 				/*eslint-disable */
 				action: 'boldgrid_get_saved_blocks',
+				post_id: BoldgridEditor.post_id,
 				boldgrid_editor_gridblock_save: BoldgridEditor.nonce_gridblock_save
 				/*eslint-enable */
 			}

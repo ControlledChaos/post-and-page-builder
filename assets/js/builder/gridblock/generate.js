@@ -70,7 +70,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			needsUpgrade( $gridblock ) {
 				return (
 					parseInt( $gridblock.attr( 'data-is-premium' ) ) &&
-					parseInt( $gridblock.attr( 'data-requires-premium' ) )
+					parseInt( BG.GRIDBLOCK.View.$gridblocks.attr( 'data-requires-premium' ) )
 				);
 			},
 
@@ -82,7 +82,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 					type: 'post',
 					url: ajaxurl,
 					dataType: 'json',
-					timeout: 15000,
+					timeout: 20000,
 					data: _.defaults( options, {
 						action: 'boldgrid_generate_blocks',
 						/*eslint-disable */
@@ -112,9 +112,11 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			gridblockLoadingUI: {
 				start: function() {
 					$( 'body' ).addClass( 'loading-remote-body' );
+					BG.GRIDBLOCK.View.$gridblockNav.find( 'select' ).prop( 'disabled', true );
 				},
 				finish: function() {
 					$( 'body' ).removeClass( 'loading-remote-body' );
+					BG.GRIDBLOCK.View.$gridblockNav.find( 'select' ).prop( 'disabled', false );
 				}
 			},
 
