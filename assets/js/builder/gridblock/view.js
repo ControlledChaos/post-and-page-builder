@@ -35,6 +35,8 @@ import { Industry } from './industry';
 				self.createGridblocks();
 				BG.GRIDBLOCK.Loader.loadGridblocks();
 				BG.GRIDBLOCK.Category.init();
+				BG.Service.connectKey.init();
+
 				self.endlessScroll();
 				self.templateClass = self.getTemplateClass();
 
@@ -47,6 +49,8 @@ import { Industry } from './industry';
 			 * @since 1.6
 			 */
 			fetchTypes() {
+				self.finishedTypeFetch = false;
+
 				return $.ajax( {
 					url:
 						BoldgridEditor.plugin_configs.asset_server +
@@ -86,7 +90,10 @@ import { Industry } from './industry';
 				}
 
 				self.$filterSelect.html( html );
-				self.$filterSelectWrap.fadeIn();
+				self.$filterSelectWrap.find( '.boldgrid-gridblock-categories' ).show();
+
+				self.finishedTypeFetch = true;
+				self.industry.showFilters();
 			},
 
 			/**
@@ -175,7 +182,7 @@ import { Industry } from './industry';
 				let isSaved = BG.GRIDBLOCK.Category.isSavedCategory( BG.GRIDBLOCK.Category.currentCategory );
 				BG.GRIDBLOCK.Loader.loadGridblocks();
 
-				if ( ! isSaved && ! self.hasGridblocks() ) {
+				if ( ! isSaved && ! self.hasGridblocks() && 'complete' === self.industry.state ) {
 					BG.GRIDBLOCK.Generate.fetch();
 				} else if ( isSaved && ! self.hasGridblocks() ) {
 					self.fetchSaved.fetch();
@@ -245,6 +252,7 @@ import { Industry } from './industry';
 			 */
 			findElements: function() {
 				self.$gridblockSection = $( '.boldgrid-zoomout-section' );
+				self.$gridblocks = self.$gridblockSection.find( '.gridblocks' );
 				self.$gridblockNav = $( '.zoom-navbar' );
 				self.$pageTemplate = $( '#page_template' );
 			},
@@ -333,25 +341,11 @@ import { Industry } from './industry';
 				$.each( BG.GRIDBLOCK.configs.gridblocks, function() {
 					if ( ! this.state ) {
 						this.state = 'ready';
-						markup += self.getGridblockHtml( this );
+						markup += self.gridblockTemplate( this );
 					}
 				} );
 
 				return markup;
-			},
-
-			/**
-			 * Get the html for a GridBlock.
-			 *
-			 * @since 1.4
-			 *
-			 * @param  {Object} gridblockData Gridblock Info
-			 * @return {string}               Markup to add in gridblock iframe.
-			 */
-			getGridblockHtml: function( gridblockData ) {
-				gridblockData['requires_premium'] =
-					-1 === BG.GRIDBLOCK.Generate.licenseTypes.indexOf( 'premium' );
-				return self.gridblockTemplate( gridblockData );
 			}
 		};
 

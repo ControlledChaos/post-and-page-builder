@@ -170,9 +170,6 @@ class Boldgrid_Editor {
 		$boldgrid_editor_wpforms   = new Boldgrid_Editor_Wpforms();
 		$boldgrid_editor_setup     = new Boldgrid_Editor_Setup();
 
-		// Load tge BoldGrid library.
-		$this->loadLibrary();
-
 		// Init Form deps.
 		$boldgrid_editor_wpforms->init();
 
@@ -256,12 +253,13 @@ class Boldgrid_Editor {
 			add_filter( 'tiny_mce_before_init', array ( $boldgrid_editor_mce, 'allow_empty_tags' ), 29 );
 		}
 
-		add_action( 'wp_ajax_boldgrid_canvas_image', array ( $boldgrid_editor_ajax, 'upload_image_ajax' ) );
-		add_action( 'wp_ajax_boldgrid_editor_setup', array ( $boldgrid_editor_setup, 'ajax' ) );
-		add_action( 'wp_ajax_boldgrid_editor_save_gridblock', array ( $boldgrid_editor_ajax, 'save_gridblock' ) );
-		add_action( 'wp_ajax_boldgrid_redirect_url', array ( $boldgrid_editor_ajax, 'get_redirect_url' ) );
-		add_action( 'wp_ajax_boldgrid_generate_blocks', array ( $boldgrid_editor_ajax, 'generate_blocks' ) );
-		add_action( 'wp_ajax_boldgrid_get_saved_blocks', array ( $boldgrid_editor_ajax, 'get_saved_blocks' ) );
+		add_action( 'wp_ajax_boldgrid_canvas_image', array( $boldgrid_editor_ajax, 'upload_image_ajax' ) );
+		add_action( 'wp_ajax_boldgrid_editor_setup', array( $boldgrid_editor_setup, 'ajax' ) );
+		add_action( 'wp_ajax_boldgrid_editor_save_gridblock', array( $boldgrid_editor_ajax, 'save_gridblock' ) );
+		add_action( 'wp_ajax_boldgrid_redirect_url', array( $boldgrid_editor_ajax, 'get_redirect_url' ) );
+		add_action( 'wp_ajax_boldgrid_generate_blocks', array( $boldgrid_editor_ajax, 'generate_blocks' ) );
+		add_action( 'wp_ajax_boldgrid_editor_save_key', array( $boldgrid_editor_ajax, 'save_key' ) );
+		add_action( 'wp_ajax_boldgrid_get_saved_blocks', array( $boldgrid_editor_ajax, 'get_saved_blocks' ) );
 
 		// Add Loading Graphic.
 		add_filter( 'the_editor', function ( $html ) {
@@ -274,54 +272,6 @@ class Boldgrid_Editor {
 
 		$boldgrid_editor_crop = new Boldgrid_Editor_Crop();
 		$boldgrid_editor_crop->add_hooks();
-	}
-
-	/**
-	 * Load library.
-	 *
-	 * @since 1.7.0
-	 *
-	 * @return Boldgrid\Library\Util\Load loader.
-	 */
-	protected function loadLibrary() {
-		$path = plugin_dir_path( BOLDGRID_EDITOR_ENTRY ) . 'vendor/autoload.php';
-
-		if ( ! file_exists( $path ) ) {
-			return;
-		}
-
-		$this->show_key_prompt();
-
-		// Include the autoloader to set plugin options and create instance.
-		$loader = require $path;
-
-		if ( ! class_exists( 'Boldgrid\Library\Util\Load' ) ) {
-			return;
-		}
-
-		// Load Library.
-		return new Boldgrid\Library\Util\Load(
-			array(
-				'type' => 'plugin',
-				'file' => plugin_basename( BOLDGRID_EDITOR_ENTRY ),
-				'loader' => $loader,
-				'keyValidate' => true,
-			)
-		);
-	}
-
-	/**
-	 * If the user has not yet entered their API key, prompt them to enter one on the block listing page.
-	 *
-	 * @since 1.7.0
-	 */
-	public function show_key_prompt() {
-		add_action( 'load-edit.php', function () {
-			$post_type = ! empty( $_REQUEST['post_type'] ) ? $_REQUEST['post_type'] : null;
-			if ( 'bg_block' === $post_type ) {
-				add_filter( 'Boldgrid\Library\Library\Notice\KeyPrompt_display',  '__return_true' );
-			}
-		} );
 	}
 
 	/**

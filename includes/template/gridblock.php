@@ -1,4 +1,8 @@
 <div class="zoom-navbar zoom-navbar-top">
+	<a href="#" class="connect-key-action new-connect-key">
+		<span class="dashicons"></span>
+		<div class="action-text">Add BoldGrid Connect</div>
+	</a>
 	<div class="history-controls">
 		<button class='undo-link' title="Undo" type="button"><i class="mce-ico mce-i-undo"></i></button>
 		<button class='redo-link' title="Redo" type="button"><i class="mce-ico mce-i-redo"></i></button>
@@ -17,18 +21,7 @@
 		</span>
 		<span class="boldgrid-gridblock-industry block-filter">
 			<label>Category</label>
-			<select>
-				<option value="real_estate">Real Estate</option>
-				<option value="photography">Photography</option>
-				<option value="restaurant">Restaurant</option>
-				<option value="music">Music</option>
-				<option value="fitness">Fitness</option>
-				<option value="design">Design</option>
-				<option value="fashion">Fashion</option>
-				<option value="consulting">Constulting</option>
-				<option value="marketing">Marketing</option>
-				<option value="home_repair">Home Repair</option>
-			</select>
+			<select></select>
 		</span>
 	</span>
 	<a href="#" title="Accept" class="bg-close-zoom-view">
@@ -55,7 +48,7 @@
 <script type="text/html" id="tmpl-boldgrid-editor-gridblock">
 <div class="gridblock gridblock-loading"
 	data-id="{{data.gridblockId}}" data-type="{{data.type}}" data-category="{{data.category}}"
-	data-is-premium="{{data.is_premium ? 1 : 0}}" data-requires-premium="{{data.requires_premium ? 1 : 0}}"
+	data-is-premium="{{data.is_premium ? 1 : 0}}"
 	data-template="{{data.template}}">
 	<i class="fa fa-arrows" aria-hidden="true"></i>
 	<div class="add-gridblock"></div>

@@ -3,6 +3,7 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 
 import { Save } from './save';
+import { Preview } from './preview';
 
 ( function( $ ) {
 	'use strict';
@@ -13,8 +14,6 @@ import { Save } from './save';
 			$window: $( window ),
 
 			openInit: false,
-
-			placeholderHtml: {},
 
 			countGidblocksLoaded: 0,
 
@@ -32,13 +31,13 @@ import { Save } from './save';
 			firstOpen: function() {
 				if ( false === self.openInit ) {
 					self.openInit = true;
-					self.placeholderHtml.before = wp.template( 'gridblock-redacted-before' )();
-					self.placeholderHtml.after = wp.template( 'gridblock-redacted-after' )();
 
 					BGGB.View.init();
 					BGGB.Delete.init();
 					BGGB.Drag.init();
-					BGGB.Generate.fetch();
+
+					self.preview = new Preview();
+					self.preview.init();
 
 					new Save().init();
 				}
@@ -116,39 +115,6 @@ import { Save } from './save';
 			},
 
 			/**
-			 * Create the iframe content. Updated from content set html to allow js load events to fire.
-			 *
-			 * @since 1.7.0
-			 *
-			 * @param  {$} $iframe Iframe element.
-			 * @param  {object} content Content for iframe.
-			 */
-			iframeContent( $iframe, content ) {
-				const iframeDocument = $iframe[0].contentWindow.document;
-
-				iframeDocument.open();
-				iframeDocument.write(
-					`<!DOCTYPE html>
-					<html>
-						<head>
-							<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-							${content.head}
-						</head>
-						<body>
-							<div>
-								${self.placeholderHtml.before}
-								<span class="content-placeholder"></span>
-								${content.body}
-								${self.placeholderHtml.after}
-							</div>
-						</body>
-					</html>`
-				);
-
-				iframeDocument.close();
-			},
-
-			/**
 			 * Given a Gridblock config, Render the coresponding iframe.
 			 *
 			 * @since 1.4
@@ -171,7 +137,15 @@ import { Save } from './save';
 					BGGB.Image.translateImages( gridblock, gridblock.$html );
 					BGGB.Image.translateImages( gridblock, gridblock.$previewHtml );
 
-					self.iframeContent( $iframe, {
+					// Wait for images to load and then adjust iframe height.
+					setTimeout( () => {
+						self.preview.adjustHeight( $iframe, $gridblock );
+
+						// This gets a timeout because animations cause :visible to return false on MOZ.
+						BG.Controls.$container.wrap_content_elements( gridblock.$previewHtml );
+					}, 1000 );
+
+					self.preview.createIframe( $iframe, {
 						head: '',
 						body: ''
 					} );
@@ -190,9 +164,9 @@ import { Save } from './save';
 
 					gridblock.state = 'iframeCreated';
 					gridblock.$iframeContents = $contents;
-					BG.Controls.$container.wrap_content_elements( gridblock.$previewHtml );
 
 					setTimeout( function() {
+						$gridblock.addClass( 'animated fadeInUp' );
 						$gridblock.removeClass( 'gridblock-loading' );
 						self.creatingIframe = false;
 					}, 200 );

@@ -95,6 +95,11 @@ class Boldgrid_Editor_Theme {
 	 */
 	public function update_tgm( $configs ) {
 		$plugins = array();
+
+		if ( empty( $configs['tgm']['plugins'] ) ) {
+			return $configs;
+		}
+
 		foreach( $configs['tgm']['plugins'] as $plugin ) {
 			if ( 'boldgrid-editor' !== $plugin['slug'] ) {
 				$plugins[] = $plugin;

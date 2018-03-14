@@ -69,8 +69,80 @@ html:not(.dragging-section) .delete-icon-wrap {
 	}
 }
 
+.zoom-navbar[data-block-filter="saved"],
+.zoom-navbar[data-block-filter="library"] {
+	.boldgrid-gridblock-industry {
+		opacity: 0.3;
+		pointer-events: none;
+	}
+}
+
 .zoom-navbar {
 	display: none;
+
+	.connect-key-action {
+		position: absolute;
+		background: $boldgrid-color;
+		left: 0;
+		bottom: -1px;
+		top: 0;
+		padding: 5px 25px;
+		color: white;
+		text-decoration: none;
+		font-size: 15px;
+		box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.9);
+		display: flex;
+		align-items: center;
+		transition: background-color 0.3s, box-shadow 0.3s;
+		visibility: hidden;
+
+		&:hover {
+			background-color: lighten($boldgrid-color, 5%);
+		}
+
+		&:active {
+			background-color: lighten($boldgrid-color, 10%);
+			box-shadow: none;
+		}
+
+		.dashicons::before {
+			content: "\f112";
+		}
+
+		span {
+			position: relative;
+			top: -2px;
+			margin-right: 7px;
+		}
+
+		&[type="premium-connect-key"] {
+			.dashicons {
+				top: -3px;
+				font-size: 28px;
+				left: -5px;
+			}
+
+			.dashicons::before {
+				content: "\f147";
+				color: $success-color;
+			}
+
+			background: $boldgrid-primary;
+
+			&:hover {
+				background-color: lighten($boldgrid-primary, 5%);
+			}
+
+			&:active {
+				background-color: lighten($boldgrid-primary, 10%);
+			}
+		}
+
+		&.new-connect-key .action-text {
+			font-family: Josefin Sans;
+			font-size: 16px;
+		}
+	}
 
 	.filter-controls {
 		display: none;
@@ -81,6 +153,7 @@ html:not(.dragging-section) .delete-icon-wrap {
 		transform: translateX(-50%) translateY(-50%);
 
 		.block-filter {
+			display: none;
 			margin: 0 10px;
 		}
 
@@ -245,12 +318,13 @@ html:not(.dragging-section) .delete-icon-wrap {
 		cursor: pointer;
 		transition: background-color 0.5s, color 0.5s;
 		text-decoration: none;
+		box-shadow: 0 -1px 5px 0 rgba(0, 0, 0, 0.4);
 
 		&:hover {
 			background: rgba(0, 115, 170, 0.8);
 		}
 
-		&:after {
+		&::after {
 			content: '\f147';
 			display: block;
 			font: normal 22px/45px dashicons;
@@ -359,7 +433,7 @@ html:not(.dragging-section) .delete-icon-wrap {
 		i {
 			font-size: 26px;
 
-			&:before {
+			&::before {
 				position: relative;
 				left: -2px;
 				top: -2px;
@@ -396,13 +470,20 @@ html:not(.dragging-section) .delete-icon-wrap {
 	overflow: scroll;
 	overflow-x: hidden;
 
-	&:after {
+	&::after {
 		visibility: hidden;
 		display: block;
 		font-size: 0;
 		content: ' ';
 		clear: both;
 		height: 0;
+	}
+
+	.gridblocks.resizing-gridblocks {
+		.gridblock,
+		iframe {
+			transition: none !important;
+		}
 	}
 
 	.gridblocks {
@@ -413,7 +494,7 @@ html:not(.dragging-section) .delete-icon-wrap {
 		margin-bottom: 80px;
 		position: relative;
 
-		&:before {
+		&::before {
 			content: '';
 			background-color: #f1f1f1;
 			position: absolute;
@@ -500,7 +581,7 @@ html:not(.dragging-section) .delete-icon-wrap {
 		margin: 50px 0 0;
 		border: 3px solid #ccc;
 		border-radius: 1px;
-		transition: border-color 0.5s;
+		transition: border-color 0.5s, height 0.6s;
 		left: 7px;
 		cursor: move;
 		width: 586px;
@@ -517,6 +598,7 @@ html:not(.dragging-section) .delete-icon-wrap {
 			left: 50%;
 			top: 50%;
 			transform: translateX(-50%) translateY(-50%) scale(0.5);
+			transition: height 0.6s;
 		}
 
 		// Handle.
@@ -603,18 +685,6 @@ html:not(.dragging-section) .delete-icon-wrap {
 			transform: translateX(-50%) translateY(-50%);
 		}
 
-		&[data-is-premium='1'][data-requires-premium='1'] {
-			cursor: default;
-
-			.add-gridblock:before {
-				content: 'Upgrade To Premium';
-			}
-
-			.save {
-				display: none !important;
-			}
-		}
-
 		.premium-label {
 			opacity: 0;
 			font-variant: small-caps;
@@ -695,7 +765,20 @@ html:not(.dragging-section) .delete-icon-wrap {
 			}
 		}
 	}
+
+	.gridblocks[data-requires-premium='1'] .gridblock[data-is-premium='1'] {
+		cursor: default;
+
+		.add-gridblock::before {
+			content: 'Get Premium';
+		}
+
+		.save {
+			display: none !important;
+		}
+	}
 }
+
 
 @media (min-width: 1600px) {
 	.zoom-gridblocks-section {

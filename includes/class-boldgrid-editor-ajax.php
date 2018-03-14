@@ -65,9 +65,9 @@ class Boldgrid_Editor_Ajax {
 		// If the user has not yet reqyested gridblocks, return from our preset collection.
 		$params['collection'] = ! $times_requested ? 1 : false;
 
-		$api_response = wp_remote_get( self::get_end_point('gridblock_generate'), array(
+		// Dont put the parameters in the body breaks wp version < 4.6.
+		$api_response = wp_remote_get( self::get_end_point('gridblock_generate') . '?' . http_build_query( $params ), array(
 			'timeout' => 10,
-			'body' => $params,
 		) );
 
 		if ( ! is_wp_error( $api_response ) ) {
@@ -160,6 +160,44 @@ class Boldgrid_Editor_Ajax {
 
 		if ( ! empty( $redirectUrls ) ) {
 			wp_send_json_success( $redirectUrls );
+		} else {
+			status_header( 400 );
+			wp_send_json_error();
+		}
+	}
+
+	/**
+	 * Save a users connect key in the database.
+	 *
+	 * @since 1.7.0
+	 */
+	public function save_key() {
+		$this->validate_nonce( 'gridblock_save' );
+
+		$connectKey = ! empty( $_POST['connectKey'] ) ? sanitize_text_field( $_POST['connectKey'] ) : null;
+		$connectKey = false === strpos( $connectKey, '-' ) ? $connectKey : md5( $connectKey );
+
+		$api_response = wp_remote_get( self::get_end_point('gridblock_industries'), array(
+			'timeout' => 10,
+			'body' => array( 'key' => $connectKey ),
+		) );
+
+		$types = wp_remote_retrieve_header( $api_response, 'License-Types' );
+		$types = $types ? $types : '[]';
+		$types = json_decode( $types, true );
+		$types = array_intersect( $types, array( 'basic', 'premium' ) );
+
+		if ( ! empty( $types ) ) {
+
+			// Set connect data.
+			update_option( 'boldgrid_api_key', $connectKey );
+			delete_transient( 'boldgrid_api_data' );
+			delete_site_transient( 'boldgrid_api_data' );
+
+			wp_send_json_success( array(
+				'licenses' => $types,
+				'key' => $connectKey,
+			) );
 		} else {
 			status_header( 400 );
 			wp_send_json_error();
