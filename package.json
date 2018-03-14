@@ -105,8 +105,8 @@
 		"sass-loader": "^6.0.6",
 		"stylelint-config-standard": "^18.1.0",
 		"textselect": "^1.0.0",
+		"webpack": "^4.0.0",
 		"url-loader": "^1.0.0",
-		"webpack": "^3.8.1",
 		"webpack-dev-server": "^3.0.0",
 		"wowjs": "^1.1.3",
 		"wp-color-picker-alpha": "git+https://github.com/rramo012/wp-color-picker-alpha.git#master"
