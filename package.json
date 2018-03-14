@@ -103,7 +103,7 @@
 		"postcss-loader": "^2.0.6",
 		"resolve-url-loader": "^2.1.0",
 		"sass-loader": "^6.0.6",
-		"stylelint-config-standard": "^17.0.0",
+		"stylelint-config-standard": "^18.1.0",
 		"textselect": "^1.0.0",
 		"url-loader": "^0.6.2",
 		"webpack": "^3.8.1",
