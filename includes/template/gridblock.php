@@ -1,4 +1,8 @@
 <div class="zoom-navbar zoom-navbar-top">
+	<a href="#" class="connect-key-action new-connect-key">
+		<span class="dashicons"></span>
+		<div class="action-text">Add BoldGrid Connect</div>
+	</a>
 	<div class="history-controls">
 		<button class='undo-link' title="Undo" type="button"><i class="mce-ico mce-i-undo"></i></button>
 		<button class='redo-link' title="Redo" type="button"><i class="mce-ico mce-i-redo"></i></button>
@@ -10,12 +14,18 @@
 		<div class="enabled bg-editor-loading absolute"></div>
 		<span>Loading Blocks</span>
 	</div>
-	<span class="boldgrid-gridblock-categories">
-		<label>Block Filters</label>
-		<select></select>
+	<span class="filter-controls">
+		<span class="boldgrid-gridblock-categories block-filter">
+			<label>Types</label>
+			<select></select>
+		</span>
+		<span class="boldgrid-gridblock-industry block-filter">
+			<label>Category</label>
+			<select></select>
+		</span>
 	</span>
-	<a href="#" title="Close" class="bg-close-zoom-view">
-		<span class="screen-reader-text">Close</span>
+	<a href="#" title="Accept" class="bg-close-zoom-view">
+		<span class="screen-reader-text">Accept</span>
 	</a>
 </div>
 <div class="boldgrid-zoomout-section zoom-gridblocks-section">
@@ -38,7 +48,7 @@
 <script type="text/html" id="tmpl-boldgrid-editor-gridblock">
 <div class="gridblock gridblock-loading"
 	data-id="{{data.gridblockId}}" data-type="{{data.type}}" data-category="{{data.category}}"
-	data-is-premium="{{data.is_premium ? 1 : 0}}" data-requires-premium="{{data.requires_premium ? 1 : 0}}"
+	data-is-premium="{{data.is_premium ? 1 : 0}}"
 	data-template="{{data.template}}">
 	<i class="fa fa-arrows" aria-hidden="true"></i>
 	<div class="add-gridblock"></div>

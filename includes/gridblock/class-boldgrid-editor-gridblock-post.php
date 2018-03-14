@@ -25,6 +25,29 @@ class Boldgrid_Editor_Gridblock_Post {
 	}
 
 	/**
+	 * Add page menu items to Post and Page Builder Menu.
+	 *
+	 * @since 1.7.0
+	 */
+	public function add_menu_items() {
+		add_submenu_page(
+			'edit.php?post_type=bg_block',
+			__( 'All Pages', 'boldgrid-editor' ),
+			__( 'All Pages', 'boldgrid-editor' ),
+			'edit_pages',
+			'edit.php?post_type=page'
+		);
+
+		add_submenu_page(
+			'edit.php?post_type=bg_block',
+			__( 'Add New Page', 'boldgrid-editor' ),
+			__( 'Add New Page', 'boldgrid-editor' ),
+			'edit_pages',
+			'post-new.php?post_type=page'
+		);
+	}
+
+	/**
 	 * UI Labels.
 	 *
 	 * @since 1.6
@@ -164,6 +187,7 @@ class Boldgrid_Editor_Gridblock_Post {
 			add_action( 'init', array ( $this, 'register_post_type' ) );
 		}
 
+		add_action( 'admin_init', array( $this, 'add_menu_items' ) );
 		add_action( 'template_include', array( $this, 'set_template' ) );
 		add_action( 'template_redirect', array( $this, 'restrict_public_access' ) );
 	}

@@ -4,7 +4,7 @@ Tags: boldgrid, page builder, drag and drop, tinymce, editor, landing page
 Requires at least: 4.4
 Tested up to: 4.9.4
 Requires PHP: 5.3
-Stable tag: 1.6.3
+Stable tag: 1.7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,6 +29,7 @@ Try out the [BoldGrid demo](https://www.boldgrid.com/demo/) to see for yourself!
 * Save and reuse full page layouts
 * 100% Mobile-friendly - responsive layouts
 * Image Filters
+* Animations
 * Google fonts
 * Background images, patterns, and colors
 * Page Gradients
@@ -123,18 +124,29 @@ WordPress Editor.
 
 For more information, see changelog.txt.
 
+= 1.7.1 =
+
+Release Date: March 8th, 2018
+
+* Bug Fix: Fixed compatibility issues on older WordPress Versions.
+* Bug Fix: Fixed default category displayed for users with inspiration installs.
+* Bug Fix: Typo in Connect Key prompt.
+
 = 1.7.0 =
 
-Release Date: February 20th, 2018
+Release Date: March 7th, 2018
 
 * New Feature: Most elements now support animation controls.
 * New Feature: CSS ID's can now be specified via customization controls.
-* New Feature: Added Connect Key prompt.
+* New Feature: Users can now specify a Connect Key.
 * New Feature: Support audio and video blocks in Blocks.
 * New Feature: Shortcodes now display in block previews.
+* New Feature: Blocks can now be requested by industry.
+* New Feature: Blocks now display full height in previews.
 * Bug Fix: Blockquote elements now have the text control available to them.
 * Bug Fix: Warning thrown while listing posts in admin.
 * Bug Fix: HEX input field missing from color picker.
+* Bug Fix: Undo/Redo no longer change scroll position.
 * Bug Fix: Getting started displayed after switching to text tab.
 * Bug Fix: Fixing iframe heights in editor.
 * Bug Fix: Duplicate font families in drop down.

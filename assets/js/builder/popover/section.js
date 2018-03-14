@@ -94,7 +94,7 @@ export class Section extends Base {
 			{
 				'background-color': 'transparent'
 			},
-			1500,
+			500,
 			'swing',
 			function() {
 				BG.Controls.addStyle( $newSection, 'background-color', '' );

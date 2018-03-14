@@ -12,7 +12,9 @@ import ContentPopover from './popover/content';
 import ColumnPopover from './popover/column';
 import RowPopover from './popover/row';
 import SectionPopover from './popover/section';
-import { Navigation as CustomizeNavigation } from './customize/navigation.js';
+import { Navigation as CustomizeNavigation } from './customize/navigation';
+import { View } from './view';
+import { ConnectKey } from './connect-key/prompt';
 
 export class Service {
 	init() {
@@ -36,6 +38,7 @@ export class Service {
 	_onWindowLoad() {
 		this.editorWidth = new EditorWidth().init();
 		this.loading = new LoadingGraphic().init();
+		new View().init();
 	}
 
 	/**
@@ -54,6 +57,8 @@ export class Service {
 			this.popover.column = new ColumnPopover().init();
 			this.popover.row = new RowPopover().init();
 			this.popover.section = new SectionPopover().init();
+
+			this.connectKey = new ConnectKey();
 
 			BOLDGRID.EDITOR.CONTROLS.Section.init( BOLDGRID.EDITOR.Controls.$container );
 		} );

@@ -10,7 +10,8 @@ return array (
 		'get_plugin_version' => '/api/open/get-plugin-version',
 		'get_asset'          => '/api/open/get-asset',
 		'gridblock_generate' => '/v1/gridblocks',
-		'gridblock_types'    => '/v1/gridblocks/types'
+		'gridblock_types'    => '/v1/gridblocks/types',
+		'gridblock_industries' => '/v1/gridblocks/industries',
 	),
 	'asset_server'          => 'https://wp-assets.boldgrid.com',
 	'development_server'    => 'http://localhost:4000',
@@ -34,7 +35,7 @@ return array (
 		'boldgrid-components' => array(
 			'handle' => 'boldgrid-components',
 			'deps' => array(),
-			'version' => '2.11.2',
+			'version' => '2.12.0',
 			'src' => plugins_url( '/assets/css/components.min.css', BOLDGRID_EDITOR_PATH . '/boldgrid-editor.php' ),
 			'mce_str_match' => '/components.',
 		),

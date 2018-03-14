@@ -42,6 +42,8 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 						self.licenseTypes = xhr.getResponseHeader( 'License-Types' ) || '[]';
 						self.licenseTypes = JSON.parse( self.licenseTypes );
 
+						BG.Service.connectKey.postLicenseCheck( self.licenseTypes );
+
 						self.addToConfig( gridblocks );
 						BG.GRIDBLOCK.View.createGridblocks();
 					} )
@@ -68,7 +70,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			needsUpgrade( $gridblock ) {
 				return (
 					parseInt( $gridblock.attr( 'data-is-premium' ) ) &&
-					parseInt( $gridblock.attr( 'data-requires-premium' ) )
+					parseInt( BG.GRIDBLOCK.View.$gridblocks.attr( 'data-requires-premium' ) )
 				);
 			},
 
@@ -80,7 +82,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 					type: 'post',
 					url: ajaxurl,
 					dataType: 'json',
-					timeout: 15000,
+					timeout: 20000,
 					data: _.defaults( options, {
 						action: 'boldgrid_generate_blocks',
 						/*eslint-disable */
@@ -90,11 +92,11 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 						version: BoldgridEditor.version,
 						include_temporary_resources: 1,
 						release_channel: BoldgridEditor.boldgrid_settings.theme_release_channel,
-						key: BoldgridEditor.boldgrid_settings.api_key,
+						key: BG.Service.connectKey.apiKey,
 						transparent_backgrounds: 'post' === BoldgridEditor.post_type ? 1 : 0,
 						type: type,
 						color: JSON.stringify({ colors: BG.CONTROLS.Color.getGridblockColors() }),
-						category: self.getCategory()
+						category: BG.GRIDBLOCK.View.industry.getSelected()
 						/*eslint-enable */
 					} )
 				} );
@@ -110,30 +112,12 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 			gridblockLoadingUI: {
 				start: function() {
 					$( 'body' ).addClass( 'loading-remote-body' );
+					BG.GRIDBLOCK.View.$gridblockNav.find( 'select' ).prop( 'disabled', true );
 				},
 				finish: function() {
 					$( 'body' ).removeClass( 'loading-remote-body' );
+					BG.GRIDBLOCK.View.$gridblockNav.find( 'select' ).prop( 'disabled', false );
 				}
-			},
-
-			/**
-			 * Get the users installed category.
-			 *
-			 * @since 1.5
-			 *
-			 * @return {string} inspiration catgegory.
-			 */
-			getCategory: function() {
-				var category;
-				if (
-					BoldgridEditor &&
-					BoldgridEditor.inspiration &&
-					BoldgridEditor.inspiration.subcategory_key
-				) {
-					category = BoldgridEditor.inspiration.subcategory_key;
-				}
-
-				return category;
 			},
 
 			/**

@@ -3,6 +3,7 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 
 import { FetchSaved } from './fetch-saved';
+import { Industry } from './industry';
 
 /**
  * Handles setting up the Gridblocks view.
@@ -19,18 +20,23 @@ import { FetchSaved } from './fetch-saved';
 			siteMarkup: '',
 
 			init: function() {
-				self.$filterSelectWrap = $( '.boldgrid-gridblock-categories' );
+				self.$filterSelectWrap = $( '.filter-controls' );
 				self.gridblockTemplate = wp.template( 'boldgrid-editor-gridblock' );
-				self.$filterSelect = self.$filterSelectWrap.find( 'select' );
+				self.$filterSelect = self.$filterSelectWrap.find( '.boldgrid-gridblock-categories select' );
+				self.findElements();
+
+				self.industry = new Industry();
+				self.industry.init();
 
 				self.fetchTypes();
 
-				self.findElements();
 				self.positionGridblockContainer();
 				self.setupUndoRedo();
 				self.createGridblocks();
 				BG.GRIDBLOCK.Loader.loadGridblocks();
 				BG.GRIDBLOCK.Category.init();
+				BG.Service.connectKey.init();
+
 				self.endlessScroll();
 				self.templateClass = self.getTemplateClass();
 
@@ -43,6 +49,8 @@ import { FetchSaved } from './fetch-saved';
 			 * @since 1.6
 			 */
 			fetchTypes() {
+				self.finishedTypeFetch = false;
+
 				return $.ajax( {
 					url:
 						BoldgridEditor.plugin_configs.asset_server +
@@ -52,7 +60,8 @@ import { FetchSaved } from './fetch-saved';
 					data: {
 						// eslint-disable-next-line
 						release_channel: BoldgridEditor.boldgrid_settings.theme_release_channel,
-						key: BoldgridEditor.boldgrid_settings.api_key
+						key: BoldgridEditor.boldgrid_settings.api_key,
+						version: BoldgridEditor.version
 					}
 				} )
 					.done( data => {
@@ -81,7 +90,10 @@ import { FetchSaved } from './fetch-saved';
 				}
 
 				self.$filterSelect.html( html );
-				self.$filterSelectWrap.fadeIn();
+				self.$filterSelectWrap.find( '.boldgrid-gridblock-categories' ).show();
+
+				self.finishedTypeFetch = true;
+				self.industry.showFilters();
 			},
 
 			/**
@@ -170,7 +182,7 @@ import { FetchSaved } from './fetch-saved';
 				let isSaved = BG.GRIDBLOCK.Category.isSavedCategory( BG.GRIDBLOCK.Category.currentCategory );
 				BG.GRIDBLOCK.Loader.loadGridblocks();
 
-				if ( ! isSaved && ! self.hasGridblocks() ) {
+				if ( ! isSaved && ! self.hasGridblocks() && 'complete' === self.industry.state ) {
 					BG.GRIDBLOCK.Generate.fetch();
 				} else if ( isSaved && ! self.hasGridblocks() ) {
 					self.fetchSaved.fetch();
@@ -240,6 +252,7 @@ import { FetchSaved } from './fetch-saved';
 			 */
 			findElements: function() {
 				self.$gridblockSection = $( '.boldgrid-zoomout-section' );
+				self.$gridblocks = self.$gridblockSection.find( '.gridblocks' );
 				self.$gridblockNav = $( '.zoom-navbar' );
 				self.$pageTemplate = $( '#page_template' );
 			},
@@ -328,25 +341,11 @@ import { FetchSaved } from './fetch-saved';
 				$.each( BG.GRIDBLOCK.configs.gridblocks, function() {
 					if ( ! this.state ) {
 						this.state = 'ready';
-						markup += self.getGridblockHtml( this );
+						markup += self.gridblockTemplate( this );
 					}
 				} );
 
 				return markup;
-			},
-
-			/**
-			 * Get the html for a GridBlock.
-			 *
-			 * @since 1.4
-			 *
-			 * @param  {Object} gridblockData Gridblock Info
-			 * @return {string}               Markup to add in gridblock iframe.
-			 */
-			getGridblockHtml: function( gridblockData ) {
-				gridblockData['requires_premium'] =
-					-1 === BG.GRIDBLOCK.Generate.licenseTypes.indexOf( 'premium' );
-				return self.gridblockTemplate( gridblockData );
 			}
 		};
 
