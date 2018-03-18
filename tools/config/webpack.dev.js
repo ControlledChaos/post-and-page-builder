@@ -8,6 +8,8 @@ const distDir = path.resolve( __dirname, '../..' );
 const srcDir = path.resolve( __dirname, '../..' );
 
 var webpackConfig = {
+	mode: 'development',
+
 	context: srcDir,
 
 	entry: {

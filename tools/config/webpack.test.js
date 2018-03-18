@@ -1,6 +1,7 @@
 const path = require( 'path' );
 
 module.exports = {
+	mode: 'development',
 
 	// Karma watches the test entry points
 	// (you don't need to specify the entry option)

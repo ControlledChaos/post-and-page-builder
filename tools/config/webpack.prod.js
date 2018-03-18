@@ -14,6 +14,8 @@ const cssDir = distDir + '/assets/css/';
 const scssDir = distDir + '/assets/scss/';
 
 module.exports = {
+	mode: 'production',
+
 	context: srcDir,
 
 	entry: {
