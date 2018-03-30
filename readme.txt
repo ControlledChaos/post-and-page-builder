@@ -129,6 +129,7 @@ For more information, see changelog.txt.
 Release Date: April 2nd, 2018
 
 * Bug Fix: Fixed display issues of Blocks when toggle back and forth between filters.
+* Bug Fix: Introduction steps displayed on Save Block.
 
 = 1.7.1 =
 
