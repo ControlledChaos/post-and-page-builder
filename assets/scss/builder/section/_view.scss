@@ -469,6 +469,8 @@ html:not(.dragging-section) .delete-icon-wrap {
 	background: #f1f1f1;
 	overflow: scroll;
 	overflow-x: hidden;
+	position: relative;
+	z-index: 1;
 
 	&::after {
 		visibility: hidden;
