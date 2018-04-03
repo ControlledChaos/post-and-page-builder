@@ -28,6 +28,10 @@
 		box-shadow: 0 0 0 5px $boldgrid-color;
 	}
 
+	.delete-icon.delete-icon-wrap {
+		display: none !important;
+	}
+
 	#boldgrid-drag-pointer {
 		@include pointerOffset();
 	}
