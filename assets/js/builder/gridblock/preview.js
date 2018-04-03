@@ -54,8 +54,10 @@ export class Preview {
 			height = $contents.find( 'body > div' ).height() - 400,
 			bodyHeight = height * scale;
 
-		$iframe.height( height );
-		$gridblock.css( 'height', bodyHeight );
+		if ( 0 < height ) {
+			$iframe.height( height );
+			$gridblock.css( 'height', bodyHeight );
+		}
 	}
 
 	/**

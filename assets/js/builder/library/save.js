@@ -44,6 +44,7 @@ export class Save {
 	 * @param  {Object} gridblockData GridBlock data.
 	 */
 	openPanel( gridblockData ) {
+		BG.Panel.clear();
 		this.gridblockData = gridblockData;
 		this.$html = $( LibraryInputTemplate );
 		this._setState( 'save-prompt' );

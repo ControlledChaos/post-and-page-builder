@@ -2215,9 +2215,6 @@ body.boldgrid-editor-fullscreen {
 .draggable-inactive .boldgrid-section:hover {
   outline: none !important; }
 
-.bg-drag-popover:hover {
-  display: block !important; }
-
 /*--------------------------------------------------------------
 # General Edit Controls
 --------------------------------------------------------------*/
@@ -2758,8 +2755,8 @@ html:not(.dragging-section) .delete-icon-wrap {
   margin-bottom: 100px;
   position: absolute;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%); }
+  -webkit-transform: translate3d(-50%, 0, 0);
+  transform: translate3d(-50%, 0, 0); }
 
 .boldgrid-zoomout .zoom-gridblocks-section {
   display: block; }
@@ -2812,7 +2809,9 @@ html:not(.dragging-section) .delete-icon-wrap {
   height: 100%;
   background: #f1f1f1;
   overflow: scroll;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  position: relative;
+  z-index: 1; }
 
 .zoom-gridblocks-section::after {
   visibility: hidden;
@@ -3263,6 +3262,9 @@ html:not(.dragging-section) .delete-icon-wrap {
 .dragging-section.dragging-gridblock-iframe body {
   -webkit-box-shadow: 0 0 0 5px #f95b26;
   box-shadow: 0 0 0 5px #f95b26; }
+
+.dragging-section.dragging-gridblock-iframe .delete-icon.delete-icon-wrap {
+  display: none !important; }
 
 .dragging-section.dragging-gridblock-iframe #boldgrid-drag-pointer {
   margin-top: 20px;
