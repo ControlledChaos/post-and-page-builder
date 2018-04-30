@@ -61,6 +61,8 @@ export class Service {
 			this.connectKey = new ConnectKey();
 
 			BOLDGRID.EDITOR.CONTROLS.Section.init( BOLDGRID.EDITOR.Controls.$container );
+
+			BG.GRIDBLOCK.View.getWebfonts();
 		} );
 	}
 
