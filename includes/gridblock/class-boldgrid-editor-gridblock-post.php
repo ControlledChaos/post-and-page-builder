@@ -32,6 +32,17 @@ class Boldgrid_Editor_Gridblock_Post {
 	public function add_menu_items() {
 		add_submenu_page(
 			'edit.php?post_type=bg_block',
+			__( 'BoldGrid Vault', 'boldgrid-editor' ),
+			__( 'BoldGrid Vault', 'boldgrid-editor' ),
+			'edit_pages',
+			'edit.php?post_type=bg_vault',
+			function () {
+				include BOLDGRID_EDITOR_PATH . '/includes/template/vault/view.php';
+			}
+		);
+
+		add_submenu_page(
+			'edit.php?post_type=bg_block',
 			__( 'All Pages', 'boldgrid-editor' ),
 			__( 'All Pages', 'boldgrid-editor' ),
 			'edit_pages',
@@ -45,6 +56,78 @@ class Boldgrid_Editor_Gridblock_Post {
 			'edit_pages',
 			'post-new.php?post_type=page'
 		);
+		/*
+		add_menu_page(
+			'BlockShare By BoldGrid',
+			'BlockShare By BoldGrid',
+			'edit_pages',
+			'edit.php?post_type=bg_vault',
+			function () {
+				include BOLDGRID_EDITOR_PATH . '/includes/template/vault/view.php';
+			},
+			'dashicons-share',
+			10 );
+
+		add_submenu_page(
+			'edit.php?post_type=bg_vault',
+			__( 'Block Library', 'boldgrid-editor' ),
+			__( 'Block Library', 'boldgrid-editor' ),
+			'edit_pages',
+			'edit.php?post_type=page'
+		);
+
+		add_submenu_page(
+			'edit.php?post_type=bg_vault',
+			__( 'Add New Block', 'boldgrid-editor' ),
+			__( 'Add New Block', 'boldgrid-editor' ),
+			'edit_pages',
+			'post-new.php?post_type=page'
+		);
+
+		add_submenu_page(
+			'edit.php?post_type=bg_vault',
+			__( 'Block Vault', 'boldgrid-editor' ),
+			__( 'Block Vault', 'boldgrid-editor' ),
+			'edit_pages',
+			'post-new.php?post_type=page'
+		);
+*/
+		/*
+		add_menu_page(
+			'BoldGrid Vault',
+			'BoldGrid Vault',
+			'edit_pages',
+			'edit.php?post_type=bg_vault',
+			function () {
+				include BOLDGRID_EDITOR_PATH . '/includes/template/vault/view.php';
+			},
+			'dashicons-lock',
+			10 );
+
+		add_submenu_page(
+			'edit.php?post_type=bg_vault',
+			__( 'Blocks', 'boldgrid-editor' ),
+			__( 'Blocks', 'boldgrid-editor' ),
+			'edit_pages',
+			'edit.php?post_type=page'
+		);
+
+		add_submenu_page(
+			'edit.php?post_type=bg_vault',
+			__( 'Backups', 'boldgrid-editor' ),
+			__( 'Backups', 'boldgrid-editor' ),
+			'edit_pages',
+			'post-new.php?post_type=page'
+		);
+
+		add_submenu_page(
+			'edit.php?post_type=bg_vault',
+			__( 'Themes', 'boldgrid-editor' ),
+			__( 'Themes', 'boldgrid-editor' ),
+			'edit_pages',
+			'post-new.php?post_type=page'
+		);
+		*/
 	}
 
 	/**
@@ -187,7 +270,7 @@ class Boldgrid_Editor_Gridblock_Post {
 			add_action( 'init', array ( $this, 'register_post_type' ) );
 		}
 
-		add_action( 'admin_init', array( $this, 'add_menu_items' ) );
+		add_action( 'admin_menu', array( $this, 'add_menu_items' ) );
 		add_action( 'template_include', array( $this, 'set_template' ) );
 		add_action( 'template_redirect', array( $this, 'restrict_public_access' ) );
 	}

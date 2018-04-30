@@ -54,3 +54,65 @@
 </div>
 </script>
 <div class='bg-editor-loading'></div>
+<style>
+	.iframe-modal-wrap {
+		position: fixed;
+		top: 0;
+		z-index: 99999;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(255,255,255,.7);
+	}
+
+	.iframe-modal {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%) translateX(-50%);
+		left: 50%;
+		padding: 20px;
+		background: white;
+		box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.4);
+		width: 85%;
+	}
+
+	.iframe-modal h1 {
+		font-weight: 100;
+		margin-top: 0;
+		margin-bottom: 30px;
+	}
+
+	.iframe-modal .close {
+		position: absolute;
+		top: 5px;
+		right: 45px;
+		height: 43px;
+		padding-left: 10px;
+	}
+
+	.iframe-modal .close .dashicons {
+		font-size: 45px;
+	}
+
+	.iframe-modal .name {
+		margin-right: 10px;
+	}
+
+	.iframe-modal .category {
+		margin-left: 10px;
+	}
+
+	.iframe-modal .dashicons-lock {
+		font-size: 27px;
+		position: relative;
+		top: -3px;
+		margin-right: 8px;
+	}
+</style>
+<div class="iframe-modal-wrap">
+	<div class="iframe-modal">
+		<h1><span class="name"><span class="dashicons dashicons-lock"></span> BoldGrid Vault</span> | <span class="category">Blocks</span></h1>
+		<span class="close"><span class="dashicons dashicons-no-alt"></span></span>
+		<img src="https://i.imgur.com/PoLuOBh.png">
+	</div>
+</div>
