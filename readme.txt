@@ -126,9 +126,10 @@ For more information, see changelog.txt.
 
 = 1.7.3 =
 
-Release Date: TBD
+Release Date: May 5th, 2018
 
 * Bug Fix: Some fonts not loaded into block previews.
+* Bug Fix: Used blocks will now include fonts in previews.
 
 = 1.7.2 =
 
