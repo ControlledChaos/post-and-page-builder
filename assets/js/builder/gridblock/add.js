@@ -105,6 +105,9 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 					$placeHolder.replaceWith( $inserting.html() );
 				}
 
+				// Update editor fonts.
+				BG.FontRender.updateFontLink( BG.Controls.$container );
+
 				draggable.validate_markup();
 
 				BOLDGRID.EDITOR.mce.fire( 'setContent' );
