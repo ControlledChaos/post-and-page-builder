@@ -30,6 +30,7 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 
 				if ( self.getDynamicElements( gridblockData ).length ) {
 					html = self.installImages( gridblockData );
+					BG.GRIDBLOCK.Image.attributeImages( gridblockData );
 				} else {
 					html = self.getStaticHtml( gridblockData );
 				}
