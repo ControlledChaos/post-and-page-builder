@@ -132,14 +132,22 @@ export class Industry {
 			defaultCategory =
 				BoldgridEditor.block_default_industry || inspirationCategory || this.defaults.selection;
 
+		// Make sure the selection exists in the dropdown.
+		let preSelection;
 		if ( this.$select.find( '[value="' + defaultCategory + '"]' ).length ) {
+			preSelection = defaultCategory;
+		} else if ( this.$select.find( '[value="' + this.defaults.selection + '"]' ).length ) {
+			preSelection = this.defaults.selection;
+		}
+
+		if ( preSelection ) {
 
 			// If the select value exists use it.
-			this.$select.val( defaultCategory ).change();
+			this.$select.val( preSelection ).change();
 		} else {
 
-			// Otherwise preset the first item from the select box.
-			this.$select.find( 'option:first-of-type' ).prop( 'checked', true );
+			// Otherwise preset the last item from the select box. (last item, not church).
+			this.$select.find( 'option:last-of-type' ).prop( 'checked', true );
 		}
 	}
 
@@ -157,6 +165,7 @@ export class Industry {
 
 		if ( BoldgridEditor.inspiration && BoldgridEditor.inspiration.subcategory_key ) {
 			category = BoldgridEditor.inspiration.subcategory_key.toLowerCase();
+			category = category.replace( ' ', '_' );
 		}
 
 		if ( 'property_management' === category ) {

@@ -11,6 +11,7 @@ return array (
 		'get_asset'          => '/api/open/get-asset',
 		'gridblock_generate' => '/v1/gridblocks',
 		'gridblock_types'    => '/v1/gridblocks/types',
+		'download_image'     => '/api/image/unsplash-downloaded',
 		'gridblock_industries' => '/v1/gridblocks/industries',
 	),
 	'asset_server'          => 'https://wp-assets.boldgrid.com',

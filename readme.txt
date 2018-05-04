@@ -2,9 +2,9 @@
 Contributors: boldgrid, rramo012, imh_brad, joemoto, timph
 Tags: boldgrid, page builder, drag and drop, tinymce, editor, landing page
 Requires at least: 4.4
-Tested up to: 4.9.4
+Tested up to: 4.9.5
 Requires PHP: 5.3
-Stable tag: 1.7.2
+Stable tag: 1.7.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -123,6 +123,13 @@ WordPress Editor.
 == Changelog ==
 
 For more information, see changelog.txt.
+
+= 1.7.3 =
+
+Release Date: May 3rd, 2018
+
+* Bug Fix: Some fonts not loaded into block previews.
+* Bug Fix: Used blocks will now include fonts in previews.
 
 = 1.7.2 =
 

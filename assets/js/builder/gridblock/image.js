@@ -325,6 +325,30 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 					} );
 
 				return $deferred;
+			},
+
+			/**
+			 * Make a call to increment the unsplash image counter.
+			 *
+			 * @since 1.7.3
+			 *
+			 * @param  {object} gridblockData Block Data.
+			 */
+			attributeImages: function( gridblockData ) {
+				for ( let image of gridblockData.images || [] ) {
+					if ( 'unsplash' === image.type ) {
+						$.ajax( {
+							type: 'post',
+							url:
+								BoldgridEditor.plugin_configs.asset_server +
+								BoldgridEditor.plugin_configs.ajax_calls.download_image,
+							timeout: 2000,
+							data: {
+								id: image.id
+							}
+						} );
+					}
+				}
 			}
 		};
 

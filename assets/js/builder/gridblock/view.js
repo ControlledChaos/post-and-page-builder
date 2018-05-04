@@ -17,6 +17,7 @@ import { Industry } from './industry';
 			$gridblockSection: null,
 			$gridblockNav: null,
 			headMarkup: false,
+			webfontLoaderHTML: '',
 			siteMarkup: '',
 
 			init: function() {
@@ -296,6 +297,8 @@ import { Industry } from './industry';
 			addStyles: function( $iframe ) {
 				let headMarkup = self.headMarkup;
 
+				headMarkup += BG.GRIDBLOCK.View.webfontLoaderHTML;
+
 				headMarkup +=
 					'<style id="boldgrid-custom-styles">' +
 					BG.Service.styleUpdater.getCachedCss() +
@@ -311,6 +314,24 @@ import { Industry } from './industry';
 			 */
 			positionGridblockContainer: function() {
 				$( '#wpcontent' ).after( self.$gridblockSection );
+			},
+
+			/**
+			 * Copy all google fonts into the editor.
+			 *
+			 * This is a hackfix, to allow the prime2 theme which loads it's fonts with webfont loader
+			 * to pull in the fonts.
+			 *
+			 * @since 1.7.3
+			 */
+			getWebfonts: function() {
+
+				// Set timout gives the framework enough time to add the styles to the editor.
+				setTimeout( () => {
+					BG.Controls.$container.find( 'head .webfontjs-loader-styles' ).each( ( index, el ) => {
+						self.webfontLoaderHTML += el.outerHTML;
+					} );
+				} );
 			},
 
 			/**

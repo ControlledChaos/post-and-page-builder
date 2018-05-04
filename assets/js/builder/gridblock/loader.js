@@ -156,7 +156,8 @@ import { Preview } from './preview';
 
 					$contents.find( '.content-placeholder' ).replaceWith( gridblock.$previewHtml );
 
-					//	self.$iframeTemp = $iframe.clone();
+					// Update google fonts link in iframe.
+					BG.FontRender.updateFontLink( $contents );
 
 					if ( BGGB.Category.canDisplayGridblock( gridblock ) ) {
 						$gridblock.css( 'display', '' );
