@@ -68,7 +68,8 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 		 * @since 1.2.7
 		 */
 		create: function() {
-			this.$mceContainer = $( '#' + BOLDGRID.EDITOR.mce.theme.panel._items[0]._id );
+			this.$mceContainer = BG.Controls.$container.$mce_32;
+
 			this.$element = $( wp.template( 'boldgrid-editor-control-menu' )() );
 			this.$mceContainer.append( this.$element );
 			this.$element.items = [];

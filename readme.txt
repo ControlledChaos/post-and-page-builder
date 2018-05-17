@@ -2,9 +2,9 @@
 Contributors: boldgrid, rramo012, imh_brad, joemoto, timph
 Tags: boldgrid, page builder, drag and drop, tinymce, editor, landing page
 Requires at least: 4.4
-Tested up to: 4.9.5
+Tested up to: 4.9.6
 Requires PHP: 5.3
-Stable tag: 1.7.3
+Stable tag: 1.7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -123,6 +123,12 @@ WordPress Editor.
 == Changelog ==
 
 For more information, see changelog.txt.
+
+= 1.7.4 =
+
+Release Date: May 17th, 2018
+
+* Bug Fix: BoldGrid DropTab not visible after 4.9.6 update.
 
 = 1.7.3 =
 
