@@ -1,5 +1,5 @@
 === Post and Page Builder by BoldGrid - Visual Drag and Drop Editor ===
-Contributors: boldgrid, rramo012, imh_brad, joemoto, timph
+Contributors: boldgrid, rramo012, imh_brad, joemoto, timph, bgnicolepaschen
 Tags: boldgrid, page builder, drag and drop, tinymce, editor, landing page
 Requires at least: 4.4
 Tested up to: 4.9.6
@@ -16,32 +16,33 @@ Post and Page Builder is a standalone plugin which adds functionality to the exi
 
 The Post and Page Builder is an intuitive drag and drop editor plugin and the easiest way to create and edit pages for any theme. Whether you are new to WordPress or consider yourself a pro, BoldGrid solutions will make your WordPress life better. Stop dealing with site-breaking shortcodes and theme restricted editors. You are going to love just how fast and easily you can create beautiful websites now.
 
-Try out the [BoldGrid demo](https://www.boldgrid.com/demo/) to see for yourself!
+Try out the [BoldGrid Demo](https://www.boldgrid.com/central/get-it-now?redirect_url=wp-admin%2Fpost-new.php%3Fpost_type%3Dpage&plugins=post-and-page-builder) on Cloud WordPress to see for yourself!
 
 [youtube https://youtu.be/QoIb7OhV9ys?rel=0]
 
 = Features =
 
-* Drag and Drop editing
-* Full width, column and row based layouts
-* Dozens of predefined layouts to work from
-* Save and reuse Block designs
-* Save and reuse full page layouts
-* 100% Mobile-friendly - responsive layouts
-* Image Filters
-* Animations
-* Google fonts
-* Background images, patterns, and colors
-* Page Gradients
-* Google Maps
-* Parallax Scroll Effect
-* Image Editor
-* Font Awesome Icons
-* Input for custom CSS classes
-* Bootstrap Grid
-* Clean, simple markup
-* No need for Shortcodes!
-* Growing Community and knowledge base
+- **Drag and Drop editing** Create simple or complex layouts with our unique editing experience
+- **BoldGrid Blocks** Hundreds of professional layout designs to work from
+- **100% Mobile-friendly** Responsive layouts and controls to change the design per device
+- **Google fonts** Change font family, font size, font color, letter spacing, line height and more
+- **Theme compatibility** Our WordPress Page Builder is designed to work with any WordPress Theme
+- **Custom Backgrounds** Add background images, gradient backgrounds, patterns, overlays, and background colors
+- **Fast and Free Support** Growing Community and knowledge base
+- **Animations** Add effects as the user scrolls down the page with Animate.css or background parallax scroll effects
+- **Advanced Controls** Add margin, padding, box shadows, borders, alignment and more to almost any element
+- **Bootstrap Grid** Drag and drop controls for bootstrap rows and columns elements
+- **Add Custom CSS classes** Complete control over any element
+- **Clean, simple markup** Easily create a professionally coded template without experience
+- **Google Maps** Embed and customize maps into your post or page
+- **Web Components** High quality reusable and customizable HTML elements
+- **Font Awesome Icons** Insert and customize any Font Awesome icons
+- **CSS Grid** Full width, column and row based layouts
+- **Image Editing** Apply image filters and automatically crop images
+- **Button Designs** Fully customizable button designs
+- **Custom Post Types** Save and reuse full page layouts or BoldGrid Block designs
+- **WordPress Editor Integration** Integrated into TinyMCE so you can keep the same workflow
+- **No need for Shortcodes!** Faster page loads by saving your custom HTML5 elements
 
 Additional Features when used with other BoldGrid plugins:
 
@@ -64,7 +65,7 @@ Visit our website to learn more about additional [BoldGrid plugins](https://www.
 
 The Post and Page Builder by BoldGrid is designed to work with almost any WordPress theme. Add it to your existing website today, or try a BoldGrid theme for your new website. Alternatively, consider upgrading and using the powerful BoldGrid framework theme (available in Premium subscription) as an excellent time saver for agencies and developers.
 
-= A Post and Page Builder Stuffed With Content Layouts =
+= A Post and Page Builder Stuffed With Pre-Designed Templates & Blocks =
 
 Create layouts and pages faster and easier than ever with Blocks by BoldGrid. Blocks are pre-built page sections consisting of various layouts of rows and columns prepopulated with content that can be edited visually or with HTML and CSS. Blocks utilize a wide variety of content that can be completely customized to fit your needs such as icons, buttons, free and premium images, font packs, and more.
 
@@ -72,12 +73,23 @@ Create layouts and pages faster and easier than ever with Blocks by BoldGrid. Bl
 
 The Post and Page Builder by BoldGrid is designed to create pages that load fast. BoldGrid ditches shortcodes in favor of clean markup that can be served quickly. That also means BoldGrid code is easy to assess and customize.
 
+= Coming Soon / Maintenance Page =
+
+Great for making "under construction" or "coming soon" pages. You can create a simple page within minutes by using free professionally designed WordPress Blocks.
+
+= Bootstrap WYSIWYG Post & Page Builder for WordPress =
+
+Our drag and drop system is built on the Bootstrap Grid. You can drag columns, rows, and containers around your pages to make quick updates to pages.  Advanced CSS controls allow you to make pixel perfect designs.
+
+= Create Custom Color Palette =
+
+Choose your brand's colors and we'll help your design stay unified. Our unique color palette system is built with SASS and allows you to change all the colors on your site. You don't have to choose from a few presets anymore!
 
 == Frequently Asked Questions ==
 
 = Will the Post and Page Builder work with my theme? =
 
-Yes; the Post and Page Builder will work with any theme. We recommend using BoldGrid themes which provide additional features and are optimized for use with the Post and Page Builder.
+Yes; the Post and Page Builder is compatible with any theme. We recommend using BoldGrid themes which provide additional features and are optimized for use with the Post and Page Builder.
 
 = Where can I find more help? =
 For information on using the Post and Page Builder or other BoldGrid plugins, please visit our [Support Center](https://www.boldgrid.com/support/).
@@ -214,3 +226,271 @@ Release Date: November 14th, 2017
 * New Feature: Added custom class inputs for buttons, backgrounds, hr, images and icons.
 * Bug Fix: Image crop issue with http vs https.
 * Bug Fix: Issue with masonry layout on box designs.
+
+= 1.5 =
+* Update: Bump version.
+
+= 1.4.9 =
+* Bug Fix: Fix notices thrown when installing Blocks.
+
+= 1.4.8 =
+* Bug Fix: Remove image content type checking.
+* Update: Added filter for allowed_post_types for loading editor.
+* Update: Improving timing of Block loading message.
+* Update: Improving performance of Blocks on sites with a lot of content.
+* Update: Updating background image urls.
+* Update: Updating Font Awesome icon selections.
+* Update: Adding alternative image request methods.
+* Update: Use latest version of shared assets.
+* Bug fix: Fixing an error on attachment page.
+* Bug fix: Adding filter for posts to be excluded from My Blocks.
+
+= 1.4.7 =
+* Bug fix: Misc. bug fixes for Dynamic Blocks.
+* New Feature: Delete Block button added to Block UI.
+
+= 1.4.6 =
+* New Feature: Integrating new Dynamic Blocks.
+* Update: Updated plugin URI.
+
+= 1.4.5 =
+* Update: Updated for WordPress 4.8.
+
+= 1.4.4 =
+* New Feature: Added support for WPForms.
+
+= 1.4.3 =
+* Bug fix: Fixed auto plugin update.
+
+= 1.4.2 =
+* Bug fix: Added check and load before using get_plugin_data() for updates.
+* Update: Removing btn-flat default class.
+
+= 1.4.1 =
+* Update: Updating plugin description.
+
+= 1.4.0.1 =
+* Bug Fix: Replaced section background image 404.
+* Bug Fix: Google maps not replaced on edit.
+* Bug Fix: Disable mce inline_boundaries.
+
+= 1.4 =
+* Bug fix: Fixed issue when installing plugins from the Tools Import page.
+* Bug fix: Crop image screen closes immediately.
+* Bug fix: Updating section background image URLs.
+
+= 1.3.4 =
+* Bug Fix: Fixing chrome drag auto scroll.
+* Bug fix: Fixed plugin update checks for some scenarios (WP-CLI, Plesk, etc).
+* Bug fix: Error thrown while resizing.
+* Bug fix: Column Drag outline is the wrong color.
+* Bug fix: Blocks not vertically centered.
+* Update: Prioritize Post Blocks when viewing posts.
+
+= 1.3.3 =
+* Update: Add Underline to tinymce toolbar.
+* Update: Set default section background image position to center.
+* Bug fix: Fixing an issue where column popover would disappear.
+* Bug fix: Fixing an issue where swapping images was not working correctly.
+* Bug fix: Fixing adding icons to empty areas.
+* Bug fix: Fixing issue with system fonts displaying in editor dropdowns.
+* Bug fix: Replace more than one image bug.
+
+= 1.3.2 =
+* Bug fix: Fixing issue adding Blocks.
+* New feature: Added a new UI for Blocks.
+* Testing: Tested on WordPress 4.7.
+
+= 1.3.1 =
+* Misc: Added plugin requirements to readme.txt file.
+* Update: Crop Image Screen - update source image options.
+* Bug fix: Prevent duplicate 'Add Block' buttons.
+
+= 1.3 =
+* Update: Added neutral colors to section background colors.
+* Update: Removed duplicate maps types.
+* Update: Added Google maps edit link.
+* Update: Updating Dependencies.
+* Bug fix: Fixed issue with text color and section backgrounds.
+* Bug fix: Fixing issue with update notice blocking user interaction on loading failure.
+
+= 1.2.13 =
+* Update: Fixing panel issue after first time notice.
+
+= 1.2.12 =
+* Update: Added update notice for users updating to 1.3.
+* Update: Adding a conversion method from static maps to embed maps.
+* Bug fix: Allow users to drag into empty sections.
+* Bug fix: Fixed issue with system fonts used in themes.
+
+= 1.2.11 =
+* Bug Fix: Fixing issue with popover panel items.
+
+= 1.2.10 =
+* Update: Smoothing auto scroll during drag.
+* Update: Hide popover font control when not applicable.
+* Update: Setting default text color for column backgrounds.
+* Update: Added default to font selection.
+* Update: Add Media now in Drop Tab > Add new.
+* Bug fix: Fixing issue with column popover at the edge of the screen.
+* Bug fix: Fixing z-index issue withe section popover.
+* Bug fix: Image being cloned after pressing enter.
+* Bug fix: Nested columns allowed for parent column backgrounds.
+* Bug fix: Fixing issue with row resize cursor.
+* Bug fix: Hide button color if multiple buttons in a paragraph.
+* Bug fix: Staging colors and buttons will now be enqueued correctly.
+* Update: WBP-2426 Adjust the way crop modal hides router tabs.
+
+= 1.2.9 =
+* Bug Fix: Added cache busting for colors and button files.
+
+= 1.2.8 =
+* Misc: Added EOF line breaks.
+* Update: Fix issue with direction of section popover menu.
+* Bug fix: Fixed issue where section border did not show.
+* Bug fix: Fixed issue where change icon does not appear.
+* Bug fix: Fixed issue causing missing image toolbar.
+* Bug fix: Fixed issue causing button customization to disappear.
+* Bug fix: Reset class controls when opening customizer.
+* New feature: Change image added to BG menu bar.
+* New feature: Add my button designs to button panel.
+* New feature: Track my designs for images as the user makes changes.
+* New feature: Add Button Primary & Button Secondary to Button Panel.
+* Bug fix: Wrapping content elements not contained, in theme default containers.
+
+= 1.2.7 =
+* Misc: Updated readme.txt for Tested up to 4.6.1.
+* Bug fix: Load BoldGrid settings from the correct WP option (site/blog).
+* Update: Setting version constant from plugin file.
+* New feature: Buttons, Fonts and text backgrounds will now track usage on other pages.
+* Update: Appearance of drag element has been modified.
+* New feature: Added Section dragging & zoomed out view.
+
+= 1.2.6 =
+* Bug fix: Rebuilding JS assets.
+
+= 1.2.5 =
+* Bug fix: Added wrapper to handle mb_convert_encoding() if mbstring is not loaded.
+* Bug fix: Issue where popovers did not comeback after drag drop.
+* New feature: Overlays color for background images.
+* New feature: Added column dragging to empty areas within row.
+* New feature: Added column resizing from first column on the left boundary.
+* New feature: Empty columns will be automatically deleted while resizing within a row.
+* New feature: Added border color control to boxes.
+* New feature: Row resizing now works in nested rows.
+* New feature: Add theme section fonts to font selection.
+* New feature: Added customization options for gradients.
+* Bug fix: Bug fixes for towards undo and redo actions.
+* Bug fix: Fixed issues with tripple click to delete.
+* Bug fix: Fixed issues with editor height.
+* Bug fix: Fixed issues with color control preselecting.
+
+= 1.2.4 =
+* Bug fix: Fixing issue with default container class.
+* Bug fix: Fixing JS error when gallery plugin is missing.
+* Bug fix: Fixing issue breaking font family selection.
+
+= 1.2.3 =
+* Misc: Updated readme.txt for Tested up to: 4.6.
+* New feature: Added customization of Icons.
+* New feature: Added customization of Backgrounds.
+* New feature: Added customization for widths of rows.
+* New feature: Added customization for padding on rows.
+* New feature: Added customization of Buttons.
+* New feature: Added customization of Fonts.
+* New feature: Introduced customization and new component "Text Backgrounds".
+* New feature: Users can now add border to images.
+* New feature: Users can now apply filters to images.
+* Rework: Formatting.
+
+= 1.2.2 =
+* Bug fix: Issue causing parent row to be deleted when removing icon or anchor.
+
+= 1.2.1 =
+* Bug fix: Issue with pressing enter on an empty .row > .column.
+* Bug fix: Fixed issue with Blocks getting images updated.
+
+= 1.2 =
+* Bug fix: Fixing issue with column popover size when zooming out.
+* Bug fix: Sporadic issue, images load but then disappear within editor.
+
+= 1.1.5 =
+* New feature: Added capability for auto-updates by BoldGrid API response.
+* Testing: Tested on WordPress 4.5.3.
+* Bug fix: Adding a new row was not allowing you to type in it.
+
+= 1.1.4 =
+* Bug fix: Fixed issue with non BG themes and Blocks modal.
+* New Feature: Adding font family and font size controls to customizer widgets.
+
+= 1.1.3 =
+* Update: Changing borders to outline for draggable objects.
+* Update: Passed WordPress 4.5.1 testing.
+* Bug fix: Javascript error in console after loading Blocks.
+* Bug fix: JS Error when going to 'Google Map' tab.
+
+= 1.1.2 =
+* Bug fix: Addressing issues with drag and drop in Safari and Microsoft Edge w/ WP 4.5.
+
+= 1.1.1.2 =
+* Bug fix: Addressing issues with drag and drop in Chrome and FF w/ WP 4.5.
+
+= 1.1.1.1 =
+* Bug fix: Fixed update class interference with the Add Plugins page.
+
+= 1.1.1 =
+* Bug fix: Fixed undefined index "action" for some scenarios. Optimized update class and addessed CodeSniffer items.
+
+= 1.1 =
+* Bug fix: Fixing flexbox issue on safari
+
+= 1.0.9 =
+* Misc: Added license file.
+* New feature: Suggest crop: Add 'size' dropdown menu when cropping an image.
+* New feature: Suggest crop: default selection should be as wide as it could be.
+* New feature: Suggest crop: Center the default selection.
+* New feature: Drag and drop enabled state is now remembered per theme.
+* Update: Suggest crop: Do not trigger on 'Add Media'.
+* Update: Suggest crop: Remove feature switch.
+
+= 1.0.8 =
+* New feature: Change button opens 'Replace Image' media modal.
+* New feature: Suggest image crop when replacing images of different aspect ratios.
+
+= 1.0.7 =
+* Rework: Updated require and include statements for standards.
+
+= 1.0.6 =
+* New feature: Serve static Blocks via API
+
+= 1.0.5.1 =
+* Bug fix: Fixed PHP version check condition (<5.3).
+
+= 1.0.5 =
+* New feature: Adding Icons for draggable tools
+* Usability: Improved popover hover responsiveness
+* Bug fix: Added support for __DIR__ in PHP <=5.2.
+* New feature: Enable fontsize and family selection in tinymce
+* New feature: Columns will now extend to the full height of row.
+* New feature: Updating the loading graphic
+* Misc: Updated readme.txt for Tested up to: 4.4.1
+* New feature: Standardize Drag Menu order
+* New feature: Add wp-image-## class to images when adding Blocks.
+
+= 1.0.4 =
+* Bug fix: Fixing compatibility issues with IE 11, 12 and 13
+
+= 1.0.3 =
+* New feature: Added unit tests
+* Bug fix: Insert media will now be the default tab when changing an image
+* Bug fix: Fixing issue causing tinymce height to be too large to too small
+
+= 1.0.2 =
+* New feature: Updated readme.txt for WordPress standards.
+* Usability: Adding cache query args for tinymce styles
+
+= 1.0.1 =
+* Bug fix: Fixing error experienced in non BG themes in editor
+
+= 1.0 =
+* Initial public release.
