@@ -134,8 +134,6 @@ WordPress Editor.
 
 == Changelog ==
 
-For more information, see changelog.txt.
-
 = 1.7.4 =
 
 Release Date: May 17th, 2018
