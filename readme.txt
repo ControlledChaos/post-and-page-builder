@@ -22,7 +22,7 @@ Try out the [BoldGrid Demo](https://www.boldgrid.com/central/get-it-now?redirect
 
 = Features =
 
-- **Drag and Drop editing** Create simple or complex layouts with our unique editing experience
+- **Drag and Drop Editing** Create simple or complex layouts with our unique editing experience
 - **BoldGrid Blocks** Hundreds of professional layout designs to work from
 - **100% Mobile-friendly** Responsive layouts and controls to change the design per device
 - **Google Fonts** Change font family, font size, font color, letter spacing, line height and more
