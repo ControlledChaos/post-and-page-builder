@@ -22,27 +22,27 @@ Try out the [BoldGrid Demo](https://www.boldgrid.com/central/get-it-now?redirect
 
 = Features =
 
-- **Drag and Drop Editing** Create simple or complex layouts with our unique editing experience
-- **BoldGrid Blocks** Hundreds of professional layout designs to work from
-- **100% Mobile-friendly** Responsive layouts and controls to change the design per device
-- **Google Fonts** Change font family, font size, font color, letter spacing, line height and more
-- **Theme Compatibility** Our WordPress Page Builder is designed to work with any WordPress Theme
-- **Custom Backgrounds** Add background images, gradient backgrounds, patterns, overlays, and background colors
-- **Fast and Free Support** Growing Community and knowledge base
-- **Animations** Add effects as the user scrolls down the page with Animate.css or background parallax scroll effects
-- **Advanced Controls** Add margin, padding, box shadows, borders, alignment and more to almost any element
-- **Bootstrap Grid** Drag and drop controls for bootstrap rows and columns elements
-- **Add Custom CSS Classes** Complete control over any element
-- **Clean, Simple Markup** Easily create a professionally coded template without experience
-- **Google Maps** Embed and customize maps into your post or page
-- **Web Components** High quality reusable and customizable HTML elements
-- **Font Awesome Icons** Insert and customize any Font Awesome icons
-- **CSS Grid** Full width, column and row based layouts
-- **Image Editing** Apply image filters and automatically crop images
-- **Button Designs** Fully customizable button designs
-- **Custom Post Types** Save and reuse full page layouts or BoldGrid Block designs
-- **WordPress Editor Integration** Integrated into TinyMCE so you can keep the same workflow
-- **No Need for Shortcodes!** Faster page loads by saving your custom HTML5 elements
+- **Drag and Drop Editing** - Create simple or complex layouts with our unique editing experience
+- **BoldGrid Blocks** - Hundreds of professional layout designs to work from
+- **100% Mobile-friendly** - Responsive layouts and controls to change the design per device
+- **Google Fonts** - Change font family, font size, font color, letter spacing, line height and more
+- **Theme Compatibility** - Our WordPress Page Builder is designed to work with any WordPress Theme
+- **Custom Backgrounds** - Add background images, gradient backgrounds, patterns, overlays, and background colors
+- **Fast and Free Support** - Growing Community and knowledge base
+- **Animations** - Add effects as the user scrolls down the page with Animate.css or background parallax scroll effects
+- **Advanced Controls** - Add margin, padding, box shadows, borders, alignment and more to almost any element
+- **Bootstrap Grid** - Drag and drop controls for bootstrap rows and columns elements
+- **Add Custom CSS Classes** - Complete control over any element
+- **Clean, Simple Markup** - Easily create a professionally coded template without experience
+- **Google Maps** - Embed and customize maps into your post or page
+- **Web Components** - High quality reusable and customizable HTML elements
+- **Font Awesome Icons** - Insert and customize any Font Awesome icons
+- **CSS Grid** - Full width, column and row based layouts
+- **Image Editing** - Apply image filters and automatically crop images
+- **Button Designs** - Fully customizable button designs
+- **Custom Post Types** - Save and reuse full page layouts or BoldGrid Block designs
+- **WordPress Editor Integration** - Integrated into TinyMCE so you can keep the same workflow
+- **No Need for Shortcodes!** - Faster page loads by saving your custom HTML5 elements
 
 Additional Features when used with other BoldGrid plugins:
 
