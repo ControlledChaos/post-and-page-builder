@@ -77,6 +77,11 @@ class Boldgrid_Editor_Builder_Components {
 			$components = array_merge_recursive( $components, $this->parse_post( $post->post_content ) );
 		}
 
+		// Filter out duplicates.
+		foreach ( $components as &$component ) {
+			$component = array_map( 'unserialize', array_unique( array_map( 'serialize', $component ) ) );
+		}
+
 		return $components;
 	}
 

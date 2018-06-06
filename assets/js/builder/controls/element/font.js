@@ -73,7 +73,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 				textEffectClasses: BoldgridEditor.builder_config.textEffectClasses,
 				fonts: BoldgridEditor.builder_config.fonts,
 				themeFonts: self.getThemeFonts(),
-				myFonts: BoldgridEditor.builder_config.components_used.font
+				myFonts: _.uniq( BoldgridEditor.builder_config.components_used.font || [] )
 			} );
 
 			self.bindFontCollpase();
