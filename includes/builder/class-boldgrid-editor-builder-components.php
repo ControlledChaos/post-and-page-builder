@@ -80,6 +80,7 @@ class Boldgrid_Editor_Builder_Components {
 		// Filter out duplicates.
 		foreach ( $components as &$component ) {
 			$component = array_map( 'unserialize', array_unique( array_map( 'serialize', $component ) ) );
+			$component = array_values( $component );
 		}
 
 		return $components;
