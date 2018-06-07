@@ -102,7 +102,10 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 				if ( ! $inserting || ! draggable ) {
 					window.send_to_editor( $inserting.html() );
 				} else {
-					$placeHolder.replaceWith( $inserting.html() );
+
+					// Select node with tinymce then insert to tigger mce events.
+					BOLDGRID.EDITOR.mce.selection.select( $placeHolder[0] );
+					window.send_to_editor( $inserting.html() );
 				}
 
 				// Update editor fonts.
