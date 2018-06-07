@@ -149,9 +149,14 @@ class Boldgrid_Editor_Gridblock_Post {
 		global $post;
 
 		if ( $post && 'bg_block' === $post->post_type ) {
-			$templater = Boldgrid_Editor_Service::get( 'templater' );
-			$template = $templater->get_full_path( 'fullwidth' );
-			$templater->add_template_filters();
+
+			if ( ! Boldgrid_Editor_Service::get( 'main' )->get_is_boldgrid_theme()  ) {
+				$templater = Boldgrid_Editor_Service::get( 'templater' );
+				$template = $templater->get_full_path( 'fullwidth' );
+				$templater->add_template_filters();
+			} else {
+				add_filter( 'boldgrid/display_sidebar', '__return_false' );
+			}
 		}
 
 		return $template;
