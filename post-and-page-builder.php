@@ -73,6 +73,10 @@ if ( ! function_exists( 'boldgrid_editor_setup' ) && false === strpos( BOLDGRID_
 		deactivate_plugins( array( 'boldgrid-editor/boldgrid-editor.php' ), true );
 	}
 
+	if ( ! class_exists( 'Boldgrid_Editor_Upgrade' ) ) {
+		require_once BOLDGRID_PPB_PATH . '/includes/class-boldgrid-editor-upgrade.php';
+	}
+
 	// Plugin update checks.
 	$upgrade = new Boldgrid_Editor_Upgrade();
 	add_action( 'upgrader_process_complete', array( $upgrade, 'plugin_update_check' ), 10, 2 );
