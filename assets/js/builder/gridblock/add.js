@@ -105,7 +105,13 @@ BOLDGRID.EDITOR.GRIDBLOCK = BOLDGRID.EDITOR.GRIDBLOCK || {};
 
 					// Select node with tinymce then insert to tigger mce events.
 					BOLDGRID.EDITOR.mce.selection.select( $placeHolder[0] );
-					window.send_to_editor( $inserting.html() );
+					BOLDGRID.EDITOR.mce.selection.setContent( $inserting.html() );
+
+					/*
+					 * The following method was disabled at this step because it caused
+					 * issues on Firefox.
+					 */
+					// window.send_to_editor( $inserting.html() );
 				}
 
 				// Update editor fonts.
