@@ -116,6 +116,7 @@ export class ConnectKey {
 			_.template( enterKeyHtml )( {
 				newKeyLink: this.newKeyLink,
 				journey: this.licenseTypes.length ? 'existing-key' : '',
+				claimEnvato: BoldgridEditor.claim_envato_key,
 				license: this.getLicenseType( this.licenseTypes )
 			} )
 		);

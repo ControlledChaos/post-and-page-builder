@@ -3187,6 +3187,9 @@ html:not(.dragging-section) .delete-icon-wrap {
   margin: 10px;
   text-align: center; }
 
+.panel-body .connect-key-entry .envato-purchase {
+  margin-top: 25px; }
+
 .panel-body .connect-key-entry .upgrade-key-section,
 .panel-body .connect-key-entry .existing-key {
   display: none;

@@ -41,7 +41,15 @@
 					placeholder="XXXXXXXX - XXXXXXXX - XXXXXXXX - XXXXXXXX">
 				<button class="button button-primary">Submit</button>
 			</p>
-			<p><a target="_blank" href="<%=newKeyLink %>">Don't have a Connect Key yet?</a></p>
+			<% if ( ! claimEnvato ) { %>
+				<p><a target="_blank" href="<%=newKeyLink %>">Don't have a Connect Key yet?</a></p>
+			<% } else { %>
+				<div class="envato-purchase">
+					<div>Thank you for your Envato Market purchase.</div>
+					<div>Please visit <a target="_blank" href="https://www.boldgrid.com/central/code/envato"
+						>BoldGrid Central</a> to link your accounts and claim your Premium Connect Key.</div>
+				</div>
+			<% } %>
 		</form>
 	</div>
 	<div class="success" data-key-type="">
