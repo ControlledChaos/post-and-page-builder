@@ -3202,7 +3202,7 @@ html:not(.dragging-section) .delete-icon-wrap {
 
 .panel-body .connect-key-entry .upgrade-key-section p,
 .panel-body .connect-key-entry .existing-key p {
-  font-size: 15px; }
+  font-size: 14px; }
 
 .panel-body .connect-key-entry[data-journey="existing-key"] .key-entry,
 .panel-body .connect-key-entry[data-journey="existing-key"] .success {
