@@ -65,6 +65,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		 * @since 1.2.7
 		 */
 		setup: function() {
+			this.mergeFontClasses();
 			self._setupEffectClick();
 			BG.CONTROLS.GENERIC.Fontcolor.bind();
 
@@ -72,12 +73,24 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 				textEffectClasses: BoldgridEditor.builder_config.textEffectClasses,
 				fonts: BoldgridEditor.builder_config.fonts,
 				themeFonts: self.getThemeFonts(),
-				myFonts: BoldgridEditor.builder_config.components_used.font
+				myFonts: _.uniq( BoldgridEditor.builder_config.components_used.font || [] )
 			} );
 
 			self.bindFontCollpase();
 
 			BG.FontRender.updateFontLink( BG.Controls.$container );
+		},
+
+		/**
+		 * Merge predefined font families with font families provided by the theme.
+		 *
+		 * @since 1.7.5
+		 */
+		mergeFontClasses() {
+			self.fontClasses = self.fontClasses.concat(
+				Object.keys( BoldgridEditor.builder_config.theme_fonts )
+			);
+			self.fontClasses = _.unique( self.fontClasses );
 		},
 
 		/**

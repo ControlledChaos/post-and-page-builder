@@ -70,7 +70,7 @@ class Boldgrid_Editor_Version {
 		// Check to see if WordPress version is installed at our required minimum or deactivate and
 		// die:
 		global $wp_version;
-		$required_wp_version = '4.2';
+		$required_wp_version = '4.4';
 		if ( version_compare( $wp_version, $required_wp_version, '<' ) ) {
 			deactivate_plugins( BOLDGRID_EDITOR_PATH . '/post-and-page-builder.php' );
 			wp_die(

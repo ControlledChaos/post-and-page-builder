@@ -235,6 +235,7 @@ class Boldgrid_Editor_Assets {
 			'is_boldgrid_template' => Boldgrid_Editor_Service::get( 'templater' )->is_custom_template( $post->page_template ),
 			'site_url' => $this->get_post_url(),
 			'plugin_url' => plugins_url( '', $plugin_file ),
+			'claim_envato_key' => apply_filters( 'Boldgrid\Library\Library\Notice\ClaimPremiumKey_enable', false ),
 			'is_IE' => $is_IE,
 			'version' => BOLDGRID_EDITOR_VERSION,
 			//'hasDraggableEnabled' => Boldgrid_Editor_MCE::has_draggable_enabled(),

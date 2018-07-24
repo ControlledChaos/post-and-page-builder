@@ -160,7 +160,7 @@ class Boldgrid_Editor_Builder_Fonts {
 
 			$configs = $boldgrid_theme_framework->get_configs();
 			$defaults = ! empty( $configs['customizer-options']['typography']['defaults'] ) ?
-				$configs['customizer-options']['typography']['defaults'] : null;
+				$configs['customizer-options']['typography']['defaults'] : array();
 
 			foreach ( $defaults as $key => $default ) {
 				if ( false !== array_search( $key, $theme_mods, true ) ) {
