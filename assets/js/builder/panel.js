@@ -644,7 +644,7 @@ BOLDGRID.EDITOR = BOLDGRID.EDITOR || {};
 			this._setIcon();
 			BOLDGRID.EDITOR.CONTROLS.Generic.initControls();
 			self.removeClasses();
-			$target = BG.Menu.$element.targetData[control.name] || $();
+			$target = BG.Menu.getCurrentTarget() || $();
 			$target.addClass( 'bg-control-element' );
 
 			BG.CONTROLS.Color.initColorControls();
