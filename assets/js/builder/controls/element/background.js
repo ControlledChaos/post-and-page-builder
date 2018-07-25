@@ -11,7 +11,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 	BOLDGRID.EDITOR.CONTROLS.Background = {
 		name: 'background',
 
-		tooltip: 'Section Background',
+		tooltip: 'Background',
 
 		uploadFrame: null,
 
@@ -19,9 +19,27 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 
 		iconClasses: 'genericon genericon-picture',
 
-		selectors: [ '.boldgrid-section' ],
+		selectors: [ '.boldgrid-section', '.row', '[class*="col-md-"]' ],
 
 		availableEffects: [ 'background-parallax', 'background-fixed' ],
+
+		menuDropDown: {
+			title: 'Background',
+			options: [
+				{
+					name: 'Section',
+					class: 'action font-awesome fa-cog section-background'
+				},
+				{
+					name: 'Row',
+					class: 'action font-awesome fa-cog row-background'
+				},
+				{
+					name: 'Column',
+					class: 'action font-awesome fa-cog column-background'
+				}
+			]
+		},
 
 		init: function() {
 			BOLDGRID.EDITOR.Controls.registerControl( this );
@@ -48,7 +66,8 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		},
 
 		onMenuClick: function() {
-			self.openPanel();
+
+			// self.openPanel();
 		},
 
 		/**
@@ -102,10 +121,41 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		 *
 		 * @since 1.2.7
 		 */
-		elementClick: function() {
-			if ( BOLDGRID.EDITOR.Panel.isOpenControl( this ) ) {
-				self.openPanel();
+		//elementClick: function() {
+		//	if ( BOLDGRID.EDITOR.Panel.isOpenControl( this ) ) {
+		//		self.openPanel();
+		//	}
+		//},
+
+		test( selector ) {
+			self.$target = null;
+
+			for ( let target of self.events ) {
+				let $target = $( target );
+				if ( $target.is( selector ) ) {
+					self.$target = $target;
+					self.openPanel();
+					console.log( self.$target );
+				}
 			}
+		},
+
+		elementClick( event ) {
+			self.events = self.events || {};
+			if ( self.recent !== event.timeStamp ) {
+				self.recent = event.timeStamp;
+				self.events = [];
+			}
+
+			self.events.push( event.currentTarget );
+		},
+
+		_setupMenuClick() {
+			BG.Menu.$element
+				.find( '.bg-editor-menu-dropdown' )
+				.on( 'click', '.action.column-background', () => self.test( '[class*="col-md"]' ) )
+				.on( 'click', '.action.row-background', () => self.test( '.row' ) )
+				.on( 'click', '.action.section-background', () => self.test( '.boldgrid-section' ) );
 		},
 
 		/**
@@ -114,6 +164,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		 * @since 1.2.7
 		 */
 		setup: function() {
+			self._setupMenuClick();
 			self._setupBackgroundClick();
 			self._setupFilterClick();
 			self._setupCustomizeLeave();
@@ -141,7 +192,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 				'.background-design [name="section-background-color"]',
 				function() {
 					var $this = $( this ),
-						$target = BG.Menu.$element.targetData[self.name],
+						$target = self.$target,
 						value = $this.val(),
 						type = $this.attr( 'data-type' ),
 						$currentSelection = BG.Panel.$element.find( '.current-selection' ),
@@ -185,7 +236,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 
 			panel.$element.on( 'click', '.background-design .overlay-color .default-color', function( e ) {
 				var $this = $( this ),
-					$target = BG.Menu.$element.targetData[self.name];
+					$target = self.$target;
 
 				e.preventDefault();
 
@@ -211,7 +262,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 				var $this = $( this ),
 					type = $this.attr( 'data-type' ),
 					value = $this.val(),
-					$target = BG.Menu.$element.targetData[self.name];
+					$target = self.$target;
 
 				if ( 'class' === type ) {
 					value = BoldgridEditor.colors.defaults[value - 1];
@@ -229,7 +280,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		 * @since 1.2.7
 		 */
 		updateBackgroundImage: function() {
-			var $target = BG.Menu.$element.targetData[self.name],
+			var $target = self.$target,
 				overlay = $target.attr( 'data-bg-overlaycolor' ),
 				image = $target.attr( 'data-image-url' );
 
@@ -265,7 +316,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 
 			panel.$element.on( 'change', '.background-design [name^="gradient-color"]', function() {
 				var $this = $( this ),
-					$target = BG.Menu.$element.targetData[self.name],
+					$target = self.$target,
 					value = $this.val(),
 					name = $this.attr( 'name' ),
 					type = $this.attr( 'data-type' );
@@ -308,7 +359,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 
 			panel.$element.on( 'change', '.background-design input[name="scroll-effects"]', function() {
 				var $this = $( this ),
-					$target = BG.Menu.getTarget( self );
+					$target = self.$target;
 
 				if ( 'none' === $this.val() ) {
 					$target.removeClass( self.availableEffects.join( ' ' ) );
@@ -329,7 +380,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 
 			panel.$element.on( 'change', '.background-design input[name="bg-direction"]', function() {
 				var $this = $( this ),
-					$target = BG.Menu.getTarget( self );
+					$target = self.$target;
 
 				$target.attr( 'data-bg-direction', $this.val() );
 				BG.Controls.addStyle( $target, 'background-image', self.createGradientCss( $target ) );
@@ -364,7 +415,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 
 			panel.$element.on( 'change', '.background-design input[name="background-size"]', function() {
 				var $this = $( this ),
-					$target = BG.Menu.getTarget( self );
+					$target = self.$target;
 
 				if ( 'tiled' === $this.val() ) {
 					BG.Controls.addStyle( $target, 'background-size', 'auto auto' );
@@ -457,7 +508,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 
 			panel.$element.on( 'click', '.background-design .selection', function() {
 				var $this = $( this ),
-					$target = BG.Menu.getTarget( self ),
+					$target = self.$target,
 					imageUrl = $this.attr( 'data-image-url' ),
 					imageSrc = $this.css( 'background-image' ),
 					background = $this.css( 'background' );
@@ -523,7 +574,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		activateFilter: function( type ) {
 			var backgroundImageProp,
 				filterFound = false,
-				$target = BG.Menu.getTarget( self );
+				$target = self.$target;
 
 			BG.Panel.$element.find( '.current-selection .filter' ).each( function() {
 				var $this = $( this ),
@@ -560,7 +611,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		 */
 		setImageSelection: function( type, prop ) {
 			var $currentSelection = BG.Panel.$element.find( '.current-selection' ),
-				$target = BG.Menu.getTarget( self );
+				$target = self.$target;
 
 			$currentSelection.css( 'background', '' );
 
@@ -583,7 +634,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		 * @param string url.
 		 */
 		setImageBackground: function( url ) {
-			var $target = BG.Menu.getTarget( self );
+			var $target = self.$target;
 
 			$target.attr( 'data-image-url', url );
 
@@ -608,7 +659,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		 * @since 1.2.7
 		 */
 		_initVerticleSlider: function() {
-			var $target = BG.Menu.getTarget( self ),
+			var $target = self.$target,
 				defaultPosY = $target.css( 'background-position-y' ),
 				defaultPosX = $target.css( 'background-position-x' );
 
@@ -676,7 +727,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		 * @since 1.2.7
 		 */
 		setDefaultOverlayColor: function() {
-			var $target = BG.Menu.getTarget( self ),
+			var $target = self.$target,
 				$overlayColorSection = BG.Panel.$element.find( '.overlay-color' ),
 				overlayColor = $target.attr( 'data-bg-overlaycolor' );
 
@@ -692,7 +743,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		 */
 		setSize: function() {
 			var $input = BG.Panel.$element.find( 'input[name="background-size"]' ),
-				$target = BG.Menu.getTarget( self );
+				$target = self.$target;
 
 			if ( -1 === $target.css( 'background-size' ).indexOf( 'cover' ) ) {
 				$input.filter( '[value="tiled"]' ).prop( 'checked', true );
@@ -705,7 +756,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		 * @since 1.2.7
 		 */
 		setScrollEffect: function() {
-			var $target = BG.Menu.getTarget( self );
+			var $target = self.$target;
 
 			$.each( self.availableEffects, function() {
 				if ( $target.hasClass( this ) ) {
@@ -723,7 +774,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		 * @since 1.2.7
 		 */
 		setDefaultDirection: function() {
-			var $target = BG.Menu.getTarget( self ),
+			var $target = self.$target,
 				direction = $target.attr( 'data-bg-direction' );
 
 			if ( self.backgroundIsGradient( $target.css( 'background-image' ) ) && direction ) {
@@ -741,7 +792,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		setDefaultBackgroundColors: function() {
 			var bgColor,
 				$bgControlColor,
-				$target = BG.Menu.getTarget( self );
+				$target = self.$target;
 
 			if ( self.backgroundIsGradient( $target.css( 'background-image' ) ) ) {
 				BG.Panel.$element
@@ -847,7 +898,7 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 		 */
 		preselectBackground: function( keepFilter ) {
 			var type = 'color',
-				$target = BG.Menu.getTarget( self ),
+				$target = self.$target,
 				backgroundColor = $target.css( 'background-color' ),
 				backgroundUrl = $target.css( 'background-image' ),
 				$currentSelection = BG.Panel.$element.find( '.current-selection' ),

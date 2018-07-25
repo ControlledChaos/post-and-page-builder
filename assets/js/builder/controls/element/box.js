@@ -30,12 +30,12 @@ BOLDGRID.EDITOR.CONTROLS = BOLDGRID.EDITOR.CONTROLS || {};
 
 		iconClasses: 'genericon genericon-gallery',
 
-		tooltip: 'Column Background',
+		tooltip: 'Column Shape',
 
 		selectors: [ '.row [class*="col-md"]' ],
 
 		panel: {
-			title: 'Column Background',
+			title: 'Column Shape',
 			height: '625px',
 			width: '325px',
 			customizeSupport: [
